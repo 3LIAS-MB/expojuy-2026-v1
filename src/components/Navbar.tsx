@@ -1,135 +1,276 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
-import { Menu, X, QrCode, Clock } from 'lucide-react';
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { navigationConfig } from "@/config/navigation";
+import { SearchModal } from "./SearchModal";
 
-export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [timeLeft, setTimeLeft] = useState({
-    days: '00',
-    hours: '00',
-    minutes: '00',
-    seconds: '00',
-  });
+export function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeSubDropdown, setActiveSubDropdown] = useState<string | null>(null);
 
   useEffect(() => {
-    const target = new Date('2026-10-09T09:00:00-03:00').getTime();
-
-    const updateTimer = () => {
-      const now = new Date().getTime();
-      const diff = target - now;
-
-      if (diff > 0) {
-        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((diff % (1000 * 60)) / 1000);
-
-        setTimeLeft({
-          days: String(d).padStart(2, '0'),
-          hours: String(h).padStart(2, '0'),
-          minutes: String(m).padStart(2, '0'),
-          seconds: String(s).padStart(2, '0'),
-        });
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
       }
     };
 
-    updateTimer();
-    const interval = setInterval(updateTimer, 1000);
-    return () => clearInterval(interval);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
-      <div className="max-w-[1920px] mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="flex items-center justify-between h-20">
-
-          {/* Logo Oficial Transparente PNG */}
-          <a href="#inicio" className="flex items-center gap-3 group">
-            <div className="relative h-12 w-48 transition-transform group-hover:scale-105">
+    <>
+      {/* EXPO JUJUY Main Header Container with increased height & prominent logo */}
+      <header
+        className={`sticky top-0 z-50 w-full bg-white transition-all duration-200 ${
+          isScrolled ? "shadow-md border-b border-black/10" : "border-b border-black/10"
+        }`}
+      >
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12 flex items-center justify-between h-[95px] sm:h-[105px]">
+          
+          {/* 1. EXPO JUJUY OFFICIAL LOGO (Large & Prominent) */}
+          <div className="flex-shrink-0 flex items-center py-2">
+            <Link href="/" className="inline-block hover:opacity-95 transition-opacity">
               <Image
-                src="/images/expojuy26_horizontal.png"
-                alt="ExpoJuy 2026"
-                fill
-                className="object-contain"
+                src="/images/LOGO.png"
+                alt="ExpoJuy - Conectando Países, Creando Oportunidades"
+                width={260}
+                height={80}
+                priority
+                className="h-[58px] sm:h-[68px] md:h-[74px] w-auto object-contain"
+              />
+            </Link>
+          </div>
+
+          {/* 2. RIGHT SIDE GROUP: NAV MENU + SEARCH + ENQUIRE BUTTON */}
+          <div className="hidden lg:flex items-center space-x-7 xl:space-x-9">
+            
+            {/* Navigation Menu */}
+            <nav className="flex items-center space-x-6 xl:space-x-8">
+              {navigationConfig.map((item) => {
+                const hasSubItems = item.subItems && item.subItems.length > 0;
+                const isOpen = activeDropdown === item.label;
+
+                return (
+                  <div
+                    key={item.label}
+                    className="relative py-8"
+                    onMouseEnter={() => setActiveDropdown(item.label)}
+                    onMouseLeave={() => {
+                      setActiveDropdown(null);
+                      setActiveSubDropdown(null);
+                    }}
+                  >
+                    <Link
+                      href={item.href || "#"}
+                      className="flex items-center text-[15px] font-bold text-black hover:text-[#5E009D] transition-colors"
+                    >
+                      <span>{item.label}</span>
+                      {hasSubItems && (
+                        <span className="ml-1.5 inline-flex items-center">
+                          {/* Exact Chevron Down SVG from Singapore EXPO */}
+                          <svg
+                            aria-hidden="true"
+                            className={`w-3 h-3 fill-black transition-transform duration-200 ${
+                              isOpen ? "rotate-180 fill-[#5E009D]" : ""
+                            }`}
+                            viewBox="0 0 448 512"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z" />
+                          </svg>
+                        </span>
+                      )}
+                    </Link>
+
+                    {/* Level 1 Submenu with exact #5E009D top border */}
+                    {hasSubItems && isOpen && (
+                      <div className="absolute left-0 top-[100%] z-50 min-w-[210px] bg-white shadow-xl border-t-4 border-[#5E009D] rounded-b-sm py-2 px-0 animate-in fade-in duration-150">
+                        <ul className="space-y-0.5">
+                          {item.subItems?.map((sub) => {
+                            const hasChildren = sub.children && sub.children.length > 0;
+                            const isSubOpen = activeSubDropdown === sub.label;
+
+                            return (
+                              <li
+                                key={sub.label}
+                                className="relative group/sub px-4 py-2 border-b border-gray-100 last:border-none"
+                                onMouseEnter={() => hasChildren && setActiveSubDropdown(sub.label)}
+                                onMouseLeave={() => hasChildren && setActiveSubDropdown(null)}
+                              >
+                                {hasChildren ? (
+                                  <div className="flex items-center justify-between text-[14px] font-normal text-gray-900 hover:text-[#5E009D] cursor-pointer transition-colors">
+                                    <span>{sub.label}</span>
+                                    <span className="text-[13px] font-bold text-gray-400">›</span>
+                                  </div>
+                                ) : (
+                                  <Link
+                                    href={sub.href}
+                                    className="flex items-center justify-between text-[14px] font-normal text-gray-900 hover:text-[#5E009D] transition-colors"
+                                  >
+                                    <span>{sub.label}</span>
+                                    <span className="text-[13px] font-bold text-gray-400 group-hover/sub:translate-x-1 transition-transform">›</span>
+                                  </Link>
+                                )}
+
+                                {/* Level 2 Submenu */}
+                                {hasChildren && isSubOpen && (
+                                  <div className="absolute left-full top-0 ml-0.5 min-w-[200px] bg-white shadow-xl border-t-4 border-[#5E009D] rounded-b-sm py-2 px-0 animate-in fade-in duration-150">
+                                    <ul className="space-y-0.5">
+                                      {sub.children?.map((child) => (
+                                        <li key={child.label} className="px-4 py-2 border-b border-gray-100 last:border-none">
+                                          <Link
+                                            href={child.href}
+                                            className="flex items-center justify-between text-[14px] font-normal text-gray-900 hover:text-[#5E009D] transition-colors"
+                                          >
+                                            <span>{child.label}</span>
+                                            <span className="text-[13px] font-bold text-gray-400">›</span>
+                                          </Link>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                )}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </nav>
+
+            {/* Exact Search Icon SVG (#F8BF00) */}
+            <button
+              onClick={() => setIsSearchOpen(true)}
+              className="p-1.5 cursor-pointer hover:opacity-80 transition-opacity focus:outline-none ml-2"
+              aria-label="Search"
+              title="Buscar"
+            >
+              <svg
+                aria-hidden="true"
+                className="w-[22px] h-[22px] fill-[#F8BF00]"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
+              </svg>
+            </button>
+
+            {/* Exact ENQUIRE NOW Button Image from Singapore EXPO */}
+            <Link
+              href="/contact-us"
+              className="inline-block hover:opacity-95 transition-opacity"
+            >
+              <Image
+                src="/images/Nav-Menu-State-Desktop.png"
+                alt="ENQUIRE NOW"
+                width={172}
+                height={44}
+                className="h-[42px] w-auto object-contain"
                 priority
               />
-            </div>
-          </a>
+            </Link>
 
-          {/* Menú Desktop */}
-          <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-300 font-heading">
-            <a href="#inicio" className="hover:text-brand-aqua transition-colors">Inicio</a>
-            <a href="#dinamica-dual" className="hover:text-brand-aqua transition-colors flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-brand-aqua animate-pulse"></span>
-              Dinámica Dual
-            </a>
-            <a href="#pilares" className="hover:text-brand-aqua transition-colors">5 Pilares</a>
-            <a href="#expositores" className="hover:text-brand-aqua transition-colors">Expositores</a>
-            <a href="#agenda" className="hover:text-brand-aqua transition-colors">Agenda</a>
-            <a href="#plano" className="hover:text-brand-aqua transition-colors">Plano</a>
-            <a href="#noticias" className="hover:text-brand-aqua transition-colors">Noticias</a>
-            <a href="#contacto" className="hover:text-brand-aqua transition-colors">Contacto</a>
-          </nav>
-
-          {/* CTA Header */}
-          <div className="hidden sm:flex items-center gap-3">
-            <a
-              href="#acreditacion"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold bg-gradient-to-r from-brand-violet to-brand-aqua text-white shadow-glow-aqua hover:opacity-95 transition-all transform hover:-translate-y-0.5 font-heading"
-            >
-              <QrCode className="w-4 h-4" />
-              <span>Pase Digital QR</span>
-            </a>
           </div>
 
-          {/* Botón Móvil */}
-          <div className="lg:hidden flex items-center">
+          {/* Mobile Right Icons */}
+          <div className="flex lg:hidden items-center space-x-4">
             <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 focus:outline-none"
-              aria-label="Abrir menú"
+              onClick={() => setIsSearchOpen(true)}
+              className="p-1 cursor-pointer"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              <svg
+                aria-hidden="true"
+                className="w-6 h-6 fill-[#F8BF00]"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
+              </svg>
+            </button>
+
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-1 text-black focus:outline-none"
+              aria-label="Menu"
+            >
+              <svg
+                aria-hidden="true"
+                className="w-7 h-7 fill-black"
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z" />
+              </svg>
             </button>
           </div>
+
         </div>
-      </div>
 
-      {/* Solapa / Cortina de Cuenta Regresiva Colgando a la Derecha del Navbar */}
-      <div className="absolute top-full right-4 sm:right-8 lg:right-16 z-40 pointer-events-auto">
-        <div className="glass-card px-4 sm:px-5 py-1.5 rounded-b-xl border-t-0 border border-brand-aqua/30 shadow-glow-aqua flex items-center gap-2.5 text-xs font-heading font-bold text-white backdrop-blur-xl">
+        {/* Mobile Menu Drawer */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden fixed inset-x-0 top-[95px] bg-white border-b border-black/10 shadow-2xl z-50 p-6 space-y-4 animate-in slide-in-from-top-2 duration-200">
+            {navigationConfig.map((item) => (
+              <div key={item.label} className="border-b border-gray-100 pb-3">
+                <Link
+                  href={item.href || "#"}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block text-base font-bold text-black hover:text-[#5E009D]"
+                >
+                  {item.label}
+                </Link>
+                {item.subItems && (
+                  <div className="pl-3 mt-2 space-y-2 border-l-2 border-[#5E009D]">
+                    {item.subItems.map((sub) => (
+                      <Link
+                        key={sub.label}
+                        href={sub.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="block text-sm font-normal text-gray-700 hover:text-[#5E009D]"
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
 
-          <div className="flex items-center gap-1 font-mono text-brand-aqua text-xs sm:text-sm">
-            <span>{timeLeft.days}<span className="text-[10px] text-slate-400 font-sans">d</span></span>
-            <span className="text-slate-600">:</span>
-            <span>{timeLeft.hours}<span className="text-[10px] text-slate-400 font-sans">h</span></span>
-            <span className="text-slate-600">:</span>
-            <span>{timeLeft.minutes}<span className="text-[10px] text-slate-400 font-sans">m</span></span>
-            <span className="text-slate-600">:</span>
-            <span className="text-white">{timeLeft.seconds}<span className="text-[10px] text-slate-400 font-sans">s</span></span>
+            <div className="pt-2">
+              <Link
+                href="/contact-us"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block text-center"
+              >
+                <Image
+                  src="/images/Nav-Menu-State-Desktop.png"
+                  alt="ENQUIRE NOW"
+                  width={180}
+                  height={46}
+                  className="h-[44px] w-auto mx-auto object-contain"
+                />
+              </Link>
+            </div>
           </div>
-        </div>
-      </div>
+        )}
+      </header>
 
-      {/* Menú Móvil Desplegable */}
-      {isOpen && (
-        <div className="lg:hidden border-t border-white/10 bg-brand-dark/98 backdrop-blur-xl px-4 pt-3 pb-6 space-y-3">
-          <a href="#inicio" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-brand-aqua hover:bg-slate-800/40">Inicio</a>
-          <a href="#dinamica-dual" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-brand-aqua hover:bg-slate-800/40">⚡ Dinámica Dual (Mañana vs Tarde)</a>
-          <a href="#pilares" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-brand-aqua hover:bg-slate-800/40">5 Pilares Productivos</a>
-          <a href="#expositores" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-brand-aqua hover:bg-slate-800/40">Directorio Expositores</a>
-          <a href="#agenda" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-brand-aqua hover:bg-slate-800/40">Agenda 4 Días</a>
-          <a href="#plano" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-brand-aqua hover:bg-slate-800/40">Plano del Predio</a>
-          <a href="#noticias" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-brand-aqua hover:bg-slate-800/40">Noticias & Novedades</a>
-          <a href="#contacto" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-brand-aqua hover:bg-slate-800/40">Contacto General</a>
-          <a href="#acreditacion" onClick={() => setIsOpen(false)} className="mt-4 flex items-center justify-center gap-2 w-full py-3 rounded-xl text-center font-bold bg-gradient-to-r from-brand-violet to-brand-aqua text-white shadow-glow-aqua">
-            <QrCode className="w-5 h-5" />
-            Obtener Acreditación QR
-          </a>
-        </div>
-      )}
-    </header>
+      {/* Search Modal */}
+      <SearchModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+      />
+    </>
   );
 }

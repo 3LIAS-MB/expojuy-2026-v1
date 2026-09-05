@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="es-ES">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Propuesta de alta fidelidad para el sitio oficial de ExpoJuy 2026, la exposición multisectorial más importante del Norte Argentino." />
+  <title>ExpoJuy 2026 / Conectando países, creando oportunidades</title>
+  <style>
+    @font-face { font-family: 'Space Grotesk'; src: url('/api/projects/54056d6d-b141-44a3-88f4-daf77dbdf262/raw/assets/space-grotesk-500.ttf?workspaceId=mvs38fo6d9pq9wocg1tv3pa5&workspaceMemberId=cd4o7vywc2vjb0a4komws5ll') format('truetype'); font-weight: 500; font-display: swap; }
+    @font-face { font-family: 'Space Grotesk'; src: url('/api/projects/54056d6d-b141-44a3-88f4-daf77dbdf262/raw/assets/space-grotesk-600.ttf?workspaceId=mvs38fo6d9pq9wocg1tv3pa5&workspaceMemberId=cd4o7vywc2vjb0a4komws5ll') format('truetype'); font-weight: 600; font-display: swap; }
+    @font-face { font-family: 'Space Grotesk'; src: url('/api/projects/54056d6d-b141-44a3-88f4-daf77dbdf262/raw/assets/space-grotesk-700.ttf?workspaceId=mvs38fo6d9pq9wocg1tv3pa5&workspaceMemberId=cd4o7vywc2vjb0a4komws5ll') format('truetype'); font-weight: 700; font-display: swap; }
+    @font-face { font-family: 'Manrope'; src: url('/api/projects/54056d6d-b141-44a3-88f4-daf77dbdf262/raw/assets/manrope-400.ttf?workspaceId=mvs38fo6d9pq9wocg1tv3pa5&workspaceMemberId=cd4o7vywc2vjb0a4komws5ll') format('truetype'); font-weight: 400; font-display: swap; }
+    @font-face { font-family: 'Manrope'; src: url('/api/projects/54056d6d-b141-44a3-88f4-daf77dbdf262/raw/assets/manrope-500.ttf?workspaceId=mvs38fo6d9pq9wocg1tv3pa5&workspaceMemberId=cd4o7vywc2vjb0a4komws5ll') format('truetype'); font-weight: 500; font-display: swap; }
+    @font-face { font-family: 'Manrope'; src: url('/api/projects/54056d6d-b141-44a3-88f4-daf77dbdf262/raw/assets/manrope-600.ttf?workspaceId=mvs38fo6d9pq9wocg1tv3pa5&workspaceMemberId=cd4o7vywc2vjb0a4komws5ll') format('truetype'); font-weight: 600; font-display: swap; }
+    @font-face { font-family: 'Manrope'; src: url('/api/projects/54056d6d-b141-44a3-88f4-daf77dbdf262/raw/assets/manrope-700.ttf?workspaceId=mvs38fo6d9pq9wocg1tv3pa5&workspaceMemberId=cd4o7vywc2vjb0a4komws5ll') format('truetype'); font-weight: 700; font-display: swap; }
+    :root {
+      --bg: #FFFFFF;
+      --surface: color-mix(in oklch, var(--bg) 95%, var(--lavender));
+      --fg: #1F1D21;
+      --muted: #4B4B4D;
+      --border: #BDBFC1;
+      --accent: #820CD0;
+      --lavender: #BB8CFF;
+      --indigo: #774FF0;
+      --cyan: #25C0D4;
+      --institutional: #C1001F;
+      --accent-soft: color-mix(in oklch, var(--accent) 13%, transparent);
+      --fg-soft: color-mix(in oklch, var(--fg) 7%, transparent);
+      --font-display: 'Space Grotesk', 'Aptos Display', 'Trebuchet MS', sans-serif;
+      --font-body: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+      --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+      --fs-h1: clamp(3.15rem, 5vw, 4.75rem);
+      --fs-h2: clamp(2.2rem, 4.2vw, 4.7rem);
+      --fs-h3: clamp(1.25rem, 1.7vw, 1.75rem);
+      --fs-lead: clamp(1.05rem, 1.25vw, 1.28rem);
+      --fs-body: 1rem;
+      --fs-meta: .78rem;
+      --gap-xs: .5rem;
+      --gap-sm: .75rem;
+      --gap-md: 1.25rem;
+      --gap-lg: 2rem;
+      --gap-xl: 3.5rem;
+      --gap-2xl: 6rem;
+      --container: 82rem;
+      --gutter: clamp(1.25rem, 4vw, 3.75rem);
+      --radius: .35rem;
+      --radius-lg: .8rem;
+      --shadow: 0 1.5rem 4rem color-mix(in oklch, var(--fg) 14%, transparent);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body { margin: 0; overflow-x: hidden; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: var(--fs-body); line-height: 1.62; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+    img, svg { display: block; max-width: 100%; }
+    img { height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    p { margin: 0; text-wrap: pretty; }
+    h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); text-wrap: balance; }
+    h1 { font-size: var(--fs-h1); line-height: .92; letter-spacing: -.065em; }
+    h2 { font-size: var(--fs-h2); line-height: .98; letter-spacing: -.05em; }
+    h3 { font-size: var(--fs-h3); line-height: 1.08; letter-spacing: -.03em; }
+    :focus-visible { outline: .2rem solid var(--cyan); outline-offset: .25rem; }
+    ::selection { background: var(--lavender); color: var(--fg); }
+    .skip-link { position: fixed; left: 1rem; top: -5rem; z-index: 100; padding: .75rem 1rem; background: var(--fg); color: var(--bg); }
+    .skip-link:focus { top: 1rem; }
+    .container { width: min(100%, var(--container)); margin-inline: auto; padding-inline: var(--gutter); }
+    .section { position: relative; padding-block: clamp(4.5rem, 9vw, 8.5rem); }
+    .section + .section { border-top: 1px solid color-mix(in oklch, var(--border) 66%, transparent); }
+    .stack { display: flex; flex-direction: column; }
+    .row { display: flex; align-items: center; gap: var(--gap-md); }
+    .row-between { display: flex; align-items: center; justify-content: space-between; gap: var(--gap-md); }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-lg); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap-lg); }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap-md); }
+    .grid-2-1 { display: grid; grid-template-columns: minmax(0, 2fr) minmax(18rem, 1fr); gap: var(--gap-xl); align-items: start; }
+    .grid-1-2 { display: grid; grid-template-columns: minmax(18rem, 1fr) minmax(0, 2fr); gap: var(--gap-xl); align-items: start; }
+    .lead { max-width: 58ch; color: color-mix(in oklch, var(--fg) 78%, var(--bg)); font-size: var(--fs-lead); line-height: 1.55; }
+    .eyebrow { margin: 0 0 1.25rem; color: var(--accent); font-family: var(--font-body); font-size: .88rem; font-weight: 700; letter-spacing: -.01em; }
+    .meta { color: color-mix(in oklch, var(--fg) 68%, var(--bg)); font-family: var(--font-mono); font-size: var(--fs-meta); }
+    .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+    .rule { border: 0; border-top: 1px solid var(--border); margin: 0; }
+    .rule-strong { border: 0; border-top: 1px solid var(--fg); margin: 0; }
+    .content-img { display: block; width: 100%; height: auto; }
+    .topnav { position: sticky; top: 0; z-index: 40; border-bottom: 1px solid color-mix(in oklch, var(--border) 70%, transparent); background: color-mix(in oklch, var(--bg) 92%, transparent); backdrop-filter: blur(1rem); }
+    .topnav-inner { min-height: 4.7rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .brand-mark { width: 9.7rem; height: auto; }
+    .topnav nav { display: flex; align-items: center; gap: clamp(1rem, 2.2vw, 2rem); }
+    .topnav nav a { min-height: 2.75rem; display: inline-flex; align-items: center; border-bottom: .15rem solid transparent; color: var(--muted); font-size: .88rem; font-weight: 600; }
+    .topnav nav a:hover, .topnav nav a:focus-visible { border-bottom-color: var(--fg); color: var(--fg); }
+    .menu-toggle { display: none; min-width: 3.25rem; min-height: 2.75rem; border: 1px solid var(--fg); background: var(--bg); color: var(--fg); font-weight: 700; }
+    .mobile-panel { display: none; }
+    .btn { min-height: 3rem; display: inline-flex; align-items: center; justify-content: center; padding: .78rem 1.25rem; border: 1px solid transparent; border-radius: var(--radius); font-size: .92rem; font-weight: 700; letter-spacing: -.015em; transition: transform .15s ease, background .18s ease, color .18s ease, border-color .18s ease; }
+    .btn:hover { transform: translateY(-.12rem); }
+    .btn:active { transform: translateY(.05rem); }
+    .btn-primary { border-color: var(--accent); background: var(--accent); color: var(--bg); }
+    .btn-primary:hover { border-color: color-mix(in oklch, var(--accent) 86%, var(--fg)); background: color-mix(in oklch, var(--accent) 86%, var(--fg)); color: var(--bg); }
+    .btn-secondary { border-color: color-mix(in oklch, var(--fg) 45%, transparent); background: transparent; color: var(--fg); }
+    .btn-secondary:hover { border-color: var(--fg); background: var(--fg); color: var(--bg); }
+    .btn-light { border-color: var(--bg); background: var(--bg); color: var(--fg); }
+    .btn-light:hover { border-color: var(--cyan); background: var(--cyan); color: var(--fg); }
+    .text-link { min-height: 2.75rem; display: inline-flex; align-items: center; border: 0; border-bottom: 1px solid currentColor; background: transparent; color: inherit; padding: 0; font-weight: 700; }
+    .text-link:hover { border-bottom-width: .2rem; }
+    .hero { position: relative; min-height: min(49rem, calc(100vh - 4.7rem)); overflow: hidden; background: var(--fg); color: var(--bg); }
+    .hero-stage { min-height: inherit; display: grid; grid-template-columns: minmax(0, 1fr) minmax(30rem, 1fr); align-items: stretch; }
+    .hero-copy { position: relative; z-index: 2; padding: clamp(4.5rem, 8vw, 8rem) clamp(2rem, 5vw, 5.75rem) clamp(4rem, 7vw, 6.5rem) max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter))); }
+    .hero .eyebrow { color: var(--cyan); }
+    .hero h1 { max-width: 100%; }
+    .hero .lead { margin-top: 1.75rem; color: color-mix(in oklch, var(--bg) 79%, transparent); }
+    .hero-meta { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .7rem 1.25rem; color: var(--bg); font-size: .9rem; font-weight: 700; }
+    .hero-actions { margin-top: 2.25rem; display: flex; align-items: center; flex-wrap: wrap; gap: 1.1rem; }
+    .hero-visual { position: relative; align-self: center; margin: clamp(1.5rem, 3vw, 3rem) max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter))) clamp(1.5rem, 3vw, 3rem) 0; isolation: isolate; }
+    .hero-visual::before { content: ''; position: absolute; inset: -1.15rem 1.15rem 1.15rem -1.15rem; z-index: -1; background: var(--lavender); }
+    .hero-visual img { box-shadow: var(--shadow); }
+    .image-caption { position: absolute; right: .85rem; bottom: .85rem; max-width: calc(100% - 1.7rem); padding: .55rem .7rem; background: color-mix(in oklch, var(--fg) 86%, transparent); color: var(--bg); font-family: var(--font-mono); font-size: .7rem; box-shadow: 0 .5rem 1.5rem color-mix(in oklch, var(--fg) 24%, transparent); }
+    .hero-blocks { position: absolute; left: 0; top: 0; bottom: 0; width: clamp(.65rem, 1.25vw, 1.35rem); display: grid; grid-template-rows: 1.2fr .7fr 1.7fr 1fr; }
+    .hero-block { transform: scaleY(0); transform-origin: top; animation: blockEntry .65s cubic-bezier(.2,.8,.2,1) forwards; }
+    .hero-block:nth-child(1) { background: var(--cyan); animation-delay: .05s; }
+    .hero-block:nth-child(2) { background: var(--lavender); animation-delay: .14s; }
+    .hero-block:nth-child(3) { background: var(--accent); animation-delay: .23s; }
+    .hero-block:nth-child(4) { background: var(--indigo); animation-delay: .32s; }
+    @keyframes blockEntry { to { transform: scaleY(1); } }
+    .countdown { display: grid; grid-template-columns: repeat(4, minmax(4rem, 1fr)); max-width: 31rem; margin-top: 2.25rem; border-top: 1px solid color-mix(in oklch, var(--bg) 34%, transparent); }
+    .countdown-cell { padding: 1rem .75rem 0 0; }
+    .countdown-cell strong { display: block; font-family: var(--font-mono); font-size: clamp(1.5rem, 2.4vw, 2.35rem); line-height: 1; }
+    .countdown-cell span { display: block; margin-top: .4rem; color: color-mix(in oklch, var(--bg) 68%, transparent); font-size: .73rem; }
+    .quick-nav { border-bottom: 1px solid var(--border); background: var(--bg); }
+    .quick-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .quick-grid a { min-height: 5.4rem; display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: 1rem 1.25rem; border-left: 1px solid var(--border); font-family: var(--font-display); font-weight: 600; }
+    .quick-grid a:last-child { border-right: 1px solid var(--border); }
+    .quick-grid a::after { content: '+'; color: var(--accent); font-family: var(--font-mono); font-size: 1.25rem; }
+    .quick-grid a:hover { background: var(--fg); color: var(--bg); }
+    .quick-grid a:hover::after { color: var(--cyan); }
+    .intro-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(18rem, .65fr); gap: clamp(3rem, 8vw, 8rem); align-items: end; }
+    .intro-grid h2 { max-width: 12ch; }
+    .intro-copy { padding-top: 1.25rem; border-top: .25rem solid var(--fg); }
+    .intro-copy .lead { margin-bottom: 1.5rem; }
+    .data-board { margin-top: clamp(3.5rem, 7vw, 6.5rem); display: grid; grid-template-columns: 1.15fr .85fr 1fr; align-items: stretch; }
+    .stat { min-height: 15rem; display: flex; flex-direction: column; justify-content: space-between; padding: clamp(1.5rem, 3vw, 2.5rem); border: 1px solid var(--fg); }
+    .stat:nth-child(1) { background: var(--lavender); color: var(--fg); transform: translateY(1.5rem); }
+    .stat:nth-child(2) { background: var(--fg); color: var(--bg); }
+    .stat:nth-child(3) { background: var(--cyan); color: var(--fg); transform: translateY(-1.5rem); }
+    .stat-num { font-family: var(--font-display); font-size: clamp(4.4rem, 8vw, 7.4rem); font-weight: 700; line-height: .8; letter-spacing: -.08em; }
+    .stat-label { max-width: 22ch; font-size: .88rem; font-weight: 700; }
+    .axes { background: var(--surface); }
+    .section-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, .55fr); gap: clamp(2rem, 8vw, 7rem); align-items: end; margin-bottom: clamp(3rem, 6vw, 5.5rem); }
+    .section-head h2 { max-width: 11ch; }
+    .axis-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1rem; }
+    .axis-card { min-height: 18rem; display: flex; flex-direction: column; justify-content: space-between; padding: clamp(1.35rem, 2.5vw, 2.25rem); border: 1px solid color-mix(in oklch, var(--fg) 34%, transparent); background: var(--bg); }
+    .axis-card h3 { max-width: 13ch; }
+    .axis-card p { max-width: 38ch; color: color-mix(in oklch, currentColor 74%, transparent); font-size: .92rem; }
+    .axis-card .axis-chip { width: fit-content; padding: .3rem .55rem; border: 1px solid currentColor; font-family: var(--font-mono); font-size: .68rem; }
+    .axis-card:nth-child(1) { grid-column: span 5; background: var(--lavender); transform: translateY(1.5rem); }
+    .axis-card:nth-child(2) { grid-column: span 3; }
+    .axis-card:nth-child(3) { grid-column: span 4; background: var(--fg); color: var(--bg); transform: translateY(-1.5rem); }
+    .axis-card:nth-child(4) { grid-column: span 7; background: var(--cyan); }
+    .axis-card:nth-child(5) { grid-column: span 5; transform: translateY(1rem); }
+    .axis-card:nth-child(6) { grid-column: 4 / span 6; background: var(--indigo); color: var(--bg); }
+    .media-pair { display: grid; grid-template-columns: 1.15fr .85fr; gap: 1rem; margin-top: 5.5rem; align-items: start; }
+    .media-frame { position: relative; margin: 0; overflow: hidden; background: var(--fg); }
+    .media-frame:nth-child(2) { margin-top: 4.5rem; }
+    .media-frame::before { content: ''; position: absolute; left: 0; bottom: 0; z-index: 2; width: clamp(3.5rem, 8vw, 7rem); aspect-ratio: 1; background: var(--cyan); }
+    .media-frame:nth-child(2)::before { left: auto; right: 0; background: var(--lavender); }
+    .upgrade-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(20rem, .95fr); gap: clamp(2.5rem, 7vw, 7rem); align-items: center; }
+    .upgrade-copy h2 { max-width: 10ch; }
+    .upgrade-list { margin-top: 2.75rem; border-top: .2rem solid var(--fg); }
+    .upgrade-item { display: grid; grid-template-columns: 10rem 1fr; gap: 1.5rem; padding: 1.35rem 0; border-bottom: 1px solid var(--border); }
+    .upgrade-item strong { font-family: var(--font-display); line-height: 1.15; }
+    .upgrade-item p { color: var(--muted); font-size: .91rem; }
+    .upgrade-visual { position: relative; margin: 0; z-index: 1; }
+    .upgrade-visual::after { content: ''; position: absolute; right: -1rem; top: -1rem; z-index: -1; width: 44%; height: 38%; background: var(--accent); }
+    .business { overflow: hidden; background: var(--fg); color: var(--bg); }
+    .business::after { content: ''; position: absolute; right: -12vw; bottom: -17vw; width: 32vw; height: 32vw; min-width: 21rem; min-height: 21rem; border: clamp(3rem, 7vw, 7rem) solid var(--lavender); border-radius: 50%; opacity: .2; }
+    .business-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, .8fr) minmax(24rem, 1.2fr); gap: clamp(3rem, 8vw, 8rem); align-items: start; }
+    .business h2 { max-width: 9ch; }
+    .business .lead { margin-top: 1.5rem; color: color-mix(in oklch, var(--bg) 75%, transparent); }
+    .match-card { padding: clamp(1.5rem, 3vw, 2.5rem); background: var(--bg); color: var(--fg); box-shadow: var(--shadow); }
+    .match-card h3 { margin: .35rem 0 1.75rem; }
+    .match-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .field { display: flex; flex-direction: column; gap: .45rem; }
+    .field label { color: var(--muted); font-size: .78rem; font-weight: 700; }
+    .input, .select { width: 100%; min-height: 3.1rem; padding: .7rem .8rem; border: 1px solid var(--border); border-radius: 0; background: var(--bg); color: var(--fg); }
+    .input:hover, .select:hover { border-color: var(--fg); }
+    .input:focus, .select:focus { border-color: var(--accent); outline: .18rem solid var(--accent-soft); }
+    .match-actions { margin-top: 1.25rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .match-result { margin-top: 1.25rem; padding: 1rem; border-left: .35rem solid var(--cyan); background: var(--surface); }
+    .match-result strong { display: block; font-family: var(--font-display); }
+    .match-result p { margin-top: .35rem; color: var(--muted); font-size: .86rem; }
+    .agenda { background: var(--bg); }
+    .agenda-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem; align-items: end; }
+    .agenda-top h2 { max-width: 9ch; }
+    .agenda-tabs { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .agenda-tab { min-height: 3rem; padding: .65rem .85rem; border: 1px solid var(--fg); background: var(--bg); color: var(--fg); font-family: var(--font-mono); font-size: .74rem; font-weight: 700; }
+    .agenda-tab:hover { background: var(--surface); }
+    .agenda-tab[aria-selected='true'] { background: var(--fg); color: var(--bg); }
+    .agenda-note { margin-top: 1.5rem; color: var(--muted); font-size: .82rem; }
+    .agenda-panel { margin-top: 3.5rem; border-top: .25rem solid var(--fg); }
+    .agenda-panel[hidden] { display: none; }
+    .agenda-row { display: grid; grid-template-columns: 10rem minmax(0, 1fr) 11rem; gap: 2rem; align-items: start; padding: 1.6rem 0; border-bottom: 1px solid var(--border); }
+    .agenda-time { font-family: var(--font-mono); font-size: 1.25rem; font-weight: 700; }
+    .agenda-row h3 { font-size: clamp(1.25rem, 2vw, 1.75rem); }
+    .agenda-row p { margin-top: .45rem; color: var(--muted); font-size: .9rem; }
+    .agenda-tag { justify-self: end; padding: .3rem .55rem; border: 1px solid var(--border); font-size: .72rem; font-weight: 700; text-align: center; }
+    .corridor { background: var(--surface); }
+    .corridor-grid { display: grid; grid-template-columns: minmax(22rem, .95fr) minmax(0, 1.05fr); gap: clamp(3rem, 8vw, 8rem); align-items: center; }
+    .corridor-copy h2 { max-width: 10ch; }
+    .corridor-copy .lead { margin-top: 1.5rem; }
+    .route-card { padding: clamp(1.5rem, 3vw, 2.75rem); background: var(--fg); color: var(--bg); }
+    .route-card svg { width: 100%; height: auto; }
+    .route-labels { margin-top: 1.5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; }
+    .route-labels span { padding-top: .65rem; border-top: 1px solid color-mix(in oklch, var(--bg) 35%, transparent); font-family: var(--font-mono); font-size: .68rem; }
+    .history-head { display: grid; grid-template-columns: .75fr 1.25fr; gap: clamp(2rem, 8vw, 8rem); align-items: end; margin-bottom: 3.5rem; }
+    .history-head h2 { max-width: 9ch; }
+    .table-wrap { overflow-x: auto; border-top: .25rem solid var(--fg); }
+    .ds-table { width: 100%; min-width: 54rem; border-collapse: collapse; font-size: .88rem; }
+    .ds-table th, .ds-table td { padding: 1rem 1.15rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); }
+    .ds-table th { font-family: var(--font-display); font-size: 1rem; }
+    .ds-table thead th:not(:first-child) { font-size: 1.35rem; }
+    .ds-table tbody th { width: 14rem; color: var(--muted); font-family: var(--font-body); font-weight: 700; }
+    .ds-table .current { border-left: .25rem solid var(--accent); background: var(--surface); }
+    .audiences { padding-bottom: 0; background: var(--fg); color: var(--bg); }
+    .audiences .section-head .lead { color: color-mix(in oklch, var(--bg) 72%, transparent); }
+    .audience-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 1rem; }
+    .audience-card { position: relative; margin: 0; background: var(--bg); color: var(--fg); }
+    .audience-card:nth-child(2) { margin-top: 4.5rem; }
+    .audience-copy { padding: 1.6rem; display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: end; }
+    .audience-copy p { margin-top: .5rem; color: var(--muted); font-size: .88rem; }
+    .audience-copy .text-link { color: var(--accent); }
+    .organizers { background: var(--bg); }
+    .organizer-grid { margin-top: 3rem; display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); border-top: 1px solid var(--fg); border-left: 1px solid var(--border); }
+    .organizer { min-height: 11rem; display: flex; flex-direction: column; justify-content: space-between; padding: 1.4rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .organizer.primary { background: var(--fg); color: var(--bg); }
+    .organizer img { width: 4.2rem; height: auto; }
+    .organizer strong { max-width: 17ch; font-family: var(--font-display); line-height: 1.2; }
+    .institutional-line { width: 2.5rem; height: .25rem; background: var(--institutional); }
+    .faq-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: clamp(3rem, 8vw, 8rem); }
+    .faq-list { border-top: .25rem solid var(--fg); }
+    .faq-list details { border-bottom: 1px solid var(--border); }
+    .faq-list summary { min-height: 4.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; list-style: none; cursor: pointer; font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: '+'; font-family: var(--font-mono); font-size: 1.3rem; }
+    .faq-list details[open] summary::after { content: '−'; }
+    .faq-list details p { max-width: 66ch; padding: 0 2.5rem 1.35rem 0; color: var(--muted); font-size: .9rem; }
+    .cta-strip { overflow: hidden; background: var(--accent); color: var(--bg); }
+    .cta-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(2rem, 7vw, 7rem); align-items: end; }
+    .cta-grid h2 { max-width: 11ch; }
+    .cta-side { padding-top: 1.5rem; border-top: 1px solid color-mix(in oklch, var(--bg) 55%, transparent); }
+    .cta-side p { margin-bottom: 1.5rem; color: color-mix(in oklch, var(--bg) 83%, transparent); }
+    .pagefoot { padding-block: 3.5rem 2rem; background: var(--fg); color: var(--bg); }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 2.5rem; }
+    .footer-brand img { width: 10rem; filter: brightness(0) invert(1); }
+    .footer-brand p { max-width: 31ch; margin-top: 1.2rem; color: color-mix(in oklch, var(--bg) 65%, transparent); font-size: .82rem; }
+    .footer-col h3 { font-family: var(--font-body); font-size: .78rem; letter-spacing: 0; }
+    .footer-col a, .footer-col span, .footer-col .text-link { display: block; width: fit-content; margin-top: .65rem; color: color-mix(in oklch, var(--bg) 70%, transparent); font-size: .8rem; }
+    .footer-col a:hover { color: var(--bg); text-decoration: underline; }
+    .footer-bottom { margin-top: 3rem; padding-top: 1.25rem; display: flex; justify-content: space-between; gap: 1rem; border-top: 1px solid color-mix(in oklch, var(--bg) 18%, transparent); color: color-mix(in oklch, var(--bg) 55%, transparent); font-size: .72rem; }
+    dialog { width: min(42rem, calc(100% - 2rem)); max-height: calc(100vh - 2rem); padding: 0; border: 0; border-radius: 0; background: var(--bg); color: var(--fg); box-shadow: var(--shadow); }
+    dialog::backdrop { background: color-mix(in oklch, var(--fg) 78%, transparent); backdrop-filter: blur(.35rem); }
+    .dialog-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; padding: 1.75rem; border-bottom: 1px solid var(--border); }
+    .dialog-head h2 { max-width: 9ch; font-size: clamp(2rem, 5vw, 3.6rem); }
+    .dialog-close { min-width: 2.75rem; min-height: 2.75rem; border: 1px solid var(--fg); background: var(--bg); color: var(--fg); font-weight: 800; }
+    .dialog-close:hover { background: var(--fg); color: var(--bg); }
+    .dialog-body { padding: 1.75rem; }
+    .dialog-form { display: grid; gap: 1rem; }
+    .dialog-actions { display: flex; justify-content: flex-end; margin-top: .5rem; }
+    .form-success { padding: 1.5rem; border-left: .4rem solid var(--cyan); background: var(--surface); }
+    @media (max-width: 68rem) {
+      .hero-stage { grid-template-columns: 1fr; }
+      .hero-copy { padding-left: var(--gutter); }
+      .hero-visual { margin: 0 var(--gutter) 4rem; }
+      .hero-visual::before { inset: -1rem 1rem 1rem -1rem; }
+      .axis-card:nth-child(1), .axis-card:nth-child(2), .axis-card:nth-child(3), .axis-card:nth-child(4), .axis-card:nth-child(5), .axis-card:nth-child(6) { grid-column: span 6; transform: none; }
+      .business-grid, .corridor-grid { grid-template-columns: 1fr; }
+      .business h2, .corridor-copy h2 { max-width: 12ch; }
+      .organizer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 57.5rem) {
+      .grid-2, .grid-3, .grid-4, .grid-2-1, .grid-1-2, .intro-grid, .section-head, .upgrade-grid, .history-head, .faq-grid, .cta-grid { grid-template-columns: 1fr; }
+      .topnav nav, .nav-participate { display: none; }
+      .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+      .mobile-panel[hidden] { display: none; }
+      .mobile-panel { position: absolute; left: 0; right: 0; top: 100%; display: grid; padding: 1rem var(--gutter) 1.25rem; border-bottom: 1px solid var(--border); background: var(--bg); box-shadow: 0 1rem 2rem color-mix(in oklch, var(--fg) 10%, transparent); }
+      .mobile-panel a { min-height: 3rem; display: flex; align-items: center; border-bottom: 1px solid var(--border); font-weight: 700; }
+      .data-board { grid-template-columns: 1fr; }
+      .stat:nth-child(1), .stat:nth-child(3) { transform: none; }
+      .media-pair, .audience-grid { grid-template-columns: 1fr; }
+      .media-frame:nth-child(2), .audience-card:nth-child(2) { margin-top: 0; }
+      .agenda-top { grid-template-columns: 1fr; }
+      .agenda-row { grid-template-columns: 7rem 1fr; gap: 1rem; }
+      .agenda-tag { grid-column: 2; justify-self: start; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 39rem) {
+      :root { --gutter: 1.15rem; }
+      .section { padding-block: 4.5rem; }
+      .brand-mark { width: 8.2rem; }
+      .hero-copy { padding-top: 4.5rem; padding-bottom: 3.5rem; }
+      .hero h1 { max-width: 100%; }
+      .countdown { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .quick-grid { grid-template-columns: repeat(2, 1fr); }
+      .quick-grid a { min-height: 4.5rem; border-bottom: 1px solid var(--border); }
+      .axis-card:nth-child(1), .axis-card:nth-child(2), .axis-card:nth-child(3), .axis-card:nth-child(4), .axis-card:nth-child(5), .axis-card:nth-child(6) { grid-column: 1 / -1; min-height: 15rem; }
+      .upgrade-item { grid-template-columns: 1fr; gap: .55rem; }
+      .match-fields { grid-template-columns: 1fr; }
+      .agenda-row { grid-template-columns: 1fr; }
+      .agenda-tag { grid-column: 1; }
+      .route-labels { grid-template-columns: 1fr; }
+      .organizer-grid, .footer-grid { grid-template-columns: 1fr; }
+      .audience-copy { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+  <header class="topnav" data-od-id="topnav">
+    <div class="container topnav-inner">
+      <a href="#inicio" aria-label="ExpoJuy 2026, inicio" data-od-id="brand-home"><img class="brand-mark" src="/api/projects/54056d6d-b141-44a3-88f4-daf77dbdf262/raw/expojuy26_horizontal.png?workspaceId=mvs38fo6d9pq9wocg1tv3pa5&workspaceMemberId=cd4o7vywc2vjb0a4komws5ll" width="2614" height="1125" alt="ExpoJuy 2026" /></a>
+      <nav aria-label="Navegación principal" data-od-id="main-nav">
+        <a href="#ejes" data-od-id="nav-ejes">Ejes productivos</a><a href="#agenda" data-od-id="nav-agenda">Agenda</a><a href="#negocios" data-od-id="nav-negocios">Rondas</a><a href="#historia" data-od-id="nav-historia">Sobre ExpoJuy</a>
+      </nav>
+      <button class="btn btn-secondary nav-participate" type="button" data-open-dialog data-od-id="nav-participar">Participar</button>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-panel" data-od-id="menu-toggle">Menú</button>
+    </div>
+    <nav class="mobile-panel" id="mobile-panel" aria-label="Navegación móvil" hidden data-od-id="mobile-nav"><a href="#ejes">Ejes productivos</a><a href="#agenda">Agenda</a><a href="#negocios">Rondas</a><a href="#historia">Sobre ExpoJuy</a><a href="#contacto">Contacto</a></nav>
+  </header>
+  <main id="contenido">
+    <section class="hero" id="inicio" data-od-id="hero">
+      <div class="hero-blocks" aria-hidden="true"><span class="hero-block"></span><span class="hero-block"></span><span class="hero-block"></span><span class="hero-block"></span></div>
+      <div class="hero-stage">
+        <div class="hero-copy">
+          <p class="eyebrow" data-od-id="hero-kicker">ExpoJuy 2026 / 17ª edición</p>
+          <h1 data-od-id="hero-title">Conectando países. Creando oportunidades.</h1>
+          <p class="lead" data-od-id="hero-lead">La feria multisectorial donde el Norte Argentino se encuentra con los mercados del continente.</p>
+          <div class="hero-meta" data-od-id="hero-details"><span>9 al 12 de octubre</span><span>Ciudad Cultural</span><span>San Salvador de Jujuy</span></div>
+          <div class="countdown" aria-label="Cuenta regresiva para ExpoJuy 2026" data-od-id="countdown">
+            <div class="countdown-cell"><strong id="count-days">00</strong><span>días</span></div><div class="countdown-cell"><strong id="count-hours">00</strong><span>horas</span></div><div class="countdown-cell"><strong id="count-minutes">00</strong><span>minutos</span></div><div class="countdown-cell"><strong id="count-seconds">00</strong><span>segundos</span></div>
+          </div>
+          <div class="hero-actions"><button class="btn btn-primary" type="button" data-open-dialog data-od-id="hero-participar">Quiero participar</button><a class="text-link" href="#ejes" data-od-id="hero-explorar">Explorar los seis ejes</a></div>
+        </div>
+        <figure class="hero-visual" data-od-id="hero-visual"><img class="content-img" src="/api/projects/54056d6d-b141-44a3-88f4-daf77dbdf262/raw/assets/expojuy-2024-pabellon.jpg?workspaceId=mvs38fo6d9pq9wocg1tv3pa5&workspaceMemberId=cd4o7vywc2vjb0a4komws5ll" width="1280" height="853" alt="Visitantes recorren un pabellón de ExpoJuy durante la edición 2024" /><figcaption class="image-caption">Archivo ExpoJuy 2024 / Galería oficial</figcaption></figure>
+      </div>
+    </section>
+    <section class="quick-nav" aria-label="Accesos destacados" data-od-id="quick-access"><div class="container quick-grid"><a href="#agenda" data-od-id="quick-agenda">Armar mi agenda</a><a href="#negocios" data-od-id="quick-rondas">Activar negocios</a><a href="#ejes" data-od-id="quick-sectores">Ver sectores</a><a href="#sede" data-od-id="quick-sede">Planificar la visita</a></div></section>
+    <section class="section" id="evento" data-od-id="event-intro">
+      <div class="container">
+        <div class="intro-grid"><div><p class="eyebrow">Una vidriera productiva continental</p><h2 data-od-id="intro-title">Jujuy abre una puerta directa al Pacífico.</h2></div><div class="intro-copy"><p class="lead">Minería, energía, agroindustria, logística y tecnología comparten un mismo escenario para acelerar inversiones y alianzas regionales.</p><p class="meta">Mañanas B2B / tardes y noches abiertas al público</p></div></div>
+        <div class="data-board" data-od-id="official-stats"><article class="stat" data-od-id="stat-edicion"><div class="stat-num">17ª</div><p class="stat-label">edición de una exposición nacida en 1994</p></article><article class="stat" data-od-id="stat-jornadas"><div class="stat-num num">4</div><p class="stat-label">jornadas de actividad comercial, técnica y pública</p></article><article class="stat" data-od-id="stat-ejes"><div class="stat-num num">6</div><p class="stat-label">ejes productivos conectados en una sola plataforma</p></article></div>
+      </div>
+    </section>
+    <section class="section axes" id="ejes" data-od-id="productive-axes">
+      <div class="container">
+        <div class="section-head"><div><p class="eyebrow">El sistema productivo completo</p><h2 data-od-id="axes-title">Seis ejes. Una región en movimiento.</h2></div><p class="lead">La propuesta reúne cadenas de valor que normalmente se presentan por separado y las conecta con compradores, proveedores e instituciones.</p></div>
+        <div class="axis-grid">
+          <article class="axis-card" data-od-id="axis-mineria"><span class="axis-chip">Recursos estratégicos</span><h3>Minería y litio</h3><p>Operadoras del Triángulo del Litio, minería polimetálica, CAEM, Capemisa y proveedores locales.</p></article>
+          <article class="axis-card" data-od-id="axis-energia"><span class="axis-chip">Transición</span><h3>Energías renovables</h3><p>Infraestructura fotovoltaica y soluciones para una matriz energética competitiva.</p></article>
+          <article class="axis-card" data-od-id="axis-agro"><span class="axis-chip">Origen y valor</span><h3>Agroindustria del NOA</h3><p>Azúcar, tabaco, cítricos, legumbres, alimentos andinos y vinos de altura.</p></article>
+          <article class="axis-card" data-od-id="axis-corredor"><span class="axis-chip">Eje de Capricornio</span><h3>Corredor Bioceánico</h3><p>Brasil, Paraguay, Argentina y los puertos del norte chileno unidos por una ruta comercial estratégica.</p></article>
+          <article class="axis-card" data-od-id="axis-zonas"><span class="axis-chip">Inversión</span><h3>Zonas francas</h3><p>Perico y La Quiaca como polos industriales, comerciales y de reexportación hacia el Pacífico.</p></article>
+          <article class="axis-card" data-od-id="axis-tecnologia"><span class="axis-chip">Talento local</span><h3>Economía del conocimiento</h3><p>ClusteAR, empresas TIC y soluciones digitales aplicadas a la producción regional.</p></article>
+        </div>
+        <div class="media-pair"><figure class="media-frame" data-od-id="industry-photo"><img class="content-img" src="/api/projects/54056d6d-b141-44a3-88f4-daf77dbdf262/raw/assets/expojuy-2024-industria.jpg?workspaceId=mvs38fo6d9pq9wocg1tv3pa5&workspaceMemberId=cd4o7vywc2vjb0a4komws5ll" width="1599" height="1066" alt="Maquinaria industrial exhibida en ExpoJuy 2024" /><figcaption class="image-caption">Industria en exposición / Archivo 2024</figcaption></figure><figure class="media-frame" data-od-id="innovation-photo"><img class="content-img" src="/api/projects/54056d6d-b141-44a3-88f4-daf77dbdf262/raw/assets/expojuy-2024-stand-innovacion.jpg?workspaceId=mvs38fo6d9pq9wocg1tv3pa5&workspaceMemberId=cd4o7vywc2vjb0a4komws5ll" width="1599" height="1066" alt="Stand de innovación y producción regional en ExpoJuy 2024" /><figcaption class="image-caption">Diseño de stand / Archivo 2024</figcaption></figure></div>
+      </div>
+    </section>
+    <section class="section" id="experiencia" data-od-id="edition-upgrades">
+      <div class="container upgrade-grid"><div class="upgrade-copy"><p class="eyebrow">Qué cambia en 2026</p><h2 data-od-id="upgrades-title">Más intensidad. Menos fricción.</h2><div class="upgrade-list"><article class="upgrade-item" data-od-id="upgrade-boxes"><strong>Boxes listos para operar</strong><p>Mobiliario, pantallas y conectividad integrados para montar en minutos y reducir costos.</p></article><article class="upgrade-item" data-od-id="upgrade-matching"><strong>Matching comercial</strong><p>El sistema cruza demandas de compra y ofertas de proveedores antes de cada reunión.</p></article><article class="upgrade-item" data-od-id="upgrade-platform"><strong>Plataforma digital</strong><p>Agenda, catálogo, acreditaciones y seguimiento sin depender de material impreso.</p></article></div></div><figure class="upgrade-visual" data-od-id="modular-stand-photo"><img class="content-img" src="/api/projects/54056d6d-b141-44a3-88f4-daf77dbdf262/raw/assets/expojuy-2024-stand-innovacion.jpg?workspaceId=mvs38fo6d9pq9wocg1tv3pa5&workspaceMemberId=cd4o7vywc2vjb0a4komws5ll" width="1599" height="1066" alt="Referencia de un stand modular equipado en ExpoJuy 2024" /><figcaption class="image-caption">Referencia espacial / Archivo 2024</figcaption></figure></div>
+    </section>
+    <section class="section business" id="negocios" data-od-id="business-matching">
+      <div class="container business-grid"><div><p class="eyebrow">Rondas multijornada</p><h2 data-od-id="business-title">Llegá con la reunión correcta preparada.</h2><p class="lead">Una dinámica de mañana y tarde combina perfiles, necesidades y capacidad de provisión para convertir contactos en oportunidades concretas.</p></div><form class="match-card" id="match-form" data-od-id="match-demo"><p class="meta">Demostración conceptual del matching</p><h3>Probá una coincidencia comercial</h3><div class="match-fields"><div class="field"><label for="profile">Represento a</label><select class="select" id="profile" data-od-id="match-profile"><option value="comprador">Empresa compradora</option><option value="proveedor">Proveedor regional</option><option value="inversor">Fondo o inversor</option><option value="institucion">Institución pública</option></select></div><div class="field"><label for="sector">Busco oportunidades en</label><select class="select" id="sector" data-od-id="match-sector"><option value="litio">Minería y litio</option><option value="energia">Energías renovables</option><option value="agro">Agroindustria</option><option value="logistica">Logística bioceánica</option><option value="tecnologia">Tecnología</option></select></div></div><div class="match-actions"><button class="btn btn-primary" type="submit" data-od-id="match-submit">Ver coincidencia</button><span class="meta">Resultado ilustrativo, no vinculante</span></div><div class="match-result" id="match-result" hidden aria-live="polite" data-od-id="match-result"><strong id="match-title"></strong><p id="match-copy"></p></div></form></div>
+    </section>
+    <section class="section agenda" id="agenda" data-od-id="agenda">
+      <div class="container">
+        <div class="agenda-top"><div><p class="eyebrow">Cuatro jornadas intensivas</p><h2 data-od-id="agenda-title">Cada día tiene un propósito.</h2></div><div class="agenda-tabs" role="tablist" aria-label="Seleccionar jornada" data-od-id="agenda-tabs"><button class="agenda-tab" type="button" role="tab" aria-selected="true" aria-controls="agenda-09" id="agenda-tab-09" data-panel="agenda-09" data-od-id="agenda-day-09">Vie 9</button><button class="agenda-tab" type="button" role="tab" aria-selected="false" aria-controls="agenda-10" id="agenda-tab-10" data-panel="agenda-10" data-od-id="agenda-day-10">Sáb 10</button><button class="agenda-tab" type="button" role="tab" aria-selected="false" aria-controls="agenda-11" id="agenda-tab-11" data-panel="agenda-11" data-od-id="agenda-day-11">Dom 11</button><button class="agenda-tab" type="button" role="tab" aria-selected="false" aria-controls="agenda-12" id="agenda-tab-12" data-panel="agenda-12" data-od-id="agenda-day-12">Lun 12</button></div></div>
+        <p class="agenda-note">Programación conceptual para mostrar la experiencia del sitio. La agenda oficial será publicada por la organización.</p>
+        <div class="agenda-panel" id="agenda-09" role="tabpanel" aria-labelledby="agenda-tab-09" data-od-id="agenda-panel-09"><article class="agenda-row"><time class="agenda-time">09:00</time><div><h3>Apertura de rondas y acreditación profesional</h3><p>Recepción de delegaciones, validación de perfiles y primeras reuniones sectoriales.</p></div><span class="agenda-tag">Negocios</span></article><article class="agenda-row"><time class="agenda-time">17:00</time><div><h3>Acto de apertura de la 17ª edición</h3><p>Presentación institucional y apertura del predio al público general.</p></div><span class="agenda-tag">Auditorio central</span></article></div>
+        <div class="agenda-panel" id="agenda-10" role="tabpanel" aria-labelledby="agenda-tab-10" hidden data-od-id="agenda-panel-10"><article class="agenda-row"><time class="agenda-time">09:30</time><div><h3>Minería, energía y proveedores regionales</h3><p>Bloque técnico y encuentros entre operadoras, cámaras y empresas de servicios.</p></div><span class="agenda-tag">Foro técnico</span></article><article class="agenda-row"><time class="agenda-time">16:00</time><div><h3>Experiencias productivas para toda la familia</h3><p>Recorridos por stands, demostraciones y actividades de divulgación.</p></div><span class="agenda-tag">Predio abierto</span></article></div>
+        <div class="agenda-panel" id="agenda-11" role="tabpanel" aria-labelledby="agenda-tab-11" hidden data-od-id="agenda-panel-11"><article class="agenda-row"><time class="agenda-time">10:00</time><div><h3>Corredor Bioceánico y agenda ZICOSUR</h3><p>Regiones, puertos y empresas analizan oportunidades de integración logística.</p></div><span class="agenda-tag">Foro regional</span></article><article class="agenda-row"><time class="agenda-time">18:30</time><div><h3>Cultura, gastronomía y música del Norte</h3><p>Una tarde abierta para vivir la diversidad cultural jujeña.</p></div><span class="agenda-tag">Escenario exterior</span></article></div>
+        <div class="agenda-panel" id="agenda-12" role="tabpanel" aria-labelledby="agenda-tab-12" hidden data-od-id="agenda-panel-12"><article class="agenda-row"><time class="agenda-time">09:00</time><div><h3>Tecnología aplicada a cadenas productivas</h3><p>Casos de software, automatización y talento local junto a ClusteAR.</p></div><span class="agenda-tag">Economía del conocimiento</span></article><article class="agenda-row"><time class="agenda-time">19:00</time><div><h3>Cierre y continuidad de oportunidades</h3><p>Síntesis de acuerdos y próximos pasos de la red ExpoJuy.</p></div><span class="agenda-tag">Cierre</span></article></div>
+      </div>
+    </section>
+    <section class="section corridor" id="corredor" data-od-id="bioceanic-corridor">
+      <div class="container corridor-grid"><div class="corridor-copy"><p class="eyebrow">Eje de Capricornio</p><h2 data-od-id="corridor-title">Del corazón de Sudamérica a los puertos del Pacífico.</h2><p class="lead">ExpoJuy funciona como una mesa de conexión entre regiones productivas, zonas francas, operadores logísticos y diplomacia comercial.</p></div><div class="route-card" data-od-id="corridor-map" role="img" aria-label="Esquema del Corredor Bioceánico desde Brasil y Paraguay, pasando por Jujuy, hasta los puertos del norte de Chile"><svg viewBox="0 0 720 300" aria-hidden="true"><path d="M54 198 C150 78 222 242 315 145 S485 58 666 112" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="square" /><rect x="42" y="184" width="26" height="26" fill="currentColor" /><rect x="213" y="191" width="26" height="26" fill="currentColor" /><rect x="303" y="133" width="34" height="34" fill="currentColor" /><rect x="481" y="79" width="26" height="26" fill="currentColor" /><rect x="653" y="99" width="26" height="26" fill="currentColor" /><text x="42" y="238" fill="currentColor" font-family="var(--font-mono)" font-size="14">BRASIL</text><text x="193" y="249" fill="currentColor" font-family="var(--font-mono)" font-size="14">PARAGUAY</text><text x="293" y="118" fill="currentColor" font-family="var(--font-display)" font-size="24" font-weight="700">JUJUY</text><text x="455" y="62" fill="currentColor" font-family="var(--font-mono)" font-size="14">PASO DE JAMA</text><text x="601" y="150" fill="currentColor" font-family="var(--font-mono)" font-size="14">CHILE</text></svg><div class="route-labels"><span>Regiones productivas</span><span>Zonas francas de Perico y La Quiaca</span><span>Antofagasta / Mejillones / Iquique</span></div></div></div>
+    </section>
+    <section class="section" id="historia" data-od-id="history">
+      <div class="container"><div class="history-head"><div><p class="eyebrow">Sobre ExpoJuy</p><h2 data-od-id="history-title">Tres ediciones. Un cambio de escala.</h2></div><p class="lead">La edición 2026 concentra diez días en cuatro jornadas, digitaliza el encuentro comercial y refuerza su alcance internacional.</p></div><div class="table-wrap" data-od-id="history-table"><table class="ds-table"><thead><tr><th>Dimensión</th><th>ExpoJuy 2022</th><th>ExpoJuy 2024</th><th class="current">ExpoJuy 2026</th></tr></thead><tbody><tr><th>Fechas</th><td>7 al 16 oct</td><td>11 al 20 oct</td><td class="current">9 al 12 oct</td></tr><tr><th>Duración</th><td class="num">10 jornadas</td><td class="num">10 jornadas</td><td class="current num">4 jornadas</td></tr><tr><th>Lema</th><td>De Jujuy al Mundo</td><td>Muestra Multisectorial del Norte</td><td class="current">Conectando países, creando oportunidades</td></tr><tr><th>Espacios</th><td>Aproximadamente 180 stands</td><td>Entre 190 y 240 stands</td><td class="current">Boxes modulares de alta densidad</td></tr><tr><th>Rondas</th><td>Jornada pyme tradicional</td><td>Jornada única presencial</td><td class="current">Multijornada con matching digital</td></tr><tr><th>Hito internacional</th><td>Reactivación pospandemia</td><td>Primer stand del Corredor Bioceánico</td><td class="current">Integración Mercosur, Chile y ZICOSUR</td></tr></tbody></table></div></div>
+    </section>
+    <section class="section audiences" id="sede" data-od-id="visitor-experience">
+      <div class="container"><div class="section-head"><div><p class="eyebrow">Ciudad Cultural / Alto Padilla</p><h2 data-od-id="visitor-title">Negocios por la mañana. Una Expo abierta por la tarde.</h2></div><p class="lead">La programación combina el foco profesional con una experiencia pública de cultura, tecnología y producción regional.</p></div><div class="audience-grid"><figure class="audience-card" data-od-id="audience-families"><img class="content-img" src="/api/projects/54056d6d-b141-44a3-88f4-daf77dbdf262/raw/assets/expojuy-2024-familias.jpg?workspaceId=mvs38fo6d9pq9wocg1tv3pa5&workspaceMemberId=cd4o7vywc2vjb0a4komws5ll" width="1600" height="1069" alt="Familia visitando ExpoJuy durante la noche" /><figcaption class="audience-copy"><div><h3>Para visitantes y familias</h3><p>Stands, propuestas interactivas, gastronomía y actividades recreativas.</p></div><a class="text-link" href="#preguntas">Preparar la visita</a></figcaption></figure><figure class="audience-card" data-od-id="audience-culture"><img class="content-img" src="/api/projects/54056d6d-b141-44a3-88f4-daf77dbdf262/raw/assets/expojuy-2024-cultura.jpg?workspaceId=mvs38fo6d9pq9wocg1tv3pa5&workspaceMemberId=cd4o7vywc2vjb0a4komws5ll" width="1280" height="855" alt="Músicos jujeños en el escenario de ExpoJuy" /><figcaption class="audience-copy"><div><h3>Cultura que también produce</h3><p>Escenario, artistas locales y gastronomía como parte de la identidad del encuentro.</p></div><a class="text-link" href="#agenda">Ver agenda</a></figcaption></figure></div></div>
+    </section>
+    <section class="section organizers" id="organiza" data-od-id="organizers">
+      <div class="container"><p class="eyebrow">Organización y respaldo</p><h2 data-od-id="organizers-title">Una iniciativa empresarial con escala pública y regional.</h2><div class="organizer-grid"><article class="organizer primary" data-od-id="organizer-cce"><img src="/api/projects/54056d6d-b141-44a3-88f4-daf77dbdf262/raw/logo_camcomext.png?workspaceId=mvs38fo6d9pq9wocg1tv3pa5&workspaceMemberId=cd4o7vywc2vjb0a4komws5ll" width="1077" height="1008" alt="Cámara de Comercio Exterior de Jujuy" /><strong>Organiza Cámara de Comercio Exterior de Jujuy</strong><span class="institutional-line" aria-hidden="true"></span></article><article class="organizer" data-od-id="organizer-government"><span class="meta">Respaldo provincial</span><strong>Gobierno de Jujuy</strong><span class="meta">Poder Ejecutivo Provincial</span></article><article class="organizer" data-od-id="organizer-ministry"><span class="meta">Articulación productiva</span><strong>Ministerio de Desarrollo Económico y Producción</strong><span class="meta">Provincia de Jujuy</span></article><article class="organizer" data-od-id="organizer-venue"><span class="meta">Sede</span><strong>Predio Ciudad Cultural</strong><span class="meta">Barrio Alto Padilla</span></article></div></div>
+    </section>
+    <section class="section" id="preguntas" data-od-id="faq">
+      <div class="container faq-grid"><div><p class="eyebrow">Información útil</p><h2 data-od-id="faq-title">Antes de llegar.</h2></div><div class="faq-list"><details data-od-id="faq-dates"><summary>¿Cuándo y dónde se realiza ExpoJuy 2026?</summary><p>Del 9 al 12 de octubre de 2026 en el predio Ciudad Cultural, barrio Alto Padilla, San Salvador de Jujuy.</p></details><details data-od-id="faq-public"><summary>¿La feria está abierta al público general?</summary><p>Sí. Las mañanas priorizan actividad técnica y comercial B2B; las tardes y noches se orientan al público general y a propuestas recreativas.</p></details><details data-od-id="faq-business"><summary>¿Cómo funcionarán las rondas de negocios?</summary><p>Se desarrollarán durante dos o tres jornadas, con sesiones de mañana y tarde. Un sistema digital cruzará demandas de compra con ofertas de proveedores.</p></details><details data-od-id="faq-stands"><summary>¿Qué incluyen los boxes modulares?</summary><p>El concepto plug-and-play prevé módulos equipados con mobiliario, pantallas y conectividad. Las configuraciones definitivas serán informadas por la organización.</p></details><details data-od-id="faq-accreditation"><summary>¿Cuándo abre la acreditación?</summary><p>La fecha de apertura y las categorías de acceso se publicarán en los canales oficiales de ExpoJuy. Podés dejar tu interés registrado en este prototipo.</p></details></div></div>
+    </section>
+    <section class="section cta-strip" id="contacto" data-od-id="cta-strip"><div class="container cta-grid"><h2 data-od-id="cta-title">Tu próxima conexión puede empezar en Jujuy.</h2><div class="cta-side"><p>Registrá tu interés como visitante, expositor, comprador, prensa o delegación.</p><button class="btn btn-light" type="button" data-open-dialog data-od-id="closing-participar">Registrar mi interés</button></div></div></section>
+  </main>
+  <footer class="pagefoot" data-od-id="footer">
+    <div class="container"><div class="footer-grid"><div class="footer-brand"><img src="/api/projects/54056d6d-b141-44a3-88f4-daf77dbdf262/raw/expojuy26_horizontal.png?workspaceId=mvs38fo6d9pq9wocg1tv3pa5&workspaceMemberId=cd4o7vywc2vjb0a4komws5ll" width="2614" height="1125" alt="ExpoJuy 2026" /><p>Exposición multisectorial de Jujuy. Conectando países, creando oportunidades.</p></div><div class="footer-col"><h3>Explorar</h3><a href="#evento">El evento</a><a href="#ejes">Ejes productivos</a><a href="#agenda">Agenda</a><a href="#historia">Sobre ExpoJuy</a></div><div class="footer-col"><h3>Participar</h3><a href="#negocios">Rondas de negocios</a><button class="text-link" type="button" data-open-dialog>Reservar un box</button><a href="#organiza">Organización</a></div><div class="footer-col"><h3>Contacto</h3><a href="mailto:expojuy2.0@gmail.com">expojuy2.0@gmail.com</a><a href="tel:+543884233539">+54 388 4233539</a><span>Ciudad Cultural, Jujuy</span></div></div><div class="footer-bottom"><span>© 2026 ExpoJuy / Propuesta visual de alta fidelidad</span><span>Contenido sujeto a validación de la organización</span></div></div>
+  </footer>
+  <dialog id="participation-dialog" aria-labelledby="dialog-title" data-od-id="participation-dialog">
+    <div class="dialog-head"><div><p class="eyebrow">ExpoJuy 2026</p><h2 id="dialog-title">Registrá tu interés.</h2></div><button class="dialog-close" type="button" aria-label="Cerrar formulario" data-close-dialog data-od-id="dialog-close">Cerrar</button></div>
+    <div class="dialog-body"><form class="dialog-form" id="participation-form" data-od-id="participation-form"><div class="field"><label for="participant-type">Quiero participar como</label><select class="select" id="participant-type" required data-od-id="participant-type"><option value="">Seleccionar perfil</option><option>Visitante</option><option>Expositor</option><option>Comprador para rondas</option><option>Prensa</option><option>Delegación institucional</option></select></div><div class="field"><label for="participant-name">Nombre y apellido</label><input class="input" id="participant-name" name="name" autocomplete="name" required placeholder="Escribí tu nombre" data-od-id="participant-name" /></div><div class="field"><label for="participant-email">Correo electrónico</label><input class="input" id="participant-email" name="email" type="email" autocomplete="email" required placeholder="nombre@empresa.com" data-od-id="participant-email" /></div><div class="dialog-actions"><button class="btn btn-primary" type="submit" data-od-id="participation-submit">Confirmar interés</button></div></form><div class="form-success" id="form-success" hidden aria-live="polite" data-od-id="participation-success"><h3>Interés registrado en el prototipo.</h3><p>Esta demostración no envía datos. En el sitio final, la organización confirmará los próximos pasos por correo.</p></div></div>
+  </dialog>
+  <script>
+    (function () {
+      const targetDate = new Date('2026-10-09T09:00:00-03:00').getTime();
+      const pad = (value) => String(Math.max(0, value)).padStart(2, '0');
+      function updateCountdown() {
+        const distance = Math.max(0, targetDate - Date.now());
+        document.getElementById('count-days').textContent = pad(Math.floor(distance / 86400000));
+        document.getElementById('count-hours').textContent = pad(Math.floor((distance % 86400000) / 3600000));
+        document.getElementById('count-minutes').textContent = pad(Math.floor((distance % 3600000) / 60000));
+        document.getElementById('count-seconds').textContent = pad(Math.floor((distance % 60000) / 1000));
+      }
+      updateCountdown(); window.setInterval(updateCountdown, 1000);
+      const menuButton = document.querySelector('.menu-toggle');
+      const mobilePanel = document.getElementById('mobile-panel');
+      menuButton.addEventListener('click', function () { const expanded = menuButton.getAttribute('aria-expanded') === 'true'; menuButton.setAttribute('aria-expanded', String(!expanded)); menuButton.textContent = expanded ? 'Menú' : 'Cerrar'; mobilePanel.hidden = expanded; });
+      mobilePanel.querySelectorAll('a').forEach(function (link) { link.addEventListener('click', function () { menuButton.setAttribute('aria-expanded', 'false'); menuButton.textContent = 'Menú'; mobilePanel.hidden = true; }); });
+      const agendaTabs = Array.from(document.querySelectorAll('.agenda-tab'));
+      const agendaPanels = Array.from(document.querySelectorAll('.agenda-panel'));
+      function activateAgenda(tab) { agendaTabs.forEach(function (item) { item.setAttribute('aria-selected', String(item === tab)); item.tabIndex = item === tab ? 0 : -1; }); agendaPanels.forEach(function (panel) { panel.hidden = panel.id !== tab.dataset.panel; }); }
+      agendaTabs.forEach(function (tab, index) { tab.addEventListener('click', function () { activateAgenda(tab); }); tab.addEventListener('keydown', function (event) { if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return; event.preventDefault(); const direction = event.key === 'ArrowRight' ? 1 : -1; const next = agendaTabs[(index + direction + agendaTabs.length) % agendaTabs.length]; activateAgenda(next); next.focus(); }); });
+      activateAgenda(agendaTabs[0]);
+      const matchMessages = {
+        litio: ['Cadena minera conectada', 'El prototipo priorizaría operadoras, proveedores técnicos, logística y servicios ambientales.'],
+        energia: ['Energía para nuevos proyectos', 'El prototipo vincularía desarrolladores fotovoltaicos, industria y soluciones de eficiencia.'],
+        agro: ['Origen que encuentra mercado', 'El prototipo cruzaría productores del NOA con distribuidores, compradores y logística exportadora.'],
+        logistica: ['Ruta bioceánica activada', 'El prototipo conectaría cargas, operadores, zonas francas y puertos del norte de Chile.'],
+        tecnologia: ['Tecnología aplicada', 'El prototipo acercaría empresas productivas a software, automatización y talento de ClusteAR.']
+      };
+      document.getElementById('match-form').addEventListener('submit', function (event) { event.preventDefault(); const message = matchMessages[document.getElementById('sector').value]; document.getElementById('match-title').textContent = message[0]; document.getElementById('match-copy').textContent = message[1]; document.getElementById('match-result').hidden = false; });
+      const dialog = document.getElementById('participation-dialog');
+      const participationForm = document.getElementById('participation-form');
+      const formSuccess = document.getElementById('form-success');
+      document.querySelectorAll('[data-open-dialog]').forEach(function (button) { button.addEventListener('click', function () { participationForm.hidden = false; formSuccess.hidden = true; dialog.showModal(); }); });
+      document.querySelector('[data-close-dialog]').addEventListener('click', function () { dialog.close(); });
+      dialog.addEventListener('click', function (event) { if (event.target === dialog) dialog.close(); });
+      participationForm.addEventListener('submit', function (event) { event.preventDefault(); if (!participationForm.reportValidity()) return; participationForm.hidden = true; formSuccess.hidden = false; });
+    }());
+  </script>
+</body>
+</html>
