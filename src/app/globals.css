@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Ambit';
+  src: url('/fonts/Ambit-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ambit';
+  src: url('/fonts/Ambit-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ambit';
+  src: url('/fonts/Ambit-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ambit';
+  src: url('/fonts/Ambit-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #070D1E;
+  --foreground: #F8FAFC;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Ambit', var(--font-inter), sans-serif;
+  overflow-x: hidden;
+}
+
+section, footer {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
+
+.font-heading {
+  font-family: 'Ambit', var(--font-jakarta), sans-serif;
+}
+
+.glass-nav {
+  background: rgba(7, 13, 30, 0.85);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(14, 23, 47, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 191, 216, 0.35);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #00BFD8 0%, #A78BFA 50%, #7C3AED 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.badge-dual-active {
+  background: linear-gradient(135deg, #7C3AED 0%, #00BFD8 100%);
+  color: #FFFFFF;
+  box-shadow: 0 0 15px rgba(0, 191, 216, 0.4);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.35s ease-out forwards;
+}
+

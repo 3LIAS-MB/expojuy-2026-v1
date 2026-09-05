@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExpoJuy 2026 | 17° Edición • Conectando Países - Creando Oportunidades</title>
+  
+  <!-- Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#070D1E',
+              surface: '#0E172F',
+              card: '#14203D',
+              border: '#1F2E54',
+              aqua: '#00BFD8',
+              'aqua-glow': '#06B6D4',
+              violet: '#7C3AED',
+              'violet-deep': '#6B21A8',
+              lavender: '#A78BFA',
+              light: '#F8FAFC',
+              gray: '#94A3B8'
+            },
+            pilar: {
+              litio: '#00BFD8',
+              solar: '#F59E0B',
+              agro: '#10B981',
+              logistica: '#F97316',
+              tech: '#8B5CF6'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          boxShadow: {
+            'glow-aqua': '0 0 25px -5px rgba(0, 191, 216, 0.35)',
+            'glow-violet': '0 0 25px -5px rgba(124, 58, 237, 0.35)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- QRCode.js para Acreditación Digital -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    body {
+      background-color: #070D1E;
+      color: #F8FAFC;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .glass-nav {
+      background: rgba(7, 13, 30, 0.82);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card {
+      background: rgba(14, 23, 47, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .glass-card:hover {
+      border-color: rgba(0, 191, 216, 0.3);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #00BFD8 0%, #A78BFA 50%, #7C3AED 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .badge-dual-active {
+      background: linear-gradient(135deg, #7C3AED 0%, #00BFD8 100%);
+      color: #FFFFFF;
+      box-shadow: 0 0 15px rgba(0, 191, 216, 0.4);
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-brand-aqua selection:text-brand-dark">
+
+  <!-- NAVBAR -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo Oficial -->
+        <a href="#inicio" class="flex items-center gap-3 group">
+          <img src="images/expojuy26_horizontal.jpg" alt="ExpoJuy 2026" class="h-10 sm:h-12 w-auto object-contain rounded bg-white/95 px-2 py-1 shadow-md transition-transform group-hover:scale-105">
+        </a>
+
+        <!-- Menú Desktop -->
+        <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
+          <a href="#inicio" class="hover:text-brand-aqua transition-colors">Inicio</a>
+          <a href="#dinamica-dual" class="hover:text-brand-aqua transition-colors flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-brand-aqua animate-pulse"></span>
+            Dinámica Dual
+          </a>
+          <a href="#pilares" class="hover:text-brand-aqua transition-colors">Matriz Productiva</a>
+          <a href="#expositores" class="hover:text-brand-aqua transition-colors">Expositores</a>
+          <a href="#agenda" class="hover:text-brand-aqua transition-colors">Agenda</a>
+          <a href="#plano" class="hover:text-brand-aqua transition-colors">Plano Predio</a>
+          <a href="#sobre-expojuy" class="hover:text-brand-aqua transition-colors">Institucional</a>
+        </nav>
+
+        <!-- CTA Header -->
+        <div class="hidden sm:flex items-center gap-3">
+          <a href="#acreditacion" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold bg-gradient-to-r from-brand-violet to-brand-aqua text-white shadow-glow-aqua hover:opacity-95 transition-all transform hover:-translate-y-0.5">
+            <i data-lucide="qr-code" class="w-4 h-4"></i>
+            <span>Pase Digital QR</span>
+          </a>
+        </div>
+
+        <!-- Botón Móvil -->
+        <div class="lg:hidden flex items-center">
+          <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 focus:outline-none" aria-label="Abrir menú">
+            <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menú Móvil Desplegable -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-white/10 bg-brand-dark/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-3">
+      <a href="#inicio" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-brand-aqua hover:bg-slate-800/40">Inicio</a>
+      <a href="#dinamica-dual" class="block px-3 py-2 rounded-md text-base font-medium text-brand-aqua hover:bg-slate-800/40">⚡ Dinámica Dual (Mañana vs Tarde)</a>
+      <a href="#pilares" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-brand-aqua hover:bg-slate-800/40">5 Pilares Productivos</a>
+      <a href="#expositores" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-brand-aqua hover:bg-slate-800/40">Directorio Expositores</a>
+      <a href="#agenda" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-brand-aqua hover:bg-slate-800/40">Agenda 4 Días</a>
+      <a href="#plano" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-brand-aqua hover:bg-slate-800/40">Plano del Predio</a>
+      <a href="#sobre-expojuy" class="block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:text-brand-aqua hover:bg-slate-800/40">Sobre ExpoJuy</a>
+      <a href="#acreditacion" class="mt-4 flex items-center justify-center gap-2 w-full py-3 rounded-xl text-center font-bold bg-gradient-to-r from-brand-violet to-brand-aqua text-white shadow-glow-aqua">
+        <i data-lucide="qr-code" class="w-5 h-5"></i>
+        Obtener Acreditación QR
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="inicio" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+    <!-- Luces ambientales de fondo -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-brand-violet/20 rounded-full blur-[130px] pointer-events-none"></div>
+    <div class="absolute top-1/3 left-1/4 w-[380px] h-[280px] bg-brand-aqua/20 rounded-full blur-[110px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      
+      <!-- Badges de contexto institucional -->
+      <div class="inline-flex flex-wrap items-center justify-center gap-2 px-4 py-2 rounded-full glass-card text-xs font-semibold mb-6 border border-white/10 shadow-sm">
+        <span class="text-brand-aqua flex items-center gap-1.5">
+          <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+          9 al 12 de Octubre, 2026
+        </span>
+        <span class="text-slate-500">•</span>
+        <span class="text-slate-300 flex items-center gap-1.5">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-lavender"></i>
+          Ciudad Cultural · San Salvador de Jujuy
+        </span>
+        <span class="text-slate-500">•</span>
+        <span class="bg-brand-violet/40 text-brand-lavender px-2 py-0.5 rounded-full text-[11px] font-bold">17° Edición Multisectorial</span>
+      </div>
+
+      <!-- Título y Lema Oficial -->
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-heading leading-tight mb-4">
+        EXPOJUY <span class="gradient-text">2026</span>
+      </h1>
+      <p class="text-lg sm:text-2xl text-slate-300 font-medium max-w-3xl mx-auto tracking-wide uppercase font-heading mb-6">
+        “Conectando países — creando oportunidades”
+      </p>
+      
+      <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mb-10 leading-relaxed">
+        La mayor muestra productiva, tecnológica, minera e industrial del Norte Argentino y el Corredor Bioceánico. Reingeniería ferial concentrada en 4 jornadas de máximo impacto.
+      </p>
+
+      <!-- CTAs Principales -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+        <a href="#acreditacion" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl font-heading font-bold text-white bg-gradient-to-r from-brand-violet to-brand-aqua hover:shadow-glow-aqua transition-all transform hover:-translate-y-0.5">
+          <i data-lucide="ticket" class="w-5 h-5"></i>
+          Acreditación & Pase Digital
+        </a>
+        <a href="#rondas-b2b" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl font-heading font-bold text-slate-200 glass-card hover:bg-slate-800/80 hover:text-brand-aqua transition-all border border-white/10">
+          <i data-lucide="briefcase" class="w-5 h-5 text-brand-aqua"></i>
+          Rondas de Negocios B2B
+        </a>
+      </div>
+
+      <!-- Contador Regresivo Oficial al 9 de Octubre de 2026 -->
+      <div class="max-w-2xl mx-auto glass-card rounded-2xl p-6 border border-white/10 shadow-xl">
+        <p class="text-xs uppercase tracking-widest text-slate-400 font-semibold mb-4 flex items-center justify-center gap-2">
+          <i data-lucide="clock" class="w-4 h-4 text-brand-aqua"></i>
+          Cuenta regresiva para la apertura oficial
+        </p>
+        <div class="grid grid-cols-4 gap-3 text-center">
+          <div class="bg-brand-surface/80 rounded-xl p-3 border border-white/5">
+            <span id="countdown-days" class="block text-2xl sm:text-4xl font-extrabold font-heading text-white">--</span>
+            <span class="text-[11px] uppercase tracking-wider text-slate-400">Días</span>
+          </div>
+          <div class="bg-brand-surface/80 rounded-xl p-3 border border-white/5">
+            <span id="countdown-hours" class="block text-2xl sm:text-4xl font-extrabold font-heading text-white">--</span>
+            <span class="text-[11px] uppercase tracking-wider text-slate-400">Horas</span>
+          </div>
+          <div class="bg-brand-surface/80 rounded-xl p-3 border border-white/5">
+            <span id="countdown-minutes" class="block text-2xl sm:text-4xl font-extrabold font-heading text-white">--</span>
+            <span class="text-[11px] uppercase tracking-wider text-slate-400">Minutos</span>
+          </div>
+          <div class="bg-brand-surface/80 rounded-xl p-3 border border-white/5">
+            <span id="countdown-seconds" class="block text-2xl sm:text-4xl font-extrabold font-heading text-brand-aqua">--</span>
+            <span class="text-[11px] uppercase tracking-wider text-slate-400">Segundos</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECCIÓN DINÁMICA DUAL (REINGENIERÍA DEL MODELO FERIAL) -->
+  <section id="dinamica-dual" class="py-20 relative bg-brand-surface/40 border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-violet/20 border border-brand-violet/30 text-brand-lavender text-xs font-semibold uppercase tracking-wider mb-3">
+          <i data-lucide="zap" class="w-3.5 h-3.5 text-brand-aqua"></i>
+          Innovación de Gestión Ferial
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-heading text-white mb-4">
+          La Dinámica Dual: <span class="text-brand-aqua">2 Experiencias en 1 Día</span>
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          Para maximizar la eficiencia y reducir costos operativos, ExpoJuy condensa su edición en 4 jornadas continuas estructuradas en dos segmentos diarios diferenciados.
+        </p>
+      </div>
+
+      <!-- Selector Interactivo Dual -->
+      <div class="flex justify-center mb-10">
+        <div class="inline-flex p-1.5 rounded-2xl glass-card border border-white/10 shadow-lg">
+          <button id="btn-dual-morning" onclick="setDualSegment('morning')" class="flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-bold transition-all badge-dual-active">
+            <i data-lucide="sun" class="w-4 h-4 text-amber-400"></i>
+            <span>☀️ Mañanas B2B (09:00 - 14:00)</span>
+          </button>
+          <button id="btn-dual-evening" onclick="setDualSegment('evening')" class="flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-bold text-slate-400 hover:text-white transition-all">
+            <i data-lucide="moon" class="w-4 h-4 text-brand-lavender"></i>
+            <span>🌙 Tardes y Noches (16:00 - 23:00)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Contenido Dinámico Dual -->
+      <div id="dual-content-morning" class="grid md:grid-cols-3 gap-6 transition-all duration-300">
+        <!-- Card 1 -->
+        <div class="glass-card rounded-2xl p-6 border-l-4 border-l-brand-aqua hover:shadow-glow-aqua transition-all">
+          <div class="w-12 h-12 rounded-xl bg-brand-aqua/10 flex items-center justify-center text-brand-aqua mb-4">
+            <i data-lucide="handshake" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold font-heading text-white mb-2">Rondas de Negocios Inteligentes</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Emparejamiento comercial algorítmico (*matchmaking*) entre empresas compradoras internacionales, mineras, agroindustrias y proveedores locales del NOA.
+          </p>
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-aqua">
+            <i data-lucide="check-circle" class="w-4 h-4"></i> Acceso con Credencial Corporativa
+          </span>
+        </div>
+        <!-- Card 2 -->
+        <div class="glass-card rounded-2xl p-6 border-l-4 border-l-brand-violet hover:shadow-glow-violet transition-all">
+          <div class="w-12 h-12 rounded-xl bg-brand-violet/10 flex items-center justify-center text-brand-lavender mb-4">
+            <i data-lucide="presentation" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold font-heading text-white mb-2">Conferencias Técnico-Científicas</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Paneles de alto nivel sobre transición energética, minería sustentable, bioeconomía y el impacto geoestratégico del Corredor Bioceánico.
+          </p>
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-lavender">
+            <i data-lucide="clock" class="w-4 h-4"></i> Auditorio Principal · 10:00 a 13:30 hs
+          </span>
+        </div>
+        <!-- Card 3 -->
+        <div class="glass-card rounded-2xl p-6 border-l-4 border-l-emerald-400 hover:shadow-glow-aqua transition-all">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4">
+            <i data-lucide="trending-up" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold font-heading text-white mb-2">Vinculación y Financiamiento</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Encuentro con entidades bancarias, fondos de capital emprendedor y agencias de comercio exterior para potenciar exportaciones jujeñas.
+          </p>
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400">
+            <i data-lucide="users" class="w-4 h-4"></i> Sala de Negocios ClusteAR
+          </span>
+        </div>
+      </div>
+
+      <div id="dual-content-evening" class="hidden grid md:grid-cols-3 gap-6 transition-all duration-300">
+        <!-- Card 1 -->
+        <div class="glass-card rounded-2xl p-6 border-l-4 border-l-amber-400 hover:shadow-glow-violet transition-all">
+          <div class="w-12 h-12 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 mb-4">
+            <i data-lucide="sparkles" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold font-heading text-white mb-2">Festival Cultural & Shows en Vivo</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Escenario central con artistas jujeños, danzas tradicionales, música contemporánea y espectáculos lumínicos para toda la familia.
+          </p>
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400">
+            <i data-lucide="music" class="w-4 h-4"></i> Escenario Central · 19:00 a 23:00 hs
+          </span>
+        </div>
+        <!-- Card 2 -->
+        <div class="glass-card rounded-2xl p-6 border-l-4 border-l-rose-400 hover:shadow-glow-violet transition-all">
+          <div class="w-12 h-12 rounded-xl bg-rose-500/10 flex items-center justify-center text-rose-400 mb-4">
+            <i data-lucide="utensils" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold font-heading text-white mb-2">Patio Gastronómico & Vinos de Altura</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Degustación de cocina andina, maridaje con bodegas de la Quebrada de Humahuaca, food trucks y cerveza artesanal regional.
+          </p>
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-rose-400">
+            <i data-lucide="map-pin" class="w-4 h-4"></i> Sector Gastronómico Descubierto
+          </span>
+        </div>
+        <!-- Card 3 -->
+        <div class="glass-card rounded-2xl p-6 border-l-4 border-l-brand-lavender hover:shadow-glow-violet transition-all">
+          <div class="w-12 h-12 rounded-xl bg-brand-lavender/10 flex items-center justify-center text-brand-lavender mb-4">
+            <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold font-heading text-white mb-2">Paseo de Artesanos y Emprendedores</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Más de 120 stands de artesanías auténticas, textiles de vicuña y llama, cerámica puneña y productos autóctonos con sello de origen.
+          </p>
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-lavender">
+            <i data-lucide="heart" class="w-4 h-4"></i> Abierto a todo el público
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MATRIZ PRODUCTIVA: LOS 5 PILARES DE JUJUY -->
+  <section id="pilares" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-aqua/10 border border-brand-aqua/30 text-brand-aqua text-xs font-semibold uppercase tracking-wider mb-3">
+          <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+          Matriz Productiva Provincial
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-heading text-white mb-4">
+          Los 5 Pilares de <span class="gradient-text">Jujuy al Mundo</span>
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          La oferta de la exposición organizada sobre los sectores estratégicos que lideran el desarrollo del Norte Grande.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        
+        <!-- Pilar 1: Minería / Litio -->
+        <div class="glass-card rounded-2xl p-5 border border-white/5 hover:border-pilar-litio/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-pilar-litio/15 flex items-center justify-center text-pilar-litio mb-4 group-hover:scale-110 transition-transform">
+              <i data-lucide="gem" class="w-5 h-5"></i>
+            </div>
+            <span class="text-[10px] font-extrabold uppercase tracking-widest text-pilar-litio">Pilar 01</span>
+            <h3 class="text-lg font-bold font-heading text-white mt-1 mb-2">Minería Estratégica</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Complejo de carbonato de litio, minería polimetálica y la red de proveedores locales integrados.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/5 text-[11px] font-semibold text-slate-300 flex items-center justify-between">
+            <span>Salar de Olaroz / Cauchari</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-pilar-litio"></i>
+          </div>
+        </div>
+
+        <!-- Pilar 2: Energías Renovables -->
+        <div class="glass-card rounded-2xl p-5 border border-white/5 hover:border-pilar-solar/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-pilar-solar/15 flex items-center justify-center text-pilar-solar mb-4 group-hover:scale-110 transition-transform">
+              <i data-lucide="sun-medium" class="w-5 h-5"></i>
+            </div>
+            <span class="text-[10px] font-extrabold uppercase tracking-widest text-pilar-solar">Pilar 02</span>
+            <h3 class="text-lg font-bold font-heading text-white mt-1 mb-2">Energía Solar</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Parque Solar Cauchari y proyectos de generación fotovoltaica limpia de extrema altura en la Puna.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/5 text-[11px] font-semibold text-slate-300 flex items-center justify-between">
+            <span>Matriz Verde 300+ MW</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-pilar-solar"></i>
+          </div>
+        </div>
+
+        <!-- Pilar 3: Agroindustria -->
+        <div class="glass-card rounded-2xl p-5 border border-white/5 hover:border-pilar-agro/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-pilar-agro/15 flex items-center justify-center text-pilar-agro mb-4 group-hover:scale-110 transition-transform">
+              <i data-lucide="sprout" class="w-5 h-5"></i>
+            </div>
+            <span class="text-[10px] font-extrabold uppercase tracking-widest text-pilar-agro">Pilar 03</span>
+            <h3 class="text-lg font-bold font-heading text-white mt-1 mb-2">Complejo Agroindustrial</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Azúcar, tabaco, cítricos, legumbres, bioetanol y vinos de extrema altura reconocidos a nivel global.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/5 text-[11px] font-semibold text-slate-300 flex items-center justify-between">
+            <span>Valles y Yungas</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-pilar-agro"></i>
+          </div>
+        </div>
+
+        <!-- Pilar 4: Eje Logístico -->
+        <div class="glass-card rounded-2xl p-5 border border-white/5 hover:border-pilar-logistica/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-pilar-logistica/15 flex items-center justify-center text-pilar-logistica mb-4 group-hover:scale-110 transition-transform">
+              <i data-lucide="truck" class="w-5 h-5"></i>
+            </div>
+            <span class="text-[10px] font-extrabold uppercase tracking-widest text-pilar-logistica">Pilar 04</span>
+            <h3 class="text-lg font-bold font-heading text-white mt-1 mb-2">Eje Logístico</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Corredor Bioceánico del Trópico de Capricornio, Paso de Jama y Zonas Francas de Perico y La Quiaca.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/5 text-[11px] font-semibold text-slate-300 flex items-center justify-between">
+            <span>Conexión Atlántico-Pacífico</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-pilar-logistica"></i>
+          </div>
+        </div>
+
+        <!-- Pilar 5: Economía del Conocimiento -->
+        <div class="glass-card rounded-2xl p-5 border border-white/5 hover:border-pilar-tech/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-pilar-tech/15 flex items-center justify-center text-pilar-tech mb-4 group-hover:scale-110 transition-transform">
+              <i data-lucide="cpu" class="w-5 h-5"></i>
+            </div>
+            <span class="text-[10px] font-extrabold uppercase tracking-widest text-pilar-tech">Pilar 05</span>
+            <h3 class="text-lg font-bold font-heading text-white mt-1 mb-2">Economía Conocimiento</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Desarrollo de software, robótica, inteligencia artificial y servicios basados en talento jujeño.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/5 text-[11px] font-semibold text-slate-300 flex items-center justify-between">
+            <span>Polo Tecnológico ClusteAR</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-pilar-tech"></i>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DIRECTORIO DE EXPOSITORES CON FILTROS DINÁMICOS -->
+  <section id="expositores" class="py-20 relative bg-brand-surface/30 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-aqua/10 border border-brand-aqua/30 text-brand-aqua text-xs font-semibold uppercase tracking-wider mb-3">
+            <i data-lucide="building-2" class="w-3.5 h-3.5"></i>
+            Catálogo Comercial 100% Desmaterializado
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-heading text-white">
+            Directorio de <span class="gradient-text">Expositores 2026</span>
+          </h2>
+          <p class="text-slate-400 text-sm mt-2">
+            Descubrí las empresas participantes, sus stands asignados y concertá citas de negocios.
+          </p>
+        </div>
+
+        <!-- Buscador en Tiempo Real -->
+        <div class="w-full md:w-80 relative">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input type="text" id="search-expositor" oninput="filterExpositores()" placeholder="Buscar empresa o marca..." class="w-full pl-10 pr-4 py-2.5 rounded-xl glass-card border border-white/10 text-white placeholder-slate-400 text-sm focus:outline-none focus:border-brand-aqua">
+        </div>
+      </div>
+
+      <!-- Filtros por Pilar -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 text-xs font-semibold no-scrollbar">
+        <button onclick="filterByPilar('todos')" class="filter-btn active px-4 py-2 rounded-lg bg-brand-aqua text-brand-dark transition-all">Todos</button>
+        <button onclick="filterByPilar('litio')" class="filter-btn px-4 py-2 rounded-lg glass-card text-slate-300 hover:text-white transition-all">Minería & Litio</button>
+        <button onclick="filterByPilar('solar')" class="filter-btn px-4 py-2 rounded-lg glass-card text-slate-300 hover:text-white transition-all">Energía Solar</button>
+        <button onclick="filterByPilar('agro')" class="filter-btn px-4 py-2 rounded-lg glass-card text-slate-300 hover:text-white transition-all">Agroindustria</button>
+        <button onclick="filterByPilar('logistica')" class="filter-btn px-4 py-2 rounded-lg glass-card text-slate-300 hover:text-white transition-all">Eje Logístico</button>
+        <button onclick="filterByPilar('tech')" class="filter-btn px-4 py-2 rounded-lg glass-card text-slate-300 hover:text-white transition-all">Tecnología & Software</button>
+      </div>
+
+      <!-- Grilla de Expositores -->
+      <div id="expositores-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Card 1 -->
+        <div class="expositor-card glass-card rounded-2xl p-6 border border-white/5 hover:border-brand-aqua/40 transition-all flex flex-col justify-between" data-pilar="litio" data-nombre="Jujuy Energía y Minería (JEMSE) Litio Proveedores">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-pilar-litio/15 text-pilar-litio">Minería & Litio</span>
+              <span class="text-xs font-mono text-slate-400 bg-slate-800/60 px-2 py-0.5 rounded">Stand A-12</span>
+            </div>
+            <h4 class="text-lg font-bold font-heading text-white mb-2">JEMSE & Asociadas</h4>
+            <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              Empresa estatal que promueve la exploración, extracción de litio, minerales polimetálicos y desarrollo de valor agregado en territorio jujeño.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+            <span class="text-xs text-slate-400 flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-aqua"></i> Pabellón Cubierto 1
+            </span>
+            <button onclick="alert('Iniciando contacto con JEMSE para Ronda B2B')" class="text-xs font-bold text-brand-aqua hover:underline">Ver ficha &rarr;</button>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="expositor-card glass-card rounded-2xl p-6 border border-brand-solar/40 transition-all flex flex-col justify-between" data-pilar="solar" data-nombre="Cauchari Solar Parque Fotovoltaico Energía Limpia">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-pilar-solar/15 text-pilar-solar">Energía Solar</span>
+              <span class="text-xs font-mono text-slate-400 bg-slate-800/60 px-2 py-0.5 rounded">Stand B-04</span>
+            </div>
+            <h4 class="text-lg font-bold font-heading text-white mb-2">Cauchari Solar Park</h4>
+            <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              La planta solar a mayor altitud de Sudamérica (4.000 msnm), inyectando energía limpia a la red interconectada nacional.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+            <span class="text-xs text-slate-400 flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-pilar-solar"></i> Pabellón Energías
+            </span>
+            <button onclick="alert('Iniciando contacto con Cauchari Solar')" class="text-xs font-bold text-pilar-solar hover:underline">Ver ficha &rarr;</button>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="expositor-card glass-card rounded-2xl p-6 border border-white/5 hover:border-pilar-agro/40 transition-all flex flex-col justify-between" data-pilar="agro" data-nombre="Ledesma Azúcar Papel Bioetanol Cítricos Frutas">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-pilar-agro/15 text-pilar-agro">Agroindustria</span>
+              <span class="text-xs font-mono text-slate-400 bg-slate-800/60 px-2 py-0.5 rounded">Stand C-01</span>
+            </div>
+            <h4 class="text-lg font-bold font-heading text-white mb-2">Complejo Agroindustrial Ledesma</h4>
+            <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              Líder en producción de azúcar, papel para el mundo a partir de caña, frutas frescas y producción de energías renovables por biomasa.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+            <span class="text-xs text-slate-400 flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-pilar-agro"></i> Pabellón Industria
+            </span>
+            <button onclick="alert('Iniciando contacto con Ledesma')" class="text-xs font-bold text-pilar-agro hover:underline">Ver ficha &rarr;</button>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="expositor-card glass-card rounded-2xl p-6 border border-white/5 hover:border-pilar-logistica/40 transition-all flex flex-col justify-between" data-pilar="logistica" data-nombre="Zona Franca Perico Logística Corredor Bioceánico Aduana">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-pilar-logistica/15 text-pilar-logistica">Eje Logístico</span>
+              <span class="text-xs font-mono text-slate-400 bg-slate-800/60 px-2 py-0.5 rounded">Stand D-08</span>
+            </div>
+            <h4 class="text-lg font-bold font-heading text-white mb-2">Zona Franca Perico</h4>
+            <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              Hub industrial y aduanero clave para el comercio internacional y las operaciones en el Corredor Bioceánico de Capricornio.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+            <span class="text-xs text-slate-400 flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-pilar-logistica"></i> Sector Descubierto
+            </span>
+            <button onclick="alert('Iniciando contacto con Zona Franca Perico')" class="text-xs font-bold text-pilar-logistica hover:underline">Ver ficha &rarr;</button>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="expositor-card glass-card rounded-2xl p-6 border border-white/5 hover:border-pilar-tech/40 transition-all flex flex-col justify-between" data-pilar="tech" data-nombre="ClusteAR Cámara Empresas TICs Jujuy Software Innovación">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-pilar-tech/15 text-pilar-tech">Tecnología & Software</span>
+              <span class="text-xs font-mono text-slate-400 bg-slate-800/60 px-2 py-0.5 rounded">Stand T-01</span>
+            </div>
+            <h4 class="text-lg font-bold font-heading text-white mb-2">ClusteAR (Empresas TIC)</h4>
+            <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              Red de empresas de desarrollo de software, inteligencia artificial, IoT para la minería y servicios tecnológicos de exportación.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+            <span class="text-xs text-slate-400 flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-pilar-tech"></i> Espacio Tech & IA
+            </span>
+            <button onclick="alert('Iniciando contacto con ClusteAR')" class="text-xs font-bold text-pilar-tech hover:underline">Ver ficha &rarr;</button>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="expositor-card glass-card rounded-2xl p-6 border border-white/5 hover:border-pilar-agro/40 transition-all flex flex-col justify-between" data-pilar="agro" data-nombre="Bodega El Rosal Quebrada de Humahuaca Vinos de Extrema Altura">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-pilar-agro/15 text-pilar-agro">Vinos de Altura</span>
+              <span class="text-xs font-mono text-slate-400 bg-slate-800/60 px-2 py-0.5 rounded">Stand G-15</span>
+            </div>
+            <h4 class="text-lg font-bold font-heading text-white mb-2">Bodegas de la Quebrada</h4>
+            <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              Vinos cultivados a más de 2.500 msnm con identidad andina única, gran concentración polifenólica y reconocimiento internacional.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+            <span class="text-xs text-slate-400 flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-pilar-agro"></i> Sector Gastronómico
+            </span>
+            <button onclick="alert('Iniciando contacto con Bodegas')" class="text-xs font-bold text-pilar-agro hover:underline">Ver ficha &rarr;</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="no-results" class="hidden text-center py-12 text-slate-400">
+        <i data-lucide="alert-circle" class="w-10 h-10 mx-auto mb-3 text-slate-500"></i>
+        <p class="text-base font-semibold">No se encontraron expositores con ese criterio de búsqueda.</p>
+        <button onclick="resetFilters()" class="mt-3 text-xs font-bold text-brand-aqua underline">Restablecer todos los filtros</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AGENDA INTERACTIVA DE LAS 4 JORNADAS -->
+  <section id="agenda" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-violet/20 border border-brand-violet/30 text-brand-lavender text-xs font-semibold uppercase tracking-wider mb-3">
+          <i data-lucide="calendar-days" class="w-3.5 h-3.5 text-brand-aqua"></i>
+          Cronograma Oficial
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-heading text-white mb-4">
+          Agenda de las <span class="gradient-text">4 Jornadas Intensivas</span>
+        </h2>
+        <p class="text-slate-400 text-sm">
+          Filtrá por día y por momento de la jornada (Sesiones Matutinas B2B vs Actividades Vespertinas Generales).
+        </p>
+      </div>
+
+      <!-- Selector de Días (9 al 12 de Octubre) -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto mb-10">
+        <button onclick="selectDay(1)" id="day-btn-1" class="day-btn active p-3.5 rounded-xl glass-card border border-brand-aqua/50 text-center transition-all bg-brand-surface">
+          <span class="block text-xs font-bold text-brand-aqua uppercase tracking-wider">Viernes 9 Oct</span>
+          <span class="block text-sm font-extrabold text-white font-heading mt-0.5">Día 1 · Inauguración</span>
+        </button>
+        <button onclick="selectDay(2)" id="day-btn-2" class="day-btn p-3.5 rounded-xl glass-card border border-white/5 text-center transition-all hover:border-white/20">
+          <span class="block text-xs font-bold text-slate-400 uppercase tracking-wider">Sábado 10 Oct</span>
+          <span class="block text-sm font-extrabold text-slate-300 font-heading mt-0.5">Día 2 · Minería & Sol</span>
+        </button>
+        <button onclick="selectDay(3)" id="day-btn-3" class="day-btn p-3.5 rounded-xl glass-card border border-white/5 text-center transition-all hover:border-white/20">
+          <span class="block text-xs font-bold text-slate-400 uppercase tracking-wider">Domingo 11 Oct</span>
+          <span class="block text-sm font-extrabold text-slate-300 font-heading mt-0.5">Día 3 · Agro & Familia</span>
+        </button>
+        <button onclick="selectDay(4)" id="day-btn-4" class="day-btn p-3.5 rounded-xl glass-card border border-white/5 text-center transition-all hover:border-white/20">
+          <span class="block text-xs font-bold text-slate-400 uppercase tracking-wider">Lunes 12 Oct</span>
+          <span class="block text-sm font-extrabold text-slate-300 font-heading mt-0.5">Día 4 · Conclusiones</span>
+        </button>
+      </div>
+
+      <!-- Timeline / Lista de Eventos del Día -->
+      <div id="agenda-timeline" class="max-w-4xl mx-auto space-y-4">
+        
+        <!-- Item 1: Mañana B2B -->
+        <div class="glass-card rounded-2xl p-5 border-l-4 border-l-brand-aqua flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-start gap-4">
+            <div class="w-16 text-center py-2 px-1 rounded-lg bg-brand-aqua/10 text-brand-aqua font-mono font-bold text-xs shrink-0">
+              09:30 hs
+            </div>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-brand-aqua/20 text-brand-aqua uppercase">☀️ Mañana B2B</span>
+                <span class="text-xs text-slate-400 font-mono">Sala de Conferencias 1</span>
+              </div>
+              <h4 class="text-base font-bold font-heading text-white">Acto Oficial de Apertura & Conferencia Inaugural</h4>
+              <p class="text-slate-400 text-xs mt-1">
+                Presencia de autoridades de la Cámara de Comercio Exterior, Gobierno de Jujuy y delegaciones diplomáticas del Corredor Bioceánico.
+              </p>
+            </div>
+          </div>
+          <button onclick="alert('Recordatorio agendado')" class="sm:shrink-0 text-xs px-4 py-2 rounded-lg glass-card text-brand-aqua hover:bg-brand-aqua/10 border border-brand-aqua/30 transition-all font-semibold">
+            Agendar
+          </button>
+        </div>
+
+        <!-- Item 2: Mañana B2B -->
+        <div class="glass-card rounded-2xl p-5 border-l-4 border-l-brand-aqua flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-start gap-4">
+            <div class="w-16 text-center py-2 px-1 rounded-lg bg-brand-aqua/10 text-brand-aqua font-mono font-bold text-xs shrink-0">
+              11:00 hs
+            </div>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-brand-aqua/20 text-brand-aqua uppercase">☀️ Ronda B2B</span>
+                <span class="text-xs text-slate-400 font-mono">Espacio Rondas de Negocios</span>
+              </div>
+              <h4 class="text-base font-bold font-heading text-white">Primera Sesión de Matchmaking Comercial Internacional</h4>
+              <p class="text-slate-400 text-xs mt-1">
+                Mesas de trabajo bilaterales de 20 minutos con empresas de Chile, Bolivia, Paraguay y Brasil.
+              </p>
+            </div>
+          </div>
+          <button onclick="alert('Inscripción a mesas confirmada')" class="sm:shrink-0 text-xs px-4 py-2 rounded-lg glass-card text-brand-aqua hover:bg-brand-aqua/10 border border-brand-aqua/30 transition-all font-semibold">
+            Inscribirse
+          </button>
+        </div>
+
+        <!-- Item 3: Tarde / Noche -->
+        <div class="glass-card rounded-2xl p-5 border-l-4 border-l-brand-lavender flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-start gap-4">
+            <div class="w-16 text-center py-2 px-1 rounded-lg bg-brand-lavender/10 text-brand-lavender font-mono font-bold text-xs shrink-0">
+              17:00 hs
+            </div>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-brand-lavender/20 text-brand-lavender uppercase">🌙 Tarde Ferial</span>
+                <span class="text-xs text-slate-400 font-mono">Predio Completo</span>
+              </div>
+              <h4 class="text-base font-bold font-heading text-white">Apertura al Público Masivo & Recorrido de Stands</h4>
+              <p class="text-slate-400 text-xs mt-1">
+                Demostraciones en vivo de maquinaria agrícola, robots educativos y exposición en todos los pabellones.
+              </p>
+            </div>
+          </div>
+          <span class="sm:shrink-0 text-xs text-slate-400 font-semibold px-3 py-1 bg-slate-800 rounded">
+            Entrada Libre con Pase
+          </span>
+        </div>
+
+        <!-- Item 4: Tarde / Noche -->
+        <div class="glass-card rounded-2xl p-5 border-l-4 border-l-amber-400 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-start gap-4">
+            <div class="w-16 text-center py-2 px-1 rounded-lg bg-amber-400/10 text-amber-400 font-mono font-bold text-xs shrink-0">
+              20:30 hs
+            </div>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-400/20 text-amber-400 uppercase">🌙 Show en Vivo</span>
+                <span class="text-xs text-slate-400 font-mono">Escenario Principal</span>
+              </div>
+              <h4 class="text-base font-bold font-heading text-white">Gran Espectáculo Folklórico Jujeño & Sinfónica</h4>
+              <p class="text-slate-400 text-xs mt-1">
+                Cierre artístico del primer día con música andina, ensamble instrumental y patio gastronómico activo.
+              </p>
+            </div>
+          </div>
+          <span class="sm:shrink-0 text-xs text-amber-400 font-semibold px-3 py-1 bg-amber-400/10 rounded">
+            Show en vivo
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PLANO INTERACTIVO DEL PREDIO (CIUDAD CULTURAL) -->
+  <section id="plano" class="py-20 relative bg-brand-surface/30 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-aqua/10 border border-brand-aqua/30 text-brand-aqua text-xs font-semibold uppercase tracking-wider mb-3">
+          <i data-lucide="map" class="w-3.5 h-3.5"></i>
+          Ubicación & Distribución
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-heading text-white mb-4">
+          Plano Digital de <span class="gradient-text">Ciudad Cultural</span>
+        </h2>
+        <p class="text-slate-400 text-sm">
+          Explorá los sectores del predio ferial en Alto Padilla. Tocá cada zona para ver su información y empresas alojadas.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8 items-center">
+        
+        <!-- Mapa interactivo SVG estilizado -->
+        <div class="lg:col-span-2 glass-card rounded-2xl p-6 border border-white/10 relative overflow-hidden">
+          <div class="flex items-center justify-between mb-4 text-xs font-semibold text-slate-400">
+            <span class="flex items-center gap-1.5"><i data-lucide="navigation" class="w-3.5 h-3.5 text-brand-aqua"></i> Acceso Principal Ruta 9</span>
+            <span class="text-brand-aqua">Interactivo · Tocá un sector</span>
+          </div>
+
+          <!-- Representación arquitectónica del predio de Ciudad Cultural -->
+          <div class="relative w-full aspect-[16/9] bg-brand-dark/90 rounded-xl border border-white/10 p-4 flex flex-col justify-between">
+            
+            <!-- Fila Superior -->
+            <div class="grid grid-cols-3 gap-3 h-1/3">
+              <button onclick="showSectorInfo('sector-b2b')" class="sector-btn bg-brand-violet/25 hover:bg-brand-violet/50 border border-brand-violet/40 rounded-lg p-2 text-left transition-all group flex flex-col justify-between">
+                <span class="text-[11px] font-bold text-brand-lavender group-hover:text-white">Auditorio & Rondas B2B</span>
+                <span class="text-[9px] text-slate-400">Salas 1, 2 y Conferencias</span>
+              </button>
+              <button onclick="showSectorInfo('sector-litio')" class="sector-btn bg-pilar-litio/25 hover:bg-pilar-litio/50 border border-pilar-litio/40 rounded-lg p-2 text-left transition-all group flex flex-col justify-between">
+                <span class="text-[11px] font-bold text-pilar-litio group-hover:text-white">Pabellón Litio & Sol</span>
+                <span class="text-[9px] text-slate-400">Energía e Innovación</span>
+              </button>
+              <button onclick="showSectorInfo('sector-agro')" class="sector-btn bg-pilar-agro/25 hover:bg-pilar-agro/50 border border-pilar-agro/40 rounded-lg p-2 text-left transition-all group flex flex-col justify-between">
+                <span class="text-[11px] font-bold text-pilar-agro group-hover:text-white">Pabellón Agro & Industria</span>
+                <span class="text-[9px] text-slate-400">Alimentos y Maquinaria</span>
+              </button>
+            </div>
+
+            <!-- Fila Media (Paseo Central) -->
+            <div class="my-2 py-1.5 border-y border-dashed border-white/20 flex items-center justify-between px-4 text-[10px] text-slate-400 uppercase tracking-widest font-mono">
+              <span>&larr; Ingreso Sur</span>
+              <span class="text-brand-aqua">Bulevar Central de Exposiciones</span>
+              <span>Ingreso Norte &rarr;</span>
+            </div>
+
+            <!-- Fila Inferior -->
+            <div class="grid grid-cols-3 gap-3 h-1/3">
+              <button onclick="showSectorInfo('sector-artesanos')" class="sector-btn bg-brand-lavender/20 hover:bg-brand-lavender/40 border border-brand-lavender/30 rounded-lg p-2 text-left transition-all group flex flex-col justify-between">
+                <span class="text-[11px] font-bold text-brand-lavender group-hover:text-white">Carpa de Artesanías</span>
+                <span class="text-[9px] text-slate-400">120+ Creadores Andinos</span>
+              </button>
+              <button onclick="showSectorInfo('sector-escenario')" class="sector-btn bg-amber-400/25 hover:bg-amber-400/50 border border-amber-400/40 rounded-lg p-2 text-left transition-all group flex flex-col justify-between">
+                <span class="text-[11px] font-bold text-amber-400 group-hover:text-white">Escenario Central</span>
+                <span class="text-[9px] text-slate-400">Shows & Pantalla Gigante</span>
+              </button>
+              <button onclick="showSectorInfo('sector-gastro')" class="sector-btn bg-rose-500/25 hover:bg-rose-500/50 border border-rose-500/40 rounded-lg p-2 text-left transition-all group flex flex-col justify-between">
+                <span class="text-[11px] font-bold text-rose-400 group-hover:text-white">Patio Gastronómico</span>
+                <span class="text-[9px] text-slate-400">Foodtrucks y Bodegas</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Detalle del sector seleccionado -->
+        <div id="sector-detail-card" class="glass-card rounded-2xl p-6 border border-white/10 flex flex-col justify-between h-full">
+          <div>
+            <span class="text-xs uppercase tracking-wider font-bold text-brand-aqua block mb-1">Información de Sector</span>
+            <h3 id="sector-title" class="text-2xl font-bold font-heading text-white mb-3">Auditorio & Rondas B2B</h3>
+            <p id="sector-desc" class="text-slate-300 text-sm leading-relaxed mb-4">
+              Sector exclusivo para empresarios, inversores y delegaciones internacionales. Cuenta con 40 mesas de negociación equipadas con conectividad de alta velocidad y cabinas para videoconferencias.
+            </p>
+            <div class="space-y-2 text-xs text-slate-400 border-t border-white/10 pt-4">
+              <p><strong class="text-white">Capacidad:</strong> 350 personas sentadas</p>
+              <p><strong class="text-white">Horario B2B:</strong> 09:00 a 14:00 hs</p>
+              <p><strong class="text-white">Servicios:</strong> Coffee break continuo, traducción simultánea</p>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5">
+            <a href="#agenda" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-aqua hover:underline">
+              Ver actividades en este sector &rarr;
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MÓDULO DE ACREDITACIÓN DIGITAL (DESMATERIALIZACIÓN Y CERO PAPEL) -->
+  <section id="acreditacion" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="glass-card rounded-3xl p-8 lg:p-12 border border-brand-aqua/30 shadow-glow-aqua relative overflow-hidden">
+        
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-violet/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          
+          <!-- Columna Izquierda: Explicación y Formulario -->
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-aqua/10 border border-brand-aqua/30 text-brand-aqua text-xs font-semibold uppercase tracking-wider mb-3">
+              <i data-lucide="leaf" class="w-3.5 h-3.5"></i>
+              Sustentabilidad · Cero Papel
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold font-heading text-white mb-4">
+              Acreditación & <span class="gradient-text">Pase Digital QR</span>
+            </h2>
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+              En concordancia con los ejes de sustentabilidad de ExpoJuy 2026, eliminamos las credenciales y tickets impresos. Obtené tu pase en segundos y llevalo directamente en tu celular.
+            </p>
+
+            <form id="qr-form" onsubmit="generateDigitalPass(event)" class="space-y-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Nombre Completo *</label>
+                <input type="text" id="pass-name" required placeholder="Ej. Lic. Martín Gutiérrez" class="w-full px-4 py-2.5 rounded-xl bg-brand-dark/80 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-aqua">
+              </div>
+
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-300 mb-1">Correo Electrónico *</label>
+                  <input type="email" id="pass-email" required placeholder="martin@empresa.com" class="w-full px-4 py-2.5 rounded-xl bg-brand-dark/80 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-aqua">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-300 mb-1">Tipo de Pase *</label>
+                  <select id="pass-type" class="w-full px-4 py-2.5 rounded-xl bg-brand-dark/80 border border-white/10 text-white text-sm focus:outline-none focus:border-brand-aqua">
+                    <option value="Empresa / Ronda B2B">Corporativo · Ronda B2B</option>
+                    <option value="Visitante General">Público General</option>
+                    <option value="Estudiante / Académico">Estudiante / Universitario</option>
+                    <option value="Prensa Acreditada">Prensa & Medios</option>
+                  </select>
+                </div>
+              </div>
+
+              <button type="submit" class="w-full py-3.5 rounded-xl font-heading font-bold text-white bg-gradient-to-r from-brand-violet to-brand-aqua shadow-glow-aqua hover:opacity-95 transition-all mt-2">
+                Generar Mi Pase Digital QR
+              </button>
+            </form>
+          </div>
+
+          <!-- Columna Derecha: Tarjeta Simulada de Credencial Digital -->
+          <div class="flex justify-center">
+            <div id="badge-card" class="w-full max-w-sm rounded-2xl bg-gradient-to-b from-brand-card to-brand-surface border border-white/15 p-6 text-center shadow-2xl relative">
+              
+              <!-- Encabezado de la credencial -->
+              <div class="flex items-center justify-between pb-3 border-b border-white/10 mb-4">
+                <span class="text-[10px] font-extrabold uppercase tracking-wider text-brand-aqua">Pase Oficial Digital</span>
+                <span class="text-[10px] font-mono text-slate-400">EXPOJUY-2026</span>
+              </div>
+
+              <!-- Contenedor del código QR interactivo -->
+              <div id="qrcode-container" class="bg-white p-3.5 rounded-xl inline-block mx-auto mb-4 shadow-md">
+                <!-- El QR se renderiza acá por JS -->
+              </div>
+
+              <h4 id="badge-display-name" class="text-lg font-bold font-heading text-white">Visitante Oficial</h4>
+              <p id="badge-display-type" class="text-xs font-semibold text-brand-aqua mt-0.5">Empresa / Ronda B2B</p>
+              
+              <div class="mt-4 pt-3 border-t border-white/10 grid grid-cols-2 text-[11px] text-slate-400">
+                <div>
+                  <span class="block text-[9px] uppercase tracking-wider text-slate-500">Acceso</span>
+                  <span class="text-slate-200 font-medium">9 al 12 Octubre</span>
+                </div>
+                <div>
+                  <span class="block text-[9px] uppercase tracking-wider text-slate-500">Sede</span>
+                  <span class="text-slate-200 font-medium">Ciudad Cultural</span>
+                </div>
+              </div>
+
+              <button onclick="alert('Credencial descargada en tu dispositivo')" class="mt-5 w-full py-2 rounded-lg glass-card text-xs font-bold text-slate-200 hover:text-white hover:bg-slate-800 transition-all border border-white/10 flex items-center justify-center gap-1.5">
+                <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                Descargar en Wallet / Imagen
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECCIÓN INSTITUCIONAL: SOBRE EXPOJUY & AUTORIDADES -->
+  <section id="sobre-expojuy" class="py-20 relative bg-brand-surface/40 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-violet/20 border border-brand-violet/30 text-brand-lavender text-xs font-semibold uppercase tracking-wider mb-3">
+            <i data-lucide="award" class="w-3.5 h-3.5 text-brand-aqua"></i>
+            Trayectoria y Liderazgo Regional
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-heading text-white mb-6">
+            17 Ediciones Construyendo el <span class="gradient-text">Futuro del NOA</span>
+          </h2>
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            La <strong>ExpoJuy</strong> es la muestra multisectorial más trascendente del Noroeste Argentino. Desde su primera edición, organizada por la <strong>Cámara de Comercio Exterior de Jujuy</strong>, ha sido la vidriera principal de la producción, el comercio y el trabajo jujeño ante el país y el mundo.
+          </p>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">
+            Para 2026, junto al <strong>Ministerio de Desarrollo Económico y Producción</strong> y la <strong>Cámara de Empresas TICs (ClusteAR)</strong>, la feria evoluciona hacia una plataforma hiperconectada que combina la riqueza mineral y agropecuaria tradicional con la innovación de la economía del conocimiento.
+          </p>
+          
+          <div class="grid grid-cols-3 gap-4 text-center">
+            <div class="glass-card rounded-xl p-3 border border-white/5">
+              <span class="block text-2xl font-extrabold font-heading text-brand-aqua">180+</span>
+              <span class="text-[11px] text-slate-400 font-medium">Expositores</span>
+            </div>
+            <div class="glass-card rounded-xl p-3 border border-white/5">
+              <span class="block text-2xl font-extrabold font-heading text-brand-lavender">4 Días</span>
+              <span class="text-[11px] text-slate-400 font-medium">Intensivos</span>
+            </div>
+            <div class="glass-card rounded-xl p-3 border border-white/5">
+              <span class="block text-2xl font-extrabold font-heading text-white">6 Países</span>
+              <span class="text-[11px] text-slate-400 font-medium">Del Corredor</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-3xl p-8 border border-white/10 relative text-center">
+          <img src="images/expojuy26.jpg" alt="ExpoJuy 2026 Logo Emblema" class="h-32 mx-auto w-auto object-contain rounded-xl bg-white/95 p-3 shadow-xl mb-6">
+          <h3 class="text-xl font-bold font-heading text-white mb-2">Cámara de Comercio Exterior de Jujuy</h3>
+          <p class="text-slate-400 text-xs max-w-md mx-auto leading-relaxed mb-6">
+            Institución rectora del certamen y garante de la vinculación comercial del sector privado provincial con los mercados de América Latina, Asia y Europa.
+          </p>
+          <div class="flex items-center justify-center gap-4 text-xs font-semibold text-brand-aqua">
+            <span>• San Salvador de Jujuy</span>
+            <span>• Edición 2026</span>
+            <span>• Conectividad Global</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PANEL DE SPONSORS -->
+  <section id="sponsors" class="py-16 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-xs uppercase tracking-widest text-slate-400 font-semibold mb-8">
+        Sponsors Oficiales & Alianzas Institucionales
+      </p>
+      
+      <!-- Sponsors Diamante y Oro -->
+      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-14 opacity-85">
+        <div class="glass-card px-6 py-3 rounded-xl border border-white/10 text-slate-300 font-heading font-bold text-sm">
+          Gobierno de la Provincia de Jujuy
+        </div>
+        <div class="glass-card px-6 py-3 rounded-xl border border-white/10 text-slate-300 font-heading font-bold text-sm">
+          Cámara de Comercio Exterior
+        </div>
+        <div class="glass-card px-6 py-3 rounded-xl border border-white/10 text-slate-300 font-heading font-bold text-sm">
+          ClusteAR Jujuy
+        </div>
+        <div class="glass-card px-6 py-3 rounded-xl border border-white/10 text-slate-300 font-heading font-bold text-sm">
+          Corredor Bioceánico Capricornio
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREGUNTAS FRECUENTES (FAQS) -->
+  <section id="faqs" class="py-20 relative bg-brand-surface/20 border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-extrabold font-heading text-white mb-3">
+          Preguntas <span class="gradient-text">Frecuentes</span>
+        </h2>
+        <p class="text-slate-400 text-sm">
+          Respuestas rápidas para visitantes, empresas expositoras y medios.
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        <!-- FAQ 1 -->
+        <details class="glass-card rounded-xl p-4 border border-white/5 group cursor-pointer">
+          <summary class="flex items-center justify-between text-sm font-bold text-white list-none">
+            <span>¿En qué fechas y horarios se realizará ExpoJuy 2026?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-brand-aqua transition-transform group-open:rotate-180"></i>
+          </summary>
+          <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+            Del viernes 9 al lunes 12 de octubre de 2026 en Ciudad Cultural (Alto Padilla). Los segmentos se dividen en Mañanas B2B (09:00 a 14:00 hs) y Tardes Masivas / Recreativas (16:00 a 23:00 hs).
+          </p>
+        </details>
+
+        <!-- FAQ 2 -->
+        <details class="glass-card rounded-xl p-4 border border-white/5 group cursor-pointer">
+          <summary class="flex items-center justify-between text-sm font-bold text-white list-none">
+            <span>¿Cómo funciona el pase digital QR y qué costo tiene?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-brand-aqua transition-transform group-open:rotate-180"></i>
+          </summary>
+          <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+            El pase se genera de forma 100% digital desde este sitio web. Solo completás tus datos, obtenés tu código QR en pantalla y lo mostrás desde el celular en el pórtico de ingreso.
+          </p>
+        </details>
+
+        <!-- FAQ 3 -->
+        <details class="glass-card rounded-xl p-4 border border-white/5 group cursor-pointer">
+          <summary class="flex items-center justify-between text-sm font-bold text-white list-none">
+            <span>¿Cómo inscribo a mi empresa en las Rondas de Negocios B2B?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-brand-aqua transition-transform group-open:rotate-180"></i>
+          </summary>
+          <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+            Seleccionás la opción 'Corporativo · Ronda B2B' en la sección de Acreditaciones. Recibirás un enlace exclusivo para cargar el perfil de oferta/demanda de tu empresa en el sistema de emparejamiento inteligente.
+          </p>
+        </details>
+
+        <!-- FAQ 4 -->
+        <details class="glass-card rounded-xl p-4 border border-white/5 group cursor-pointer">
+          <summary class="flex items-center justify-between text-sm font-bold text-white list-none">
+            <span>¿Hay estacionamiento y transporte público hasta el predio?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-brand-aqua transition-transform group-open:rotate-180"></i>
+          </summary>
+          <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+            Sí, Ciudad Cultural cuenta con playas de estacionamiento controladas para más de 1.200 vehículos y líneas urbanas especiales de colectivos con parada directa en el predio ferial.
+          </p>
+        </details>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 bg-brand-dark pt-14 pb-8 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid md:grid-cols-4 gap-8 mb-12">
+        <div class="md:col-span-2">
+          <img src="images/expojuy26_horizontal.jpg" alt="ExpoJuy 2026" class="h-10 w-auto object-contain rounded bg-white/95 px-2 py-1 mb-4 shadow">
+          <p class="text-slate-400 text-xs max-w-sm leading-relaxed mb-4">
+            Sitio Web Oficial de la 17° Edición de la Exposición Multisectorial del NOA. Organizada por la Cámara de Comercio Exterior de Jujuy.
+          </p>
+          <p class="text-brand-aqua text-[11px] font-semibold">
+            “Conectando países — creando oportunidades”
+          </p>
+        </div>
+
+        <div>
+          <h5 class="text-white font-bold font-heading mb-3 uppercase tracking-wider text-[11px]">Navegación</h5>
+          <ul class="space-y-2">
+            <li><a href="#dinamica-dual" class="hover:text-brand-aqua transition-colors">Dinámica Dual</a></li>
+            <li><a href="#pilares" class="hover:text-brand-aqua transition-colors">Matriz Productiva (5 Pilares)</a></li>
+            <li><a href="#expositores" class="hover:text-brand-aqua transition-colors">Directorio de Expositores</a></li>
+            <li><a href="#agenda" class="hover:text-brand-aqua transition-colors">Agenda de Actividades</a></li>
+            <li><a href="#acreditacion" class="hover:text-brand-aqua transition-colors">Acreditación Digital QR</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="text-white font-bold font-heading mb-3 uppercase tracking-wider text-[11px]">Canales Oficiales</h5>
+          <div class="flex items-center gap-3 mb-4">
+            <a href="#" class="w-8 h-8 rounded-lg glass-card flex items-center justify-center text-slate-300 hover:text-brand-aqua border border-white/10" aria-label="Instagram">
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-lg glass-card flex items-center justify-center text-slate-300 hover:text-brand-aqua border border-white/10" aria-label="Facebook">
+              <i data-lucide="facebook" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-lg glass-card flex items-center justify-center text-slate-300 hover:text-brand-aqua border border-white/10" aria-label="YouTube">
+              <i data-lucide="youtube" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-lg glass-card flex items-center justify-center text-slate-300 hover:text-brand-aqua border border-white/10" aria-label="LinkedIn">
+              <i data-lucide="linkedin" class="w-4 h-4"></i>
+            </a>
+          </div>
+          <p class="text-[11px] text-slate-500">
+            San Salvador de Jujuy, República Argentina.
+          </p>
+        </div>
+      </div>
+
+      <div class="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
+        <p>© 2026 Cámara de Comercio Exterior de Jujuy. Todos los derechos reservados.</p>
+        <p class="flex items-center gap-1">
+          <span>Desafío Digital ExpoJuy 2026</span>
+          <span>•</span>
+          <span class="text-brand-aqua">Innovación · Talento · Desarrollo</span>
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT REACTIVO DEL PROTOTIPO -->
+  <script>
+    // Inicializar Iconos Lucide
+    lucide.createIcons();
+
+    // Menú móvil
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Cerrar menú móvil al hacer click en links
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    // Cuenta Regresiva al 9 de Octubre de 2026, 09:00 AM ART
+    const targetDate = new Date('2026-10-09T09:00:00-03:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        document.getElementById('countdown-days').innerText = String(days).padStart(2, '0');
+        document.getElementById('countdown-hours').innerText = String(hours).padStart(2, '0');
+        document.getElementById('countdown-minutes').innerText = String(minutes).padStart(2, '0');
+        document.getElementById('countdown-seconds').innerText = String(seconds).padStart(2, '0');
+      } else {
+        document.getElementById('countdown-days').innerText = '00';
+        document.getElementById('countdown-hours').innerText = '00';
+        document.getElementById('countdown-minutes').innerText = '00';
+        document.getElementById('countdown-seconds').innerText = '00';
+      }
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Switcher de Dinámica Dual (Mañana B2B vs Tarde Recreativa)
+    function setDualSegment(segment) {
+      const btnMorning = document.getElementById('btn-dual-morning');
+      const btnEvening = document.getElementById('btn-dual-evening');
+      const contentMorning = document.getElementById('dual-content-morning');
+      const contentEvening = document.getElementById('dual-content-evening');
+
+      if (segment === 'morning') {
+        btnMorning.className = 'flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-bold transition-all badge-dual-active';
+        btnEvening.className = 'flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-bold text-slate-400 hover:text-white transition-all';
+        contentMorning.classList.remove('hidden');
+        contentEvening.classList.add('hidden');
+      } else {
+        btnEvening.className = 'flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-bold transition-all badge-dual-active';
+        btnMorning.className = 'flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-bold text-slate-400 hover:text-white transition-all';
+        contentEvening.classList.remove('hidden');
+        contentMorning.classList.add('hidden');
+      }
+    }
+
+    // Filtros del Directorio de Expositores
+    let currentPilarFilter = 'todos';
+
+    function filterByPilar(pilar) {
+      currentPilarFilter = pilar;
+      
+      // Estilo de botones
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-brand-aqua', 'text-brand-dark');
+        btn.classList.add('glass-card', 'text-slate-300');
+      });
+      event.target.classList.add('bg-brand-aqua', 'text-brand-dark');
+      event.target.classList.remove('glass-card', 'text-slate-300');
+
+      filterExpositores();
+    }
+
+    function filterExpositores() {
+      const searchTerm = document.getElementById('search-expositor').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.expositor-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const pilar = card.getAttribute('data-pilar');
+        const searchData = card.getAttribute('data-nombre').toLowerCase();
+        
+        const matchesPilar = (currentPilarFilter === 'todos' || pilar === currentPilarFilter);
+        const matchesSearch = (!searchTerm || searchData.includes(searchTerm));
+
+        if (matchesPilar && matchesSearch) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      const noResults = document.getElementById('no-results');
+      if (visibleCount === 0) {
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+      }
+    }
+
+    function resetFilters() {
+      document.getElementById('search-expositor').value = '';
+      currentPilarFilter = 'todos';
+      const firstBtn = document.querySelector('.filter-btn');
+      if (firstBtn) firstBtn.click();
+    }
+
+    // Selector de Días de la Agenda
+    const agendaData = {
+      1: { title: "Día 1 · Viernes 9 Oct", count: 4 },
+      2: { title: "Día 2 · Sábado 10 Oct", count: 3 },
+      3: { title: "Día 3 · Domingo 11 Oct", count: 4 },
+      4: { title: "Día 4 · Lunes 12 Oct", count: 3 }
+    };
+
+    function selectDay(dayNumber) {
+      document.querySelectorAll('.day-btn').forEach(btn => {
+        btn.classList.remove('border-brand-aqua/50', 'bg-brand-surface');
+        btn.classList.add('border-white/5');
+      });
+      const activeBtn = document.getElementById(`day-btn-${dayNumber}`);
+      if (activeBtn) {
+        activeBtn.classList.add('border-brand-aqua/50', 'bg-brand-surface');
+        activeBtn.classList.remove('border-white/5');
+      }
+    }
+
+    // Interacción del Plano del Predio
+    const sectorData = {
+      'sector-b2b': {
+        title: "Auditorio & Rondas B2B",
+        desc: "Sector exclusivo para empresarios, inversores y delegaciones internacionales. Cuenta con 40 mesas de negociación equipadas con conectividad de alta velocidad y cabinas para videoconferencias.",
+        capacidad: "350 personas sentadas",
+        horario: "09:00 a 14:00 hs (Exclusivo B2B)",
+        servicios: "Traducción simultánea, coffee break, secretaría comercial"
+      },
+      'sector-litio': {
+        title: "Pabellón Litio, Minería & Sol",
+        desc: "Espacio de exhibición para las principales productoras de carbonato de litio, parques solares fotovoltaicos y empresas metalmecánicas proveedoras.",
+        capacidad: "50 stands de gran porte",
+        horario: "09:00 a 23:00 hs continuo",
+        servicios: "Demostraciones tecnológicas, simuladores de extracción"
+      },
+      'sector-agro': {
+        title: "Pabellón Agroindustria & Alimentos",
+        desc: "Muestra de ingenios azucareros, tabacaleras, cooperativas de legumbres, productores citrícolas y maquinaria agrícola de última generación.",
+        capacidad: "45 stands corporativos",
+        horario: "09:00 a 23:00 hs continuo",
+        servicios: "Degustaciones guiadas, rondas con supermercadistas"
+      },
+      'sector-artesanos': {
+        title: "Carpa de Artesanías de Jujuy",
+        desc: "Espacio cultural donde más de 120 artesanos y artesanas de la Puna, Quebrada, Valles y Yungas exponen textiles de vicuña, orfebrería y cerámica.",
+        capacidad: "120 puestos individuales",
+        horario: "16:00 a 23:00 hs (Segmento vespertino)",
+        servicios: "Venta directa al público, cobro con medios digitales"
+      },
+      'sector-escenario': {
+        title: "Escenario Central de Espectáculos",
+        desc: "Infraestructura escénica monumental con sonido envolvente y pantallas LED gigantes para el festival artístico nocturno y las ceremonias feriales.",
+        capacidad: "Área abierta para 15.000 espectadores",
+        horario: "19:00 a 23:30 hs",
+        servicios: "Zona para prensa, primeros auxilios, control de seguridad"
+      },
+      'sector-gastro': {
+        title: "Patio Gastronómico & Bodegas",
+        desc: "Corredor gastronómico al aire libre con foodtrucks de comida andina, carpas de empanadas jujeñas y degustación de vinos de extrema altura de la Quebrada.",
+        capacidad: "2.000 personas en mesas comunes",
+        horario: "12:00 a 15:00 hs y 18:00 a 00:00 hs",
+        servicios: "Puntos de hidratación, gestión de residuos reciclables"
+      }
+    };
+
+    function showSectorInfo(sectorKey) {
+      const data = sectorData[sectorKey];
+      if (!data) return;
+
+      document.getElementById('sector-title').innerText = data.title;
+      document.getElementById('sector-desc').innerText = data.desc;
+      
+      const detailCard = document.getElementById('sector-detail-card');
+      detailCard.classList.add('border-brand-aqua/50');
+      setTimeout(() => detailCard.classList.remove('border-brand-aqua/50'), 400);
+    }
+
+    // Módulo de Acreditación Digital: Generador de QR
+    let qrcodeInstance = null;
+
+    function renderQRCode(text) {
+      const container = document.getElementById('qrcode-container');
+      container.innerHTML = '';
+      qrcodeInstance = new QRCode(container, {
+        text: text,
+        width: 150,
+        height: 150,
+        colorDark: "#070D1E",
+        colorLight: "#FFFFFF",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    }
+
+    // Inicializar QR por defecto
+    renderQRCode("EXPOJUY-2026-PASE-VISITANTE-001");
+
+    function generateDigitalPass(event) {
+      event.preventDefault();
+      const name = document.getElementById('pass-name').value.trim() || 'Visitante Oficial';
+      const email = document.getElementById('pass-email').value.trim() || 'contacto@expojuy.com';
+      const type = document.getElementById('pass-type').value;
+
+      // Actualizar tarjeta visual
+      document.getElementById('badge-display-name').innerText = name;
+      document.getElementById('badge-display-type').innerText = type;
+
+      // Generar nuevo payload en el QR
+      const passPayload = `EXPOJUY2026|TITULAR:${name}|EMAIL:${email}|TIPO:${type}|TIMESTAMP:${Date.now()}`;
+      renderQRCode(passPayload);
+
+      // Efecto visual de confirmación
+      const badgeCard = document.getElementById('badge-card');
+      badgeCard.classList.add('scale-105', 'border-brand-aqua');
+      setTimeout(() => badgeCard.classList.remove('scale-105', 'border-brand-aqua'), 500);
+
+      alert(`¡Pase Digital emitido con éxito para ${name}! Podés descargarlo o presentarlo directamente en el pórtico de entrada.`);
+    }
+  </script>
+</body>
+</html>
