@@ -1,58 +1,58 @@
-export interface NavChildItem {
-  label: string;
-  href: string;
-}
-
-export interface NavSubItem {
-  label: string;
-  href: string;
-  children?: NavChildItem[];
-}
-
-export interface NavItem {
-  label: string;
-  href?: string;
-  subItems?: NavSubItem[];
-}
+import { NavItem } from "@/types/navigation";
 
 export const navigationConfig: NavItem[] = [
   {
     label: "Descubrir ExpoJuy",
-    href: "/descubrir",
+    href: "#",
     subItems: [
-      { label: "Sobre la Expo", href: "/descubrir/sobre-la-expo" },
-      { label: "Edición 2026", href: "/descubrir/edicion-2026" },
-      { label: "Pilares Estratégicos", href: "/descubrir/pilares" },
-      { label: "Autoridades & Comité", href: "/descubrir/autoridades" },
+      { label: "Sobre ExpoJuy", href: "/about-us" },
+      { label: "Impacto Sostenible", href: "/our-sustainable-impact" },
+      { label: "Prensa y Noticias", href: "/media-library" },
+      { label: "Testimonios", href: "/client-stories" },
     ],
   },
   {
     label: "Exponer en ExpoJuy",
-    href: "/exponer",
+    href: "#",
     subItems: [
-      { label: "Reservar Stand", href: "/exponer/reservar-stand" },
-      { label: "Beneficios de Exponer", href: "/exponer/beneficios" },
-      { label: "Reglamento General", href: "/exponer/reglamento" },
-      { label: "Plano del Predio", href: "/exponer/plano" },
+      { label: "Información Expositores", href: "/plan-your-event" },
+      {
+        label: "Sectores y Pabellones",
+        href: "#",
+        children: [
+          { label: "Pabellones Industriales", href: "/venue-spaces/exhibition-halls" },
+          { label: "Salas y Foros B2B", href: "/venue-spaces/meeting-rooms" },
+          { label: "Escenarios y Espectáculos", href: "/venue-spaces/concert-venues" },
+        ],
+      },
+      { label: "Gastronomía Regional", href: "/event-catering" },
+      { label: "Stands y Servicios", href: "/event-packages" },
+      {
+        label: "Ronda de Negocios",
+        href: "/expo-advantage-program",
+        children: [
+          { label: "Hoteles y Alojamiento", href: "/expo-advantage-program/hotel-partners" },
+        ],
+      },
+      { label: "Plano del Predio", href: "/virtual-tour" },
     ],
   },
   {
     label: "Agenda y Eventos",
-    href: "/agenda",
+    href: "#",
     subItems: [
-      { label: "Cronograma de Actividades", href: "/agenda/cronograma" },
-      { label: "Rondas de Negocios (B2B)", href: "/agenda/rondas-de-negocios" },
-      { label: "Foros y Conferencias", href: "/agenda/conferencias" },
-      { label: "Festivales y Shows", href: "/agenda/festivales" },
+      { label: "Programa de Charlas", href: "/events-at-expo" },
+      { label: "Patio Gastronómico", href: "/feast-and-play#feast" },
+      { label: "Networking y Cultura", href: "/feast-and-play#play" },
     ],
   },
   {
     label: "Contacto",
-    href: "/contacto",
+    href: "/contact-us",
     subItems: [
-      { label: "Preguntas Frecuentes", href: "/contacto/faq" },
-      { label: "Cómo Llegar", href: "/contacto/ubicacion" },
-      { label: "Prensa y Acreditaciones", href: "/contacto/prensa" },
+      { label: "Contactarse", href: "/contact-us" },
+      { label: "Cómo Llegar", href: "/getting-here" },
+      { label: "Atención al Visitante", href: "/lost-and-found" },
     ],
   },
 ];

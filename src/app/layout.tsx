@@ -1,39 +1,22 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 
-const inter = Inter({
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
 });
 
-const jakarta = Plus_Jakarta_Sans({
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
-  variable: "--font-jakarta",
-  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "ExpoJuy 2026 | 17° Edición • Conectando Países - Creando Oportunidades",
-  description: "Sitio Web Oficial de la 17° Edición de la Exposición Multisectorial del NOA. 9 al 12 de Octubre de 2026, Ciudad Cultural, San Salvador de Jujuy.",
-  keywords: ["ExpoJuy", "ExpoJuy 2026", "Jujuy", "Litio", "Energía Solar", "Agroindustria", "Corredor Bioceánico", "Economía del Conocimiento"],
-  openGraph: {
-    title: "ExpoJuy 2026 | 17° Edición",
-    description: "Conectando países - creando oportunidades. 9 al 12 de Octubre de 2026, Ciudad Cultural.",
-    url: "https://expojuy.com.ar",
-    siteName: "ExpoJuy 2026",
-    images: [
-      {
-        url: "/images/expojuy26_horizontal.jpg",
-        width: 1200,
-        height: 630,
-        alt: "ExpoJuy 2026",
-      },
-    ],
-    locale: "es_AR",
-    type: "website",
-  },
+  title: "ExpoJuy - El Evento Multisectorial más Importante de la Región",
+  description: "Portal oficial de ExpoJuy 2026. Espacios de exhibición, rondas de negocios, agenda de conferencias y servicios para expositores y visitantes.",
 };
 
 export default function RootLayout({
@@ -42,9 +25,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="scroll-smooth">
-      <body className={`${inter.variable} ${jakarta.variable} antialiased bg-white text-slate-900`}>
-        {children}
+    <html
+      lang="es"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col bg-white text-gray-900">
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );

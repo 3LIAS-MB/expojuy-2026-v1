@@ -1,105 +1,215 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@font-face {
-  font-family: 'Ambit';
-  src: url('/fonts/Ambit-Light.otf') format('opentype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Ambit';
-  src: url('/fonts/Ambit-Regular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Ambit';
-  src: url('/fonts/Ambit-SemiBold.otf') format('opentype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Ambit';
-  src: url('/fonts/Ambit-Bold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,700;1,700&family=Orbitron:wght@800;900&display=swap');
+@import "leaflet/dist/leaflet.css";
+@import "tailwindcss";
 
 :root {
-  --background: #FFFFFF;
-  --foreground: #0F172A;
+  --background: #ffffff;
+  --foreground: #171717;
 }
 
-html {
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
 }
 
 body {
-  background-color: var(--background);
+  background: var(--background);
   color: var(--foreground);
-  font-family: 'Ambit', var(--font-inter), sans-serif;
-  overflow-x: hidden;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-section, footer {
-  scroll-snap-align: start;
-  scroll-snap-stop: normal;
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-.font-heading {
-  font-family: 'Ambit', var(--font-jakarta), sans-serif;
+@keyframes marqueeScrollReverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
 }
 
-.glass-nav {
-  background: rgba(7, 13, 30, 0.85);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+.animate-marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marqueeScroll 65s linear infinite;
 }
 
-.glass-card {
-  background: rgba(14, 23, 47, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+.animate-marquee-track-reverse {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marqueeScrollReverse 65s linear infinite;
 }
 
-.glass-card:hover {
-  border-color: rgba(0, 191, 216, 0.35);
+.animate-marquee-track:hover,
+.animate-marquee-track-reverse:hover {
+  animation-play-state: paused;
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, #00BFD8 0%, #A78BFA 50%, #7C3AED 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Fine Softened Black Dot & Tilted Grid Background Patterns */
+.tilted-grid-pattern {
+  background-image: 
+    linear-gradient(45deg, rgba(0, 0, 0, 0.35) 1px, transparent 1px),
+    linear-gradient(-45deg, rgba(0, 0, 0, 0.35) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-.badge-dual-active {
-  background: linear-gradient(135deg, #7C3AED 0%, #00BFD8 100%);
-  color: #FFFFFF;
-  box-shadow: 0 0 15px rgba(0, 191, 216, 0.4);
+.dot-pattern {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.35) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* White Dot Pattern for Dark/Black Backgrounds */
+.white-dot-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.35) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.35s ease-out forwards;
+/* FIFA / Digital Timer Typography */
+.font-timer {
+  font-family: 'Chakra Petch', 'Orbitron', monospace, sans-serif;
+  font-variant-numeric: tabular-nums;
 }
+
+/* FIFA 2026 Official Section s3 & Timer Styles */
+.section.s3 {
+  background-color: #2b00ff;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.section.s3 .wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.s3-1 {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 80px 0;
+}
+
+.s3-4 {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 100%;
+  z-index: 10;
+}
+
+.s3-2 {
+  margin: 0 auto;
+}
+
+.s3-2 .timer {
+  font-family: 'Chakra Petch', 'Orbitron', monospace, sans-serif;
+  font-size: clamp(3.5rem, 9.5vw, 8.5rem);
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  user-select: none;
+  letter-spacing: -0.02em;
+}
+
+.s3-2 .timer-val {
+  text-align: center;
+  min-width: 1.4em;
+  position: relative;
+  flex: none;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.s3-2 .timer-val::after {
+  content: attr(title);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  font-size: 0.18em;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 0.85rem;
+}
+
+.s3-2 .timer-delimiter {
+  padding: 0 0.15em;
+  opacity: 0.8;
+  font-weight: 900;
+  margin-top: -0.15em;
+}
+
+.s3-3 {
+  text-transform: uppercase;
+  margin-top: 4.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  padding-top: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.s3-5,
+.s3-6 {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.s3-5 {
+  top: 0;
+  height: 200px;
+}
+
+.s3-6 {
+  bottom: 0;
+  height: 200px;
+}
+
+.s3-5-1,
+.s3-6-1 {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  background-color: #2b00ff;
+  transition: height 0.1s linear;
+}
+
+.s3-5-1 {
+  top: 0;
+}
+
+.s3-6-1 {
+  bottom: 0;
+}
+
+
+
 
