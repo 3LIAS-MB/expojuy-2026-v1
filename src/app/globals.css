@@ -40,7 +40,6 @@
 }
 
 html {
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
 
@@ -49,11 +48,6 @@ body {
   color: var(--foreground);
   font-family: 'Ambit', var(--font-inter), sans-serif;
   overflow-x: hidden;
-}
-
-section, footer {
-  scroll-snap-align: start;
-  scroll-snap-stop: normal;
 }
 
 .font-heading {
