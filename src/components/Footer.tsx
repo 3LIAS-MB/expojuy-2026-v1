@@ -1,5 +1,13 @@
 import Image from 'next/image';
-import { Instagram, Facebook, Youtube, Linkedin } from 'lucide-react';
+
+function SocialMark({ className, children }: { className?: string; children: React.ReactNode }) {
+  return <span className={className} aria-hidden>{children}</span>;
+}
+
+const Instagram = ({ className }: { className?: string }) => <SocialMark className={className}>IG</SocialMark>;
+const Facebook = ({ className }: { className?: string }) => <SocialMark className={className}>FB</SocialMark>;
+const Youtube = ({ className }: { className?: string }) => <SocialMark className={className}>YT</SocialMark>;
+const Linkedin = ({ className }: { className?: string }) => <SocialMark className={className}>IN</SocialMark>;
 
 export default function Footer() {
   return (

@@ -105,6 +105,8 @@ export function CountdownSection() {
   const isInView = useInView(sectionRef, { amount: 0.2, once: false });
 
   useEffect(() => {
+    // This legacy section gates time-dependent output until hydration is complete.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     const targetDate = new Date("2026-10-09T09:00:00").getTime();
 

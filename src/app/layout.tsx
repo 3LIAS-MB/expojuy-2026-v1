@@ -1,39 +1,28 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const ambit = localFont({
+  src: [
+    { path: "../../public/fonts/Ambit-Light.otf", weight: "300", style: "normal" },
+    { path: "../../public/fonts/Ambit-Regular.otf", weight: "400", style: "normal" },
+    { path: "../../public/fonts/Ambit-SemiBold.otf", weight: "600", style: "normal" },
+    { path: "../../public/fonts/Ambit-Bold.otf", weight: "700", style: "normal" },
+  ],
+  variable: "--font-ambit",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "ExpoJuy - El Evento Multisectorial más Importante de la Región",
-  description: "Portal oficial de ExpoJuy 2026. Espacios de exhibición, rondas de negocios, agenda de conferencias y servicios para expositores y visitantes.",
+  title: "ExpoJuy 2026 | El futuro se encuentra en Jujuy",
+  description:
+    "Prototipo de ExpoJuy 2026, encuentro multisectorial de industria, innovación, cultura y oportunidades en Jujuy.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col bg-white text-gray-900">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
-      </body>
+    <html lang="es" className={ambit.variable}>
+      <body>{children}</body>
     </html>
   );
 }

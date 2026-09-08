@@ -1,215 +1,323 @@
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,700;1,700&family=Orbitron:wght@800;900&display=swap');
-@import "leaflet/dist/leaflet.css";
 @import "tailwindcss";
+@import "tw-animate-css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f8fc;
+  --foreground: #0b123b;
+  --card: #ffffff;
+  --card-foreground: #0b123b;
+  --popover: #ffffff;
+  --popover-foreground: #0b123b;
+  --primary: #6424dc;
+  --primary-foreground: #ffffff;
+  --secondary: #eef0f8;
+  --secondary-foreground: #0b123b;
+  --muted: #eef0f8;
+  --muted-foreground: #646a85;
+  --accent: #e8e8ff;
+  --accent-foreground: #4920ad;
+  --destructive: #c83349;
+  --border: #dfe3ef;
+  --input: #dfe3ef;
+  --ring: #7f08d5;
+  --radius: 0.625rem;
+  --expo-ink: #0b123b;
+  --expo-violet: #6424dc;
+  --expo-purple: #7f08d5;
+  --expo-lavender: #ac7ff0;
+  --expo-cyan: #19b9ca;
+  --expo-sun: #f4c64c;
+  --expo-paper: #f7f8fc;
+  --header-height: 4.75rem;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: var(--font-ambit);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--expo-paper);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  overflow-x: clip;
+  background: var(--expo-paper);
+  color: var(--expo-ink);
+  font-family: var(--font-ambit), Arial, sans-serif;
+  text-rendering: optimizeLegibility;
 }
 
-@keyframes marqueeScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+button,
+a,
+input {
+  font: inherit;
 }
 
-@keyframes marqueeScrollReverse {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-.animate-marquee-track {
-  display: flex;
-  align-items: center;
-  width: max-content;
-  animation: marqueeScroll 65s linear infinite;
+::selection {
+  background: var(--expo-sun);
+  color: var(--expo-ink);
 }
 
-.animate-marquee-track-reverse {
-  display: flex;
-  align-items: center;
-  width: max-content;
-  animation: marqueeScrollReverse 65s linear infinite;
+:focus-visible {
+  outline: 3px solid var(--expo-cyan);
+  outline-offset: 4px;
 }
 
-.animate-marquee-track:hover,
-.animate-marquee-track-reverse:hover {
-  animation-play-state: paused;
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  transform: translateY(-150%);
+  border-radius: 0.4rem;
+  background: white;
+  color: var(--expo-ink);
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+  transition: transform 180ms ease;
 }
 
-/* Fine Softened Black Dot & Tilted Grid Background Patterns */
-.tilted-grid-pattern {
-  background-image: 
-    linear-gradient(45deg, rgba(0, 0, 0, 0.35) 1px, transparent 1px),
-    linear-gradient(-45deg, rgba(0, 0, 0, 0.35) 1px, transparent 1px);
-  background-size: 24px 24px;
+.skip-link:focus {
+  transform: translateY(0);
 }
 
-.dot-pattern {
-  background-image: radial-gradient(rgba(0, 0, 0, 0.35) 1px, transparent 1px);
-  background-size: 24px 24px;
+.eyebrow {
+  color: var(--expo-violet);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
 }
 
-/* White Dot Pattern for Dark/Black Backgrounds */
-.white-dot-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.35) 1px, transparent 1px);
-  background-size: 24px 24px;
+.hero-shade {
+  background:
+    linear-gradient(90deg, rgba(4, 8, 25, 0.82) 0%, rgba(4, 8, 25, 0.54) 43%, rgba(4, 8, 25, 0.12) 75%),
+    linear-gradient(180deg, rgba(4, 8, 25, 0.36) 0%, transparent 28%, rgba(4, 8, 25, 0.38) 100%);
 }
 
-/* FIFA / Digital Timer Typography */
-.font-timer {
-  font-family: 'Chakra Petch', 'Orbitron', monospace, sans-serif;
-  font-variant-numeric: tabular-nums;
+.hero-vignette {
+  background: radial-gradient(circle at 72% 46%, transparent 0%, transparent 35%, rgba(5, 8, 24, 0.3) 100%);
 }
 
-/* FIFA 2026 Official Section s3 & Timer Styles */
-.section.s3 {
-  background-color: #2b00ff;
+.logo-mark {
+  position: relative;
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.9rem;
+  flex: 0 0 auto;
+}
+
+.logo-mark > i {
+  position: absolute;
+  display: block;
+}
+
+.site-header[data-theme="light"] .brand-wordmark {
+  color: var(--expo-ink);
+}
+
+.site-header [data-slot="button"] {
   color: #ffffff;
-  position: relative;
-  overflow: hidden;
+}
+
+.logo-piece-a {
+  top: 0;
+  left: 0;
+  width: 0.68rem;
+  height: 0.42rem;
+  background: var(--expo-cyan);
+}
+
+.logo-piece-b {
+  top: 0;
+  right: 0;
+  width: 0.68rem;
+  height: 1rem;
+  background: linear-gradient(180deg, #8352ef, var(--expo-violet));
+}
+
+.logo-piece-c {
+  top: 0.57rem;
+  left: 0;
+  width: 0.68rem;
+  height: 0.52rem;
+  background: var(--expo-purple);
+}
+
+.logo-piece-d {
+  right: 0;
+  bottom: 0;
+  width: 1.6rem;
+  height: 0.7rem;
+  border: 0.42rem solid var(--expo-lavender);
+  border-top: 0;
+  border-radius: 0 0 1rem 1rem;
+}
+
+.intro-logo .logo-mark {
+  width: min(26vw, 11rem);
+  height: min(31vw, 13rem);
+}
+
+.intro-logo .logo-piece-a,
+.intro-logo .logo-piece-c {
+  width: 42%;
+  height: 20%;
+}
+
+.intro-logo .logo-piece-b {
+  width: 42%;
+  height: 50%;
+}
+
+.intro-logo .logo-piece-c {
+  top: 28%;
+}
+
+.intro-logo .logo-piece-d {
   width: 100%;
+  height: 37%;
+  border-width: min(6vw, 2.7rem);
+  border-top: 0;
+  border-radius: 0 0 9rem 9rem;
 }
 
-.section.s3 .wrapper {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.s3-1 {
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding: 80px 0;
-}
-
-.s3-4 {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  width: 100%;
-  z-index: 10;
-}
-
-.s3-2 {
-  margin: 0 auto;
-}
-
-.s3-2 .timer {
-  font-family: 'Chakra Petch', 'Orbitron', monospace, sans-serif;
-  font-size: clamp(3.5rem, 9.5vw, 8.5rem);
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
+.landscape-u {
+  display: block;
+  color: transparent;
+  background: url("/images/evento/expo-hero-banner.png") center 58% / cover no-repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+  font-size: clamp(22rem, 46vw, 44rem);
+  font-weight: 700;
+  line-height: 0.65;
+  letter-spacing: -0.13em;
+  filter: saturate(1.08);
   user-select: none;
-  letter-spacing: -0.02em;
 }
 
-.s3-2 .timer-val {
-  text-align: center;
-  min-width: 1.4em;
-  position: relative;
-  flex: none;
-  display: inline-flex;
-  flex-direction: column;
+.about-track {
+  display: flex;
+  width: max-content;
+}
+
+.about-panel {
+  width: 100vw;
+  min-height: 100dvh;
+  flex: 0 0 100vw;
+}
+
+.world-grid > article:nth-child(even) {
+  transform: translateY(3.5rem);
+}
+
+.chapter-marker {
+  display: flex;
   align-items: center;
+  gap: 1rem;
+  color: var(--expo-violet);
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
-.s3-2 .timer-val::after {
-  content: attr(title);
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  white-space: nowrap;
-  transform: translateX(-50%);
-  font-size: 0.18em;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.85);
-  margin-top: 0.85rem;
+.chapter-marker i {
+  display: block;
+  width: 2.65rem;
+  height: 1px;
+  background: var(--expo-violet);
 }
 
-.s3-2 .timer-delimiter {
-  padding: 0 0.15em;
-  opacity: 0.8;
-  font-weight: 900;
-  margin-top: -0.15em;
+.final-landscape-u {
+  font-size: clamp(24rem, 48vw, 48rem);
 }
 
-.s3-3 {
-  text-transform: uppercase;
-  margin-top: 4.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.25);
-  padding-top: 1.5rem;
-  width: 100%;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+.exhibitor-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--expo-violet) #e8e9f1;
 }
 
-.s3-5,
-.s3-6 {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  z-index: 5;
-  pointer-events: none;
+@media (max-width: 767px) {
+  :root {
+    --header-height: 4.25rem;
+  }
+
+  .about-track {
+    display: block;
+    width: 100%;
+  }
+
+  .about-panel {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .landscape-u {
+    font-size: clamp(15rem, 76vw, 29rem);
+  }
+
+  .world-grid > article:nth-child(even) {
+    transform: none;
+  }
 }
 
-.s3-5 {
-  top: 0;
-  height: 200px;
+@media (max-width: 640px) {
+  .hero-shade {
+    background:
+      linear-gradient(90deg, rgba(4, 8, 25, 0.82), rgba(4, 8, 25, 0.25)),
+      linear-gradient(180deg, rgba(4, 8, 25, 0.22) 0%, rgba(4, 8, 25, 0.7) 100%);
+  }
+
+  .intro-logo .logo-mark {
+    width: 8rem;
+    height: 9.7rem;
+  }
 }
 
-.s3-6 {
-  bottom: 0;
-  height: 200px;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
 }
-
-.s3-5-1,
-.s3-6-1 {
-  width: 100%;
-  position: absolute;
-  left: 0;
-  background-color: #2b00ff;
-  transition: height 0.1s linear;
-}
-
-.s3-5-1 {
-  top: 0;
-}
-
-.s3-6-1 {
-  bottom: 0;
-}
-
-
-
-

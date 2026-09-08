@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { ArrowRight, Award, Globe2, Building2 } from 'lucide-react';
+import { ArrowRight, Award } from 'lucide-react';
 
 export default function AboutSection() {
   return (
