@@ -8,7 +8,6 @@ import { Menu, X, Ticket } from 'lucide-react';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Bloquear el scroll del fondo cuando el menú móvil está abierto a pantalla completa
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -21,12 +20,12 @@ export default function Navbar() {
   }, [isOpen]);
 
   const links = [
-    { name: 'INICIO', href: '#hero' },
-    { name: 'EL EVENTO', href: '#el-evento' },
-    { name: 'EXPOSITORES', href: '#expositores' },
-    { name: 'AGENDA', href: '#agenda' },
-    { name: 'MAPA DEL PREDIO', href: '#mapa-predio' },
-    { name: 'NOTICIAS', href: '#noticias' },
+    { name: 'INICIO', href: '/' },
+    { name: 'EL EVENTO', href: '/el-evento' },
+    { name: 'EXPOSITORES', href: '/expositores' },
+    { name: 'AGENDA', href: '/agenda' },
+    { name: 'MAPA DEL PREDIO', href: '/mapa-predio' },
+    { name: 'NOTICIAS', href: '/noticias' },
   ];
 
   return (
@@ -39,7 +38,7 @@ export default function Navbar() {
           
           {/* 1. Logotipo a la izquierda */}
           <Link
-            href="#hero"
+            href="/"
             className="flex items-center gap-3 group focus:outline-none"
             aria-label="Ir al inicio de ExpoJuy 2026"
           >
@@ -53,7 +52,7 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* 2. Navegación en escritorio */}
+          {/* 2. Navegación en escritorio en mayúsculas hacia subpáginas */}
           <nav aria-label="Navegación principal" className="hidden lg:flex items-center gap-1 xl:gap-2">
             {links.map((link) => (
               <Link
@@ -66,10 +65,10 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* 3. CTA cuadrado en escritorio */}
+          {/* 3. CTA hacia la página de entradas */}
           <div className="hidden lg:flex items-center">
             <Link
-              href="#entradas"
+              href="/entradas"
               className="inline-flex items-center gap-2 px-6 py-2.5 rounded-none font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-950 bg-cyan-400 hover:bg-cyan-300 transition-colors shadow-sm"
             >
               <Ticket className="w-4 h-4" />
@@ -90,14 +89,14 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Menú Móvil Fullscreen (Pantalla Completa) */}
+      {/* Menú Móvil Fullscreen */}
       {isOpen && (
         <div className="fixed inset-0 z-50 lg:hidden bg-slate-950 flex flex-col justify-between animate-fade-in">
           
-          {/* Barra superior dentro del menú móvil */}
+          {/* Barra superior del menú móvil */}
           <div className="h-20 px-4 sm:px-6 flex items-center justify-between border-b border-white/10">
             <Link
-              href="#hero"
+              href="/"
               onClick={() => setIsOpen(false)}
               className="flex items-center gap-3"
             >
@@ -121,7 +120,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Enlaces centrados y limpios */}
+          {/* Enlaces a subpáginas */}
           <nav aria-label="Navegación móvil a pantalla completa" className="px-6 py-8 flex flex-col justify-center my-auto space-y-1">
             {links.map((link) => (
               <Link
@@ -136,10 +135,10 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Pie del menú móvil con CTA */}
+          {/* Pie del menú móvil */}
           <div className="px-6 pb-10 pt-4 border-t border-white/10 flex flex-col gap-4">
             <Link
-              href="#entradas"
+              href="/entradas"
               onClick={() => setIsOpen(false)}
               className="flex items-center justify-center gap-2.5 w-full py-4 rounded-none font-bold text-sm uppercase tracking-wider text-slate-950 bg-cyan-400 hover:bg-cyan-300 transition-colors shadow-lg"
             >

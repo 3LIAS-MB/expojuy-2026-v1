@@ -49,17 +49,17 @@ export default function Hero() {
 
         {/* Botones cuadrados y simples estilo Confab */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 w-full sm:w-auto">
-          {/* Botón 1: Primario cuadrado */}
+          {/* Botón 1: Primario hacia /entradas */}
           <Link
-            href="#entradas"
+            href="/entradas"
             className="w-full sm:w-auto px-8 py-3.5 rounded-none font-bold text-sm md:text-base uppercase tracking-wider text-slate-950 bg-cyan-400 hover:bg-cyan-300 transition-colors shadow-md text-center"
           >
             Comprar Entradas
           </Link>
 
-          {/* Botón 2: Secundario cuadrado */}
+          {/* Botón 2: Secundario hacia /mapa-predio */}
           <Link
-            href="#mapa-predio"
+            href="/mapa-predio"
             className="w-full sm:w-auto px-8 py-3.5 rounded-none font-bold text-sm md:text-base uppercase tracking-wider text-white bg-slate-900/80 hover:bg-slate-800 border-2 border-white/40 hover:border-white transition-colors text-center"
           >
             Ver Mapa del Predio
@@ -68,7 +68,7 @@ export default function Hero() {
 
       </div>
 
-      {/* 3. Indicador de scroll inferior perfectamente contenido en el viewport */}
+      {/* 3. Indicador de scroll inferior hacia la primera sección del Home */}
       <Link
         href="#el-evento"
         className="relative z-10 mt-auto pt-4 flex flex-col items-center gap-1 text-slate-400 hover:text-white transition-colors group cursor-pointer"
