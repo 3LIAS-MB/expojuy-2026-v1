@@ -7,6 +7,7 @@ import { ExhibitorsSection } from "@/components/prototype/exhibitors-section";
 import { HeroSection } from "@/components/prototype/hero-section";
 import { SiteHeader } from "@/components/prototype/site-header";
 
+import FaqSection from "@/components/FaqSection";
 import { Footer } from "@/components/layout/Footer";
 
 export default function Home() {
@@ -45,6 +46,7 @@ export default function Home() {
         <HeroSection introFinished={introFinished} />
         <AboutExperience />
         <ExhibitorsSection />
+        <FaqSection />
       </main>
 
       <Footer />

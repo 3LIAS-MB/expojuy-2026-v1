@@ -107,6 +107,9 @@ export function SiteHeader({ onReplayIntro }: SiteHeaderProps) {
           <a className="text-sm font-semibold hover:opacity-70 transition-opacity" href="#expositores">
             Expositores
           </a>
+          <a className="text-sm font-semibold hover:opacity-70 transition-opacity" href="#faq">
+            Preguntas Frecuentes
+          </a>
           <Button
             asChild
             className="h-10 rounded-md bg-[#6b20df] px-5 text-white shadow-[0_8px_24px_rgba(80,15,175,.25)] hover:bg-[#5917c2]"

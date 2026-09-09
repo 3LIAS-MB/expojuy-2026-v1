@@ -130,6 +130,11 @@ export function Footer() {
                   Directorio de Expositores
                 </a>
               </li>
+              <li>
+                <a href="#faq" className="hover:text-white transition-colors">
+                  Preguntas Frecuentes (FAQ)
+                </a>
+              </li>
             </ul>
           </div>
 
