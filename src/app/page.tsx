@@ -1,16 +1,23 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import BrandingIntro from "@/components/BrandingIntro";
 import { AboutExperience } from "@/components/prototype/about-experience";
 import { ExhibitorsSection } from "@/components/prototype/exhibitors-section";
 import { HeroSection } from "@/components/prototype/hero-section";
 import { SiteHeader } from "@/components/prototype/site-header";
+import { SponsorsMarquee } from "@/components/prototype/sponsors-marquee";
 import { NewsSection } from "@/components/news/NewsSection";
+import { LocationSection } from "@/components/prototype/location-section";
 
 export default function Home() {
+  const [mounted, setMounted] = useState(false);
   const [isPlayingIntro, setIsPlayingIntro] = useState(true);
   const [introFinished, setIntroFinished] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleIntroComplete = useCallback(() => {
     setIsPlayingIntro(false);
@@ -24,11 +31,13 @@ export default function Home() {
 
   return (
     <>
-      {/* ANIMACIÓN CINEMÁTICA DE ENTRADA DE MARCA (BRANDING INTRO) */}
-      <BrandingIntro
-        isPlaying={isPlayingIntro}
-        onAnimationComplete={handleIntroComplete}
-      />
+      {/* ANIMACIÓN CINEMÁTICA DE ENTRADA (MONTADA EN CLIENTE PARA EVITAR ERRORES DE HIDRATACIÓN) */}
+      {mounted && (
+        <BrandingIntro
+          isPlaying={isPlayingIntro}
+          onAnimationComplete={handleIntroComplete}
+        />
+      )}
 
       <a className="skip-link" href="#contenido">
         Ir al contenido
@@ -43,8 +52,10 @@ export default function Home() {
       <main id="contenido">
         <HeroSection introFinished={introFinished} />
         <AboutExperience />
+        <SponsorsMarquee />
         <ExhibitorsSection />
         <NewsSection />
+        <LocationSection />
       </main>
     </>
   );

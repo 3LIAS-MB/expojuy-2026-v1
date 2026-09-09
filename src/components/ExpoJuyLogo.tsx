@@ -7,6 +7,8 @@ interface ExpoJuyLogoProps {
   assemble?: boolean;
 }
 
+const U_PATH_D = "M 0 595 H 688 V 613 C 688 930, 437 959, 344 959 C 251 959, 0 930, 0 613 V 595 Z M 203 595 H 485 C 485 766, 377 779, 344 779 C 311 779, 203 766, 203 595 Z";
+
 export default function ExpoJuyLogo({ className = 'w-10 h-14', assemble = false }: ExpoJuyLogoProps) {
   if (!assemble) {
     return (
@@ -31,21 +33,7 @@ export default function ExpoJuyLogo({ className = 'w-10 h-14', assemble = false 
         <path
           fill="#BB8CFF"
           fillRule="evenodd"
-          d="
-            M 0 595
-            H 688
-            V 613
-            C 688 930, 437 959, 344 959
-            C 251 959, 0 930, 0 613
-            V 595
-            Z
-
-            M 203 595
-            H 485
-            C 485 766, 377 779, 344 779
-            C 311 779, 203 766, 203 595
-            Z
-          "
+          d={U_PATH_D}
         />
       </svg>
     );
@@ -100,21 +88,7 @@ export default function ExpoJuyLogo({ className = 'w-10 h-14', assemble = false 
       <motion.path
         fill="#BB8CFF"
         fillRule="evenodd"
-        d="
-          M 0 595
-          H 688
-          V 613
-          C 688 930, 437 959, 344 959
-          C 251 959, 0 930, 0 613
-          V 595
-          Z
-
-          M 203 595
-          H 485
-          C 485 766, 377 779, 344 779
-          C 311 779, 203 766, 203 595
-          Z
-        "
+        d={U_PATH_D}
         initial={{ y: 300, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.85, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
