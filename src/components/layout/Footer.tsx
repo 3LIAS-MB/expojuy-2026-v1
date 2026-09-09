@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { 
   Mail, 
   MapPin, 
@@ -24,8 +25,13 @@ export function Footer() {
           {/* Brand Info (5 cols) */}
           <div className="lg:col-span-5 flex flex-col space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded bg-[#2b00ff] flex items-center justify-center font-black text-xl text-white shadow-lg">
-                EJ
+              <div className="relative h-11 w-11 shrink-0">
+                <Image
+                  src="/images/logo/expojuy26_isologotipo.png"
+                  alt="ExpoJuy 2026 Isologotipo"
+                  fill
+                  className="object-contain"
+                />
               </div>
               <div className="flex flex-col">
                 <span className="font-black text-2xl tracking-tight text-white leading-none">
