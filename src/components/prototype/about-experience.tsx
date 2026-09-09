@@ -31,7 +31,9 @@ export function AboutExperience() {
   const trackRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLSpanElement>(null);
   const counterRef = useRef<HTMLSpanElement>(null);
-  const mountainRef = useRef<HTMLImageElement>(null);
+  const mountainFrontRef = useRef<HTMLImageElement>(null);
+  const mountainMidRef = useRef<HTMLImageElement>(null);
+  const mountainBackRef = useRef<HTMLImageElement>(null);
   const stepRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const triggerRef = useRef<ScrollTrigger | null>(null);
 
@@ -39,7 +41,6 @@ export function AboutExperience() {
     (_context, contextSafe) => {
       const section = sectionRef.current;
       const track = trackRef.current;
-      const mountain = mountainRef.current;
       if (!section || !track || !contextSafe) return;
       const media = gsap.matchMedia();
       const panels = Array.from(
@@ -53,9 +54,29 @@ export function AboutExperience() {
 
         const distance = () => (panels.length - 1) * window.innerWidth;
         const updateMountain = (progress: number) => {
-          if (!mountain || reducedMotion) return;
-          const amount = window.innerWidth >= 1024 ? 42 : 28;
-          mountain.style.transform = `translate3d(-50%, ${amount * (1 - 2 * progress)}px, 0) scale(1.1)`;
+          if (reducedMotion) return;
+          const isLg = window.innerWidth >= 1024;
+
+          // Capa 3: Cerro 03 (el cerro más lejano al fondo - mayor desplazamiento parallax)
+          if (mountainBackRef.current) {
+            const shiftX = (0.5 - progress) * (isLg ? 120 : 65);
+            const shiftY = (1 - 2 * progress) * (isLg ? 14 : 8);
+            mountainBackRef.current.style.transform = `translate3d(calc(-50% + ${shiftX}px), ${shiftY}px, 0) scale(1.08)`;
+          }
+
+          // Capa 2: Cerro 02 (capa intermedia)
+          if (mountainMidRef.current) {
+            const shiftX = (0.5 - progress) * (isLg ? 60 : 32);
+            const shiftY = (1 - 2 * progress) * (isLg ? 8 : 4);
+            mountainMidRef.current.style.transform = `translate3d(calc(-50% + ${shiftX}px), ${shiftY}px, 0) scale(1.05)`;
+          }
+
+          // Capa 1: Cerro 01 (parte más baja o cercana en primer plano)
+          if (mountainFrontRef.current) {
+            const shiftX = (0.5 - progress) * (isLg ? 20 : 10);
+            const shiftY = (1 - 2 * progress) * 2;
+            mountainFrontRef.current.style.transform = `translate3d(calc(-50% + ${shiftX}px), ${shiftY}px, 0) scale(1.02)`;
+          }
         };
         updateMountain(0);
         const tween = gsap.to(track, {
@@ -133,7 +154,9 @@ export function AboutExperience() {
         });
 
         return () => {
-          mountain?.style.removeProperty("transform");
+          mountainBackRef.current?.style.removeProperty("transform");
+          mountainMidRef.current?.style.removeProperty("transform");
+          mountainFrontRef.current?.style.removeProperty("transform");
           triggerRef.current = null;
           delete section.dataset.horizontal;
         };
@@ -142,24 +165,73 @@ export function AboutExperience() {
       media.add({ mobile: "(max-width: 767px)", reduce: "(prefers-reduced-motion: reduce)" }, (context) => {
         if (!context.conditions?.mobile) return;
         const reducedMotion = context.conditions.reduce;
-        if (mountain && !reducedMotion) {
-          gsap.fromTo(
-            mountain,
-            { y: 12, scale: 1.08 },
-            {
-              y: -12,
-              scale: 1.08,
-              ease: "none",
-              force3D: true,
-              scrollTrigger: {
-                trigger: section,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true,
-                invalidateOnRefresh: true,
+        if (!reducedMotion) {
+          const back = mountainBackRef.current;
+          const mid = mountainMidRef.current;
+          const front = mountainFrontRef.current;
+
+          if (back) {
+            gsap.fromTo(
+              back,
+              { x: 20, y: 10, scale: 1.06 },
+              {
+                x: -20,
+                y: -10,
+                scale: 1.06,
+                ease: "none",
+                force3D: true,
+                scrollTrigger: {
+                  trigger: section,
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: true,
+                  invalidateOnRefresh: true,
+                },
               },
-            },
-          );
+            );
+          }
+
+          if (mid) {
+            gsap.fromTo(
+              mid,
+              { x: 10, y: 5, scale: 1.04 },
+              {
+                x: -10,
+                y: -5,
+                scale: 1.04,
+                ease: "none",
+                force3D: true,
+                scrollTrigger: {
+                  trigger: section,
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: true,
+                  invalidateOnRefresh: true,
+                },
+              },
+            );
+          }
+
+          if (front) {
+            gsap.fromTo(
+              front,
+              { x: 4, y: 0, scale: 1.02 },
+              {
+                x: -4,
+                y: 0,
+                scale: 1.02,
+                ease: "none",
+                force3D: true,
+                scrollTrigger: {
+                  trigger: section,
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: true,
+                  invalidateOnRefresh: true,
+                },
+              },
+            );
+          }
         }
 
         const enter = contextSafe((entries: IntersectionObserverEntry[]) => {
@@ -218,12 +290,31 @@ export function AboutExperience() {
       className="relative overflow-hidden bg-white text-[#0e122b]"
     >
       <div aria-hidden className="about-mountain-parallax pointer-events-none select-none">
+        {/* Capa 3: Cerro 03 (el cerro más lejano en el fondo - mayor desplazamiento parallax) */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          ref={mountainRef}
-          src="/images/sobreexpojuy26/parallax-effect/1one.png"
+          ref={mountainBackRef}
+          src="/images/cerro/cerro_03.png"
           alt=""
-          className="about-mountain-layer"
+          className="about-mountain-layer about-mountain-layer--back"
+        />
+
+        {/* Capa 2: Cerro 02 (el cerro del medio) */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          ref={mountainMidRef}
+          src="/images/cerro/cerro_02.png"
+          alt=""
+          className="about-mountain-layer about-mountain-layer--mid"
+        />
+
+        {/* Capa 1: Cerro 01 (la parte más baja o cercana en primer plano) */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          ref={mountainFrontRef}
+          src="/images/cerro/cerro_01.png"
+          alt=""
+          className="about-mountain-layer about-mountain-layer--front"
         />
       </div>
       <div ref={trackRef} className="about-track relative z-10">
@@ -235,7 +326,7 @@ export function AboutExperience() {
           className="about-panel relative flex h-full flex-col justify-between border-r border-[#e5e7eb] px-6 pt-24 pb-28 sm:px-10 lg:px-16"
         >
           <div className="relative z-10 grid w-full max-w-7xl grid-cols-1 items-start gap-8 md:grid-cols-[1fr_auto]">
-            <div className="max-w-3xl">
+            <div className="about-glass-card max-w-2xl rounded-2xl p-7 sm:p-9">
               <div data-about-reveal className="chapter-marker">
                 <span>01</span>
                 <i />
@@ -247,18 +338,18 @@ export function AboutExperience() {
 
               <h2
                 data-about-reveal
-                className="mt-4 text-[clamp(3.8rem,5.5vw,6.4rem)] font-bold leading-[0.84] tracking-[-0.065em] text-[#0e122b]"
+                className="mt-4 text-[clamp(3.5rem,5vw,5.6rem)] font-bold leading-[0.86] tracking-[-0.065em] text-[#0e122b]"
               >
                 Sobre
                 <br />
-                <span className="text-[#6424dc]">ExpoJuy</span>
+                <span className="text-[#820CD0]">ExpoJuy</span>
                 <br />
-                <span className="text-[#6424dc]">2026</span>
+                <span className="text-[#820CD0]">2026</span>
               </h2>
 
               <p
                 data-about-reveal
-                className="mt-6 max-w-xl text-base leading-relaxed text-[#4b5275] lg:text-lg"
+                className="mt-6 max-w-xl text-base leading-relaxed text-[#1e243b] lg:text-lg"
               >
                 En su 17.ª edición, ExpoJuy reúne a empresas, emprendedores,
                 instituciones y delegaciones para mostrar el potencial
@@ -268,10 +359,10 @@ export function AboutExperience() {
               <a
                 href="#expositores"
                 data-about-reveal
-                className="mt-7 inline-flex items-center gap-3 text-sm font-bold text-[#6424dc] transition-opacity hover:opacity-80"
+                className="mt-7 inline-flex items-center gap-3 text-sm font-bold text-[#820CD0] transition-opacity hover:opacity-80"
               >
-                <span className="grid size-10 place-items-center rounded-full border border-[#6424dc]">
-                  <Play aria-hidden className="ml-0.5 size-3.5 fill-[#6424dc]" />
+                <span className="grid size-10 place-items-center rounded-full border border-[#820CD0]">
+                  <Play aria-hidden className="ml-0.5 size-3.5 fill-[#820CD0]" />
                 </span>
                 Descubrí la edición 2026
               </a>
@@ -280,20 +371,20 @@ export function AboutExperience() {
             {/* Right side vertical words */}
             <aside
               data-about-reveal
-              className="mr-6 hidden flex-col items-start gap-1 self-center justify-self-end text-[0.68rem] font-bold tracking-[0.2em] text-[#555d7e] uppercase md:flex"
+              className="about-glass-card mr-6 hidden flex-col items-start gap-1.5 self-center justify-self-end rounded-xl px-4 py-3.5 text-[0.72rem] font-bold tracking-[0.2em] text-[#0e122b] uppercase md:flex"
             >
               <span>Territorio</span>
               <span>Gente</span>
               <span>Producción</span>
               <span>Futuro</span>
-              <div className="mt-3 h-[1.5px] w-8 bg-[#6424dc]" />
+              <div className="mt-2.5 h-[2px] w-8 bg-[#6424dc]" />
             </aside>
           </div>
 
           {/* Bottom stats row in clean pill/card */}
           <div
             data-about-reveal
-            className="relative z-10 w-full max-w-3xl rounded-xl border border-gray-200/80 bg-white/95 px-6 py-4 shadow-sm backdrop-blur-sm"
+            className="about-glass-card relative z-10 w-full max-w-3xl rounded-xl px-6 py-4"
           >
             <dl className="grid grid-cols-2 gap-4 divide-y divide-gray-200/80 sm:grid-cols-4 sm:divide-y-0 sm:divide-x sm:divide-gray-200/80">
               {eventFacts.map((fact, idx) => (
@@ -301,7 +392,7 @@ export function AboutExperience() {
                   <dt className="text-lg font-bold tracking-tight text-[#0e122b] lg:text-2xl">
                     {fact.value}
                   </dt>
-                  <dd className="mt-1 text-xs font-semibold text-[#6b7280]">
+                  <dd className="mt-1 text-xs font-semibold text-[#475069]">
                     {fact.label}
                   </dd>
                 </div>
@@ -341,9 +432,10 @@ export function AboutExperience() {
                   <Image
                     src="/images/sobreexpojuy26/ac0ce3e5-8bdc-4bc7-8d96-3f2c356793a1.png"
                     alt="Jujuy"
-                    fill
-                    priority
-                    className="object-contain"
+                  fill
+                  priority
+                  sizes="(max-width: 1023px) 270px, 320px"
+                  className="object-contain"
                   />
                 </div>
 
@@ -355,16 +447,16 @@ export function AboutExperience() {
               </div>
 
               {/* Text column */}
-              <div className="max-w-lg">
+              <div className="about-glass-card max-w-lg rounded-2xl p-7 sm:p-9">
                 <h2
                   data-about-reveal
-                  className="text-[clamp(2.5rem,3.5vw,4.2rem)] font-bold leading-[0.96] tracking-[-0.05em] text-[#0e122b]"
+                  className="text-[clamp(2.3rem,3.2vw,3.8rem)] font-bold leading-[0.96] tracking-[-0.05em] text-[#0e122b]"
                 >
                   Jujuy conecta producción, conocimiento y mercados.
                 </h2>
                 <p
                   data-about-reveal
-                  className="mt-6 text-base leading-relaxed text-[#4b5275]"
+                  className="mt-6 text-base leading-relaxed text-[#1e243b]"
                 >
                   La Ciudad Cultural alberga una propuesta que vincula
                   emprendimientos locales, empresas, instituciones y visitantes
@@ -372,7 +464,7 @@ export function AboutExperience() {
                 </p>
                 <p
                   data-about-reveal
-                  className="mt-4 border-l-2 border-[#6424dc] pl-4 text-sm leading-relaxed text-[#596080]"
+                  className="mt-5 border-l-[3px] border-[#6424dc] pl-4 text-sm font-medium leading-relaxed text-[#111827]"
                 >
                   El Corredor Bioceánico le da a la feria una escala regional: la
                   producción jujeña dialoga con mercados, alianzas e inversión.
@@ -390,30 +482,32 @@ export function AboutExperience() {
           className="about-panel relative flex h-full flex-col justify-center border-r border-[#e5e7eb] px-6 pt-20 pb-32 sm:px-10 lg:px-16"
         >
           <div className="relative z-10 mx-auto w-full max-w-7xl pb-6">
-            <div data-about-reveal className="chapter-marker">
-              <span>03</span>
-              <i />
+            <div className="about-glass-card max-w-3xl rounded-2xl p-6 sm:p-7">
+              <div data-about-reveal className="chapter-marker">
+                <span>03</span>
+                <i />
+              </div>
+
+              <p data-about-reveal className="eyebrow mt-4">
+                CUATRO MUNDOS, UNA MISMA VISIÓN
+              </p>
+
+              <h2
+                data-about-reveal
+                className="mt-3 text-[clamp(2.3rem,3vw,3.5rem)] font-bold leading-[0.92] tracking-[-0.05em] text-[#0e122b]"
+              >
+                Una feria para producir, intercambiar y proyectar.
+              </h2>
+
+              <p
+                data-about-reveal
+                className="mt-3 max-w-2xl text-sm leading-relaxed text-[#1e243b] lg:text-base"
+              >
+                La programación combina muestra comercial e institucional,
+                conferencias, experiencias culturales y espacios para construir
+                relaciones de negocio.
+              </p>
             </div>
-
-            <p data-about-reveal className="eyebrow mt-4">
-              CUATRO MUNDOS, UNA MISMA VISIÓN
-            </p>
-
-            <h2
-              data-about-reveal
-              className="mt-3 text-[clamp(2.4rem,3.2vw,3.8rem)] font-bold leading-[0.92] tracking-[-0.05em] text-[#0e122b]"
-            >
-              Una feria para producir, intercambiar y proyectar.
-            </h2>
-
-            <p
-              data-about-reveal
-              className="mt-3 max-w-2xl text-sm leading-relaxed text-[#596080] lg:text-base"
-            >
-              La programación combina muestra comercial e institucional,
-              conferencias, experiencias culturales y espacios para construir
-              relaciones de negocio.
-            </p>
 
             {/* 2x4 Alternating Rhythm Grid (Photos & Content Cards) */}
             <div
@@ -439,7 +533,7 @@ export function AboutExperience() {
                   <h3 className="mt-2.5 text-base font-bold tracking-tight text-[#0e122b]">
                     Industria y energía
                   </h3>
-                  <p className="mt-1 text-xs leading-relaxed text-[#626987]">
+                  <p className="mt-1 text-xs leading-relaxed text-[#374151]">
                     Producción e infraestructura para transformar el territorio.
                   </p>
                   <ArrowRight className="mt-2.5 size-3.5 text-[#6424dc]" />
@@ -457,16 +551,16 @@ export function AboutExperience() {
 
                 {/* Col 4 Top: Card 2 */}
                 <div className="flex flex-col justify-center border-b border-[#dfe3ef] bg-white p-4">
-                  <span className="grid size-7 place-items-center rounded bg-[#19b9ca] text-white">
+                  <span className="grid size-7 place-items-center rounded bg-[#0b7c8a] text-white">
                     <Lightbulb className="size-3.5" />
                   </span>
                   <h3 className="mt-2.5 text-base font-bold tracking-tight text-[#0e122b]">
                     Innovación aplicada
                   </h3>
-                  <p className="mt-1 text-xs leading-relaxed text-[#626987]">
+                  <p className="mt-1 text-xs leading-relaxed text-[#374151]">
                     Talento y soluciones que impulsan nuevos proyectos.
                   </p>
-                  <ArrowRight className="mt-2.5 size-3.5 text-[#19b9ca]" />
+                  <ArrowRight className="mt-2.5 size-3.5 text-[#0b7c8a]" />
                 </div>
 
                 {/* Col 1 Bottom: Photo 3 */}
@@ -487,7 +581,7 @@ export function AboutExperience() {
                   <h3 className="mt-2.5 text-base font-bold tracking-tight text-[#0e122b]">
                     Producción e identidad
                   </h3>
-                  <p className="mt-1 text-xs leading-relaxed text-[#626987]">
+                  <p className="mt-1 text-xs leading-relaxed text-[#374151]">
                     Economías regionales, y cultura que proyectan a Jujuy.
                   </p>
                   <ArrowRight className="mt-2.5 size-3.5 text-[#7f08d5]" />
@@ -511,7 +605,7 @@ export function AboutExperience() {
                   <h3 className="mt-2.5 text-base font-bold tracking-tight text-[#0e122b]">
                     Comercio y alianzas
                   </h3>
-                  <p className="mt-1 text-xs leading-relaxed text-[#626987]">
+                  <p className="mt-1 text-xs leading-relaxed text-[#374151]">
                     Rondas, vínculos empresariales y oportunidades hacia nuevos
                     mercados.
                   </p>
@@ -529,21 +623,15 @@ export function AboutExperience() {
           data-about-panel
           className="about-panel relative flex h-full flex-col justify-center px-6 pt-24 pb-28 sm:px-10 lg:px-16"
         >
-          {/* Bottom right white text over mountain range */}
-          <div className="pointer-events-none absolute right-12 bottom-24 z-10 hidden select-none flex-col items-end text-right text-white drop-shadow-sm xl:flex">
-            <span className="text-xs font-bold tracking-[0.2em] uppercase leading-tight">
+          {/* Bottom right watermark over mountain range */}
+          <div className="about-glass-card pointer-events-none absolute right-12 bottom-24 z-10 hidden select-none flex-col items-end rounded-xl px-4 py-2.5 text-right xl:flex">
+            <span className="text-xs font-bold tracking-[0.2em] text-[#0e122b] uppercase leading-tight">
               JUJUY
             </span>
-            <span className="text-xs font-bold tracking-[0.2em] uppercase leading-tight">
-              INSPIRA
+            <span className="text-[0.68rem] font-bold tracking-[0.2em] text-[#475069] uppercase leading-tight">
+              INSPIRA · CONECTA · PROYECTA
             </span>
-            <span className="text-xs font-bold tracking-[0.2em] uppercase leading-tight">
-              CONECTA
-            </span>
-            <span className="text-xs font-bold tracking-[0.2em] uppercase leading-tight">
-              PROYECTA
-            </span>
-            <div className="mt-2 h-[1.5px] w-14 bg-white" />
+            <div className="mt-2 h-[1.5px] w-14 bg-[#6424dc]" />
           </div>
 
           <div className="relative z-10 mx-auto w-full max-w-7xl">
@@ -553,7 +641,7 @@ export function AboutExperience() {
                 <i />
               </div>
 
-              <p className="hidden text-right text-[0.62rem] font-bold tracking-[0.14em] text-[#6b7280] uppercase leading-tight lg:block">
+              <p className="hidden text-right text-xs font-bold tracking-wider text-[#2e3650] uppercase leading-tight lg:block">
                 Más que una feria
                 <br />
                 Un territorio de oportunidades
@@ -566,10 +654,10 @@ export function AboutExperience() {
 
             <div className="mt-5 grid grid-cols-1 items-center gap-10 md:grid-cols-[1fr_auto] lg:gap-16">
               {/* Left Column: Heading, text, and buttons */}
-              <div className="max-w-2xl">
+              <div className="about-glass-card max-w-2xl rounded-2xl p-7 sm:p-9">
                 <h2
                   data-about-reveal
-                  className="text-[clamp(3.5rem,5.2vw,6.4rem)] font-bold leading-[0.88] tracking-[-0.07em] text-[#0e122b]"
+                  className="text-[clamp(3.2rem,4.6vw,5.6rem)] font-bold leading-[0.88] tracking-[-0.07em] text-[#0e122b]"
                 >
                   El futuro
                   <br />
@@ -580,19 +668,18 @@ export function AboutExperience() {
 
                 <p
                   data-about-reveal
-                  className="mt-6 max-w-xl text-base leading-relaxed text-[#4b5275] lg:text-lg"
+                  className="mt-6 max-w-xl text-base leading-relaxed text-[#1e243b] lg:text-lg"
                 >
                   Del 9 al 12 de octubre, cuatro jornadas concentran exposición,
                   rondas de negocios, conferencias y actividades culturales para
                   abrir conversaciones que trasciendan el predio.
                 </p>
 
-                <p
-                  data-about-reveal
-                  className="mt-5 text-xs font-bold tracking-[0.12em] text-[#6424dc] uppercase"
-                >
-                  CORREDOR BIOCEÁNICO · VINCULACIÓN · NUEVOS MERCADOS
-                </p>
+                <div data-about-reveal className="mt-5">
+                  <span className="inline-flex items-center rounded-md border border-[#d6c7fb] bg-[#f8f5ff] px-3.5 py-1.5 text-xs font-bold tracking-wider text-[#521cc0] uppercase">
+                    CORREDOR BIOCEÁNICO · VINCULACIÓN · NUEVOS MERCADOS
+                  </span>
+                </div>
 
                 <div
                   data-about-reveal
@@ -639,18 +726,19 @@ export function AboutExperience() {
                   <Image
                     src="/images/sobreexpojuy26/49a5da07-0f71-4f50-9df2-9811def7dae2.png"
                     alt="Cactus y cerros de Jujuy"
-                    fill
-                    priority
-                    className="object-cover"
+                  fill
+                  priority
+                  sizes="(max-width: 1023px) 210px, 230px"
+                  className="object-cover"
                   />
                 </div>
 
                 {/* Jujuy signature underneath */}
-                <div className="z-10 mt-3 self-end text-right">
+                <div className="about-glass-card z-10 mt-3 self-end rounded-lg px-3.5 py-1.5 text-right">
                   <span className="block font-serif text-2xl italic tracking-tight text-[#0e122b] leading-none">
                     Jujuy
                   </span>
-                  <span className="mt-1 block text-[0.55rem] font-bold tracking-[0.18em] text-[#555d7e] uppercase">
+                  <span className="mt-1 block text-[0.62rem] font-bold tracking-[0.18em] text-[#374151] uppercase">
                     Donde las ideas crecen
                   </span>
                 </div>

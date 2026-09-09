@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { useReducedMotion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -18,25 +17,19 @@ interface HeroSectionProps {
 export function HeroSection({ introFinished = true }: HeroSectionProps) {
   const rootRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const reduceMotion = useReducedMotion();
-  const [mounted, setMounted] = useState(false);
   const [videoPaused, setVideoPaused] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Reproducción inteligente del video de fondo sincronizada con la intro
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    if (!introFinished || (mounted && reduceMotion) || videoPaused) {
+    if (!introFinished || videoPaused) {
       video.pause();
     } else {
       void video.play().catch(() => setVideoPaused(true));
     }
-  }, [introFinished, reduceMotion, videoPaused, mounted]);
+  }, [introFinished, videoPaused]);
 
   useGSAP(
     () => {
@@ -98,9 +91,36 @@ export function HeroSection({ introFinished = true }: HeroSectionProps) {
 
       <div className="hero-shade absolute inset-0 -z-20 pointer-events-none" />
       <div className="hero-vignette absolute inset-0 -z-10 pointer-events-none" />
+      <svg
+        aria-hidden="true"
+        className="expo-connection-field pointer-events-none absolute inset-y-0 right-0 z-0 h-full w-[48%] min-w-[34rem]"
+        viewBox="0 0 680 900"
+        fill="none"
+        preserveAspectRatio="none"
+      >
+        <g stroke="#25C0D4" strokeWidth="1.25" opacity="0.65">
+          <path d="M680 70H512L438 144H286L224 206" />
+          <path d="M680 184H566L484 266H344L266 344H154" />
+          <path d="M680 372H534L462 444H332L264 512" />
+          <path d="M680 580H554L486 648H388L306 730H178" />
+        </g>
+        <g fill="#BB8CFF">
+          <rect x="502" y="62" width="18" height="18" rx="2" />
+          <rect x="428" y="135" width="18" height="18" rx="2" />
+          <rect x="474" y="257" width="18" height="18" rx="2" />
+          <rect x="452" y="435" width="18" height="18" rx="2" />
+          <rect x="476" y="639" width="18" height="18" rx="2" />
+        </g>
+        <g fill="#25C0D4">
+          <circle cx="224" cy="206" r="5" />
+          <circle cx="154" cy="344" r="5" />
+          <circle cx="264" cy="512" r="5" />
+          <circle cx="178" cy="730" r="5" />
+        </g>
+      </svg>
 
       {/* BOTÓN DE CONTROL REPRODUCIR / PAUSAR VIDEO DE FONDO */}
-      {mounted && !reduceMotion && introFinished && (
+      {introFinished && (
         <button
           type="button"
           onClick={() => setVideoPaused((paused) => !paused)}
@@ -119,15 +139,19 @@ export function HeroSection({ introFinished = true }: HeroSectionProps) {
       <div className="hero-content mx-auto flex w-full max-w-[1480px] flex-col justify-end px-5 pb-9 pt-32 sm:px-8 sm:pb-12 lg:px-12 lg:pb-14">
         <div className="max-w-[820px]">
           <p className="mb-7 text-xs font-semibold uppercase tracking-[0.24em] text-white/85">
-            Jujuy, Argentina · Encuentro multisectorial 2026
+            17.ª edición · 09 al 12 de octubre · Ciudad Cultural
           </p>
           <h1 className="max-w-[780px] text-[clamp(3.45rem,7.1vw,7.35rem)] font-semibold leading-[0.86] tracking-[-0.065em]">
             El futuro
             <br />
             se encuentra
             <br />
-            <span className="text-[#f4c64c]">en Jujuy.</span>
+            <span className="text-[#25C0D4]">en Jujuy.</span>
           </h1>
+          <p className="mt-6 flex max-w-[650px] items-center gap-3 text-sm font-bold uppercase tracking-[0.06em] text-white sm:text-base">
+            <span aria-hidden className="h-px w-8 shrink-0 bg-[#25C0D4]" />
+            Conectando países <span className="text-[#BB8CFF]">—</span> creando oportunidades
+          </p>
           <p className="mt-7 max-w-[580px] text-base leading-relaxed text-white/88 sm:text-lg">
             Industria, innovación, cultura y oportunidades. Un lugar para conectar,
             crear y crecer.
@@ -137,7 +161,7 @@ export function HeroSection({ introFinished = true }: HeroSectionProps) {
             <Button
               asChild
               size="lg"
-              className="h-12 rounded-md bg-[#6b20df] px-6 text-base font-semibold text-white shadow-[0_12px_34px_rgba(66,9,158,.35)] hover:bg-[#5917c2]"
+              className="h-12 rounded-md bg-[#820CD0] px-6 text-base font-semibold text-white shadow-[0_12px_34px_rgba(130,12,208,.35)] hover:bg-[#6c0aa9]"
             >
               <a href="#sobre">
                 Conocé ExpoJuy
@@ -157,12 +181,12 @@ export function HeroSection({ introFinished = true }: HeroSectionProps) {
 
         <div className="mt-14 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/25 pt-5 text-sm text-white/82">
           <span className="inline-flex items-center gap-2">
-            <CalendarDays aria-hidden className="size-4 text-[#19b9ca]" />
-            2026 · Fecha por anunciar
+            <CalendarDays aria-hidden className="size-4 text-[#25C0D4]" />
+            09 al 12 de octubre · 2026
           </span>
           <span className="inline-flex items-center gap-2">
-            <MapPin aria-hidden className="size-4 text-[#f4c64c]" />
-            Jujuy, Argentina
+            <MapPin aria-hidden className="size-4 text-[#BB8CFF]" />
+            Ciudad Cultural · Jujuy
           </span>
         </div>
       </div>
