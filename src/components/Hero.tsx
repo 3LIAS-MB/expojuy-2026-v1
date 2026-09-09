@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Ticket, Clock, Zap, Sun, Leaf, Truck, Cpu, ChevronLeft, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { Ticket, Zap, Sun, Leaf, Truck, Cpu, ChevronLeft, ChevronRight, CheckCircle2 } from 'lucide-react';
 
 const PILARES_SLIDES = [
   {
@@ -74,7 +74,7 @@ const PILARES_SLIDES = [
 
 export default function Hero() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [timeLeft, setTimeLeft] = useState({
+  const [, setTimeLeft] = useState({
     days: '00',
     hours: '00',
     minutes: '00',

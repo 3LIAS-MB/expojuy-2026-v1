@@ -1,37 +1,68 @@
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import AboutSection from "@/components/AboutSection";
-import DualSwitcher from "@/components/DualSwitcher";
-import PilaresSection from "@/components/PilaresSection";
-import ExpositoresSection from "@/components/ExpositoresSection";
-import AgendaSection from "@/components/AgendaSection";
-import PlanoSection from "@/components/PlanoSection";
-import AcreditacionSection from "@/components/AcreditacionSection";
-import NewsSection from "@/components/NewsSection";
-import ContactSection from "@/components/ContactSection";
-import InstitutionalSection from "@/components/InstitutionalSection";
-import SponsorsSection from "@/components/SponsorsSection";
+"use client";
+
+import { useCallback, useEffect, useState } from "react";
+import BrandingIntro from "@/components/BrandingIntro";
+import { AboutExperience } from "@/components/prototype/about-experience";
+import { ExhibitorsSection } from "@/components/prototype/exhibitors-section";
+import { HeroSection } from "@/components/prototype/hero-section";
+import { SiteHeader } from "@/components/prototype/site-header";
+import { SponsorsMarquee } from "@/components/prototype/sponsors-marquee";
+import { NewsSection } from "@/components/news/NewsSection";
+import { LocationSection } from "@/components/prototype/location-section";
+
 import FaqSection from "@/components/FaqSection";
-import Footer from "@/components/Footer";
+import { Footer } from "@/components/layout/Footer";
 
 export default function Home() {
+  const [mounted, setMounted] = useState(false);
+  const [isPlayingIntro, setIsPlayingIntro] = useState(true);
+  const [introFinished, setIntroFinished] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const handleIntroComplete = useCallback(() => {
+    setIsPlayingIntro(false);
+    setIntroFinished(true);
+  }, []);
+
+  const handleReplayIntro = useCallback(() => {
+    setIntroFinished(false);
+    setIsPlayingIntro(true);
+  }, []);
+
   return (
-    <main className="min-h-screen bg-transparent">
-      <Navbar />
-      <Hero />
-      <AboutSection />
-      <DualSwitcher />
-      <PilaresSection />
-      <ExpositoresSection />
-      <AgendaSection />
-      <PlanoSection />
-      <AcreditacionSection />
-      <NewsSection />
-      <ContactSection />
-      <InstitutionalSection />
-      <SponsorsSection />
-      <FaqSection />
+    <>
+      {/* ANIMACIÓN CINEMÁTICA DE ENTRADA (MONTADA EN CLIENTE PARA EVITAR ERRORES DE HIDRATACIÓN) */}
+      {mounted && (
+        <BrandingIntro
+          isPlaying={isPlayingIntro}
+          onAnimationComplete={handleIntroComplete}
+        />
+      )}
+
+      <a className="skip-link" href="#contenido">
+        Ir al contenido
+      </a>
+
+      {/* HEADER CON DOCKING DE LOGO VECTORIAL Y BOTÓN REPETIR */}
+      <SiteHeader
+        showDockedLogo={introFinished}
+        onReplayIntro={handleReplayIntro}
+      />
+
+      <main id="contenido">
+        <HeroSection introFinished={introFinished} />
+        <AboutExperience />
+        <SponsorsMarquee />
+        <ExhibitorsSection />
+        <NewsSection />
+        <LocationSection />
+        <FaqSection />
+      </main>
+
       <Footer />
-    </main>
+    </>
   );
 }

@@ -1,5 +1,13 @@
 import Image from 'next/image';
-import { Instagram, Facebook, Youtube, Linkedin } from 'lucide-react';
+
+function SocialMark({ className, children }: { className?: string; children: React.ReactNode }) {
+  return <span className={className} aria-hidden>{children}</span>;
+}
+
+const Instagram = ({ className }: { className?: string }) => <SocialMark className={className}>IG</SocialMark>;
+const Facebook = ({ className }: { className?: string }) => <SocialMark className={className}>FB</SocialMark>;
+const Youtube = ({ className }: { className?: string }) => <SocialMark className={className}>YT</SocialMark>;
+const Linkedin = ({ className }: { className?: string }) => <SocialMark className={className}>IN</SocialMark>;
 
 export default function Footer() {
   return (
@@ -40,10 +48,10 @@ export default function Footer() {
           <div>
             <h5 className="text-white font-bold font-heading mb-3 uppercase tracking-wider text-[11px]">Canales Oficiales</h5>
             <div className="flex items-center gap-3 mb-4">
-              <a href="#" className="w-8 h-8 rounded-lg glass-card flex items-center justify-center text-slate-300 hover:text-brand-aqua border border-white/10" aria-label="Instagram">
+              <a href="https://www.instagram.com/expojuy/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg glass-card flex items-center justify-center text-slate-300 hover:text-brand-aqua border border-white/10" aria-label="Instagram">
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href="#" className="w-8 h-8 rounded-lg glass-card flex items-center justify-center text-slate-300 hover:text-brand-aqua border border-white/10" aria-label="Facebook">
+              <a href="https://www.facebook.com/expojuy?locale=es_LA" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg glass-card flex items-center justify-center text-slate-300 hover:text-brand-aqua border border-white/10" aria-label="Facebook">
                 <Facebook className="w-4 h-4" />
               </a>
               <a href="#" className="w-8 h-8 rounded-lg glass-card flex items-center justify-center text-slate-300 hover:text-brand-aqua border border-white/10" aria-label="YouTube">
