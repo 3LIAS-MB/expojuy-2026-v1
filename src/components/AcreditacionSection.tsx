@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
-import { Leaf, Download, CheckCircle2, QrCode } from 'lucide-react';
+import { Download, Check, QrCode, ShieldCheck } from 'lucide-react';
 
 export default function AcreditacionSection() {
   const [name, setName] = useState('Martín Gutiérrez');
@@ -15,123 +15,138 @@ export default function AcreditacionSection() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsGenerated(true);
-    alert(`¡Pase Digital emitido con éxito para ${name}! Podés descargarlo o presentarlo en tu celular al ingresar.`);
   };
 
   return (
-    <section id="acreditacion" className="py-20 bg-white border-t border-[#dfe3ef] relative overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-16">
+    <section id="acreditacion" className="py-20 bg-[#f7f8fc] border-t border-[#dfe3ef]">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12">
         
-        <div className="bg-[#f7f8fc] rounded-3xl p-8 lg:p-12 border border-[#dfe3ef] shadow-sm relative overflow-hidden">
-          {/* Subtle Accent Glow */}
-          <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[#820cd0]/10 rounded-full blur-3xl pointer-events-none"></div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        {/* Container Principal Estilo Corporativo */}
+        <div className="bg-white border border-[#dfe3ef] rounded-2xl p-8 sm:p-12 shadow-sm">
+          
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
             
-            {/* Formulario */}
-            <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#25c0d4]/10 border border-[#25c0d4]/30 text-[#0e8897] text-xs font-bold uppercase tracking-wider">
-                <Leaf className="w-4 h-4 text-[#25c0d4]" />
-                <span>Sustentabilidad · Cero Papel</span>
+            {/* Columna Izquierda: Formulario de Registro (7 cols) */}
+            <div className="lg:col-span-7 space-y-6">
+              
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#820cd0]">
+                  <ShieldCheck className="w-4 h-4 text-[#25c0d4]" />
+                  <span>05 &bull; Registro & Acreditaciones</span>
+                </div>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0b123b] tracking-tight">
+                  Acreditación Oficial & Pase Digital QR
+                </h2>
+                <p className="text-sm text-[#676370] leading-relaxed">
+                  Sistema de acreditación directa para participantes corporativos, delegaciones comerciales y visitantes generales. Emití tu credencial digital para ingreso ágil en los predios feriales.
+                </p>
               </div>
-
-              <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-[#0b123b]">
-                Acreditación & <span className="text-[#820cd0]">Pase Digital QR</span>
-              </h2>
-
-              <p className="text-[#676370] text-sm leading-relaxed">
-                En concordancia con los ejes de sustentabilidad de ExpoJuy 2026, eliminamos las credenciales impresas. Generá tu pase oficial en segundos y llevalo en tu dispositivo móvil.
-              </p>
 
               <form onSubmit={handleSubmit} className="space-y-4 pt-2">
                 <div>
-                  <label className="block text-xs font-bold text-[#0b123b] mb-1">Nombre Completo *</label>
+                  <label className="block text-xs font-bold text-[#0b123b] mb-1.5 uppercase tracking-wider">
+                    Nombre Completo / Razón Social *
+                  </label>
                   <input 
                     type="text" 
                     required 
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Ej. Lic. Martín Gutiérrez" 
-                    className="w-full px-4 py-3 rounded-xl bg-white border border-[#dfe3ef] text-[#0b123b] placeholder-gray-400 text-sm focus:outline-none focus:border-[#820cd0] focus:ring-2 focus:ring-[#820cd0]/20 shadow-sm transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-[#f7f8fc] border border-[#dfe3ef] text-[#0b123b] placeholder-gray-400 text-sm focus:outline-none focus:bg-white focus:border-[#0b123b] transition-all font-medium"
                   />
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-[#0b123b] mb-1">Correo Electrónico *</label>
+                    <label className="block text-xs font-bold text-[#0b123b] mb-1.5 uppercase tracking-wider">
+                      Correo Electrónico Corporativo *
+                    </label>
                     <input 
                       type="email" 
                       required 
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="martin@empresa.com" 
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-[#dfe3ef] text-[#0b123b] placeholder-gray-400 text-sm focus:outline-none focus:border-[#820cd0] focus:ring-2 focus:ring-[#820cd0]/20 shadow-sm transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-[#f7f8fc] border border-[#dfe3ef] text-[#0b123b] placeholder-gray-400 text-sm focus:outline-none focus:bg-white focus:border-[#0b123b] transition-all font-medium"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-[#0b123b] mb-1">Tipo de Pase *</label>
+                    <label className="block text-xs font-bold text-[#0b123b] mb-1.5 uppercase tracking-wider">
+                      Categoría de Acceso *
+                    </label>
                     <select 
                       value={passType}
                       onChange={(e) => setPassType(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-[#dfe3ef] text-[#0b123b] text-sm focus:outline-none focus:border-[#820cd0] focus:ring-2 focus:ring-[#820cd0]/20 shadow-sm transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-[#f7f8fc] border border-[#dfe3ef] text-[#0b123b] text-sm focus:outline-none focus:bg-white focus:border-[#0b123b] transition-all font-semibold"
                     >
-                      <option value="Empresa / Ronda B2B">Corporativo · Ronda B2B</option>
+                      <option value="Empresa / Ronda B2B">Corporativo · Rondas B2B</option>
                       <option value="Visitante General">Público General</option>
                       <option value="Estudiante / Académico">Estudiante / Universitario</option>
-                      <option value="Prensa Acreditada">Prensa & Medios</option>
+                      <option value="Prensa Acreditada">Prensa & Medios Oficiales</option>
                     </select>
                   </div>
                 </div>
 
                 <button 
                   type="submit" 
-                  className="w-full py-3.5 rounded-xl font-bold text-white bg-[#820cd0] hover:bg-[#6c0aa7] shadow-md hover:shadow-lg transition-all cursor-pointer mt-2 flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto px-8 py-3.5 rounded-xl font-bold text-white bg-[#0b123b] hover:bg-[#820cd0] transition-all cursor-pointer flex items-center justify-center gap-2 shadow-sm"
                 >
                   <QrCode className="w-4 h-4 text-[#25c0d4]" />
-                  <span>Generar Mi Pase Digital QR</span>
+                  <span>Generar Credencial Digital</span>
                 </button>
               </form>
+
             </div>
 
-            {/* Credencial Digital Interactiva */}
-            <div className="flex justify-center">
-              <div className="w-full max-w-sm rounded-2xl bg-white border border-[#dfe3ef] p-6 text-center shadow-xl relative overflow-hidden">
+            {/* Columna Derecha: Vista Previa de Credencial (5 cols) */}
+            <div className="lg:col-span-5 flex justify-center">
+              <div className="w-full max-w-sm rounded-2xl bg-white border border-[#dfe3ef] p-6 text-center shadow-lg relative overflow-hidden">
                 
-                <div className="w-full h-1.5 bg-gradient-to-r from-[#820cd0] via-[#25c0d4] to-[#774ff0] absolute top-0 left-0" />
+                {/* Brand Line Accent */}
+                <div className="w-full h-1.5 bg-gradient-to-r from-[#6424dc] via-[#19b9ca] to-[#7f08d5] absolute top-0 left-0" />
 
                 <div className="flex items-center justify-between pb-3 border-b border-[#dfe3ef] mb-4 mt-2">
-                  <span className="text-[10px] font-black uppercase tracking-wider text-[#820cd0]">Pase Oficial Digital</span>
-                  <span className="text-[10px] font-mono text-[#676370] font-bold">EXPOJUY-2026</span>
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#820cd0]">
+                    Pase Oficial ExpoJuy
+                  </span>
+                  <span className="text-[10px] font-mono text-[#676370] font-bold">
+                    EJ-2026
+                  </span>
                 </div>
 
-                {/* Código QR SVG React */}
-                <div className="bg-white p-3.5 rounded-xl border border-[#dfe3ef] inline-block mx-auto mb-4 shadow-sm">
+                {/* Código QR SVG */}
+                <div className="bg-white p-4 rounded-xl border border-[#dfe3ef] inline-block mx-auto mb-4 shadow-sm">
                   <QRCodeSVG 
                     value={qrPayload}
-                    size={150}
+                    size={140}
                     bgColor="#FFFFFF"
                     fgColor="#0b123b"
                     level="H"
                   />
                 </div>
 
-                <h4 className="text-lg font-black text-[#0b123b]">{name || 'Visitante Oficial'}</h4>
-                <p className="text-xs font-bold text-[#25c0d4] mt-0.5">{passType}</p>
-                
-                <div className="mt-4 pt-3 border-t border-[#dfe3ef] grid grid-cols-2 text-[11px] text-[#676370]">
+                <h4 className="text-lg font-black text-[#0b123b] leading-tight">
+                  {name || 'Titular Acreditado'}
+                </h4>
+                <p className="text-xs font-bold text-[#820cd0] mt-1">
+                  {passType}
+                </p>
+
+                <div className="mt-5 pt-3 border-t border-[#dfe3ef] grid grid-cols-2 text-[11px] text-[#676370]">
                   <div>
-                    <span className="block text-[9px] uppercase tracking-wider text-[#676370] font-bold">Acceso</span>
-                    <span className="text-[#0b123b] font-bold">9 al 12 Octubre</span>
+                    <span className="block text-[9px] uppercase tracking-wider font-bold text-[#676370]">Vigencia</span>
+                    <span className="text-[#0b123b] font-bold">9 - 12 Octubre</span>
                   </div>
                   <div>
-                    <span className="block text-[9px] uppercase tracking-wider text-[#676370] font-bold">Sede</span>
+                    <span className="block text-[9px] uppercase tracking-wider font-bold text-[#676370]">Predio</span>
                     <span className="text-[#0b123b] font-bold">Ciudad Cultural</span>
                   </div>
                 </div>
 
                 <button 
-                  onClick={() => alert('Credencial guardada en tu dispositivo')}
-                  className="mt-5 w-full py-2.5 rounded-xl bg-[#f4f1f9] hover:bg-[#820cd0] text-[#820cd0] hover:text-white transition-all border border-[#ded8e8] text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+                  onClick={() => alert('Credencial descargada')}
+                  className="mt-5 w-full py-2.5 rounded-xl bg-[#f7f8fc] hover:bg-[#0b123b] text-[#0b123b] hover:text-white transition-all border border-[#dfe3ef] text-xs font-bold flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Download className="w-4 h-4" />
                   <span>Descargar Credencial</span>
@@ -139,9 +154,10 @@ export default function AcreditacionSection() {
 
                 {isGenerated && (
                   <p className="mt-3 text-[11px] text-emerald-600 font-bold flex items-center justify-center gap-1">
-                    <CheckCircle2 className="w-3.5 h-3.5" /> Credencial confirmada
+                    <Check className="w-3.5 h-3.5" /> Acreditación confirmada
                   </p>
                 )}
+
               </div>
             </div>
 

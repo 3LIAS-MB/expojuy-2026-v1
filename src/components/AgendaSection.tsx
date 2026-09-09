@@ -1,135 +1,139 @@
 'use client';
 
 import { useState } from 'react';
-import { CalendarDays, Clock, MapPin, CheckCircle } from 'lucide-react';
+import { Clock, MapPin, Check, Plus, Calendar } from 'lucide-react';
 
 interface EventItem {
   time: string;
-  badge: string;
-  badgeType: 'morning' | 'evening' | 'show';
+  category: string;
+  categoryType: 'b2b' | 'ferial' | 'show';
   location: string;
   title: string;
   desc: string;
 }
 
-const AGENDA_BY_DAY: Record<number, { title: string; subtitle: string; events: EventItem[] }> = {
+const AGENDA_DATA: Record<number, { date: string; label: string; highlight: string; events: EventItem[] }> = {
   1: {
-    title: "Viernes 9 Oct",
-    subtitle: "Día 1 · Inauguración & Rondas B2B",
+    date: "Viernes 9 de Octubre",
+    label: "Jornada 01",
+    highlight: "Inauguración Oficial & Rondas B2B",
     events: [
       {
         time: "09:30 hs",
-        badge: "☀️ Mañana B2B",
-        badgeType: "morning",
-        location: "Sala de Conferencias 1",
-        title: "Acto Oficial de Apertura & Conferencia Inaugural",
-        desc: "Presencia de autoridades de la Cámara de Comercio Exterior, Gobierno de Jujuy y delegaciones diplomáticas del Corredor Bioceánico."
+        category: "Conferencia Inaugural",
+        categoryType: "b2b",
+        location: "Auditorio Principal",
+        title: "Acto Oficial de Apertura & Conferencia Magistral",
+        desc: "Apertura institucional a cargo de autoridades de la Cámara de Comercio Exterior de Jujuy, Gobierno Provincial y delegaciones del Corredor Bioceánico."
       },
       {
         time: "11:00 hs",
-        badge: "☀️ Ronda B2B",
-        badgeType: "morning",
-        location: "Espacio Rondas de Negocios",
-        title: "Primera Sesión de Matchmaking Comercial Internacional",
-        desc: "Mesas de trabajo bilaterales de 20 minutos con empresas de Chile, Bolivia, Paraguay y Brasil."
+        category: "Ronda B2B",
+        categoryType: "b2b",
+        location: "Centro de Negocios B2B",
+        title: "Matchmaking Comercial Internacional",
+        desc: "Mesas bilaterales de trabajo de 20 minutos con operadores comerciales e inversores de Chile, Bolivia, Paraguay y Brasil."
       },
       {
         time: "17:00 hs",
-        badge: "🌙 Tarde Ferial",
-        badgeType: "evening",
-        location: "Predio Completo",
-        title: "Apertura al Público Masivo & Recorrido de Stands",
-        desc: "Demostraciones en vivo de maquinaria agrícola, robots educativos y exposición en todos los pabellones."
+        category: "Apertura General",
+        categoryType: "ferial",
+        location: "Predio Ferial Completo",
+        title: "Recorrido de Stands & Exposición Industrial",
+        desc: "Apertura de pabellones al público masivo, demostraciones tecnológicas en vivo e intercambios con empresas expositoras."
       },
       {
         time: "20:30 hs",
-        badge: "🌙 Show en Vivo",
-        badgeType: "show",
+        category: "Festival Cultural",
+        categoryType: "show",
         location: "Escenario Central",
-        title: "Gran Espectáculo Folklórico Jujeño & Sinfónica",
-        desc: "Cierre artístico del primer día con música andina, ensamble instrumental y patio gastronómico activo."
+        title: "Gala Artística de Apertura & Ensamble Jujeño",
+        desc: "Cierre cultural de la primera jornada con la participación de la Orquesta Sinfónica Provincial y agrupaciones autóctonas."
       }
     ]
   },
   2: {
-    title: "Sábado 10 Oct",
-    subtitle: "Día 2 · Minería Sustentable & Energía Solar",
+    date: "Sábado 10 de Octubre",
+    label: "Jornada 02",
+    highlight: "Minería Sustentable, Litio & Energía",
     events: [
       {
         time: "10:00 hs",
-        badge: "☀️ Mañana B2B",
-        badgeType: "morning",
+        category: "Foro Técnico",
+        categoryType: "b2b",
         location: "Auditorio Litio",
-        title: "Foro Internacional de Minería y Proveedores Locales",
-        desc: "Desafíos de la cadena de valor del litio y estándares ESG en la Puna Argentina."
+        title: "Foro Internacional: Cadena de Valor del Litio y Estándares ESG",
+        desc: "Conferencia sobre desarrollo de proveedores locales, sustentabilidad ambiental y proyecciones de exportación en la Puna."
       },
       {
         time: "12:00 hs",
-        badge: "☀️ Ronda B2B",
-        badgeType: "morning",
-        location: "Espacio Rondas",
-        title: "Ronda de Vinculación Proveedores Mineros & Operadoras",
-        desc: "Encuentros individuales para compras industriales y contratos de servicios de transporte."
+        category: "Ronda B2B",
+        categoryType: "b2b",
+        location: "Centro de Negocios B2B",
+        title: "Ronda de Negocios: Proveedores Mineros & Operadoras",
+        desc: "Encuentros ejecutivos de contratación de servicios de logística, metalmecánica e infraestructura."
       },
       {
         time: "19:30 hs",
-        badge: "🌙 Show en Vivo",
-        badgeType: "show",
+        category: "Festival Cultural",
+        categoryType: "show",
         location: "Escenario Central",
-        title: "Noche de Rock y Música Contemporánea del NOA",
-        desc: "Bandas emergentes y bandas consagradas de la provincia de Jujuy."
+        title: "Noche de Música Contemporánea del NOA",
+        desc: "Presentación de artistas consagrados de la región en el predio ferial."
       }
     ]
   },
   3: {
-    title: "Domingo 11 Oct",
-    subtitle: "Día 3 · Agroindustria, Vinos & Familia",
+    date: "Domingo 11 de Octubre",
+    label: "Jornada 03",
+    highlight: "Agroindustria, Vinos de Altura & Comercio",
     events: [
       {
         time: "11:30 hs",
-        badge: "☀️ Conferencia",
-        badgeType: "morning",
+        category: "Seminario",
+        categoryType: "b2b",
         location: "Auditorio Valles",
-        title: "Panel: El Potencial Exportador de los Vinos de Extrema Altura",
-        desc: "Cata guiada y análisis de mercados internacionales para bodegas de la Quebrada."
+        title: "Panel Exportadores: Vinos de Extrema Altura & Oferta Exportable",
+        desc: "Análisis de mercados de exportación para bodegas de la Quebrada y productores agroindustriales."
       },
       {
         time: "16:00 hs",
-        badge: "🌙 Tarde Ferial",
-        badgeType: "evening",
+        category: "Gastronomía",
+        categoryType: "ferial",
         location: "Patio Gastronómico",
-        title: "Masterclass de Cocina Andina con Productos Jujeños",
-        desc: "Chefs invitados y demostraciones en vivo de maridajes autóctonos."
+        title: "Masterclass & Catas de Productos Regionales",
+        desc: "Demostración gastronómica en vivo con insumos locales y maridaje de cepas jujeñas."
       },
       {
         time: "20:00 hs",
-        badge: "🌙 Show en Vivo",
-        badgeType: "show",
+        category: "Festival Cultural",
+        categoryType: "show",
         location: "Escenario Central",
-        title: "Festival de Danzas Tradicionales y Carnaval de la Puna",
-        desc: "Desfile de comparsas, sikuris y copleros tradicionales."
+        title: "Encuentro de Danzas Tradicionales & Sikuris",
+        desc: "Muestra de expresión cultural andina e integración regional."
       }
     ]
   },
   4: {
-    title: "Lunes 12 Oct",
-    subtitle: "Día 4 · Conclusiones, Premiación & Clausura",
+    date: "Lunes 12 de Octubre",
+    label: "Jornada 04",
+    highlight: "Balance Comercial, Premiación & Clausura",
     events: [
       {
         time: "10:30 hs",
-        badge: "☀️ Mañana B2B",
-        badgeType: "morning",
+        category: "Informe Ejecutivo",
+        categoryType: "b2b",
         location: "Auditorio Principal",
-        title: "Presentación del Balance de Negocios del Corredor Bioceánico",
-        desc: "Estimación del volumen de acuerdos comerciales concretados durante las rondas."
+        title: "Presentación de Resultados del Corredor Bioceánico",
+        desc: "Informe final sobre volumen de acuerdos comerciales preacordados e intenciones de inversión."
       },
       {
         time: "18:00 hs",
-        badge: "🌙 Clausura",
-        badgeType: "evening",
+        category: "Clausura",
+        categoryType: "ferial",
         location: "Escenario Central",
-        title: "Entrega de Premios a los Mejores Stands e Innovación",
-        desc: "Reconocimiento a la creatividad, sustentabilidad y calidad de diseño ferial."
+        title: "Ceremonia de Premiación a Expositores & Cierre Oficial",
+        desc: "Reconocimiento a los mejores diseños de stand, innovación sustentable y cierre de la 17° Edición."
       }
     ]
   }
@@ -137,129 +141,146 @@ const AGENDA_BY_DAY: Record<number, { title: string; subtitle: string; events: E
 
 export default function AgendaSection() {
   const [selectedDay, setSelectedDay] = useState<number>(1);
-  const [agendados, setAgendados] = useState<string[]>([]);
-  const currentAgenda = AGENDA_BY_DAY[selectedDay];
+  const [bookmarkedEvents, setBookmarkedEvents] = useState<string[]>([]);
+  const currentAgenda = AGENDA_DATA[selectedDay];
 
-  const handleToggleAgendar = (title: string) => {
-    if (agendados.includes(title)) {
-      setAgendados(agendados.filter((t) => t !== title));
-    } else {
-      setAgendados([...agendados, title]);
-    }
+  const toggleBookmark = (title: string) => {
+    setBookmarkedEvents((prev) =>
+      prev.includes(title) ? prev.filter((t) => t !== title) : [...prev, title]
+    );
   };
 
   return (
-    <section id="agenda" className="py-20 bg-[#f7f8fc] border-t border-[#dfe3ef] relative overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-16">
+    <section id="agenda" className="py-20 bg-white border-t border-[#dfe3ef]">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12">
         
-        {/* Cabecera de la sección */}
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#820cd0]/10 border border-[#820cd0]/20 text-[#820cd0] text-xs font-bold uppercase tracking-wider">
-            <CalendarDays className="w-4 h-4 text-[#25c0d4]" />
-            <span>Cronograma Oficial</span>
+        {/* Editorial Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 border-b border-[#dfe3ef]">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-widest text-[#820cd0]">
+              <Calendar className="w-4 h-4 text-[#25c0d4]" />
+              <span>04 &bull; Cronograma Oficial</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0b123b] tracking-tight">
+              Agenda de Actividades & Rondas B2B
+            </h2>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-[#0b123b]">
-            Agenda de las <span className="text-[#820cd0]">4 Jornadas Intensivas</span>
-          </h2>
-          <p className="text-sm text-[#676370] leading-relaxed">
-            Filtrá por día y descubrí las conferencias B2B matutinas, rondas comerciales y festivales artísticos nocturnos.
+          <p className="text-sm text-[#676370] max-w-md leading-relaxed">
+            Cronograma institucional organizado por jornadas. Consultá las conferencias ejecutivas, espacio de negocios y presentaciones de la exposición.
           </p>
         </div>
 
-        {/* Pestañas de Días (Selector) */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto mb-10">
+        {/* Corporate Day Selector Tabs */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-8">
           {[1, 2, 3, 4].map((day) => {
-            const data = AGENDA_BY_DAY[day];
+            const data = AGENDA_DATA[day];
             const isActive = selectedDay === day;
             return (
               <button
                 key={day}
                 onClick={() => setSelectedDay(day)}
-                className={`p-4 rounded-xl text-center transition-all duration-200 cursor-pointer ${
-                  isActive 
-                    ? 'bg-[#820cd0] text-white shadow-lg shadow-[#820cd0]/25 scale-[1.02]' 
-                    : 'bg-white border border-[#dfe3ef] text-[#3c3c3c] hover:border-[#820cd0] hover:bg-white/80 shadow-sm'
+                className={`p-4 rounded-xl text-left border transition-all cursor-pointer flex flex-col justify-between space-y-2 ${
+                  isActive
+                    ? 'bg-[#0b123b] text-white border-[#0b123b] shadow-md'
+                    : 'bg-[#f7f8fc] border-[#dfe3ef] text-[#3c3c3c] hover:border-[#820cd0] hover:bg-white'
                 }`}
               >
-                <span className={`block text-[11px] font-extrabold uppercase tracking-wider ${isActive ? 'text-[#25c0d4]' : 'text-[#676370]'}`}>
-                  {data.title}
-                </span>
-                <span className={`block text-xs sm:text-sm font-extrabold mt-1 truncate ${isActive ? 'text-white' : 'text-[#0b123b]'}`}>
-                  {data.subtitle.split('·')[1] || data.subtitle}
+                <div className="flex items-center justify-between">
+                  <span className={`text-[10px] font-bold uppercase tracking-wider ${isActive ? 'text-[#25c0d4]' : 'text-[#676370]'}`}>
+                    {data.label}
+                  </span>
+                  <span className={`text-[11px] font-mono font-semibold ${isActive ? 'text-gray-300' : 'text-[#820cd0]'}`}>
+                    {data.date.split(' de ')[0]}
+                  </span>
+                </div>
+                <span className="text-sm font-extrabold leading-snug line-clamp-1">
+                  {data.highlight}
                 </span>
               </button>
             );
           })}
         </div>
 
-        {/* Lista de Eventos por día */}
-        <div className="max-w-4xl mx-auto space-y-4">
-          {currentAgenda.events.map((ev, index) => {
-            const isMorning = ev.badgeType === 'morning';
-            const isShow = ev.badgeType === 'show';
-            const isAgendado = agendados.includes(ev.title);
+        {/* Active Day Header */}
+        <div className="bg-[#f7f8fc] border border-[#dfe3ef] rounded-xl p-4 sm:p-5 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-wider text-[#820cd0]">
+              {currentAgenda.label} &bull; {currentAgenda.date}
+            </span>
+            <h3 className="text-lg font-bold text-[#0b123b] mt-0.5">
+              {currentAgenda.highlight}
+            </h3>
+          </div>
+          <span className="text-xs text-[#676370] font-medium">
+            {currentAgenda.events.length} actividades programadas
+          </span>
+        </div>
 
-            const borderLeftColor = isMorning 
-              ? 'border-l-[#25c0d4]' 
-              : isShow 
-              ? 'border-l-[#f4c64c]' 
-              : 'border-l-[#820cd0]';
-
-            const badgeStyle = isMorning 
-              ? 'bg-[#25c0d4]/10 text-[#0e8897] border-[#25c0d4]/30' 
-              : isShow 
-              ? 'bg-amber-50 text-amber-700 border-amber-200' 
-              : 'bg-[#820cd0]/10 text-[#820cd0] border-[#820cd0]/20';
+        {/* Executive Table / Event List */}
+        <div className="divide-y divide-[#dfe3ef] border-t border-b border-[#dfe3ef]">
+          {currentAgenda.events.map((ev, idx) => {
+            const isBookmarked = bookmarkedEvents.includes(ev.title);
 
             return (
-              <div 
-                key={index}
-                className={`bg-white rounded-2xl p-5 sm:p-6 border border-[#dfe3ef] border-l-4 ${borderLeftColor} shadow-sm hover:shadow-md hover:border-[#820cd0]/30 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4`}
+              <div
+                key={idx}
+                className="py-5 sm:py-6 px-3 sm:px-5 hover:bg-[#f7f8fc] transition-colors rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-5"
               >
-                <div className="flex items-start gap-4">
-                  <div className="w-20 text-center py-2.5 px-2 rounded-xl bg-[#f4f1f9] border border-[#ded8e8] text-[#820cd0] font-bold text-xs shrink-0 flex items-center justify-center gap-1">
-                    <Clock className="w-3.5 h-3.5 shrink-0 text-[#25c0d4]" />
+                {/* Event Information */}
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 flex-1 min-w-0">
+                  
+                  {/* Time Badge */}
+                  <div className="flex items-center gap-2 shrink-0 bg-[#0b123b] text-white px-3 py-1.5 rounded-lg text-xs font-mono font-bold">
+                    <Clock className="w-3.5 h-3.5 text-[#25c0d4]" />
                     <span>{ev.time}</span>
                   </div>
 
-                  <div className="space-y-1">
-                    <div className="flex flex-wrap items-center gap-2 mb-1">
-                      <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase border ${badgeStyle}`}>
-                        {ev.badge}
+                  {/* Body Content */}
+                  <div className="space-y-1.5 min-w-0">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-[#820cd0]/10 text-[#820cd0] border border-[#820cd0]/20">
+                        {ev.category}
                       </span>
                       <span className="text-xs text-[#676370] font-semibold flex items-center gap-1">
-                        <MapPin className="w-3 h-3 text-[#820cd0]" />
+                        <MapPin className="w-3.5 h-3.5 text-[#25c0d4]" />
                         {ev.location}
                       </span>
                     </div>
 
-                    <h4 className="text-base font-bold text-[#0b123b]">
+                    <h4 className="text-base font-bold text-[#0b123b] leading-tight">
                       {ev.title}
                     </h4>
 
-                    <p className="text-[#676370] text-xs leading-relaxed max-w-2xl">
+                    <p className="text-xs text-[#676370] leading-relaxed max-w-3xl">
                       {ev.desc}
                     </p>
                   </div>
+
                 </div>
 
-                <button 
-                  onClick={() => handleToggleAgendar(ev.title)}
-                  className={`sm:shrink-0 text-xs px-4 py-2.5 rounded-xl font-bold transition-all duration-200 cursor-pointer flex items-center justify-center gap-1.5 ${
-                    isAgendado 
-                      ? 'bg-emerald-500 text-white shadow-sm' 
-                      : 'bg-[#820cd0] hover:bg-[#6c0aa7] text-white shadow-sm hover:shadow-md'
-                  }`}
-                >
-                  {isAgendado ? (
-                    <>
-                      <CheckCircle className="w-4 h-4" />
-                      <span>Agendado</span>
-                    </>
-                  ) : (
-                    <span>+ Agendar</span>
-                  )}
-                </button>
+                {/* Bookmark / Action Button */}
+                <div className="shrink-0 self-start md:self-center">
+                  <button
+                    onClick={() => toggleBookmark(ev.title)}
+                    className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 border ${
+                      isBookmarked
+                        ? 'bg-emerald-600 border-emerald-600 text-white'
+                        : 'bg-white border-[#0b123b] text-[#0b123b] hover:bg-[#0b123b] hover:text-white'
+                    }`}
+                  >
+                    {isBookmarked ? (
+                      <>
+                        <Check className="w-3.5 h-3.5" />
+                        <span>Agendado</span>
+                      </>
+                    ) : (
+                      <>
+                        <Plus className="w-3.5 h-3.5" />
+                        <span>Agendar</span>
+                      </>
+                    )}
+                  </button>
+                </div>
               </div>
             );
           })}
