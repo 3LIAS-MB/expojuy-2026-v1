@@ -6,15 +6,15 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  ArrowRight,
-  Boxes,
-  ChevronLeft,
-  ChevronRight,
-  Lightbulb,
-  MapPinned,
-  Play,
-  UsersRound,
-} from "lucide-react";
+  FaIndustry,
+  FaLightbulb,
+  FaMountainSun,
+  FaHandshake,
+  FaPlay,
+  FaArrowRight,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -55,25 +55,25 @@ export function AboutExperience() {
         const updateMountain = (progress: number) => {
           const isLg = window.innerWidth >= 1024;
 
-          // Capa 3: Cerro 03 (el cerro más lejano al fondo - mayor desplazamiento parallax)
+          // Capa 3: Cerro 03 (el cerro más lejano al fondo - mayor desplazamiento parallax notorio)
           if (mountainBackRef.current) {
-            const shiftX = (0.5 - progress) * (isLg ? 120 : 65);
-            const shiftY = (1 - 2 * progress) * (isLg ? 14 : 8);
-            mountainBackRef.current.style.transform = `translate3d(calc(-50% + ${shiftX}px), ${shiftY}px, 0) scale(1.08)`;
+            const shiftX = (0.5 - progress) * (isLg ? 480 : 280);
+            const shiftY = Math.sin(progress * Math.PI) * (isLg ? -28 : -16);
+            mountainBackRef.current.style.transform = `translate3d(calc(-50% + ${shiftX}px), ${shiftY}px, 0) scale(1.20)`;
           }
 
           // Capa 2: Cerro 02 (capa intermedia)
           if (mountainMidRef.current) {
-            const shiftX = (0.5 - progress) * (isLg ? 60 : 32);
-            const shiftY = (1 - 2 * progress) * (isLg ? 8 : 4);
-            mountainMidRef.current.style.transform = `translate3d(calc(-50% + ${shiftX}px), ${shiftY}px, 0) scale(1.05)`;
+            const shiftX = (0.5 - progress) * (isLg ? 240 : 140);
+            const shiftY = Math.sin(progress * Math.PI) * (isLg ? -14 : -8);
+            mountainMidRef.current.style.transform = `translate3d(calc(-50% + ${shiftX}px), ${shiftY}px, 0) scale(1.14)`;
           }
 
           // Capa 1: Cerro 01 (parte más baja o cercana en primer plano)
           if (mountainFrontRef.current) {
-            const shiftX = (0.5 - progress) * (isLg ? 20 : 10);
-            const shiftY = (1 - 2 * progress) * 2;
-            mountainFrontRef.current.style.transform = `translate3d(calc(-50% + ${shiftX}px), ${shiftY}px, 0) scale(1.02)`;
+            const shiftX = (0.5 - progress) * (isLg ? 80 : 45);
+            const shiftY = (1 - 2 * progress) * 4;
+            mountainFrontRef.current.style.transform = `translate3d(calc(-50% + ${shiftX}px), ${shiftY}px, 0) scale(1.08)`;
           }
         };
         updateMountain(0);
@@ -82,6 +82,7 @@ export function AboutExperience() {
           ease: "none",
           onUpdate: function () {
             const progress = this.progress();
+            updateMountain(progress);
             const activeIndex = Math.min(
               panels.length - 1,
               Math.floor(progress * panels.length),
@@ -169,11 +170,11 @@ export function AboutExperience() {
         if (back) {
           gsap.fromTo(
             back,
-            { x: 20, y: 10, scale: 1.06 },
+            { x: 90, y: 40, scale: 1.22 },
             {
-              x: -20,
-              y: -10,
-              scale: 1.06,
+              x: -90,
+              y: -40,
+              scale: 1.22,
               ease: "none",
               force3D: true,
               scrollTrigger: {
@@ -190,11 +191,11 @@ export function AboutExperience() {
         if (mid) {
           gsap.fromTo(
             mid,
-            { x: 10, y: 5, scale: 1.04 },
+            { x: 45, y: 20, scale: 1.15 },
             {
-              x: -10,
-              y: -5,
-              scale: 1.04,
+              x: -45,
+              y: -20,
+              scale: 1.15,
               ease: "none",
               force3D: true,
               scrollTrigger: {
@@ -211,11 +212,11 @@ export function AboutExperience() {
         if (front) {
           gsap.fromTo(
             front,
-            { x: 4, y: 0, scale: 1.02 },
+            { x: 18, y: 8, scale: 1.08 },
             {
-              x: -4,
-              y: 0,
-              scale: 1.02,
+              x: -18,
+              y: -8,
+              scale: 1.08,
               ease: "none",
               force3D: true,
               scrollTrigger: {
@@ -321,73 +322,75 @@ export function AboutExperience() {
           className="about-panel relative flex h-full flex-col justify-between border-r border-[#e5e7eb] px-6 pt-24 pb-28 sm:px-10 lg:px-16"
         >
           <div className="relative z-10 grid w-full max-w-7xl grid-cols-1 items-start gap-8 md:grid-cols-[1fr_auto]">
-            <div className="about-glass-card max-w-2xl rounded-2xl p-7 sm:p-9">
-              <div data-about-reveal className="chapter-marker">
-                <span>01</span>
-                <i />
+            {/* Main Editorial Plaque */}
+            <div className="about-editorial-plaque relative max-w-2xl p-8 sm:p-11">
+              {/* Curatorial Header */}
+              <div data-about-reveal className="flex items-center justify-between border-b border-[#e5e9f4] pb-4 mb-6">
+                <div className="flex items-center gap-3">
+                  <span className="about-editorial-tag">
+                    EXP · 01
+                  </span>
+                  <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#4b5275]">
+                    La Muestra Multisectorial del Norte
+                  </span>
+                </div>
+                <div className="hidden sm:flex items-center gap-2">
+                  <span className="size-2 rounded-full bg-[#25C0D4]" />
+                  <span className="font-mono text-[10px] font-bold text-[#6a7294] uppercase tracking-wider">
+                    Jujuy 2026
+                  </span>
+                </div>
               </div>
-
-              <p data-about-reveal className="eyebrow mt-5">
-                LA MUESTRA MULTISECTORIAL DEL NORTE
-              </p>
 
               <h2
                 data-about-reveal
-                className="mt-4 text-[clamp(3.5rem,5vw,5.6rem)] font-bold leading-[0.86] tracking-[-0.065em] text-[#0e122b]"
+                className="text-[clamp(3.2rem,4.8vw,5.2rem)] font-extrabold leading-[0.88] tracking-[-0.065em] text-[#0e122b]"
               >
-                Sobre
-                <br />
-                <span className="text-[#820CD0]">ExpoJuy</span>
-                <br />
-                <span className="text-[#820CD0]">2026</span>
+                Sobre{" "}
+                <span className="text-[#820CD0]">
+                  ExpoJuy
+                </span>{" "}
+                <span className="font-light text-[#25C0D4]">2026</span>
               </h2>
-
-              <p
-                data-about-reveal
-                className="mt-6 max-w-xl text-base leading-relaxed text-[#1e243b] lg:text-lg"
-              >
-                En su 17.ª edición, ExpoJuy reúne a empresas, emprendedores,
-                instituciones y delegaciones para mostrar el potencial
-                productivo de Jujuy y abrir nuevas oportunidades de vinculación.
-              </p>
 
               <a
                 href="#expositores"
                 data-about-reveal
-                className="mt-7 inline-flex items-center gap-3 text-sm font-bold text-[#820CD0] transition-opacity hover:opacity-80"
+                className="mt-8 inline-flex items-center gap-3.5 text-sm font-bold text-[#820CD0] transition-colors hover:text-[#6709a3] group"
               >
-                <span className="grid size-10 place-items-center rounded-full border border-[#820CD0]">
-                  <Play aria-hidden className="ml-0.5 size-3.5 fill-[#820CD0]" />
+                <span className="grid size-10 place-items-center rounded-full bg-[#f4edff] border border-[#d8b4fe]/80 transition-transform group-hover:scale-110 shadow-sm">
+                  <FaPlay aria-hidden className="ml-0.5 size-3.5 fill-[#820CD0]" />
                 </span>
-                Descubrí la edición 2026
+                <span>Descubrí la edición 2026</span>
+                <FaArrowRight aria-hidden className="size-3 text-[#820CD0] transition-transform group-hover:translate-x-1" />
               </a>
             </div>
 
             {/* Right side vertical words */}
             <aside
               data-about-reveal
-              className="about-glass-card mr-6 hidden flex-col items-start gap-1.5 self-center justify-self-end rounded-xl px-4 py-3.5 text-[0.72rem] font-bold tracking-[0.2em] text-[#0e122b] uppercase md:flex"
+              className="about-editorial-plaque mr-6 hidden flex-col items-start gap-2.5 self-center justify-self-end px-5 py-6 text-[0.72rem] font-bold tracking-[0.24em] text-[#0e122b] uppercase md:flex"
             >
-              <span>Territorio</span>
+              <span className="text-[#820CD0]">Territorio</span>
               <span>Gente</span>
               <span>Producción</span>
-              <span>Futuro</span>
-              <div className="mt-2.5 h-[2px] w-8 bg-[#6424dc]" />
+              <span className="text-[#25C0D4]">Futuro</span>
+              <div className="mt-2 h-[2px] w-8 bg-gradient-to-r from-[#820CD0] to-[#25C0D4]" />
             </aside>
           </div>
 
-          {/* Bottom stats row in clean pill/card */}
+          {/* Bottom stats row in clean architectural plaque */}
           <div
             data-about-reveal
-            className="about-glass-card relative z-10 w-full max-w-3xl rounded-xl px-6 py-4"
+            className="about-editorial-plaque relative z-10 w-full max-w-3xl px-8 py-5"
           >
-            <dl className="grid grid-cols-2 gap-4 divide-y divide-gray-200/80 sm:grid-cols-4 sm:divide-y-0 sm:divide-x sm:divide-gray-200/80">
+            <dl className="grid grid-cols-2 gap-6 divide-y divide-gray-200/80 sm:grid-cols-4 sm:divide-y-0 sm:divide-x sm:divide-gray-200/80">
               {eventFacts.map((fact, idx) => (
-                <div key={fact.label} className={idx > 0 ? "sm:pl-5" : ""}>
-                  <dt className="text-lg font-bold tracking-tight text-[#0e122b] lg:text-2xl">
+                <div key={fact.label} className={idx > 0 ? "sm:pl-6" : ""}>
+                  <dt className="text-xl font-extrabold tracking-tight text-[#0e122b] lg:text-2xl font-mono">
                     {fact.value}
                   </dt>
-                  <dd className="mt-1 text-xs font-semibold text-[#475069]">
+                  <dd className="mt-1 text-[11px] font-bold uppercase tracking-wider text-[#475069]">
                     {fact.label}
                   </dd>
                 </div>
@@ -404,15 +407,6 @@ export function AboutExperience() {
           className="about-panel relative flex h-full flex-col justify-center border-r border-[#e5e7eb] px-6 pt-20 pb-36 sm:px-10 lg:px-16"
         >
           <div className="relative z-10 mx-auto w-full max-w-7xl pb-12 lg:pb-16">
-            <div data-about-reveal className="chapter-marker">
-              <span>02</span>
-              <i />
-            </div>
-
-            <p data-about-reveal className="eyebrow mt-5">
-              UN TERRITORIO, INFINITAS POSIBILIDADES
-            </p>
-
             <div className="mt-6 grid grid-cols-1 items-center gap-10 md:grid-cols-[auto_1fr] lg:gap-16">
               {/* Graphic: Big J with the color accent blocks */}
               <div className="relative flex items-center justify-center">
@@ -441,29 +435,40 @@ export function AboutExperience() {
                 />
               </div>
 
-              {/* Text column */}
-              <div className="about-glass-card max-w-lg rounded-2xl p-7 sm:p-9">
+              {/* Text column with solid editorial plaque */}
+              <div className="about-editorial-plaque relative max-w-xl p-8 sm:p-10">
+                {/* Curatorial Header */}
+                <div data-about-reveal className="flex items-center justify-between border-b border-[#e5e9f4] pb-4 mb-6">
+                  <div className="flex items-center gap-3">
+                    <span className="about-editorial-tag">
+                      EXP · 02
+                    </span>
+                    <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#4b5275]">
+                      Un Territorio, Infinitas Posibilidades
+                    </span>
+                  </div>
+                </div>
+
                 <h2
                   data-about-reveal
-                  className="text-[clamp(2.3rem,3.2vw,3.8rem)] font-bold leading-[0.96] tracking-[-0.05em] text-[#0e122b]"
+                  className="text-[clamp(2.3rem,3.2vw,3.8rem)] font-extrabold leading-[0.96] tracking-[-0.05em] text-[#0e122b]"
                 >
                   Jujuy conecta producción, conocimiento y mercados.
                 </h2>
-                <p
+
+                {/* Callout Estratégico Corredor Bioceánico */}
+                <div
                   data-about-reveal
-                  className="mt-6 text-base leading-relaxed text-[#1e243b]"
+                  className="mt-6 rounded-xl border-l-[3px] border-[#820CD0] bg-[#f8f5ff] p-4.5"
                 >
-                  La Ciudad Cultural alberga una propuesta que vincula
-                  emprendimientos locales, empresas, instituciones y visitantes
-                  de toda la región.
-                </p>
-                <p
-                  data-about-reveal
-                  className="mt-5 border-l-[3px] border-[#6424dc] pl-4 text-sm font-medium leading-relaxed text-[#111827]"
-                >
-                  El Corredor Bioceánico le da a la feria una escala regional: la
-                  producción jujeña dialoga con mercados, alianzas e inversión.
-                </p>
+                  <span className="block text-[10px] font-mono font-bold uppercase tracking-widest text-[#820CD0] mb-1.5">
+                    Eje Estratégico
+                  </span>
+                  <p className="text-sm font-medium leading-relaxed text-[#111827]">
+                    El Corredor Bioceánico le da a la feria una escala regional: la
+                    producción jujeña dialoga con mercados, alianzas e inversión internacional.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -477,37 +482,31 @@ export function AboutExperience() {
           className="about-panel relative flex h-full flex-col justify-center border-r border-[#e5e7eb] px-6 pt-20 pb-32 sm:px-10 lg:px-16"
         >
           <div className="relative z-10 mx-auto w-full max-w-7xl pb-6">
-            <div className="about-glass-card max-w-3xl rounded-2xl p-6 sm:p-7">
-              <div data-about-reveal className="chapter-marker">
-                <span>03</span>
-                <i />
+            <div className="about-editorial-plaque relative max-w-3xl p-8 sm:p-10">
+              {/* Curatorial Header */}
+              <div data-about-reveal className="flex items-center justify-between border-b border-[#e5e9f4] pb-4 mb-6">
+                <div className="flex items-center gap-3">
+                  <span className="about-editorial-tag">
+                    EXP · 03
+                  </span>
+                  <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#4b5275]">
+                    Cuatro Mundos, Una Misma Visión
+                  </span>
+                </div>
               </div>
-
-              <p data-about-reveal className="eyebrow mt-4">
-                CUATRO MUNDOS, UNA MISMA VISIÓN
-              </p>
 
               <h2
                 data-about-reveal
-                className="mt-3 text-[clamp(2.3rem,3vw,3.5rem)] font-bold leading-[0.92] tracking-[-0.05em] text-[#0e122b]"
+                className="text-[clamp(2.3rem,3vw,3.5rem)] font-extrabold leading-[0.92] tracking-[-0.05em] text-[#0e122b]"
               >
                 Una feria para producir, intercambiar y proyectar.
               </h2>
-
-              <p
-                data-about-reveal
-                className="mt-3 max-w-2xl text-sm leading-relaxed text-[#1e243b] lg:text-base"
-              >
-                La programación combina muestra comercial e institucional,
-                conferencias, experiencias culturales y espacios para construir
-                relaciones de negocio.
-              </p>
             </div>
 
             {/* 2x4 Alternating Rhythm Grid (Photos & Content Cards) */}
             <div
               data-about-reveal
-              className="mt-6 w-full overflow-hidden rounded-lg border border-[#dfe3ef] bg-white shadow-sm"
+              className="mt-6 w-full overflow-hidden rounded-xl border border-[#dfe3ef] bg-white shadow-sm"
             >
               <div className="grid grid-cols-2 grid-rows-2 md:grid-cols-4">
                 {/* Col 1 Top: Photo 1 */}
@@ -521,17 +520,22 @@ export function AboutExperience() {
                 </div>
 
                 {/* Col 2 Top: Card 1 */}
-                <div className="flex flex-col justify-center border-b border-[#dfe3ef] bg-white p-4 md:border-r">
-                  <span className="grid size-7 place-items-center rounded bg-[#6424dc] text-white">
-                    <Boxes className="size-3.5" />
-                  </span>
-                  <h3 className="mt-2.5 text-base font-bold tracking-tight text-[#0e122b]">
+                <div className="flex flex-col justify-center border-b border-[#dfe3ef] bg-white p-5 md:border-r transition-colors hover:bg-[#faf8ff]">
+                  <div className="flex items-center justify-between">
+                    <span className="grid size-8 place-items-center rounded-lg bg-[#6424dc] text-white shadow-sm">
+                      <FaIndustry className="size-3.5" />
+                    </span>
+                    <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-[#820CD0]">
+                      SECTOR 01
+                    </span>
+                  </div>
+                  <h3 className="mt-3 text-base font-bold tracking-tight text-[#0e122b]">
                     Industria y energía
                   </h3>
                   <p className="mt-1 text-xs leading-relaxed text-[#374151]">
                     Producción e infraestructura para transformar el territorio.
                   </p>
-                  <ArrowRight className="mt-2.5 size-3.5 text-[#6424dc]" />
+                  <FaArrowRight className="mt-3 size-3 text-[#6424dc]" />
                 </div>
 
                 {/* Col 3 Top: Photo 2 */}
@@ -545,17 +549,22 @@ export function AboutExperience() {
                 </div>
 
                 {/* Col 4 Top: Card 2 */}
-                <div className="flex flex-col justify-center border-b border-[#dfe3ef] bg-white p-4">
-                  <span className="grid size-7 place-items-center rounded bg-[#0b7c8a] text-white">
-                    <Lightbulb className="size-3.5" />
-                  </span>
-                  <h3 className="mt-2.5 text-base font-bold tracking-tight text-[#0e122b]">
+                <div className="flex flex-col justify-center border-b border-[#dfe3ef] bg-white p-5 transition-colors hover:bg-[#f3fbfa]">
+                  <div className="flex items-center justify-between">
+                    <span className="grid size-8 place-items-center rounded-lg bg-[#0b7c8a] text-white shadow-sm">
+                      <FaLightbulb className="size-3.5" />
+                    </span>
+                    <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-[#0b7c8a]">
+                      SECTOR 02
+                    </span>
+                  </div>
+                  <h3 className="mt-3 text-base font-bold tracking-tight text-[#0e122b]">
                     Innovación aplicada
                   </h3>
                   <p className="mt-1 text-xs leading-relaxed text-[#374151]">
                     Talento y soluciones que impulsan nuevos proyectos.
                   </p>
-                  <ArrowRight className="mt-2.5 size-3.5 text-[#0b7c8a]" />
+                  <FaArrowRight className="mt-3 size-3 text-[#0b7c8a]" />
                 </div>
 
                 {/* Col 1 Bottom: Photo 3 */}
@@ -569,17 +578,22 @@ export function AboutExperience() {
                 </div>
 
                 {/* Col 2 Bottom: Card 3 */}
-                <div className="flex flex-col justify-center border-[#dfe3ef] bg-white p-4 md:border-r">
-                  <span className="grid size-7 place-items-center rounded bg-[#7f08d5] text-white">
-                    <MapPinned className="size-3.5" />
-                  </span>
-                  <h3 className="mt-2.5 text-base font-bold tracking-tight text-[#0e122b]">
+                <div className="flex flex-col justify-center border-[#dfe3ef] bg-white p-5 md:border-r transition-colors hover:bg-[#fbf7ff]">
+                  <div className="flex items-center justify-between">
+                    <span className="grid size-8 place-items-center rounded-lg bg-[#7f08d5] text-white shadow-sm">
+                      <FaMountainSun className="size-3.5" />
+                    </span>
+                    <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-[#7f08d5]">
+                      SECTOR 03
+                    </span>
+                  </div>
+                  <h3 className="mt-3 text-base font-bold tracking-tight text-[#0e122b]">
                     Producción e identidad
                   </h3>
                   <p className="mt-1 text-xs leading-relaxed text-[#374151]">
                     Economías regionales, y cultura que proyectan a Jujuy.
                   </p>
-                  <ArrowRight className="mt-2.5 size-3.5 text-[#7f08d5]" />
+                  <FaArrowRight className="mt-3 size-3 text-[#7f08d5]" />
                 </div>
 
                 {/* Col 3 Bottom: Photo 4 */}
@@ -593,18 +607,23 @@ export function AboutExperience() {
                 </div>
 
                 {/* Col 4 Bottom: Card 4 */}
-                <div className="flex flex-col justify-center bg-white p-4">
-                  <span className="grid size-7 place-items-center rounded bg-[#6424dc] text-white">
-                    <UsersRound className="size-3.5" />
-                  </span>
-                  <h3 className="mt-2.5 text-base font-bold tracking-tight text-[#0e122b]">
+                <div className="flex flex-col justify-center bg-white p-5 transition-colors hover:bg-[#faf8ff]">
+                  <div className="flex items-center justify-between">
+                    <span className="grid size-8 place-items-center rounded-lg bg-[#6424dc] text-white shadow-sm">
+                      <FaHandshake className="size-3.5" />
+                    </span>
+                    <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-[#6424dc]">
+                      SECTOR 04
+                    </span>
+                  </div>
+                  <h3 className="mt-3 text-base font-bold tracking-tight text-[#0e122b]">
                     Comercio y alianzas
                   </h3>
                   <p className="mt-1 text-xs leading-relaxed text-[#374151]">
                     Rondas, vínculos empresariales y oportunidades hacia nuevos
                     mercados.
                   </p>
-                  <ArrowRight className="mt-2.5 size-3.5 text-[#6424dc]" />
+                  <FaArrowRight className="mt-3 size-3 text-[#6424dc]" />
                 </div>
               </div>
             </div>
@@ -619,7 +638,7 @@ export function AboutExperience() {
           className="about-panel relative flex h-full flex-col justify-center px-6 pt-24 pb-28 sm:px-10 lg:px-16"
         >
           {/* Bottom right watermark over mountain range */}
-          <div className="about-glass-card pointer-events-none absolute right-12 bottom-24 z-10 hidden select-none flex-col items-end rounded-xl px-4 py-2.5 text-right xl:flex">
+          <div className="about-editorial-plaque pointer-events-none absolute right-12 bottom-24 z-10 hidden select-none flex-col items-end rounded-xl px-4 py-2.5 text-right xl:flex">
             <span className="text-xs font-bold tracking-[0.2em] text-[#0e122b] uppercase leading-tight">
               JUJUY
             </span>
@@ -630,48 +649,34 @@ export function AboutExperience() {
           </div>
 
           <div className="relative z-10 mx-auto w-full max-w-7xl">
-            <div className="flex items-center justify-between">
-              <div data-about-reveal className="chapter-marker">
-                <span>04</span>
-                <i />
-              </div>
-
-              <p className="hidden text-right text-xs font-bold tracking-wider text-[#2e3650] uppercase leading-tight lg:block">
-                Más que una feria
-                <br />
-                Un territorio de oportunidades
-              </p>
-            </div>
-
-            <p data-about-reveal className="eyebrow mt-5">
-              EL ENCUENTRO
-            </p>
-
-            <div className="mt-5 grid grid-cols-1 items-center gap-10 md:grid-cols-[1fr_auto] lg:gap-16">
+            <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[1fr_auto] lg:gap-16">
               {/* Left Column: Heading, text, and buttons */}
-              <div className="about-glass-card max-w-2xl rounded-2xl p-7 sm:p-9">
+              <div className="about-editorial-plaque relative max-w-2xl p-8 sm:p-11">
+                {/* Curatorial Header */}
+                <div data-about-reveal className="flex items-center justify-between border-b border-[#e5e9f4] pb-4 mb-6">
+                  <div className="flex items-center gap-3">
+                    <span className="about-editorial-tag">
+                      EXP · 04
+                    </span>
+                    <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#4b5275]">
+                      El Encuentro
+                    </span>
+                  </div>
+                </div>
+
                 <h2
                   data-about-reveal
-                  className="text-[clamp(3.2rem,4.6vw,5.6rem)] font-bold leading-[0.88] tracking-[-0.07em] text-[#0e122b]"
+                  className="text-[clamp(3.2rem,4.6vw,5.2rem)] font-extrabold leading-[0.88] tracking-[-0.07em] text-[#0e122b]"
                 >
                   El futuro
                   <br />
                   se encuentra
                   <br />
-                  <span className="text-[#6424dc]">en Jujuy.</span>
+                  <span className="text-[#820CD0]">en Jujuy.</span>
                 </h2>
 
-                <p
-                  data-about-reveal
-                  className="mt-6 max-w-xl text-base leading-relaxed text-[#1e243b] lg:text-lg"
-                >
-                  Del 9 al 12 de octubre, cuatro jornadas concentran exposición,
-                  rondas de negocios, conferencias y actividades culturales para
-                  abrir conversaciones que trasciendan el predio.
-                </p>
-
-                <div data-about-reveal className="mt-5">
-                  <span className="inline-flex items-center rounded-md border border-[#d6c7fb] bg-[#f8f5ff] px-3.5 py-1.5 text-xs font-bold tracking-wider text-[#521cc0] uppercase">
+                <div data-about-reveal className="mt-7">
+                  <span className="inline-flex items-center rounded-md border border-[#d6c7fb] bg-[#f8f5ff] px-3.5 py-1.5 text-xs font-bold tracking-wider text-[#820CD0] uppercase">
                     CORREDOR BIOCEÁNICO · VINCULACIÓN · NUEVOS MERCADOS
                   </span>
                 </div>
@@ -683,21 +688,21 @@ export function AboutExperience() {
                   <Button
                     asChild
                     size="lg"
-                    className="h-12 rounded-md bg-[#6424dc] px-7 text-sm font-bold text-white shadow-sm hover:bg-[#521cc0]"
+                    className="h-12 rounded-lg bg-[#820CD0] px-7 text-sm font-bold text-white shadow-[0_10px_25px_rgba(130,12,208,0.25)] hover:bg-[#6c0aa9]"
                   >
                     <a
                       href="#expositores"
-                      className="inline-flex items-center gap-2"
+                      className="inline-flex items-center gap-2.5"
                     >
                       Ver expositores
-                      <ArrowRight aria-hidden className="size-4" />
+                      <FaArrowRight aria-hidden className="size-3" />
                     </a>
                   </Button>
                   <Button
                     asChild
                     size="lg"
                     variant="outline"
-                    className="h-12 rounded-md border border-gray-300 bg-white px-7 text-sm font-bold text-[#0e122b] hover:border-[#6424dc] hover:text-[#6424dc]"
+                    className="h-12 rounded-lg border border-gray-300 bg-white/90 px-7 text-sm font-bold text-[#0e122b] hover:border-[#820CD0] hover:text-[#820CD0]"
                   >
                     <a href="#expositores">Conocer los sectores</a>
                   </Button>
@@ -757,7 +762,7 @@ export function AboutExperience() {
           className="grid size-11 shrink-0 place-items-center rounded-full border border-gray-300 text-gray-700 transition-colors hover:border-[#6424dc] hover:text-[#6424dc] xl:ml-8"
           aria-label="Panel anterior"
         >
-          <ChevronLeft aria-hidden className="size-5" />
+          <FaChevronLeft aria-hidden className="size-4" />
         </button>
 
         <p className="ml-5 shrink-0 text-sm font-medium text-gray-600">
@@ -806,7 +811,7 @@ export function AboutExperience() {
           className="grid size-11 shrink-0 place-items-center rounded-full border border-gray-300 text-gray-700 transition-colors hover:border-[#6424dc] hover:text-[#6424dc]"
           aria-label="Panel siguiente"
         >
-          <ChevronRight aria-hidden className="size-5" />
+          <FaChevronRight aria-hidden className="size-4" />
         </button>
 
         <p className="ml-8 hidden border-l border-gray-200 pl-8 text-[0.62rem] font-bold leading-tight tracking-[0.1em] text-gray-500 uppercase xl:block">

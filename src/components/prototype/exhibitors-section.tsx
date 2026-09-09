@@ -5,7 +5,7 @@ import { useMemo, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRight, Search } from "lucide-react";
+import { FaArrowRight, FaMagnifyingGlass } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -138,9 +138,9 @@ export function ExhibitorsSection() {
           <div data-exhibitor-heading className="grid gap-3 sm:grid-cols-[1fr_190px] lg:grid-cols-1 xl:grid-cols-[1fr_190px]">
             <label className="relative block">
               <span className="sr-only">Buscar expositor</span>
-              <Search
+              <FaMagnifyingGlass
                 aria-hidden
-                className="pointer-events-none absolute left-3 top-1/2 z-10 size-4 -translate-y-1/2 text-[#6a718f]"
+                className="pointer-events-none absolute left-3.5 top-1/2 z-10 size-3.5 -translate-y-1/2 text-[#6a718f]"
               />
               <Input
                 className="h-11 rounded-md border-[#cfd4e4] bg-white pl-10 text-[#0b123b] shadow-none placeholder:text-[#7c829c]"
@@ -234,7 +234,7 @@ export function ExhibitorsSection() {
             className="h-12 rounded-md bg-[#820CD0] px-6 text-white"
           >
             Inscripciones próximamente
-            <ArrowRight aria-hidden className="size-4" />
+            <FaArrowRight aria-hidden className="size-3.5" />
           </Button>
         </div>
       </div>

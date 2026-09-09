@@ -2,7 +2,16 @@
 
 import { useEffect } from 'react';
 import Image from 'next/image';
-import { ArrowUpRight, Calendar, Clock, X, Tag, Share2, Building2, Quote } from 'lucide-react';
+import {
+  FaArrowUpRightFromSquare,
+  FaCalendarDays,
+  FaClock,
+  FaXmark,
+  FaTag,
+  FaShareNodes,
+  FaBuilding,
+  FaQuoteLeft,
+} from 'react-icons/fa6';
 import type { NewsArticle } from '@/data/news';
 
 interface NewsModalProps {
@@ -67,7 +76,7 @@ export function NewsModal({ article, onClose }: NewsModalProps) {
             aria-label="Compartir noticia"
             className="grid h-9 w-9 place-items-center rounded-full border border-[#dfe3ef] bg-white/95 text-[#0b123b] shadow-sm transition-colors hover:border-[#6424dc] hover:text-[#6424dc] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6424dc]"
           >
-            <Share2 className="w-4 h-4" />
+            <FaShareNodes className="h-3.5 w-3.5" />
           </button>
           <button
             type="button"
@@ -75,7 +84,7 @@ export function NewsModal({ article, onClose }: NewsModalProps) {
             aria-label="Cerrar modal"
             className="grid h-9 w-9 place-items-center rounded-full border border-[#dfe3ef] bg-white/95 text-[#0b123b] shadow-sm transition-colors hover:border-[#6424dc] hover:text-[#6424dc] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6424dc]"
           >
-            <X className="w-5 h-5" />
+            <FaXmark className="h-4 w-4" />
           </button>
         </div>
 
@@ -97,7 +106,7 @@ export function NewsModal({ article, onClose }: NewsModalProps) {
                 {article.category}
               </span>
               <span className="flex items-center gap-1.5 bg-[#040819]/80 px-3 py-1 text-[0.68rem] font-semibold text-white">
-                <Clock className="w-3.5 h-3.5 text-[#19b9ca]" />
+                <FaClock className="h-3.5 w-3.5 text-[#19b9ca]" />
                 {article.readTime}
               </span>
             </div>
@@ -105,13 +114,13 @@ export function NewsModal({ article, onClose }: NewsModalProps) {
 
           <div className="flex flex-wrap items-center justify-between gap-x-5 gap-y-2 border-b border-[#c9cedc] py-4 text-xs text-[#646a85] sm:py-5">
             <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-[#6424dc]" />
+              <FaCalendarDays className="h-4 w-4 text-[#6424dc]" />
               <time dateTime={article.publishedAt} className="font-semibold text-[#0b123b]">
                 {article.date}
               </time>
             </div>
             <div className="flex items-center gap-1.5">
-              <Building2 className="w-4 h-4 text-[#19b9ca]" />
+              <FaBuilding className="h-4 w-4 text-[#19b9ca]" />
               <span>
                 Fuente: <strong className="text-[#0b123b]">{article.author.name}</strong> ({article.author.role})
               </span>
@@ -132,7 +141,7 @@ export function NewsModal({ article, onClose }: NewsModalProps) {
 
           {article.highlightQuote && (
             <div className="mx-auto mt-7 flex max-w-4xl gap-4 border-y border-[#d8c7fb] py-5 sm:mt-8 sm:py-6">
-              <Quote className="mt-1 h-7 w-7 shrink-0 text-[#6424dc]" />
+              <FaQuoteLeft className="mt-1 h-7 w-7 shrink-0 text-[#6424dc]" />
               <div>
                 <blockquote className="text-base font-semibold italic leading-relaxed text-[#0b123b]">
                   &ldquo;{article.highlightQuote.quote}&rdquo;
@@ -152,7 +161,7 @@ export function NewsModal({ article, onClose }: NewsModalProps) {
 
           <div className="mx-auto mt-8 max-w-4xl border-t border-[#c9cedc] pt-5">
             <div className="flex items-center gap-2 flex-wrap">
-              <Tag className="w-4 h-4 text-[#6424dc]" />
+              <FaTag className="h-4 w-4 text-[#6424dc]" />
               <span className="text-xs font-bold text-[#646a85] uppercase tracking-wider">
                 Temas relacionados:
               </span>
@@ -178,7 +187,7 @@ export function NewsModal({ article, onClose }: NewsModalProps) {
             className="inline-flex items-center gap-2 bg-[#6424dc] px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-[#0b123b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6424dc] focus-visible:ring-offset-2"
           >
             Entendido
-            <ArrowUpRight className="h-3.5 w-3.5" />
+            <FaArrowUpRightFromSquare className="h-3.5 w-3.5" />
           </button>
         </div>
       </div>
