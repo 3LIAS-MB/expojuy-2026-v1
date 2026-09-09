@@ -22,19 +22,12 @@ export function NewsSection({ id = 'noticias', className = '' }: NewsSectionProp
   return (
     <section
       id={id}
-      className={`py-20 lg:py-28 bg-[#f7f8fc] text-[#0b123b] border-t border-[#dfe3ef] ${className}`}
+      className={`py-16 sm:py-20 lg:py-24 bg-[#f7f8fc] text-[#0b123b] border-t border-[#dfe3ef] ${className}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* CABECERA ARMONIZADA CON PESTAÑAS ANCLADAS A LA LÍNEA GUÍA */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-[#dfe3ef]">
-          <div className="pb-6">
-            <div className="flex items-center gap-3 mb-2.5">
-              <span className="w-8 h-[2px] bg-[#6424dc]" />
-              <span className="text-[0.72rem] font-bold tracking-[0.24em] uppercase text-[#6424dc]">
-                Prensa & Comunicados
-              </span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0b123b]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12 border-b border-[#c9cedc]">
+          <div className="pb-5 sm:pb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.035em] text-[#0b123b]">
               Actualidad <span className="text-[#6424dc]">ExpoJuy 2026</span>
             </h2>
             <p className="mt-2 text-sm sm:text-base text-[#646a85] max-w-xl">
@@ -67,8 +60,7 @@ export function NewsSection({ id = 'noticias', className = '' }: NewsSectionProp
           </nav>
         </div>
 
-        {/* GRILLA EDITORIAL DE 4 COLUMNAS */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-[#66708a] bg-[#f7f8fc]">
           {filteredArticles.map((article) => (
             <NewsCard
               key={article.id}

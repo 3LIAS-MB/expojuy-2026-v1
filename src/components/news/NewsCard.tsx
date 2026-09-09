@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { ArrowUpRight } from 'lucide-react';
 import type { NewsArticle } from '@/data/news';
 
 interface NewsCardProps {
@@ -12,37 +13,43 @@ export function NewsCard({ article, onReadMore }: NewsCardProps) {
   return (
     <article
       onClick={() => onReadMore(article)}
-      className="group cursor-pointer flex flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6424dc] rounded-xl h-full"
+      className="group cursor-pointer flex min-w-0 flex-col p-3 sm:p-4 md:p-4 lg:p-5 border-b border-[#a9b0c1] md:[&:nth-child(odd)]:border-r lg:[&:nth-child(3n+1)]:border-r lg:[&:nth-child(3n+2)]:border-r lg:[&:nth-child(3n)]:border-r-0 lg:[&:nth-last-child(-n+3)]:border-b-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#6424dc]"
     >
-      {/* IMAGEN: Curvatura rounded-xl + zoom suave al hover */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#eef0f8] mb-3.5 border border-[#dfe3ef]/70 shadow-xs">
+      <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#e5e8f0]">
         <Image
           src={article.image}
           alt={article.title}
           fill
-          className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.035]"
+          sizes="(max-width: 767px) calc(100vw - 3.5rem), (max-width: 1023px) 50vw, 33vw"
         />
       </div>
 
-      {/* METADATO SUPERIOR SUTIL */}
-      <div className="flex items-center gap-2 text-[11px] font-bold tracking-wider uppercase text-[#6424dc] mb-1.5">
-        <span>{article.category}</span>
-      </div>
-
-      {/* TÍTULO EDITORIAL Y FECHA CON BASE ALINEADA EN DESKTOP */}
-      <div className="flex-1 flex flex-col justify-between">
-        <h3 className="font-bold text-[#0b123b] text-[15px] sm:text-[16px] leading-[1.35] group-hover:text-[#6424dc] transition-colors mb-3 line-clamp-3 md:min-h-[3.9rem]">
+      <div className="flex flex-1 flex-col pt-4">
+        <div className="mb-3 border-b border-dashed border-[#aeb5c5] pb-3">
+          <p className="mb-2 text-[0.65rem] font-bold tracking-[0.12em] uppercase text-[#6424dc]">
+            {article.category}
+          </p>
+          <h3 className="font-bold text-[#0b123b] text-[1.6rem] sm:text-[1.75rem] leading-[1.02] tracking-[-0.045em] group-hover:text-[#6424dc] transition-colors text-balance">
           {article.title}
-        </h3>
+          </h3>
+        </div>
 
-        {/* FECHA DISCRETA */}
-        <time
-          dateTime={article.publishedAt}
-          className="text-[12px] sm:text-[13px] text-[#646a85] font-normal"
-        >
-          {article.date}
-        </time>
+        <p className="text-[0.94rem] leading-[1.38] text-[#454c64] line-clamp-3">
+          {article.summary}
+        </p>
+
+        <div className="mt-auto flex items-end gap-3 pt-5">
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-sm font-bold text-[#0b123b]">{article.author.name}</p>
+            <time dateTime={article.publishedAt} className="mt-0.5 block text-xs text-[#646a85]">
+              {article.date}
+            </time>
+          </div>
+          <span className="grid h-10 w-10 shrink-0 place-items-center bg-[#6424dc] text-white transition-colors group-hover:bg-[#0b123b]" aria-hidden="true">
+            <ArrowUpRight className="h-5 w-5" strokeWidth={1.8} />
+          </span>
+        </div>
       </div>
     </article>
   );

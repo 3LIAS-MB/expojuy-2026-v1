@@ -2,7 +2,16 @@
 
 import { useEffect } from 'react';
 import Image from 'next/image';
-import { Calendar, Clock, X, Tag, Share2, Building2, Quote } from 'lucide-react';
+import {
+  FaArrowUpRightFromSquare,
+  FaCalendarDays,
+  FaClock,
+  FaXmark,
+  FaTag,
+  FaShareNodes,
+  FaBuilding,
+  FaQuoteLeft,
+} from 'react-icons/fa6';
 import type { NewsArticle } from '@/data/news';
 
 interface NewsModalProps {
@@ -52,37 +61,37 @@ export function NewsModal({ article, onClose }: NewsModalProps) {
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-news-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-[#040819]/80 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[#040819]/80 p-2 sm:p-6 lg:p-8 backdrop-blur-sm animate-in fade-in duration-200"
       onClick={onClose}
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-3xl max-h-[90vh] flex flex-col bg-white rounded-2xl shadow-2xl border border-[#dfe3ef] overflow-hidden text-[#0b123b]"
+        className="relative flex max-h-[calc(100dvh-1rem)] w-full max-w-5xl flex-col overflow-hidden border border-[#aeb5c5] border-t-4 border-t-[#6424dc] bg-[#f7f8fc] text-[#0b123b] shadow-2xl sm:max-h-[92vh]"
       >
         {/* CABECERA CON BOTONES */}
-        <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
+        <div className="absolute right-3 top-3 z-10 flex items-center gap-2 sm:right-5 sm:top-5">
           <button
             type="button"
             onClick={handleShare}
             aria-label="Compartir noticia"
-            className="p-2 rounded-full bg-white/90 hover:bg-white text-[#0b123b] shadow-md border border-[#dfe3ef] hover:text-[#6424dc] transition-colors"
+            className="grid h-9 w-9 place-items-center rounded-full border border-[#dfe3ef] bg-white/95 text-[#0b123b] shadow-sm transition-colors hover:border-[#6424dc] hover:text-[#6424dc] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6424dc]"
           >
-            <Share2 className="w-4 h-4" />
+            <FaShareNodes className="h-3.5 w-3.5" />
           </button>
           <button
             type="button"
             onClick={onClose}
             aria-label="Cerrar modal"
-            className="p-2 rounded-full bg-white/90 hover:bg-white text-[#0b123b] shadow-md border border-[#dfe3ef] hover:text-[#c83349] transition-colors"
+            className="grid h-9 w-9 place-items-center rounded-full border border-[#dfe3ef] bg-white/95 text-[#0b123b] shadow-sm transition-colors hover:border-[#6424dc] hover:text-[#6424dc] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6424dc]"
           >
-            <X className="w-5 h-5" />
+            <FaXmark className="h-4 w-4" />
           </button>
         </div>
 
         {/* CONTENIDO DESPLAZABLE */}
-        <div className="overflow-y-auto exhibitor-scroll p-6 sm:p-8 space-y-6">
-          {/* IMAGEN DE PORTADA */}
-          <div className="relative aspect-[16/9] w-full rounded-xl overflow-hidden bg-[#eef0f8]">
+        <div className="exhibitor-scroll overflow-y-auto">
+          <div className="px-4 pb-8 pt-4 sm:px-7 sm:pb-10 sm:pt-7 lg:px-10">
+          <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#e5e8f0]">
             <Image
               src={article.image}
               alt={article.title}
@@ -91,53 +100,50 @@ export function NewsModal({ article, onClose }: NewsModalProps) {
               sizes="(max-width: 768px) 100vw, 800px"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center gap-2">
-              <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#6424dc] text-white shadow-sm">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#040819]/70 via-transparent to-transparent" />
+            <div className="absolute bottom-3 left-3 right-3 flex flex-wrap items-center gap-2 sm:bottom-4 sm:left-4 sm:right-4">
+              <span className="bg-[#6424dc] px-3 py-1 text-[0.68rem] font-bold uppercase tracking-wide text-white">
                 {article.category}
               </span>
-              <span className="px-3 py-1 rounded-full text-xs font-medium bg-black/60 text-white backdrop-blur-sm flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-[#19b9ca]" />
+              <span className="flex items-center gap-1.5 bg-[#040819]/80 px-3 py-1 text-[0.68rem] font-semibold text-white">
+                <FaClock className="h-3.5 w-3.5 text-[#19b9ca]" />
                 {article.readTime}
               </span>
             </div>
           </div>
 
-          {/* METADATOS Y FECHA */}
-          <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-[#646a85] border-b border-[#dfe3ef] pb-4">
+          <div className="flex flex-wrap items-center justify-between gap-x-5 gap-y-2 border-b border-[#c9cedc] py-4 text-xs text-[#646a85] sm:py-5">
             <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-[#6424dc]" />
+              <FaCalendarDays className="h-4 w-4 text-[#6424dc]" />
               <time dateTime={article.publishedAt} className="font-semibold text-[#0b123b]">
                 {article.date}
               </time>
             </div>
             <div className="flex items-center gap-1.5">
-              <Building2 className="w-4 h-4 text-[#19b9ca]" />
+              <FaBuilding className="h-4 w-4 text-[#19b9ca]" />
               <span>
                 Fuente: <strong className="text-[#0b123b]">{article.author.name}</strong> ({article.author.role})
               </span>
             </div>
           </div>
 
-          {/* TÍTULO Y BAJADA */}
-          <div>
+          <div className="mx-auto max-w-4xl pt-6 sm:pt-8">
             <h1
               id="modal-news-title"
-              className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0b123b] leading-tight mb-4"
+              className="text-balance text-[1.8rem] font-bold leading-[1.04] tracking-[-0.045em] text-[#0b123b] sm:text-4xl lg:text-5xl"
             >
               {article.title}
             </h1>
-            <p className="text-base sm:text-lg text-[#3a4161] font-medium leading-relaxed bg-[#f7f8fc] p-4 rounded-xl border-l-4 border-[#6424dc]">
+            <p className="mt-5 border-l border-[#6424dc] pl-4 text-base font-medium leading-relaxed text-[#454c64] sm:mt-6 sm:text-lg sm:leading-relaxed">
               {article.summary}
             </p>
           </div>
 
-          {/* CITA DESTACADA (SI EXISTE) */}
           {article.highlightQuote && (
-            <div className="p-5 rounded-xl bg-gradient-to-r from-[#6424dc]/10 via-[#ac7ff0]/10 to-transparent border border-[#6424dc]/20 flex gap-4 items-start">
-              <Quote className="w-8 h-8 text-[#6424dc] shrink-0 mt-1" />
+            <div className="mx-auto mt-7 flex max-w-4xl gap-4 border-y border-[#d8c7fb] py-5 sm:mt-8 sm:py-6">
+              <FaQuoteLeft className="mt-1 h-7 w-7 shrink-0 text-[#6424dc]" />
               <div>
-                <blockquote className="text-base italic font-semibold text-[#0b123b]">
+                <blockquote className="text-base font-semibold italic leading-relaxed text-[#0b123b]">
                   &ldquo;{article.highlightQuote.quote}&rdquo;
                 </blockquote>
                 <p className="text-xs font-bold text-[#6424dc] mt-2 uppercase tracking-wide">
@@ -147,41 +153,41 @@ export function NewsModal({ article, onClose }: NewsModalProps) {
             </div>
           )}
 
-          {/* CUERPO DEL ARTÍCULO */}
-          <div className="space-y-4 text-sm sm:text-base text-[#3a4161] leading-relaxed">
+          <div className="mx-auto mt-7 max-w-3xl space-y-5 text-[0.97rem] leading-[1.7] text-[#303852] sm:mt-9 sm:text-base">
             {article.paragraphs.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}
           </div>
 
-          {/* ETIQUETAS / TAGS */}
-          <div className="pt-4 border-t border-[#dfe3ef]">
+          <div className="mx-auto mt-8 max-w-4xl border-t border-[#c9cedc] pt-5">
             <div className="flex items-center gap-2 flex-wrap">
-              <Tag className="w-4 h-4 text-[#6424dc]" />
+              <FaTag className="h-4 w-4 text-[#6424dc]" />
               <span className="text-xs font-bold text-[#646a85] uppercase tracking-wider">
                 Temas relacionados:
               </span>
               {article.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-2.5 py-1 rounded-md text-xs font-medium bg-[#eef0f8] text-[#0b123b] hover:bg-[#dfe3ef] transition-colors"
+                  className="border border-[#d6dbe7] px-2.5 py-1 text-xs font-medium text-[#454c64] transition-colors hover:border-[#6424dc] hover:text-[#6424dc]"
                 >
                   #{tag}
                 </span>
               ))}
             </div>
           </div>
+          </div>
         </div>
 
-        {/* PIE DEL MODAL */}
-        <div className="px-6 py-4 bg-[#f7f8fc] border-t border-[#dfe3ef] flex items-center justify-between text-xs text-[#646a85]">
-          <span>ExpoJuy 2026 — 17° Edición Multisectorial</span>
+        <div className="flex items-center justify-between gap-4 border-t border-[#c9cedc] bg-white px-4 py-3 text-xs text-[#646a85] sm:px-7 sm:py-4">
+          <span className="hidden sm:inline">ExpoJuy 2026 — 17° Edición Multisectorial</span>
+          <span className="sm:hidden">ExpoJuy 2026</span>
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 rounded-lg bg-[#6424dc] hover:bg-[#7f08d5] text-white font-semibold transition-colors"
+            className="inline-flex items-center gap-2 bg-[#6424dc] px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-[#0b123b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6424dc] focus-visible:ring-offset-2"
           >
             Entendido
+            <FaArrowUpRightFromSquare className="h-3.5 w-3.5" />
           </button>
         </div>
       </div>
