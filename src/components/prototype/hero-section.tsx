@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { useReducedMotion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -18,25 +17,19 @@ interface HeroSectionProps {
 export function HeroSection({ introFinished = true }: HeroSectionProps) {
   const rootRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const reduceMotion = useReducedMotion();
-  const [mounted, setMounted] = useState(false);
   const [videoPaused, setVideoPaused] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Reproducción inteligente del video de fondo sincronizada con la intro
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    if (!introFinished || (mounted && reduceMotion) || videoPaused) {
+    if (!introFinished || videoPaused) {
       video.pause();
     } else {
       void video.play().catch(() => setVideoPaused(true));
     }
-  }, [introFinished, reduceMotion, videoPaused, mounted]);
+  }, [introFinished, videoPaused]);
 
   useGSAP(
     () => {
@@ -127,7 +120,7 @@ export function HeroSection({ introFinished = true }: HeroSectionProps) {
       </svg>
 
       {/* BOTÓN DE CONTROL REPRODUCIR / PAUSAR VIDEO DE FONDO */}
-      {mounted && !reduceMotion && introFinished && (
+      {introFinished && (
         <button
           type="button"
           onClick={() => setVideoPaused((paused) => !paused)}

@@ -360,27 +360,49 @@ a {
 .about-mountain-parallax {
   position: absolute;
   z-index: 0;
-  bottom: -6rem;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: clamp(250px, 38vh, 440px);
-  /* Clip at #sobre, not here: the image's peaks move above this box. */
+  height: clamp(260px, 38vh, 440px);
   overflow: visible;
   pointer-events: none;
+}
+
+.about-glass-card {
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 24px -2px rgba(14, 18, 43, 0.06);
 }
 
 .about-mountain-layer {
   position: absolute;
   bottom: 0;
   left: 50%;
-  width: max(110%, 56rem);
+  width: max(120%, 68rem);
   height: auto;
   max-width: none;
-  transform: translate3d(-50%, 0, 0) scale(1.1);
+  transform: translate3d(-50%, 0, 0);
   transform-origin: center bottom;
   will-change: transform;
   pointer-events: none;
   user-select: none;
+}
+
+.about-mountain-layer--back {
+  z-index: 1;
+  opacity: 0.92;
+}
+
+.about-mountain-layer--mid {
+  z-index: 2;
+  opacity: 0.98;
+}
+
+.about-mountain-layer--front {
+  z-index: 3;
+  opacity: 1;
 }
 
 .about-panel {
@@ -553,13 +575,13 @@ a {
   }
 
   .about-mountain-parallax {
-    bottom: -3.5rem;
-    height: clamp(180px, 34vh, 280px);
+    bottom: 0;
+    height: clamp(180px, 30vh, 280px);
   }
 
   .about-mountain-layer {
-    width: max(122%, 40rem);
-    transform: translate3d(-50%, 0, 0) scale(1.08);
+    width: max(130%, 44rem);
+    transform: translate3d(-50%, 0, 0);
   }
 
   .landscape-u {

@@ -2,7 +2,6 @@
 
 import { useState, useRef } from "react";
 import dynamic from "next/dynamic";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
 
 // Dynamically import LeafletMap client-side only (no SSR window undefined errors)
 const LeafletMap = dynamic(() => import("./LeafletMap"), {
@@ -19,22 +18,7 @@ const LeafletMap = dynamic(() => import("./LeafletMap"), {
 
 export function LocationMapSection() {
   const [mapTileMode, setMapTileMode] = useState<"google" | "dark" | "satellite">("google");
-
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { amount: 0.15, once: false });
-
-  // SCROLL ZOOM ANIMATION BINDINGS
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "center center"],
-  });
-
-  // Smooth scroll scale zoom: 0.88 -> 1.0
-  const mapScale = useTransform(scrollYProgress, [0, 1], [0.88, 1.0]);
-  // Border radius transition: 24px -> 8px
-  const mapBorderRadius = useTransform(scrollYProgress, [0, 1], ["24px", "8px"]);
-  // Opacity fade: 0.5 -> 1.0
-  const mapOpacity = useTransform(scrollYProgress, [0, 1], [0.5, 1.0]);
 
   return (
     <section
@@ -44,10 +28,7 @@ export function LocationMapSection() {
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
         
         {/* Section Header matching site design system */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        <div
           className="mb-8 sm:mb-10 text-left flex flex-col md:flex-row md:items-end justify-between gap-6"
         >
           <div>
@@ -92,16 +73,11 @@ export function LocationMapSection() {
               Satélite
             </button>
           </div>
-        </motion.div>
+        </div>
 
-        {/* MAP CONTAINER WITH SCROLL ZOOM EFFECT */}
-        <motion.div
-          style={{
-            scale: mapScale,
-            borderRadius: mapBorderRadius,
-            opacity: mapOpacity,
-          }}
-          className="relative w-full h-[460px] sm:h-[520px] lg:h-[580px] shadow-lg overflow-hidden border border-gray-300 transition-all duration-300"
+        {/* MAP CONTAINER */}
+        <div
+          className="relative w-full h-[460px] sm:h-[520px] lg:h-[580px] shadow-lg overflow-hidden border border-gray-300 rounded-lg transition-all duration-300"
         >
           {/* Leaflet Map Client Component */}
           <LeafletMap mapTileMode={mapTileMode} />
@@ -132,7 +108,7 @@ export function LocationMapSection() {
               <span>CÓMO LLEGAR</span>
             </a>
           </div>
-        </motion.div>
+        </div>
 
       </div>
     </section>

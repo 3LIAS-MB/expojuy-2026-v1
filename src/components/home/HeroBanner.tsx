@@ -3,21 +3,8 @@
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
-
 export function HeroBanner() {
   const containerRef = useRef<HTMLDivElement>(null);
-
-  // Scroll Progress binding for Scroll Zoom Hero effect matching Motion.dev
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
-
-  // Transform values for background image zoom, blur, and content parallax
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.35]);
-  const imageOpacity = useTransform(scrollYProgress, [0, 0.8, 1], [1, 0.8, 0.3]);
-  const textY = useTransform(scrollYProgress, [0, 1], [0, -40]);
 
   return (
     <section
@@ -40,8 +27,7 @@ export function HeroBanner() {
         {/* 2. CENTER: Solid Black Text Container with White Dot Pattern */}
         <div className="flex-1 bg-black white-dot-pattern pl-16 sm:pl-28 md:pl-[220px] lg:pl-[300px] xl:pl-[380px] pr-6 py-8 flex flex-col justify-center items-start text-left z-10 min-w-0">
           
-          <motion.div
-            style={{ y: textY }}
+          <div
             className="max-w-md xl:max-w-lg flex flex-col items-start text-left"
           >
             {/* Yellow Subtitle Tag */}
@@ -76,14 +62,13 @@ export function HeroBanner() {
               </svg>
               <span>VER MÁS</span>
             </Link>
-          </motion.div>
+          </div>
 
         </div>
 
         {/* 3. FAR RIGHT: High Quality Venue Image with Motion.dev Scroll Zoom Effect */}
         <div className="relative flex-1 h-full w-1/2 overflow-hidden z-0 bg-black">
-          <motion.div
-            style={{ scale: imageScale, opacity: imageOpacity }}
+          <div
             className="w-full h-full relative origin-center transition-transform ease-out"
           >
             <Image
@@ -94,7 +79,7 @@ export function HeroBanner() {
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover object-center"
             />
-          </motion.div>
+          </div>
           {/* Subtle Gradient Transition between black text area and image */}
           <div className="absolute inset-y-0 left-0 w-24 sm:w-32 bg-gradient-to-r from-black via-black/70 to-transparent pointer-events-none z-10" />
         </div>

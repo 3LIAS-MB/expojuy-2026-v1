@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 
 interface FaqItem {
   id: string;
@@ -59,7 +58,7 @@ export default function FaqSection() {
           </p>
         </div>
 
-        {/* Clean Accordions with Framer Motion Smooth Dropdown */}
+        {/* Clean Accordions with Smooth Transition */}
         <div className="space-y-3">
           {FAQS.map((faq) => {
             const isOpen = openId === faq.id;
@@ -87,25 +86,17 @@ export default function FaqSection() {
                   </div>
                 </button>
 
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      key="content"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ 
-                        height: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
-                        opacity: { duration: 0.25, ease: "easeOut" } 
-                      }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-6 pb-5 pt-1 text-sm text-[#484e68] leading-relaxed border-t border-[#f0f2f8]">
-                        {faq.a}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <div
+                  className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out overflow-hidden ${
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-6 pb-5 pt-1 text-sm text-[#484e68] leading-relaxed border-t border-[#f0f2f8]">
+                      {faq.a}
+                    </div>
+                  </div>
+                </div>
               </div>
             );
           })}
