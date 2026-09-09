@@ -771,16 +771,43 @@ a {
   animation: marquee-reverse 35s linear infinite;
 }
 
-/* Cierre de marca entre redes y footer. */
+/* Cierre de marca entre redes y footer con filtro Halftone */
 .footer-marquee {
+  position: relative;
   overflow: hidden;
   border-top: 1px solid #e7eaf3;
-  background: #ffffff;
+  border-bottom: 1px solid #e7eaf3;
+  background-color: #fafbfd;
+  /* Fondo con trama de semitono sutil (Halftone screen) */
+  background-image: 
+    radial-gradient(circle, rgba(11, 18, 59, 0.09) 1.25px, transparent 1.25px),
+    radial-gradient(circle, rgba(130, 12, 208, 0.07) 1.25px, transparent 1.25px);
+  background-size: 9px 9px;
+  background-position: 0 0, 4.5px 4.5px;
   padding-block: clamp(4rem, 8vw, 7rem);
 }
 
+/* Capa de filtro Halftone serigráfico a 45° perforando la tipografía */
+.footer-marquee::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  /* Retícula de puntos halftone a 45 grados */
+  background-image: 
+    radial-gradient(circle, #ffffff 2.2px, transparent 2.2px),
+    radial-gradient(circle, #ffffff 2.2px, transparent 2.2px);
+  background-size: 7px 7px;
+  background-position: 0 0, 3.5px 3.5px;
+  mix-blend-mode: screen;
+  opacity: 0.92;
+}
+
 .footer-marquee__viewport {
+  position: relative;
   overflow: hidden;
+  z-index: 2;
 }
 
 .footer-marquee__track {
@@ -800,7 +827,7 @@ a {
 .footer-marquee__word {
   color: #0b123b;
   font-size: clamp(4.25rem, 8.5vw, 6rem);
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 0.84;
   white-space: nowrap;
@@ -808,7 +835,7 @@ a {
 
 .footer-marquee__word strong {
   color: #820cd0;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 @keyframes footer-marquee-scroll {
