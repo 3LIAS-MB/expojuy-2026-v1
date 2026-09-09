@@ -16,6 +16,7 @@ import {
   FaChevronRight,
 } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
+import { Expo3DCarousel } from "@/components/Expo3DCarousel";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -494,114 +495,14 @@ export function AboutExperience() {
         {/* ===============================================================
             PANEL 03: CUATRO MUNDOS - ALTERNATING 2x4 GRID
             =============================================================== */}
+        {/* ===============================================================
+            PANEL 03: CUATRO MUNDOS - EXPO 3D CAROUSEL
+            =============================================================== */}
         <article
           data-about-panel
-          className="about-panel relative flex h-full flex-col justify-center border-r border-[#e5e7eb] px-6 pt-20 pb-32 sm:px-10 lg:px-16"
+          className="about-panel relative flex min-h-[660px] md:min-h-0 h-full w-full flex-col justify-between overflow-hidden bg-[#050711] text-white border-r border-[#1a203a] p-0"
         >
-          <div className="relative z-10 mx-auto w-full max-w-7xl pb-6">
-            <div className="about-editorial-plaque relative max-w-3xl p-8 sm:p-10">
-              {/* Curatorial Header */}
-              <div data-about-reveal className="flex items-center justify-between border-b border-[#e5e9f4] pb-4 mb-6">
-                <div className="flex items-center gap-3">
-                  <span className="about-editorial-tag">
-                    EXP · 03
-                  </span>
-                  <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#4b5275]">
-                    Cuatro Mundos, Una Misma Visión
-                  </span>
-                </div>
-              </div>
-
-              <h2
-                data-about-reveal
-                className="text-[clamp(2.3rem,3vw,3.5rem)] font-extrabold leading-[0.92] tracking-[-0.05em] text-[#0e122b]"
-              >
-                Una feria para producir, intercambiar y proyectar.
-              </h2>
-
-              <p
-                data-about-reveal
-                className="mt-4 max-w-2xl text-base leading-relaxed text-[#1a2038]"
-              >
-                La programación combina muestra comercial e institucional,
-                conferencias de alto nivel, experiencias culturales y espacios para construir
-                relaciones de negocio duraderas.
-              </p>
-            </div>
-
-            {/* Curatorial Showcase leading directly to the 3D Spatial Gallery */}
-            <div
-              data-about-reveal
-              className="mt-8 flex flex-col gap-6"
-            >
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
-                <div className="p-4.5 rounded-xl bg-white/95 border border-[#dfe3ef] shadow-xs hover:border-[#820CD0] transition-colors">
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="font-mono text-[10px] font-bold text-[#820CD0] uppercase tracking-wider">
-                      01 / LITIO
-                    </span>
-                    <span className="size-1.5 rounded-full bg-[#820CD0]" />
-                  </div>
-                  <h4 className="text-sm font-bold text-[#0e122b]">Minería & Transición</h4>
-                  <p className="mt-1 text-[11px] text-[#4b5275] leading-relaxed">
-                    Salar de Olaroz y salinas de altura.
-                  </p>
-                </div>
-
-                <div className="p-4.5 rounded-xl bg-white/95 border border-[#dfe3ef] shadow-xs hover:border-[#25C0D4] transition-colors">
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="font-mono text-[10px] font-bold text-[#25C0D4] uppercase tracking-wider">
-                      02 / SOLAR
-                    </span>
-                    <span className="size-1.5 rounded-full bg-[#25C0D4]" />
-                  </div>
-                  <h4 className="text-sm font-bold text-[#0e122b]">Energía Limpia</h4>
-                  <p className="mt-1 text-[11px] text-[#4b5275] leading-relaxed">
-                    Cauchari: 300 MW en la Puna jujeña.
-                  </p>
-                </div>
-
-                <div className="p-4.5 rounded-xl bg-white/95 border border-[#dfe3ef] shadow-xs hover:border-[#820CD0] transition-colors">
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="font-mono text-[10px] font-bold text-[#820CD0] uppercase tracking-wider">
-                      03 / TECH
-                    </span>
-                    <span className="size-1.5 rounded-full bg-[#820CD0]" />
-                  </div>
-                  <h4 className="text-sm font-bold text-[#0e122b]">Innovación & Agro</h4>
-                  <p className="mt-1 text-[11px] text-[#4b5275] leading-relaxed">
-                    Biotecnología y economía del conocimiento.
-                  </p>
-                </div>
-
-                <div className="p-4.5 rounded-xl bg-white/95 border border-[#dfe3ef] shadow-xs hover:border-[#25C0D4] transition-colors">
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="font-mono text-[10px] font-bold text-[#25C0D4] uppercase tracking-wider">
-                      04 / BIOCEÁNICO
-                    </span>
-                    <span className="size-1.5 rounded-full bg-[#25C0D4]" />
-                  </div>
-                  <h4 className="text-sm font-bold text-[#0e122b]">Comercio Global</h4>
-                  <p className="mt-1 text-[11px] text-[#4b5275] leading-relaxed">
-                    Integración logística regional.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
-                <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#6a7294]">
-                  <span>GALERÍA TRIDIMENSIONAL INMERSIVA DISPONIBLE</span>
-                </div>
-                <a
-                  href="#sectores-3d"
-                  className="inline-flex items-center gap-2.5 rounded-lg bg-[#0e122b] px-5 py-3 text-xs font-mono font-bold uppercase tracking-wider text-white shadow-md hover:bg-[#820CD0] transition-all hover:scale-[1.02]"
-                >
-                  <span>Explorar Sectores en 3D</span>
-                  <FaArrowRight className="size-3" />
-                </a>
-              </div>
-            </div>
-          </div>
+          <Expo3DCarousel />
         </article>
 
         {/* ===============================================================
