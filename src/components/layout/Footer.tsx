@@ -60,7 +60,7 @@ export function Footer() {
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <div className="relative h-14 w-36 shrink-0 bg-white rounded-lg p-2 shadow-sm border border-white/20 flex items-center justify-center">
                 <Image
-                  src="/images/brand/logo-camcomext.png"
+                  src="/images/logo/logo_camcomext.png"
                   alt="Logo Cámara de Comercio Exterior de Jujuy"
                   fill
                   className="object-contain p-1"
