@@ -55,8 +55,8 @@ export function Footer() {
                 <span>Predio Ferial Ciudad Cultural, San Salvador de Jujuy, Argentina</span>
               </div>
 
-              {/* Redes Sociales Oficiales ExpoJuy */}
-              <div className="flex items-center gap-2 text-xs text-gray-400">
+              {/* Redes Sociales Oficiales ExpoJuy (Con aire y sin contenedor encajonado) */}
+              <div className="flex items-center gap-2.5 text-xs text-gray-400 pt-2.5 mt-1">
                 <span className="text-[11px] font-bold text-gray-300 mr-1 uppercase tracking-wider">Redes ExpoJuy:</span>
                 <a 
                   href="https://www.instagram.com/expojuy/" 
@@ -142,8 +142,8 @@ export function Footer() {
                 </div>
               </div>
 
-              {/* Redes Sociales Oficiales Cámara de Comercio Exterior */}
-              <div className="flex items-center gap-2 text-xs text-gray-400">
+              {/* Redes Sociales Oficiales Cámara de Comercio Exterior (Con aire y sin contenedor encajonado) */}
+              <div className="flex items-center gap-2.5 text-xs text-gray-400 pt-2.5 mt-1">
                 <span className="text-[11px] font-bold text-gray-300 mr-1 uppercase tracking-wider">Redes Cámara:</span>
                 <a 
                   href="https://www.instagram.com/camaracomexjujuy/" 
