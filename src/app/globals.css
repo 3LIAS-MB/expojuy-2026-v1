@@ -770,3 +770,57 @@ a {
 .animate-marquee-reverse {
   animation: marquee-reverse 35s linear infinite;
 }
+
+/* Sobre ExpoJuy: open editorial composition over the existing landscape. */
+#sobre .about-editorial-plaque { background: rgb(255 255 255 / 94%); backdrop-filter: none; border: 0; border-radius: 0; box-shadow: none; padding: 24px 0; }
+#sobre .about-panel { border-right: 0; }
+#sobre .about-panel > .grid { align-items: center; }
+#sobre .about-editorial-plaque h2 { font-weight: 600; }
+#sobre .about-editorial-plaque p { max-width: 48ch; }
+#sobre .about-place-photo { position: relative; align-self: center; width: 100%; height: clamp(230px, 38vh, 420px); margin: 0; overflow: hidden; border-radius: 2px; }
+#sobre .about-place-photo figcaption { position: absolute; bottom: 0; left: 0; padding: 12px 18px; background: #fff; color: var(--expo-ink); font-size: 14px; }
+#sobre .about-territory-note { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); }
+#sobre .about-editorial-plaque dl { padding-top: 18px; border-top: 1px solid var(--border); }
+#sobre .about-editorial-plaque dt { font-family: inherit; font-weight: 600; font-size: 21px; }
+#sobre .about-editorial-plaque dd { font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 13px; }
+#sobre .about-progress-shell { gap: 16px; height: 72px; background: #fff; backdrop-filter: none; }
+#sobre .about-progress-shell > p { display: none; }
+#sobre .about-progress-shell > .mx-8 { display: none; }
+#sobre .about-progress-steps { display: flex; justify-content: center; flex: 1; gap: clamp(16px, 4vw, 56px); margin: 0; }
+#sobre .about-step-node { width: auto; height: 48px; padding: 0 4px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; font-family: inherit; font-size: 14px; font-weight: 500; letter-spacing: 0; color: var(--muted-foreground); }
+#sobre .about-step-node::before { display: none; }
+#sobre .about-step-node[data-active="true"] { color: var(--expo-violet); border-bottom-color: var(--expo-violet); background: transparent; }
+#sobre .about-progress-shell > button { margin: 0; }
+@media (max-width: 767px) {
+  #sobre .about-panel { padding-top: 48px; padding-bottom: 48px; }
+  #sobre .about-panel:has(.about-place-photo) { gap: 24px; }
+  #sobre .about-place-photo { height: 240px; }
+  #sobre .about-editorial-plaque { padding: 12px 0; }
+  #sobre .about-editorial-plaque h2 { font-size: clamp(36px, 10vw, 52px); }
+  #sobre .about-panel:has(.expo-3d-carousel) { padding: 0; }
+}
+@media (min-width: 768px) and (max-height: 760px) {
+  #sobre .about-panel { padding-top: 88px; padding-bottom: 88px; }
+  #sobre .about-editorial-plaque h2 { font-size: clamp(34px, 4vw, 56px); }
+  #sobre .about-editorial-plaque { padding-block: 12px; }
+  #sobre .about-editorial-plaque p { margin-top: 16px; font-size: 16px; }
+}
+@media (max-width: 767px) { #sobre { scroll-margin-top: var(--header-height); } }
+
+#sobre .about-panel:first-child .about-editorial-plaque h2 { font-size: clamp(54px, 6.5vw, 92px); line-height: .96; max-width: 8ch; }
+#sobre .about-panel:first-child .about-place-photo { height: clamp(280px, 48vh, 500px); transform: rotate(-3deg); border: 8px solid #fff; box-shadow: 0 16px 35px rgb(11 18 59 / 15%); }
+#sobre .about-panel:first-child .about-place-photo figcaption { font-size: 16px; }
+#sobre .about-panel:first-child > .about-editorial-plaque { background: #0b123b; padding: 20px 24px; }
+#sobre .about-panel:first-child > .about-editorial-plaque dt { color: #fff; }
+#sobre .about-panel:first-child > .about-editorial-plaque dd { color: #d6cbf4; }
+#sobre .about-panel:first-child > .about-editorial-plaque dl { border: 0; padding: 0; }
+
+@media (max-width: 767px) {
+  #sobre .about-panel:first-child .about-editorial-plaque h2 { font-size: 64px; }
+  #sobre .about-panel:first-child .about-place-photo { height: 300px; transform: rotate(-2deg); }
+}
+
+@media (min-width: 768px) and (max-height: 800px) {
+  #sobre .about-panel:first-child .about-editorial-plaque h2 { font-size: 62px; max-width: 14ch; }
+  #sobre .about-panel:first-child .about-place-photo { height: 300px; }
+}
