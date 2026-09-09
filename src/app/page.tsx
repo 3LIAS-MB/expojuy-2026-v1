@@ -12,7 +12,6 @@ import { LocationSection } from "@/components/prototype/location-section";
 
 import FaqSection from "@/components/FaqSection";
 import AgendaSection from "@/components/AgendaSection";
-import PlanoSection from "@/components/PlanoSection";
 import AcreditacionSection from "@/components/AcreditacionSection";
 import { Footer } from "@/components/layout/Footer";
 
@@ -61,7 +60,6 @@ export default function Home() {
         <SponsorsMarquee />
         <ExhibitorsSection />
         <AgendaSection />
-        <PlanoSection />
         <NewsSection />
         <LocationSection />
         <AcreditacionSection />

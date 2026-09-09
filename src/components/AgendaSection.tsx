@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { CalendarDays } from 'lucide-react';
+import { CalendarDays, Clock, MapPin, CheckCircle } from 'lucide-react';
 
 interface EventItem {
   time: string;
@@ -137,26 +137,36 @@ const AGENDA_BY_DAY: Record<number, { title: string; subtitle: string; events: E
 
 export default function AgendaSection() {
   const [selectedDay, setSelectedDay] = useState<number>(1);
+  const [agendados, setAgendados] = useState<string[]>([]);
   const currentAgenda = AGENDA_BY_DAY[selectedDay];
 
+  const handleToggleAgendar = (title: string) => {
+    if (agendados.includes(title)) {
+      setAgendados(agendados.filter((t) => t !== title));
+    } else {
+      setAgendados([...agendados, title]);
+    }
+  };
+
   return (
-    <section id="agenda" className="min-h-screen flex flex-col justify-center py-20 relative">
-      <div className="max-w-[1920px] mx-auto px-4 sm:px-8 lg:px-16">
+    <section id="agenda" className="py-20 bg-[#f7f8fc] border-t border-[#dfe3ef] relative overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-16">
         
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-violet/20 border border-brand-violet/30 text-brand-lavender text-xs font-semibold uppercase tracking-wider mb-3">
-            <CalendarDays className="w-3.5 h-3.5 text-brand-aqua" />
-            Cronograma Oficial
+        {/* Cabecera de la sección */}
+        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#820cd0]/10 border border-[#820cd0]/20 text-[#820cd0] text-xs font-bold uppercase tracking-wider">
+            <CalendarDays className="w-4 h-4 text-[#25c0d4]" />
+            <span>Cronograma Oficial</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-white mb-4">
-            Agenda de las <span className="gradient-text">4 Jornadas Intensivas</span>
+          <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-[#0b123b]">
+            Agenda de las <span className="text-[#820cd0]">4 Jornadas Intensivas</span>
           </h2>
-          <p className="text-slate-400 text-sm">
-            Filtrá por día y por momento de la jornada (Sesiones Matutinas B2B vs Actividades Vespertinas Generales).
+          <p className="text-sm text-[#676370] leading-relaxed">
+            Filtrá por día y descubrí las conferencias B2B matutinas, rondas comerciales y festivales artísticos nocturnos.
           </p>
         </div>
 
-        {/* Botones de Días */}
+        {/* Pestañas de Días (Selector) */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto mb-10">
           {[1, 2, 3, 4].map((day) => {
             const data = AGENDA_BY_DAY[day];
@@ -165,67 +175,90 @@ export default function AgendaSection() {
               <button
                 key={day}
                 onClick={() => setSelectedDay(day)}
-                className={`p-3.5 rounded-xl glass-card text-center transition-all ${
+                className={`p-4 rounded-xl text-center transition-all duration-200 cursor-pointer ${
                   isActive 
-                    ? 'border-brand-aqua/50 bg-brand-surface' 
-                    : 'border-white/5 hover:border-white/20'
+                    ? 'bg-[#820cd0] text-white shadow-lg shadow-[#820cd0]/25 scale-[1.02]' 
+                    : 'bg-white border border-[#dfe3ef] text-[#3c3c3c] hover:border-[#820cd0] hover:bg-white/80 shadow-sm'
                 }`}
               >
-                <span className={`block text-xs font-bold uppercase tracking-wider ${isActive ? 'text-brand-aqua' : 'text-slate-400'}`}>
+                <span className={`block text-[11px] font-extrabold uppercase tracking-wider ${isActive ? 'text-[#25c0d4]' : 'text-[#676370]'}`}>
                   {data.title}
                 </span>
-                <span className={`block text-sm font-extrabold font-heading mt-0.5 ${isActive ? 'text-white' : 'text-slate-300'}`}>
-                  {data.subtitle.split('·')[0]}
+                <span className={`block text-xs sm:text-sm font-extrabold mt-1 truncate ${isActive ? 'text-white' : 'text-[#0b123b]'}`}>
+                  {data.subtitle.split('·')[1] || data.subtitle}
                 </span>
               </button>
             );
           })}
         </div>
 
-        {/* Timeline */}
+        {/* Lista de Eventos por día */}
         <div className="max-w-4xl mx-auto space-y-4">
           {currentAgenda.events.map((ev, index) => {
             const isMorning = ev.badgeType === 'morning';
             const isShow = ev.badgeType === 'show';
-            const borderColor = isMorning 
-              ? 'border-l-brand-aqua' 
-              : isShow 
-              ? 'border-l-amber-400' 
-              : 'border-l-brand-lavender';
+            const isAgendado = agendados.includes(ev.title);
 
-            const badgeBg = isMorning 
-              ? 'bg-brand-aqua/20 text-brand-aqua' 
+            const borderLeftColor = isMorning 
+              ? 'border-l-[#25c0d4]' 
               : isShow 
-              ? 'bg-amber-400/20 text-amber-400' 
-              : 'bg-brand-lavender/20 text-brand-lavender';
+              ? 'border-l-[#f4c64c]' 
+              : 'border-l-[#820cd0]';
+
+            const badgeStyle = isMorning 
+              ? 'bg-[#25c0d4]/10 text-[#0e8897] border-[#25c0d4]/30' 
+              : isShow 
+              ? 'bg-amber-50 text-amber-700 border-amber-200' 
+              : 'bg-[#820cd0]/10 text-[#820cd0] border-[#820cd0]/20';
 
             return (
               <div 
                 key={index}
-                className={`glass-card rounded-2xl p-5 border-l-4 ${borderColor} flex flex-col sm:flex-row sm:items-center justify-between gap-4`}
+                className={`bg-white rounded-2xl p-5 sm:p-6 border border-[#dfe3ef] border-l-4 ${borderLeftColor} shadow-sm hover:shadow-md hover:border-[#820cd0]/30 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4`}
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-16 text-center py-2 px-1 rounded-lg bg-white/5 text-slate-200 font-mono font-bold text-xs shrink-0">
-                    {ev.time}
+                  <div className="w-20 text-center py-2.5 px-2 rounded-xl bg-[#f4f1f9] border border-[#ded8e8] text-[#820cd0] font-bold text-xs shrink-0 flex items-center justify-center gap-1">
+                    <Clock className="w-3.5 h-3.5 shrink-0 text-[#25c0d4]" />
+                    <span>{ev.time}</span>
                   </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${badgeBg}`}>
+
+                  <div className="space-y-1">
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
+                      <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase border ${badgeStyle}`}>
                         {ev.badge}
                       </span>
-                      <span className="text-xs text-slate-400 font-mono">{ev.location}</span>
+                      <span className="text-xs text-[#676370] font-semibold flex items-center gap-1">
+                        <MapPin className="w-3 h-3 text-[#820cd0]" />
+                        {ev.location}
+                      </span>
                     </div>
-                    <h4 className="text-base font-bold font-heading text-white">{ev.title}</h4>
-                    <p className="text-slate-400 text-xs mt-1 leading-relaxed">
+
+                    <h4 className="text-base font-bold text-[#0b123b]">
+                      {ev.title}
+                    </h4>
+
+                    <p className="text-[#676370] text-xs leading-relaxed max-w-2xl">
                       {ev.desc}
                     </p>
                   </div>
                 </div>
+
                 <button 
-                  onClick={() => alert(`Actividad agendada: ${ev.title}`)}
-                  className="sm:shrink-0 text-xs px-4 py-2 rounded-lg glass-card text-brand-aqua hover:bg-brand-aqua/10 border border-brand-aqua/30 transition-all font-semibold"
+                  onClick={() => handleToggleAgendar(ev.title)}
+                  className={`sm:shrink-0 text-xs px-4 py-2.5 rounded-xl font-bold transition-all duration-200 cursor-pointer flex items-center justify-center gap-1.5 ${
+                    isAgendado 
+                      ? 'bg-emerald-500 text-white shadow-sm' 
+                      : 'bg-[#820cd0] hover:bg-[#6c0aa7] text-white shadow-sm hover:shadow-md'
+                  }`}
                 >
-                  Agendar
+                  {isAgendado ? (
+                    <>
+                      <CheckCircle className="w-4 h-4" />
+                      <span>Agendado</span>
+                    </>
+                  ) : (
+                    <span>+ Agendar</span>
+                  )}
                 </button>
               </div>
             );
