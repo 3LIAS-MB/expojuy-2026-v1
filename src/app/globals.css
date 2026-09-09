@@ -771,6 +771,56 @@ a {
   animation: marquee-reverse 35s linear infinite;
 }
 
+/* Cierre de marca entre redes y footer. */
+.footer-marquee {
+  overflow: hidden;
+  border-top: 1px solid #e7eaf3;
+  background: #ffffff;
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.footer-marquee__viewport {
+  overflow: hidden;
+}
+
+.footer-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: footer-marquee-scroll 28s linear infinite;
+  will-change: transform;
+}
+
+.footer-marquee__group {
+  display: flex;
+  flex: 0 0 auto;
+  gap: clamp(2.5rem, 6vw, 7rem);
+  padding-right: clamp(2.5rem, 6vw, 7rem);
+}
+
+.footer-marquee__word {
+  color: #0b123b;
+  font-size: clamp(4.25rem, 8.5vw, 6rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.84;
+  white-space: nowrap;
+}
+
+.footer-marquee__word strong {
+  color: #820cd0;
+  font-weight: 700;
+}
+
+@keyframes footer-marquee-scroll {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-marquee__track {
+    animation: footer-marquee-scroll 44s linear infinite;
+  }
+}
+
 /* Sobre ExpoJuy: placas ligeras para que el paisaje siga presente. */
 #sobre .about-editorial-plaque {
   background: linear-gradient(145deg, rgb(255 255 255 / 76%), rgb(255 255 255 / 58%));

@@ -1,141 +1,152 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Mail, Send, CheckCircle2, Phone, MapPin } from 'lucide-react';
+import {
+  FaArrowRight,
+  FaEnvelope,
+  FaLocationDot,
+  FaPhone,
+} from "react-icons/fa6";
 
 export default function ContactSection() {
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    alert('Mensaje enviado. El equipo de la Cámara de Comercio Exterior se contactará a la brevedad.');
-  };
-
   return (
-    <section id="contacto" className="min-h-screen flex flex-col justify-center py-20 relative border-t border-white/5">
-      <div className="max-w-[1920px] mx-auto px-4 sm:px-8 lg:px-16">
-        
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-aqua/10 border border-brand-aqua/30 text-brand-aqua text-xs font-semibold uppercase tracking-wider mb-3">
-              <Mail className="w-3.5 h-3.5" />
-              Atención Directa
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-white mb-4">
-              Contacto & <span className="gradient-text">Registro de Interés</span>
-            </h2>
-            <p className="text-slate-300 text-sm leading-relaxed mb-8">
-              ¿Tenés dudas sobre contratación de stands, acreditación de prensa, rondas B2B o patrocinio institucional? Envianos tu consulta y nuestro equipo te responderá en menos de 24 horas.
-            </p>
+    <section
+      id="contacto"
+      className="relative overflow-hidden border-t border-[#dfe3ef] bg-white py-20 text-[#0b123b] sm:py-24"
+      aria-labelledby="contacto-title"
+    >
+      <div className="mx-auto grid max-w-[1100px] gap-10 px-6 sm:px-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.65fr)] lg:gap-16">
+        <div>
+          <h2
+            id="contacto-title"
+            className="max-w-xl text-4xl font-extrabold leading-[0.96] tracking-[-0.035em] sm:text-5xl"
+          >
+            Hablemos de tu próxima{" "}
+            <span className="text-[#820CD0]">participación.</span>
+          </h2>
+          <p className="mt-5 max-w-2xl text-sm leading-relaxed text-[#4b5275] sm:text-base">
+            Consultá por stands, rondas de negocios, acreditaciones o alianzas
+            institucionales. Nuestro equipo recibe tu mensaje por el canal oficial.
+          </p>
 
-            <div className="space-y-4 text-xs text-slate-300">
-              <div className="flex items-center gap-3 glass-card p-3 rounded-xl border border-white/5">
-                <div className="w-8 h-8 rounded-lg bg-brand-aqua/15 flex items-center justify-center text-brand-aqua">
-                  <MapPin className="w-4 h-4" />
-                </div>
-                <div>
-                  <strong className="block text-white">Sede Institucional</strong>
-                  <span>Alvear 550, San Salvador de Jujuy, Argentina</span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 glass-card p-3 rounded-xl border border-white/5">
-                <div className="w-8 h-8 rounded-lg bg-brand-violet/15 flex items-center justify-center text-brand-lavender">
-                  <Phone className="w-4 h-4" />
-                </div>
-                <div>
-                  <strong className="block text-white">Teléfono de Contacto</strong>
-                  <span>+54 (388) 423-5500 · Lun a Vie de 08:00 a 16:00 hs</span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 glass-card p-3 rounded-xl border border-white/5">
-                <div className="w-8 h-8 rounded-lg bg-emerald-500/15 flex items-center justify-center text-emerald-400">
-                  <Mail className="w-4 h-4" />
-                </div>
-                <div>
-                  <strong className="block text-white">Correo Oficial</strong>
-                  <span>contacto@expojuy.camcomexjujuy.com.ar</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Formulario de Contacto */}
-          <div className="glass-card rounded-3xl p-8 border border-white/10 shadow-xl">
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">Nombre y Apellido *</label>
-                  <input 
-                    type="text" 
-                    required 
-                    placeholder="Tu nombre completo"
-                    className="w-full px-4 py-2.5 rounded-xl bg-brand-dark/80 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-aqua"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">Empresa u Organización</label>
-                  <input 
-                    type="text" 
-                    placeholder="Nombre de tu empresa"
-                    className="w-full px-4 py-2.5 rounded-xl bg-brand-dark/80 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-aqua"
-                  />
-                </div>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">Correo Electrónico *</label>
-                  <input 
-                    type="email" 
-                    required 
-                    placeholder="email@empresa.com"
-                    className="w-full px-4 py-2.5 rounded-xl bg-brand-dark/80 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-aqua"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">Motivo de Contacto *</label>
-                  <select 
-                    className="w-full px-4 py-2.5 rounded-xl bg-brand-dark/80 border border-white/10 text-white text-sm focus:outline-none focus:border-brand-aqua"
-                  >
-                    <option value="stand">Contratación de Stands</option>
-                    <option value="b2b">Rondas de Negocios B2B</option>
-                    <option value="sponsor">Patrocinio y Sponsors</option>
-                    <option value="prensa">Acreditación de Prensa</option>
-                    <option value="general">Consulta General</option>
-                  </select>
-                </div>
-              </div>
-
+          <form
+            action="mailto:camaradecomercioexterior@gmail.com"
+            method="post"
+            encType="text/plain"
+            className="mt-9 space-y-5"
+          >
+            <div className="grid gap-5 sm:grid-cols-2">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">Mensaje *</label>
-                <textarea 
-                  rows={4} 
-                  required 
-                  placeholder="Detallá tu consulta o requerimiento comercial..."
-                  className="w-full px-4 py-2.5 rounded-xl bg-brand-dark/80 border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-aqua"
-                ></textarea>
+                <label htmlFor="contact-name" className="mb-2 block text-sm font-semibold text-[#0b123b]">
+                  Nombre y apellido <span className="text-[#820CD0]">*</span>
+                </label>
+                <input
+                  id="contact-name"
+                  name="nombre"
+                  type="text"
+                  autoComplete="name"
+                  required
+                  placeholder="Tu nombre"
+                  className="h-12 w-full rounded-xl border border-[#d5dbea] bg-white px-4 text-sm text-[#0b123b] outline-none transition-[border-color,box-shadow] placeholder:text-[#858ca5] focus:border-[#820CD0] focus:ring-4 focus:ring-[#820CD0]/10"
+                />
               </div>
+              <div>
+                <label htmlFor="contact-email" className="mb-2 block text-sm font-semibold text-[#0b123b]">
+                  Correo electrónico <span className="text-[#820CD0]">*</span>
+                </label>
+                <input
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  placeholder="nombre@empresa.com"
+                  className="h-12 w-full rounded-xl border border-[#d5dbea] bg-white px-4 text-sm text-[#0b123b] outline-none transition-[border-color,box-shadow] placeholder:text-[#858ca5] focus:border-[#820CD0] focus:ring-4 focus:ring-[#820CD0]/10"
+                />
+              </div>
+            </div>
 
-              <button 
-                type="submit" 
-                className="w-full py-3.5 rounded-xl font-heading font-bold text-white bg-gradient-to-r from-brand-violet to-brand-aqua shadow-glow-aqua hover:opacity-95 transition-all flex items-center justify-center gap-2"
+            <div>
+              <label htmlFor="contact-message" className="mb-2 block text-sm font-semibold text-[#0b123b]">
+                Mensaje <span className="text-[#820CD0]">*</span>
+              </label>
+              <textarea
+                id="contact-message"
+                name="mensaje"
+                rows={6}
+                required
+                placeholder="Contanos cómo podemos ayudarte."
+                className="w-full resize-y rounded-xl border border-[#d5dbea] bg-white px-4 py-3 text-sm leading-relaxed text-[#0b123b] outline-none transition-[border-color,box-shadow] placeholder:text-[#858ca5] focus:border-[#820CD0] focus:ring-4 focus:ring-[#820CD0]/10"
+              />
+            </div>
+
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <button
+                type="submit"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#0b123b] px-6 text-sm font-bold text-white transition-colors hover:bg-[#820CD0] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25C0D4]/35"
               >
-                <Send className="w-4 h-4" />
-                Enviar Mensaje
+                Abrir correo para enviar
+                <FaArrowRight className="size-3.5" aria-hidden />
               </button>
-
-              {submitted && (
-                <p className="text-xs text-emerald-400 text-center flex items-center justify-center gap-1.5 pt-2">
-                  <CheckCircle2 className="w-4 h-4" /> ¡Mensaje enviado con éxito!
-                </p>
-              )}
-            </form>
-          </div>
+              <p className="text-xs leading-relaxed text-[#69718a]">
+                Los campos marcados con <span className="text-[#820CD0]">*</span> son obligatorios.
+              </p>
+            </div>
+          </form>
         </div>
 
+        <aside className="self-start rounded-2xl bg-[#0b123b] p-7 text-white sm:p-8 lg:mt-2" aria-label="Datos de contacto">
+          <h3 className="text-2xl font-semibold tracking-[-0.025em]">Contacto directo</h3>
+          <p className="mt-2 text-sm leading-relaxed text-[#c9d1ec]">
+            Cámara de Comercio Exterior de Jujuy
+          </p>
+
+          <address className="mt-9 space-y-6 not-italic">
+            <div className="flex gap-3">
+              <FaLocationDot className="mt-0.5 size-4 shrink-0 text-[#25C0D4]" aria-hidden />
+              <div>
+                <h4 className="text-sm font-semibold">Dirección</h4>
+                <p className="mt-1 text-sm leading-relaxed text-[#c9d1ec]">
+                  Belgrano 860 · 2° Piso<br />
+                  San Salvador de Jujuy
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <FaPhone className="mt-0.5 size-4 shrink-0 text-[#25C0D4]" aria-hidden />
+              <div>
+                <h4 className="text-sm font-semibold">Teléfonos</h4>
+                <a href="tel:+543884233539" className="mt-1 block text-sm text-[#c9d1ec] transition-colors hover:text-white">
+                  +54 388 423 3539
+                </a>
+                <a href="tel:+543884212955" className="mt-1 block text-sm text-[#c9d1ec] transition-colors hover:text-white">
+                  +54 388 421 2955
+                </a>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <FaEnvelope className="mt-0.5 size-4 shrink-0 text-[#25C0D4]" aria-hidden />
+              <div>
+                <h4 className="text-sm font-semibold">Correo oficial</h4>
+                <a
+                  href="mailto:camaradecomercioexterior@gmail.com"
+                  className="mt-1 block break-all text-sm leading-relaxed text-[#c9d1ec] transition-colors hover:text-white"
+                >
+                  camaradecomercioexterior@gmail.com
+                </a>
+              </div>
+            </div>
+          </address>
+
+          <a
+            href="#redes"
+            className="mt-10 inline-flex items-center gap-2 border-t border-white/15 pt-5 text-sm font-semibold text-[#25C0D4] transition-colors hover:text-white"
+          >
+            Conocé nuestros canales oficiales
+            <FaArrowRight className="size-3.5" aria-hidden />
+          </a>
+        </aside>
       </div>
     </section>
   );

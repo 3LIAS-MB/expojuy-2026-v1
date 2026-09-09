@@ -9,8 +9,10 @@ import { SiteHeader } from "@/components/prototype/site-header";
 import { SponsorsMarquee } from "@/components/prototype/sponsors-marquee";
 import { NewsSection } from "@/components/news/NewsSection";
 import { LocationSection } from "@/components/prototype/location-section";
+import { FooterMarquee } from "@/components/FooterMarquee";
 
 import FaqSection from "@/components/FaqSection";
+import ContactSection from "@/components/ContactSection";
 import { SocialSection } from "@/components/social/SocialSection";
 import { Footer } from "@/components/layout/Footer";
 
@@ -61,7 +63,9 @@ export default function Home() {
         <NewsSection />
         <LocationSection />
         <FaqSection />
+        <ContactSection />
         <SocialSection />
+        <FooterMarquee />
       </main>
 
       <Footer />
