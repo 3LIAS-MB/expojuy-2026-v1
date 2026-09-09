@@ -353,15 +353,6 @@ export function AboutExperience() {
                 <span className="font-light text-[#25C0D4]">2026</span>
               </h2>
 
-              <p
-                data-about-reveal
-                className="mt-6 max-w-xl text-base leading-relaxed text-[#1a2038] lg:text-lg"
-              >
-                En su 17.ª edición, ExpoJuy reúne a empresas, emprendedores,
-                instituciones y delegaciones para mostrar el potencial
-                productivo de Jujuy y abrir nuevas oportunidades de vinculación regional y global.
-              </p>
-
               <a
                 href="#expositores"
                 data-about-reveal
@@ -464,14 +455,6 @@ export function AboutExperience() {
                 >
                   Jujuy conecta producción, conocimiento y mercados.
                 </h2>
-                <p
-                  data-about-reveal
-                  className="mt-6 text-base leading-relaxed text-[#1a2038]"
-                >
-                  La Ciudad Cultural alberga una propuesta integral que vincula
-                  emprendimientos locales, empresas consolidadas, instituciones y delegaciones
-                  de toda la región del NOA y el Cono Sur.
-                </p>
 
                 {/* Callout Estratégico Corredor Bioceánico */}
                 <div
@@ -518,15 +501,6 @@ export function AboutExperience() {
               >
                 Una feria para producir, intercambiar y proyectar.
               </h2>
-
-              <p
-                data-about-reveal
-                className="mt-4 max-w-2xl text-base leading-relaxed text-[#1a2038]"
-              >
-                La programación combina muestra comercial e institucional,
-                conferencias de alto nivel, experiencias culturales y espacios para construir
-                relaciones de negocio duraderas.
-              </p>
             </div>
 
             {/* 2x4 Alternating Rhythm Grid (Photos & Content Cards) */}
@@ -675,15 +649,7 @@ export function AboutExperience() {
           </div>
 
           <div className="relative z-10 mx-auto w-full max-w-7xl">
-            <div className="flex items-center justify-end">
-              <p className="hidden text-right text-xs font-bold tracking-wider text-[#2e3650] uppercase leading-tight lg:block">
-                Más que una feria
-                <br />
-                Un territorio de oportunidades
-              </p>
-            </div>
-
-            <div className="mt-5 grid grid-cols-1 items-center gap-10 md:grid-cols-[1fr_auto] lg:gap-16">
+            <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[1fr_auto] lg:gap-16">
               {/* Left Column: Heading, text, and buttons */}
               <div className="about-editorial-plaque relative max-w-2xl p-8 sm:p-11">
                 {/* Curatorial Header */}
@@ -709,16 +675,7 @@ export function AboutExperience() {
                   <span className="text-[#820CD0]">en Jujuy.</span>
                 </h2>
 
-                <p
-                  data-about-reveal
-                  className="mt-6 max-w-xl text-base leading-relaxed text-[#1a2038] lg:text-lg"
-                >
-                  Del 9 al 12 de octubre, cuatro jornadas concentran exposición,
-                  rondas de negocios internacionales, conferencias y actividades culturales para
-                  abrir conversaciones que trasciendan el predio.
-                </p>
-
-                <div data-about-reveal className="mt-6">
+                <div data-about-reveal className="mt-7">
                   <span className="inline-flex items-center rounded-md border border-[#d6c7fb] bg-[#f8f5ff] px-3.5 py-1.5 text-xs font-bold tracking-wider text-[#820CD0] uppercase">
                     CORREDOR BIOCEÁNICO · VINCULACIÓN · NUEVOS MERCADOS
                   </span>
