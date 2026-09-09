@@ -43,6 +43,8 @@ export function HeroSection({ introFinished = true }: HeroSectionProps) {
       const media = gsap.matchMedia();
 
       media.add("all", () => {
+
+
         gsap.fromTo(
           ".hero-image-wrap",
           { scale: 1 },
