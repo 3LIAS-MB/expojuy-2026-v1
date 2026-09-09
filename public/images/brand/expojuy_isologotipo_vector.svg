@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 688 959"
+     width="688"
+     height="959"
+     role="img"
+     aria-labelledby="title desc">
+  <title id="title">Isologotipo ExpoJuy vectorizado</title>
+  <desc id="desc">Logotipo geométrico compuesto por cuatro formas planas en cian, violeta, púrpura y lila.</desc>
+
+  <!-- Forma superior izquierda -->
+  <rect x="2" y="0" width="338" height="203" fill="#25C0D4"/>
+
+  <!-- Forma central izquierda -->
+  <rect x="2" y="300" width="338" height="202" fill="#820CD0"/>
+
+  <!-- Forma vertical derecha -->
+  <rect x="485" y="0" width="203" height="502" fill="#774FF0"/>
+
+  <!-- U inferior -->
+  <path fill="#BB8CFF" fill-rule="evenodd" d="
+    M 0 595
+    H 688
+    V 613
+    C 688 930, 437 959, 344 959
+    C 251 959, 0 930, 0 613
+    V 595
+    Z
+
+    M 203 595
+    H 485
+    C 485 766, 377 779, 344 779
+    C 311 779, 203 766, 203 595
+    Z
+  "/>
+</svg>

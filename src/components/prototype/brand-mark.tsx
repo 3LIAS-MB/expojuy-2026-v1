@@ -1,4 +1,5 @@
 import { cn } from "cn";
+import ExpoJuyLogo from "@/components/ExpoJuyLogo";
 
 type BrandMarkProps = {
   className?: string;
@@ -16,11 +17,8 @@ export function BrandMark({ className, intro = false, inverted = false }: BrandM
       )}
       aria-label="ExpoJuy 2026"
     >
-      <span className="logo-mark" aria-hidden="true">
-        <i className="logo-piece-a" />
-        <i className="logo-piece-b" />
-        <i className="logo-piece-c" />
-        <i className="logo-piece-d" />
+      <span className="relative inline-block w-[1.4rem] h-[1.95rem] flex-shrink-0" aria-hidden="true">
+        <ExpoJuyLogo className="w-full h-full object-contain" />
       </span>
       <span
         className={cn(
