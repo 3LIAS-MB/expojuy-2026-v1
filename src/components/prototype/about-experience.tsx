@@ -330,11 +330,8 @@ export function AboutExperience() {
                   <span className="about-editorial-tag">
                     EXP · 01
                   </span>
-                  <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#4b5275]">
-                    La Muestra Multisectorial del Norte
-                  </span>
                 </div>
-                <div className="hidden sm:flex items-center gap-2">
+                <div className="flex items-center gap-2">
                   <span className="size-2 rounded-full bg-[#25C0D4]" />
                   <span className="font-mono text-[10px] font-bold text-[#6a7294] uppercase tracking-wider">
                     Jujuy 2026
@@ -344,13 +341,13 @@ export function AboutExperience() {
 
               <h2
                 data-about-reveal
-                className="text-[clamp(3.2rem,4.8vw,5.2rem)] font-extrabold leading-[0.88] tracking-[-0.065em] text-[#0e122b]"
+                className="text-[clamp(2.8rem,4.4vw,4.8rem)] font-extrabold leading-[0.92] tracking-[-0.06em] text-[#0e122b]"
               >
-                Sobre{" "}
+                La Muestra{" "}
                 <span className="text-[#820CD0]">
-                  ExpoJuy
+                  Multisectorial
                 </span>{" "}
-                <span className="font-light text-[#25C0D4]">2026</span>
+                <span className="text-[#25C0D4]">del Norte</span>
               </h2>
 
               <a
@@ -443,17 +440,15 @@ export function AboutExperience() {
                     <span className="about-editorial-tag">
                       EXP · 02
                     </span>
-                    <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#4b5275]">
-                      Un Territorio, Infinitas Posibilidades
-                    </span>
                   </div>
                 </div>
 
                 <h2
                   data-about-reveal
-                  className="text-[clamp(2.3rem,3.2vw,3.8rem)] font-extrabold leading-[0.96] tracking-[-0.05em] text-[#0e122b]"
+                  className="text-[clamp(2.4rem,3.4vw,3.8rem)] font-extrabold leading-[0.96] tracking-[-0.05em] text-[#0e122b]"
                 >
-                  Jujuy conecta producción, conocimiento y mercados.
+                  Un Territorio,{" "}
+                  <span className="text-[#820CD0]">Infinitas Posibilidades</span>
                 </h2>
 
                 {/* Callout Estratégico Corredor Bioceánico */}
@@ -489,17 +484,15 @@ export function AboutExperience() {
                   <span className="about-editorial-tag">
                     EXP · 03
                   </span>
-                  <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#4b5275]">
-                    Cuatro Mundos, Una Misma Visión
-                  </span>
                 </div>
               </div>
 
               <h2
                 data-about-reveal
-                className="text-[clamp(2.3rem,3vw,3.5rem)] font-extrabold leading-[0.92] tracking-[-0.05em] text-[#0e122b]"
+                className="text-[clamp(2.4rem,3.4vw,3.8rem)] font-extrabold leading-[0.92] tracking-[-0.05em] text-[#0e122b]"
               >
-                Una feria para producir, intercambiar y proyectar.
+                Cuatro Mundos,{" "}
+                <span className="text-[#820CD0]">Una Misma Visión</span>
               </h2>
             </div>
 
@@ -658,21 +651,14 @@ export function AboutExperience() {
                     <span className="about-editorial-tag">
                       EXP · 04
                     </span>
-                    <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#4b5275]">
-                      El Encuentro
-                    </span>
                   </div>
                 </div>
 
                 <h2
                   data-about-reveal
-                  className="text-[clamp(3.2rem,4.6vw,5.2rem)] font-extrabold leading-[0.88] tracking-[-0.07em] text-[#0e122b]"
+                  className="text-[clamp(3.2rem,4.8vw,5.2rem)] font-extrabold leading-[0.88] tracking-[-0.07em] text-[#0e122b]"
                 >
-                  El futuro
-                  <br />
-                  se encuentra
-                  <br />
-                  <span className="text-[#820CD0]">en Jujuy.</span>
+                  El <span className="text-[#820CD0]">Encuentro</span>
                 </h2>
 
                 <div data-about-reveal className="mt-7">
