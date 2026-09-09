@@ -7,6 +7,8 @@ import { ExhibitorsSection } from "@/components/prototype/exhibitors-section";
 import { HeroSection } from "@/components/prototype/hero-section";
 import { SiteHeader } from "@/components/prototype/site-header";
 
+import { Footer } from "@/components/layout/Footer";
+
 export default function Home() {
   const [isPlayingIntro, setIsPlayingIntro] = useState(true);
   const [introFinished, setIntroFinished] = useState(false);
@@ -44,6 +46,8 @@ export default function Home() {
         <AboutExperience />
         <ExhibitorsSection />
       </main>
+
+      <Footer />
     </>
   );
 }
