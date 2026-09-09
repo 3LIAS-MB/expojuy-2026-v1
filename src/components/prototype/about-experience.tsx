@@ -6,16 +6,12 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  FaIndustry,
-  FaLightbulb,
-  FaMountainSun,
-  FaHandshake,
-  FaPlay,
   FaArrowRight,
   FaChevronLeft,
   FaChevronRight,
 } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
+import { Expo3DCarousel } from "@/components/Expo3DCarousel";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -119,7 +115,7 @@ export function AboutExperience() {
         triggerRef.current = tween.scrollTrigger ?? null;
 
         panels.forEach((panel, index) => {
-          const enter = () => {
+          const enter = context.add(`revealPanel${index}`, () => {
             gsap.fromTo(
               panel.querySelectorAll("[data-about-reveal]"),
               { y: 22, opacity: 0.1 },
@@ -132,7 +128,7 @@ export function AboutExperience() {
                 clearProps: "transform,opacity",
               },
             );
-          };
+          });
 
           ScrollTrigger.create(
             index === 0
@@ -140,14 +136,14 @@ export function AboutExperience() {
                   trigger: section,
                   start: "top 80%",
                   once: true,
-                  onEnter: enter,
+                  onEnter: () => enter(),
                 }
               : {
                   trigger: panel,
                   containerAnimation: tween,
                   start: "left 75%",
                   once: true,
-                  onEnter: enter,
+                  onEnter: () => enter(),
                 },
           );
         });
@@ -230,7 +226,7 @@ export function AboutExperience() {
           );
         }
 
-        const enter = (entries: IntersectionObserverEntry[]) => {
+        const enter = context.add("revealMobile", (entries: IntersectionObserverEntry[]) => {
           entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
             gsap.fromTo(
@@ -246,8 +242,8 @@ export function AboutExperience() {
             );
             observer.unobserve(entry.target);
           });
-        };
-        const observer = new IntersectionObserver(enter, { threshold: 0.08 });
+        });
+        const observer = new IntersectionObserver((entries) => enter(entries), { threshold: 0.08 });
         section
           .querySelectorAll("[data-about-reveal]")
           .forEach((element) => observer.observe(element));
@@ -321,59 +317,41 @@ export function AboutExperience() {
           data-about-panel
           className="about-panel relative flex h-full flex-col justify-between border-r border-[#e5e7eb] px-6 pt-24 pb-28 sm:px-10 lg:px-16"
         >
-          <div className="relative z-10 grid w-full max-w-7xl grid-cols-1 items-start gap-8 md:grid-cols-[1fr_auto]">
+          <div className="relative z-10 grid w-full max-w-7xl grid-cols-1 items-start gap-8 md:grid-cols-[1.1fr_0.9fr]">
             {/* Main Editorial Plaque */}
             <div className="about-editorial-plaque relative max-w-2xl p-8 sm:p-11">
-              {/* Curatorial Header */}
-              <div data-about-reveal className="flex items-center justify-between border-b border-[#e5e9f4] pb-4 mb-6">
-                <div className="flex items-center gap-3">
-                  <span className="about-editorial-tag">
-                    EXP · 01
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="size-2 rounded-full bg-[#25C0D4]" />
-                  <span className="font-mono text-[10px] font-bold text-[#6a7294] uppercase tracking-wider">
-                    Jujuy 2026
-                  </span>
-                </div>
-              </div>
-
-              <h2
+<h2
                 data-about-reveal
-                className="text-[clamp(2.8rem,4.4vw,4.8rem)] font-extrabold leading-[0.92] tracking-[-0.06em] text-[#0e122b]"
+                className="text-[clamp(3.2rem,4.8vw,5.2rem)] font-extrabold leading-[1.02] tracking-[-0.035em] text-[#0e122b]"
               >
-                La Muestra{" "}
+                Sobre{" "}
                 <span className="text-[#820CD0]">
-                  Multisectorial
+                  ExpoJuy
                 </span>{" "}
-                <span className="text-[#25C0D4]">del Norte</span>
+                <span className="font-light text-[#25C0D4]">2026</span>
               </h2>
+
+              <p
+                data-about-reveal
+                className="mt-6 max-w-xl text-base leading-relaxed text-[#1a2038] lg:text-lg"
+              >
+                En su 17.ª edición, ExpoJuy reúne a empresas, emprendedores,
+                instituciones y delegaciones para mostrar el potencial
+                productivo de Jujuy y abrir nuevas oportunidades de vinculación regional y global.
+              </p>
 
               <a
                 href="#expositores"
                 data-about-reveal
                 className="mt-8 inline-flex items-center gap-3.5 text-sm font-bold text-[#820CD0] transition-colors hover:text-[#6709a3] group"
               >
-                <span className="grid size-10 place-items-center rounded-full bg-[#f4edff] border border-[#d8b4fe]/80 transition-transform group-hover:scale-110 shadow-sm">
-                  <FaPlay aria-hidden className="ml-0.5 size-3.5 fill-[#820CD0]" />
-                </span>
-                <span>Descubrí la edición 2026</span>
+
+                <span>Conocé los expositores</span>
                 <FaArrowRight aria-hidden className="size-3 text-[#820CD0] transition-transform group-hover:translate-x-1" />
               </a>
             </div>
 
-            {/* Right side vertical words */}
-            <aside
-              data-about-reveal
-              className="about-editorial-plaque mr-6 hidden flex-col items-start gap-2.5 self-center justify-self-end px-5 py-6 text-[0.72rem] font-bold tracking-[0.24em] text-[#0e122b] uppercase md:flex"
-            >
-              <span className="text-[#820CD0]">Territorio</span>
-              <span>Gente</span>
-              <span>Producción</span>
-              <span className="text-[#25C0D4]">Futuro</span>
-              <div className="mt-2 h-[2px] w-8 bg-gradient-to-r from-[#820CD0] to-[#25C0D4]" />
-            </aside>
+<figure className="about-place-photo" data-about-reveal><Image src="/images/evento/11-Bv-B7Fmn.jpg" alt="Producción y territorio de Jujuy" fill sizes="(max-width: 767px) 90vw, 36vw" className="object-cover" /><figcaption>Jujuy, punto de encuentro.</figcaption></figure>
           </div>
 
           {/* Bottom stats row in clean architectural plaque */}
@@ -434,31 +412,27 @@ export function AboutExperience() {
 
               {/* Text column with solid editorial plaque */}
               <div className="about-editorial-plaque relative max-w-xl p-8 sm:p-10">
-                {/* Curatorial Header */}
-                <div data-about-reveal className="flex items-center justify-between border-b border-[#e5e9f4] pb-4 mb-6">
-                  <div className="flex items-center gap-3">
-                    <span className="about-editorial-tag">
-                      EXP · 02
-                    </span>
-                  </div>
-                </div>
-
-                <h2
+  <h2
                   data-about-reveal
-                  className="text-[clamp(2.4rem,3.4vw,3.8rem)] font-extrabold leading-[0.96] tracking-[-0.05em] text-[#0e122b]"
+                  className="text-[clamp(2.3rem,3.2vw,3.8rem)] font-extrabold leading-[0.96] tracking-[-0.035em] text-[#0e122b]"
                 >
-                  Un Territorio,{" "}
-                  <span className="text-[#820CD0]">Infinitas Posibilidades</span>
+                  Jujuy conecta producción, conocimiento y mercados.
                 </h2>
+                <p
+                  data-about-reveal
+                  className="mt-6 text-base leading-relaxed text-[#1a2038]"
+                >
+                  La Ciudad Cultural alberga una propuesta integral que vincula
+                  emprendimientos locales, empresas consolidadas, instituciones y delegaciones
+                  de toda la región del NOA y el Cono Sur.
+                </p>
 
                 {/* Callout Estratégico Corredor Bioceánico */}
                 <div
                   data-about-reveal
-                  className="mt-6 rounded-xl border-l-[3px] border-[#820CD0] bg-[#f8f5ff] p-4.5"
+                  className="about-territory-note"
                 >
-                  <span className="block text-[10px] font-mono font-bold uppercase tracking-widest text-[#820CD0] mb-1.5">
-                    Eje Estratégico
-                  </span>
+
                   <p className="text-sm font-medium leading-relaxed text-[#111827]">
                     El Corredor Bioceánico le da a la feria una escala regional: la
                     producción jujeña dialoga con mercados, alianzas e inversión internacional.
@@ -472,155 +446,14 @@ export function AboutExperience() {
         {/* ===============================================================
             PANEL 03: CUATRO MUNDOS - ALTERNATING 2x4 GRID
             =============================================================== */}
+        {/* ===============================================================
+            PANEL 03: CUATRO MUNDOS - EXPO 3D CAROUSEL
+            =============================================================== */}
         <article
           data-about-panel
           className="about-panel relative flex h-full flex-col justify-center border-r border-[#e5e7eb] px-6 pt-20 pb-32 sm:px-10 lg:px-16"
         >
-          <div className="relative z-10 mx-auto w-full max-w-7xl pb-6">
-            <div className="about-editorial-plaque relative max-w-3xl p-8 sm:p-10">
-              {/* Curatorial Header */}
-              <div data-about-reveal className="flex items-center justify-between border-b border-[#e5e9f4] pb-4 mb-6">
-                <div className="flex items-center gap-3">
-                  <span className="about-editorial-tag">
-                    EXP · 03
-                  </span>
-                </div>
-              </div>
-
-              <h2
-                data-about-reveal
-                className="text-[clamp(2.4rem,3.4vw,3.8rem)] font-extrabold leading-[0.92] tracking-[-0.05em] text-[#0e122b]"
-              >
-                Cuatro Mundos,{" "}
-                <span className="text-[#820CD0]">Una Misma Visión</span>
-              </h2>
-            </div>
-
-            {/* 2x4 Alternating Rhythm Grid (Photos & Content Cards) */}
-            <div
-              data-about-reveal
-              className="mt-6 w-full overflow-hidden rounded-xl border border-[#dfe3ef] bg-white shadow-sm"
-            >
-              <div className="grid grid-cols-2 grid-rows-2 md:grid-cols-4">
-                {/* Col 1 Top: Photo 1 */}
-                <div className="relative h-36 w-full border-b border-r border-[#dfe3ef] md:h-40">
-                  <Image
-                    src="/images/evento/hall-banner.jpg"
-                    alt="Industria y energía"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-
-                {/* Col 2 Top: Card 1 */}
-                <div className="flex flex-col justify-center border-b border-[#dfe3ef] bg-white p-5 md:border-r transition-colors hover:bg-[#faf8ff]">
-                  <div className="flex items-center justify-between">
-                    <span className="grid size-8 place-items-center rounded-lg bg-[#6424dc] text-white shadow-sm">
-                      <FaIndustry className="size-3.5" />
-                    </span>
-                    <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-[#820CD0]">
-                      SECTOR 01
-                    </span>
-                  </div>
-                  <h3 className="mt-3 text-base font-bold tracking-tight text-[#0e122b]">
-                    Industria y energía
-                  </h3>
-                  <p className="mt-1 text-xs leading-relaxed text-[#374151]">
-                    Producción e infraestructura para transformar el territorio.
-                  </p>
-                  <FaArrowRight className="mt-3 size-3 text-[#6424dc]" />
-                </div>
-
-                {/* Col 3 Top: Photo 2 */}
-                <div className="relative h-36 w-full border-b border-r border-[#dfe3ef] md:h-40">
-                  <Image
-                    src="/images/evento/evento_conferencia.png"
-                    alt="Innovación aplicada"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-
-                {/* Col 4 Top: Card 2 */}
-                <div className="flex flex-col justify-center border-b border-[#dfe3ef] bg-white p-5 transition-colors hover:bg-[#f3fbfa]">
-                  <div className="flex items-center justify-between">
-                    <span className="grid size-8 place-items-center rounded-lg bg-[#0b7c8a] text-white shadow-sm">
-                      <FaLightbulb className="size-3.5" />
-                    </span>
-                    <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-[#0b7c8a]">
-                      SECTOR 02
-                    </span>
-                  </div>
-                  <h3 className="mt-3 text-base font-bold tracking-tight text-[#0e122b]">
-                    Innovación aplicada
-                  </h3>
-                  <p className="mt-1 text-xs leading-relaxed text-[#374151]">
-                    Talento y soluciones que impulsan nuevos proyectos.
-                  </p>
-                  <FaArrowRight className="mt-3 size-3 text-[#0b7c8a]" />
-                </div>
-
-                {/* Col 1 Bottom: Photo 3 */}
-                <div className="relative h-36 w-full border-r border-[#dfe3ef] md:h-40">
-                  <Image
-                    src="/images/evento/11-Bv-B7Fmn.jpg"
-                    alt="Producción e identidad"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-
-                {/* Col 2 Bottom: Card 3 */}
-                <div className="flex flex-col justify-center border-[#dfe3ef] bg-white p-5 md:border-r transition-colors hover:bg-[#fbf7ff]">
-                  <div className="flex items-center justify-between">
-                    <span className="grid size-8 place-items-center rounded-lg bg-[#7f08d5] text-white shadow-sm">
-                      <FaMountainSun className="size-3.5" />
-                    </span>
-                    <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-[#7f08d5]">
-                      SECTOR 03
-                    </span>
-                  </div>
-                  <h3 className="mt-3 text-base font-bold tracking-tight text-[#0e122b]">
-                    Producción e identidad
-                  </h3>
-                  <p className="mt-1 text-xs leading-relaxed text-[#374151]">
-                    Economías regionales, y cultura que proyectan a Jujuy.
-                  </p>
-                  <FaArrowRight className="mt-3 size-3 text-[#7f08d5]" />
-                </div>
-
-                {/* Col 3 Bottom: Photo 4 */}
-                <div className="relative h-36 w-full border-r border-[#dfe3ef] md:h-40">
-                  <Image
-                    src="/images/evento/expo.png"
-                    alt="Comercio y alianzas"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-
-                {/* Col 4 Bottom: Card 4 */}
-                <div className="flex flex-col justify-center bg-white p-5 transition-colors hover:bg-[#faf8ff]">
-                  <div className="flex items-center justify-between">
-                    <span className="grid size-8 place-items-center rounded-lg bg-[#6424dc] text-white shadow-sm">
-                      <FaHandshake className="size-3.5" />
-                    </span>
-                    <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-[#6424dc]">
-                      SECTOR 04
-                    </span>
-                  </div>
-                  <h3 className="mt-3 text-base font-bold tracking-tight text-[#0e122b]">
-                    Comercio y alianzas
-                  </h3>
-                  <p className="mt-1 text-xs leading-relaxed text-[#374151]">
-                    Rondas, vínculos empresariales y oportunidades hacia nuevos
-                    mercados.
-                  </p>
-                  <FaArrowRight className="mt-3 size-3 text-[#6424dc]" />
-                </div>
-              </div>
-            </div>
-          </div>
+          <Expo3DCarousel />
         </article>
 
         {/* ===============================================================
@@ -630,42 +463,35 @@ export function AboutExperience() {
           data-about-panel
           className="about-panel relative flex h-full flex-col justify-center px-6 pt-24 pb-28 sm:px-10 lg:px-16"
         >
-          {/* Bottom right watermark over mountain range */}
-          <div className="about-editorial-plaque pointer-events-none absolute right-12 bottom-24 z-10 hidden select-none flex-col items-end rounded-xl px-4 py-2.5 text-right xl:flex">
-            <span className="text-xs font-bold tracking-[0.2em] text-[#0e122b] uppercase leading-tight">
-              JUJUY
-            </span>
-            <span className="text-[0.68rem] font-bold tracking-[0.2em] text-[#475069] uppercase leading-tight">
-              INSPIRA · CONECTA · PROYECTA
-            </span>
-            <div className="mt-2 h-[1.5px] w-14 bg-[#6424dc]" />
-          </div>
+
 
           <div className="relative z-10 mx-auto w-full max-w-7xl">
-            <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[1fr_auto] lg:gap-16">
+
+
+            <div className="mt-5 grid grid-cols-1 items-center gap-10 md:grid-cols-[1.1fr_0.9fr] lg:gap-16">
               {/* Left Column: Heading, text, and buttons */}
               <div className="about-editorial-plaque relative max-w-2xl p-8 sm:p-11">
-                {/* Curatorial Header */}
-                <div data-about-reveal className="flex items-center justify-between border-b border-[#e5e9f4] pb-4 mb-6">
-                  <div className="flex items-center gap-3">
-                    <span className="about-editorial-tag">
-                      EXP · 04
-                    </span>
-                  </div>
-                </div>
-
-                <h2
+  <h2
                   data-about-reveal
-                  className="text-[clamp(3.2rem,4.8vw,5.2rem)] font-extrabold leading-[0.88] tracking-[-0.07em] text-[#0e122b]"
+                  className="text-[clamp(3.2rem,4.6vw,5.2rem)] font-extrabold leading-[1.02] tracking-[-0.035em] text-[#0e122b]"
                 >
-                  El <span className="text-[#820CD0]">Encuentro</span>
+                  El futuro
+                  <br />
+                  se encuentra
+                  <br />
+                  <span className="text-[#820CD0]">en Jujuy.</span>
                 </h2>
 
-                <div data-about-reveal className="mt-7">
-                  <span className="inline-flex items-center rounded-md border border-[#d6c7fb] bg-[#f8f5ff] px-3.5 py-1.5 text-xs font-bold tracking-wider text-[#820CD0] uppercase">
-                    CORREDOR BIOCEÁNICO · VINCULACIÓN · NUEVOS MERCADOS
-                  </span>
-                </div>
+                <p
+                  data-about-reveal
+                  className="mt-6 max-w-xl text-base leading-relaxed text-[#1a2038] lg:text-lg"
+                >
+                  Del 9 al 12 de octubre, cuatro jornadas concentran exposición,
+                  rondas de negocios internacionales, conferencias y actividades culturales para
+                  abrir conversaciones que trasciendan el predio.
+                </p>
+
+
 
                 <div
                   data-about-reveal
@@ -690,7 +516,7 @@ export function AboutExperience() {
                     variant="outline"
                     className="h-12 rounded-lg border border-gray-300 bg-white/90 px-7 text-sm font-bold text-[#0e122b] hover:border-[#820CD0] hover:text-[#820CD0]"
                   >
-                    <a href="#expositores">Conocer los sectores</a>
+                    <a href="#ubicacion">Cómo llegar</a>
                   </Button>
                 </div>
               </div>
@@ -752,7 +578,7 @@ export function AboutExperience() {
         </button>
 
         <p className="ml-5 shrink-0 text-sm font-medium text-gray-600">
-          Scroll horizontal para descubrir más
+          Explorá la Expo
         </p>
 
         <div className="mx-8 h-px flex-1 overflow-hidden bg-gray-200">
@@ -766,7 +592,7 @@ export function AboutExperience() {
           className="about-progress-steps mr-8"
           aria-label="Progreso de la sección"
         >
-          {Array.from({ length: 4 }, (_, index) => (
+          {["La Expo", "Territorio", "Sectores", "El encuentro"].map((label, index) => (
             <button
               key={index}
               type="button"
@@ -777,9 +603,9 @@ export function AboutExperience() {
               data-active={index === 0}
               aria-current={index === 0}
               className="about-step-node"
-              aria-label={`Ir al panel ${index + 1}`}
+              aria-label={`Ver ${label}`}
             >
-              {String(index + 1).padStart(2, "0")}
+              {label}
             </button>
           ))}
         </div>
