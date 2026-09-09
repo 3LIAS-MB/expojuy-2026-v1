@@ -43,26 +43,7 @@ export function HeroSection({ introFinished = true }: HeroSectionProps) {
       const media = gsap.matchMedia();
 
       media.add("all", () => {
-        if (window.scrollY > 80 || (window.location.hash && window.location.hash !== "#inicio")) {
-          gsap.set(".hero-intro", { display: "none" });
-          return;
-        }
-        gsap.set(".hero-intro", { visibility: "visible" });
-        gsap.set(".hero-content", { autoAlpha: 0, y: 34 });
-        gsap.set(".hero-image", { scale: 1.09 });
 
-        const intro = gsap.timeline({ defaults: { ease: "power3.inOut" } });
-        intro
-          .from(".intro-logo .logo-piece-a", { x: -150, y: -70, autoAlpha: 0, duration: 0.7 }, 0.1)
-          .from(".intro-logo .logo-piece-b", { x: 145, y: -35, autoAlpha: 0, duration: 0.7 }, 0.1)
-          .from(".intro-logo .logo-piece-c", { x: -145, y: 55, autoAlpha: 0, duration: 0.7 }, 0.1)
-          .from(".intro-logo .logo-piece-d", { y: 150, autoAlpha: 0, duration: 0.8 }, 0.1)
-          .from(".intro-logo > span:last-child", { y: 18, autoAlpha: 0, duration: 0.45 }, 0.68)
-          .to(".intro-logo", { scale: 1.22, duration: 0.65, ease: "power2.in" }, 1.35)
-          .to(".hero-intro", { autoAlpha: 0, duration: 0.7 }, 1.55)
-          .to(".hero-image", { scale: 1, duration: 1.15 }, 1.5)
-          .to(".hero-content", { autoAlpha: 1, y: 0, duration: 0.8, ease: "power3.out" }, 1.82)
-          .set(".hero-intro", { display: "none" });
 
         gsap.fromTo(
           ".hero-image-wrap",
