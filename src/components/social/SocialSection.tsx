@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, QrCode, X } from "lucide-react";
+import { FaArrowUpRightFromSquare, FaQrcode, FaXmark } from "react-icons/fa6";
 import { QRCodeSVG } from "qrcode.react";
 import { SOCIAL_PLATFORMS, type SocialPlatform } from "@/data/social";
 
@@ -104,14 +103,10 @@ export function SocialSection() {
 
         {/* 4 Canales sin cuadros de fondo */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-4xl mx-auto">
-          {SOCIAL_PLATFORMS.map((platform, idx) => (
-            <motion.div
+          {SOCIAL_PLATFORMS.map((platform) => (
+            <div
               key={platform.id}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: idx * 0.05 }}
-              className="flex flex-col items-center text-center group"
+              className="flex flex-col items-center text-center group transition-transform duration-200 hover:-translate-y-1"
             >
               {/* Logo oficial a color con micro-interacción */}
               <div 
@@ -140,7 +135,7 @@ export function SocialSection() {
                   className="inline-flex items-center gap-1.5 py-1.5 sm:py-2 pl-3 sm:pl-4 pr-2 text-xs font-semibold text-[#0b123b] group-hover/btn:text-[#6424dc] hover:bg-[#f8f9fd] transition-colors cursor-pointer"
                 >
                   <span>{platform.actionText}</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[#646a85] group-hover/btn:text-[#6424dc] transition-colors" />
+                  <FaArrowUpRightFromSquare className="w-3 h-3 text-[#646a85] group-hover/btn:text-[#6424dc] transition-colors" />
                 </a>
 
                 {/* Divisor vertical sutil */}
@@ -154,113 +149,104 @@ export function SocialSection() {
                   title={`Ver código QR de ${platform.name}`}
                   className="p-1.5 sm:py-2 sm:px-2.5 text-[#646a85] hover:text-[#6424dc] hover:bg-[#f8f9fd] transition-colors cursor-pointer flex items-center justify-center"
                 >
-                  <QrCode className="w-3.5 h-3.5" />
+                  <FaQrcode className="w-3.5 h-3.5" />
                 </button>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
       </div>
 
       {/* MODAL EMERGENTE DEL CÓDIGO QR CON SCROLL LOCK Y ARIA */}
-      <AnimatePresence>
-        {selectedQr && (
-          <div 
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="qr-modal-title"
+      {selectedQr && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-in fade-in duration-200"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="qr-modal-title"
+        >
+          {/* Fondo translúcido */}
+          <div
+            onClick={() => setSelectedQr(null)}
+            className="absolute inset-0 bg-[#0b123b]/60 backdrop-blur-sm cursor-pointer"
+          />
+
+          {/* Tarjeta del modal */}
+          <div
+            className="relative w-full max-w-sm bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/50 flex flex-col items-center text-center z-10 transition-transform duration-200"
           >
-            {/* Fondo translúcido */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+            {/* Botón de cierre */}
+            <button
+              type="button"
               onClick={() => setSelectedQr(null)}
-              className="absolute inset-0 bg-[#0b123b]/60 backdrop-blur-sm"
-            />
-
-            {/* Tarjeta del modal */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 10 }}
-              transition={{ type: "spring", duration: 0.35, bounce: 0.15 }}
-              className="relative w-full max-w-sm bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/50 flex flex-col items-center text-center z-10"
+              aria-label="Cerrar modal"
+              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-800 flex items-center justify-center transition-colors cursor-pointer"
             >
-              {/* Botón de cierre */}
-              <button
-                type="button"
-                onClick={() => setSelectedQr(null)}
-                aria-label="Cerrar modal"
-                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-800 flex items-center justify-center transition-colors cursor-pointer"
-              >
-                <X className="w-4 h-4" />
-              </button>
+              <FaXmark className="w-3.5 h-3.5" />
+            </button>
 
-              {/* Logo y título */}
-              <div 
-                className={`w-12 h-12 rounded-2xl shadow-sm text-white flex items-center justify-center mb-2.5 ${selectedQr.brandBg}`}
-              >
-                {getIcon(selectedQr.id, "w-6 h-6")}
-              </div>
+            {/* Logo y título */}
+            <div 
+              className={`w-12 h-12 rounded-2xl shadow-sm text-white flex items-center justify-center mb-2.5 ${selectedQr.brandBg}`}
+            >
+              {getIcon(selectedQr.id, "w-6 h-6")}
+            </div>
 
-              <h4 id="qr-modal-title" className="font-bold text-lg text-[#0b123b]">
-                {selectedQr.name}
-              </h4>
-              <span className="text-xs text-[#646a85] font-medium">
-                {selectedQr.handle}
-              </span>
+            <h4 id="qr-modal-title" className="font-bold text-lg text-[#0b123b]">
+              {selectedQr.name}
+            </h4>
+            <span className="text-xs text-[#646a85] font-medium">
+              {selectedQr.handle}
+            </span>
 
-              {/* QR en alta resolución */}
-              <div className="my-5 p-3.5 rounded-2xl bg-[#f8f9fd] border border-[#dfe3ef] flex items-center justify-center shadow-inner">
-                {selectedQr.qrImage ? (
-                  <div className="relative w-[170px] h-[170px] rounded-xl overflow-hidden">
-                    <Image
-                      src={selectedQr.qrImage}
-                      alt={`Código QR ${selectedQr.name}`}
-                      fill
-                      className="object-contain"
-                    />
+            {/* QR en alta resolución */}
+            <div className="my-5 p-3.5 rounded-2xl bg-[#f8f9fd] border border-[#dfe3ef] flex items-center justify-center shadow-inner">
+              {selectedQr.qrImage ? (
+                <div className="relative w-[170px] h-[170px] rounded-xl overflow-hidden">
+                  <Image
+                    src={selectedQr.qrImage}
+                    alt={`Código QR ${selectedQr.name}`}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              ) : (
+                <div className="relative bg-white p-3 rounded-xl shadow-sm flex items-center justify-center">
+                  <QRCodeSVG
+                    value={selectedQr.qrUrl}
+                    size={160}
+                    level="H"
+                    fgColor="#0b123b"
+                    bgColor="#ffffff"
+                  />
+                  <div 
+                    className="absolute w-7 h-7 rounded-full bg-white shadow-md flex items-center justify-center p-1 border border-gray-100"
+                    style={{ color: selectedQr.color }}
+                  >
+                    {getIcon(selectedQr.id, "w-4 h-4")}
                   </div>
-                ) : (
-                  <div className="relative bg-white p-3 rounded-xl shadow-sm flex items-center justify-center">
-                    <QRCodeSVG
-                      value={selectedQr.qrUrl}
-                      size={160}
-                      level="H"
-                      fgColor="#0b123b"
-                      bgColor="#ffffff"
-                    />
-                    <div 
-                      className="absolute w-7 h-7 rounded-full bg-white shadow-md flex items-center justify-center p-1 border border-gray-100"
-                      style={{ color: selectedQr.color }}
-                    >
-                      {getIcon(selectedQr.id, "w-4 h-4")}
-                    </div>
-                  </div>
-                )}
-              </div>
+                </div>
+              )}
+            </div>
 
-              <p className="text-xs text-[#646a85] leading-relaxed">
-                Escaneá con la cámara de tu celular para abrir directamente el canal oficial.
-              </p>
+            <p className="text-xs text-[#646a85] leading-relaxed">
+              Escaneá con la cámara de tu celular para abrir directamente el canal oficial.
+            </p>
 
-              {/* Enlace alternativo con color de marca oficial */}
-              <a
-                href={selectedQr.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 w-full flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-[#6424dc] hover:bg-[#521cb5] shadow-sm transition-colors cursor-pointer"
-              >
-                <span className="text-white">Abrir enlace directo</span>
-                <ArrowUpRight className="w-3.5 h-3.5 shrink-0 text-white" />
-              </a>
-            </motion.div>
+            {/* Enlace alternativo con color de marca oficial */}
+            <a
+              href={selectedQr.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 w-full flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-[#6424dc] hover:bg-[#521cb5] shadow-sm transition-colors cursor-pointer"
+            >
+              <span className="text-white">Abrir enlace directo</span>
+              <FaArrowUpRightFromSquare className="w-3 h-3 shrink-0 text-white" />
+            </a>
           </div>
-        )}
-      </AnimatePresence>
+        </div>
+      )}
     </section>
   );
 }
