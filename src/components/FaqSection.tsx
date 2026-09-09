@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { FaChevronDown } from "react-icons/fa6";
 
 interface FaqItem {
   id: string;
@@ -46,66 +45,66 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="py-16 sm:py-20 bg-[#f7f8fc] text-[#0b123b] border-t border-[#dfe3ef] relative">
+    <section id="faq" className="py-20 sm:py-24 bg-[#f8f9fc] text-[#0e122b] border-t border-[#dfe3ef] relative">
       <div className="max-w-[900px] mx-auto px-6 sm:px-8">
         
-        {/* Minimalist Light Section Header */}
-        <div className="text-center max-w-xl mx-auto space-y-2 mb-12">
-          <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-[#0b123b]">
-            Preguntas <span className="text-[#6424dc]">Frecuentes</span>
+        {/* Editorial Section Header */}
+        <div className="max-w-2xl mx-auto text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#f4edff] border border-[#d8b4fe]/60 mb-3.5 text-[11px] font-mono font-bold tracking-widest text-[#820CD0] uppercase">
+            Guía & Consultas
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#0e122b]">
+            Preguntas <span className="text-[#820CD0]">Frecuentes</span>
           </h2>
-          <p className="text-[#646a85] text-sm sm:text-base leading-relaxed">
+          <p className="mt-3 text-[#4b5275] text-sm sm:text-base leading-relaxed">
             Respuestas a las dudas más comunes sobre la exposición, acreditaciones y participación.
           </p>
         </div>
 
-        {/* Clean Accordions with Framer Motion Smooth Dropdown */}
-        <div className="space-y-3">
-          {FAQS.map((faq) => {
+        {/* Clean Accordions with Smooth Transition & Editorial Numbering */}
+        <div className="space-y-3.5">
+          {FAQS.map((faq, idx) => {
             const isOpen = openId === faq.id;
             return (
               <div
                 key={faq.id}
-                className={`border rounded-xl transition-colors duration-300 overflow-hidden bg-white ${
+                className={`border rounded-xl transition-all duration-300 overflow-hidden bg-white ${
                   isOpen
-                    ? "border-[#6424dc] shadow-md shadow-[#6424dc]/10"
-                    : "border-[#dfe3ef] hover:border-[#ac7ff0]/50"
+                    ? "border-[#820CD0] shadow-md shadow-[#820CD0]/10 ring-1 ring-[#820CD0]/20"
+                    : "border-[#dfe3ef] hover:border-[#ac7ff0]/60 shadow-xs"
                 }`}
               >
                 <button
                   onClick={() => toggle(faq.id)}
-                  className="w-full flex items-center justify-between gap-4 px-6 py-4.5 text-left focus:outline-none cursor-pointer"
+                  className="w-full flex items-center justify-between gap-4 px-6 py-4.5 text-left focus:outline-none cursor-pointer group"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-base font-bold text-[#0b123b] leading-snug">
-                    {faq.q}
-                  </span>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
-                    isOpen ? "bg-[#6424dc] text-white rotate-180" : "bg-[#f7f8fc] text-[#646a85]"
+                  <div className="flex items-center gap-3.5">
+                    <span className={`font-mono text-xs font-bold transition-colors ${isOpen ? "text-[#820CD0]" : "text-[#8a91a8]"}`}>
+                      {String(idx + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-base font-bold text-[#0e122b] leading-snug group-hover:text-[#820CD0] transition-colors">
+                      {faq.q}
+                    </span>
+                  </div>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
+                    isOpen ? "bg-[#820CD0] text-white rotate-180" : "bg-[#f4edff]/70 text-[#820CD0] group-hover:bg-[#f4edff]"
                   }`}>
-                    <ChevronDown className="w-4 h-4" />
+                    <FaChevronDown className="w-3 h-3" />
                   </div>
                 </button>
 
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      key="content"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ 
-                        height: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
-                        opacity: { duration: 0.25, ease: "easeOut" } 
-                      }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-6 pb-5 pt-1 text-sm text-[#484e68] leading-relaxed border-t border-[#f0f2f8]">
-                        {faq.a}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <div
+                  className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out overflow-hidden ${
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-6 pb-5 pt-2 text-sm text-[#374151] leading-relaxed border-t border-[#f0f2f8] sm:pl-12">
+                      {faq.a}
+                    </div>
+                  </div>
+                </div>
               </div>
             );
           })}

@@ -2,11 +2,10 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { useReducedMotion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRight, CalendarDays, MapPin, Pause, Play } from "lucide-react";
+import { FaArrowRight, FaCalendarDays, FaLocationDot, FaPause, FaPlay } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -18,25 +17,19 @@ interface HeroSectionProps {
 export function HeroSection({ introFinished = true }: HeroSectionProps) {
   const rootRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const reduceMotion = useReducedMotion();
-  const [mounted, setMounted] = useState(false);
   const [videoPaused, setVideoPaused] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Reproducción inteligente del video de fondo sincronizada con la intro
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    if (!introFinished || (mounted && reduceMotion) || videoPaused) {
+    if (!introFinished || videoPaused) {
       video.pause();
     } else {
       void video.play().catch(() => setVideoPaused(true));
     }
-  }, [introFinished, reduceMotion, videoPaused, mounted]);
+  }, [introFinished, videoPaused]);
 
   useGSAP(
     () => {
@@ -127,7 +120,7 @@ export function HeroSection({ introFinished = true }: HeroSectionProps) {
       </svg>
 
       {/* BOTÓN DE CONTROL REPRODUCIR / PAUSAR VIDEO DE FONDO */}
-      {mounted && !reduceMotion && introFinished && (
+      {introFinished && (
         <button
           type="button"
           onClick={() => setVideoPaused((paused) => !paused)}
@@ -136,9 +129,9 @@ export function HeroSection({ introFinished = true }: HeroSectionProps) {
           className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 z-30 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center border border-white/40 bg-black/60 backdrop-blur-md text-white hover:bg-black/80 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white shadow-lg cursor-pointer rounded-xs"
         >
           {videoPaused ? (
-            <Play className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+            <FaPlay className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
           ) : (
-            <Pause className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+            <FaPause className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
           )}
         </button>
       )}
@@ -170,9 +163,9 @@ export function HeroSection({ introFinished = true }: HeroSectionProps) {
               size="lg"
               className="h-12 rounded-md bg-[#820CD0] px-6 text-base font-semibold text-white shadow-[0_12px_34px_rgba(130,12,208,.35)] hover:bg-[#6c0aa9]"
             >
-              <a href="#sobre">
+              <a href="#sobre" className="inline-flex items-center gap-2">
                 Conocé ExpoJuy
-                <ArrowRight aria-hidden className="size-4" />
+                <FaArrowRight aria-hidden className="size-3.5" />
               </a>
             </Button>
             <Button
@@ -188,11 +181,11 @@ export function HeroSection({ introFinished = true }: HeroSectionProps) {
 
         <div className="mt-14 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/25 pt-5 text-sm text-white/82">
           <span className="inline-flex items-center gap-2">
-            <CalendarDays aria-hidden className="size-4 text-[#25C0D4]" />
+            <FaCalendarDays aria-hidden className="size-3.5 text-[#25C0D4]" />
             09 al 12 de octubre · 2026
           </span>
           <span className="inline-flex items-center gap-2">
-            <MapPin aria-hidden className="size-4 text-[#BB8CFF]" />
+            <FaLocationDot aria-hidden className="size-3.5 text-[#BB8CFF]" />
             Ciudad Cultural · Jujuy
           </span>
         </div>

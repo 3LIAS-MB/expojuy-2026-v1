@@ -3,12 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { 
-  Mail, 
-  MapPin, 
-  Phone,
-  Globe,
-  ArrowUpRight
-} from "lucide-react";
+  FaEnvelope, 
+  FaLocationDot, 
+  FaPhone,
+  FaGlobe,
+  FaArrowUpRightFromSquare
+} from "react-icons/fa6";
 
 export function Footer() {
   return (
@@ -48,7 +48,7 @@ export function Footer() {
             </p>
 
             <div className="flex items-start gap-2.5 text-xs text-gray-400 pt-1">
-              <MapPin className="w-4 h-4 text-[#19b9ca] shrink-0 mt-0.5" />
+              <FaLocationDot className="w-3.5 h-3.5 text-[#19b9ca] shrink-0 mt-0.5" />
               <span>Predio Ferial Ciudad Cultural, San Salvador de Jujuy, Argentina</span>
             </div>
           </div>
@@ -86,7 +86,7 @@ export function Footer() {
               {/* Sede / Dirección */}
               <div className="flex flex-col space-y-1">
                 <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-[#19b9ca]" />
+                  <FaLocationDot className="w-3 h-3 text-[#19b9ca]" />
                   Sede Central
                 </span>
                 <span className="text-gray-200 font-semibold">
@@ -100,7 +100,7 @@ export function Footer() {
               {/* Teléfonos */}
               <div className="flex flex-col space-y-1">
                 <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider flex items-center gap-1.5">
-                  <Phone className="w-3.5 h-3.5 text-[#19b9ca]" />
+                  <FaPhone className="w-3 h-3 text-[#19b9ca]" />
                   Teléfonos de Contacto
                 </span>
                 <div className="flex flex-col space-y-0.5">
@@ -116,7 +116,7 @@ export function Footer() {
               {/* Email & Web */}
               <div className="flex flex-col space-y-1 sm:col-span-2 lg:col-span-1">
                 <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider flex items-center gap-1.5">
-                  <Mail className="w-3.5 h-3.5 text-[#6424dc]" />
+                  <FaEnvelope className="w-3 h-3 text-[#6424dc]" />
                   Contacto & Web
                 </span>
                 <a 
@@ -133,7 +133,7 @@ export function Footer() {
                   className="text-[#19b9ca] hover:underline font-semibold flex items-center gap-1 pt-0.5"
                 >
                   www.camcomexjujuy.com.ar
-                  <ArrowUpRight className="w-3 h-3" />
+                  <FaArrowUpRightFromSquare className="w-2.5 h-2.5" />
                 </a>
               </div>
 
@@ -203,7 +203,7 @@ export function Footer() {
               <li>
                 <a href="#expositores" className="hover:text-white transition-colors inline-flex items-center gap-1">
                   Reserva de Stands
-                  <ArrowUpRight className="w-3 h-3 text-[#19b9ca]" />
+                  <FaArrowUpRightFromSquare className="w-2.5 h-2.5 text-[#19b9ca]" />
                 </a>
               </li>
               <li>
@@ -223,7 +223,7 @@ export function Footer() {
               <li>
                 <a href="https://www.camcomexjujuy.com.ar" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors inline-flex items-center gap-1">
                   Cámara de Comercio Exterior
-                  <ArrowUpRight className="w-3 h-3 text-gray-400" />
+                  <FaArrowUpRightFromSquare className="w-2.5 h-2.5 text-gray-400" />
                 </a>
               </li>
               <li>
@@ -279,7 +279,7 @@ export function Footer() {
               title="www.camcomexjujuy.com.ar"
               className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:bg-[#6424dc] hover:border-transparent transition-all shadow-md hover:scale-105"
             >
-              <Globe className="w-4 h-4" />
+              <FaGlobe className="w-3.5 h-3.5" />
             </a>
           </div>
 

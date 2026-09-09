@@ -360,27 +360,128 @@ a {
 .about-mountain-parallax {
   position: absolute;
   z-index: 0;
-  bottom: -6rem;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: clamp(250px, 38vh, 440px);
-  /* Clip at #sobre, not here: the image's peaks move above this box. */
+  height: clamp(260px, 38vh, 440px);
   overflow: visible;
   pointer-events: none;
+}
+
+/* Tono blanco transparente en degradé de abajo a arriba detrás de los cerros */
+.about-mountain-parallax::before {
+  content: "";
+  position: absolute;
+  inset: -15% 0 0 0;
+  z-index: 0;
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(255, 255, 255, 0.82) 30%,
+    rgba(255, 255, 255, 0.40) 65%,
+    rgba(255, 255, 255, 0.10) 85%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+
+/* Difuminado suave en degradé de abajo a arriba en la base inferior de los cerros */
+.about-mountain-parallax::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(100px, 16vh, 180px);
+  z-index: 4;
+  background: linear-gradient(
+    to top,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.88) 28%,
+    rgba(255, 255, 255, 0.42) 62%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+
+.about-glass-card,
+.about-circle-container,
+.about-editorial-plaque {
+  position: relative;
+  background: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(255, 255, 255, 0.92) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(220, 226, 242, 0.85);
+  border-radius: 1.75rem;
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 1) inset,
+    0 20px 45px -12px rgba(11, 18, 59, 0.08),
+    0 2px 6px rgba(11, 18, 59, 0.02);
+}
+
+.about-editorial-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 0.5rem;
+  background: #f5efff;
+  border: 1px solid rgba(216, 180, 254, 0.6);
+  color: #820cd0;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.about-bento-pillar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.25rem;
+  background: #ffffff;
+  border: 1px solid #dfe3ef;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-bento-pillar:hover {
+  border-color: #820cd0;
+  box-shadow: 0 12px 28px -8px rgba(100, 36, 220, 0.12);
+  transform: translateY(-2px);
 }
 
 .about-mountain-layer {
   position: absolute;
   bottom: 0;
   left: 50%;
-  width: max(110%, 56rem);
+  width: max(120%, 68rem);
   height: auto;
   max-width: none;
-  transform: translate3d(-50%, 0, 0) scale(1.1);
+  transform: translate3d(-50%, 0, 0);
   transform-origin: center bottom;
   will-change: transform;
   pointer-events: none;
   user-select: none;
+}
+
+.about-mountain-layer--back {
+  z-index: 1;
+  opacity: 0.92;
+}
+
+.about-mountain-layer--mid {
+  z-index: 2;
+  opacity: 0.98;
+}
+
+.about-mountain-layer--front {
+  z-index: 3;
+  opacity: 1;
 }
 
 .about-panel {
@@ -553,13 +654,13 @@ a {
   }
 
   .about-mountain-parallax {
-    bottom: -3.5rem;
-    height: clamp(180px, 34vh, 280px);
+    bottom: 0;
+    height: clamp(180px, 30vh, 280px);
   }
 
   .about-mountain-layer {
-    width: max(122%, 40rem);
-    transform: translate3d(-50%, 0, 0) scale(1.08);
+    width: max(130%, 44rem);
+    transform: translate3d(-50%, 0, 0);
   }
 
   .landscape-u {
@@ -612,10 +713,6 @@ a {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-  .about-mountain-layer {
-    transform: translate3d(-50%, 0, 0) scale(1.1) !important;
-    will-change: auto;
   }
 }
 

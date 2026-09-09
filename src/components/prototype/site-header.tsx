@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { FaArrowUpRightFromSquare, FaBars, FaXmark } from "react-icons/fa6";
 import ExpoJuyLogo from "@/components/ExpoJuyLogo";
 import { Button } from "@/components/ui/button";
 
@@ -116,7 +116,7 @@ export function SiteHeader({ onReplayIntro }: SiteHeaderProps) {
           >
             <a href="#expositores">
               Quiero participar
-              <ArrowUpRight aria-hidden className="size-4" />
+              <FaArrowUpRightFromSquare aria-hidden className="size-3.5" />
             </a>
           </Button>
         </nav>
@@ -128,7 +128,7 @@ export function SiteHeader({ onReplayIntro }: SiteHeaderProps) {
           aria-expanded={open}
           onClick={() => setOpen((value) => !value)}
         >
-          {open ? <X aria-hidden className="size-5" /> : <Menu aria-hidden className="size-5" />}
+          {open ? <FaXmark aria-hidden className="size-5" /> : <FaBars aria-hidden className="size-5" />}
         </button>
       </div>
 
@@ -150,7 +150,7 @@ export function SiteHeader({ onReplayIntro }: SiteHeaderProps) {
           <Button asChild className="mt-1 h-11 rounded-md bg-[#820CD0] text-white">
             <a href="#expositores" onClick={() => setOpen(false)}>
               Quiero participar
-              <ArrowUpRight aria-hidden className="size-4" />
+              <FaArrowUpRightFromSquare aria-hidden className="size-3.5" />
             </a>
           </Button>
 

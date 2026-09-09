@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
 
 interface TimeLeft {
   days: string;
@@ -100,9 +99,7 @@ export function CountdownSection() {
     seconds: "00",
   });
   const [mounted, setMounted] = useState(false);
-
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { amount: 0.2, once: false });
 
   useEffect(() => {
     // This legacy section gates time-dependent output until hydration is complete.
@@ -115,16 +112,20 @@ export function CountdownSection() {
       const difference = targetDate - now;
 
       if (difference > 0) {
-        const d = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const h = Math.floor((difference / (1000 * 60 * 60)) % 24);
-        const m = Math.floor((difference / 1000 / 60) % 60);
-        const s = Math.floor((difference / 1000) % 60);
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+          (difference % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
         setTimeLeft({
-          days: String(d).padStart(2, "0"),
-          hours: String(h).padStart(2, "0"),
-          minutes: String(m).padStart(2, "0"),
-          seconds: String(s).padStart(2, "0"),
+          days: days.toString().padStart(2, "0"),
+          hours: hours.toString().padStart(2, "0"),
+          minutes: minutes.toString().padStart(2, "0"),
+          seconds: seconds.toString().padStart(2, "0"),
         });
       } else {
         setTimeLeft({ days: "00", hours: "00", minutes: "00", seconds: "00" });
@@ -132,41 +133,32 @@ export function CountdownSection() {
     };
 
     calculateTimeLeft();
-    const interval = setInterval(calculateTimeLeft, 1000);
-    return () => clearInterval(interval);
+    const timer = setInterval(calculateTimeLeft, 1000);
+
+    return () => clearInterval(timer);
   }, []);
 
   return (
-    <div ref={sectionRef} className="select-none">
+    <div id="cuenta-regresiva" ref={sectionRef} className="w-full relative flex flex-col items-center">
       {/* TOP STATIC PIXEL BORDER */}
       <PixelBorderTop />
 
-      {/* MAIN COUNTDOWN SECTION */}
+      {/* SOLID PURPLE MAIN CONTAINER */}
       <section className="relative w-full bg-[#5E009D] text-white py-12 sm:py-16 lg:py-20 overflow-hidden">
         <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12 relative z-10 text-center">
 
           {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-8 sm:mb-12"
-          >
+          <div className="mb-8 sm:mb-12">
             <span className="inline-block text-[#F8BF00] font-extrabold text-xs sm:text-sm tracking-[0.2em] uppercase mb-2">
               CUENTA REGRESIVA OFICIAL
             </span>
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
               EXPOJUY 2026 COMIENZA EN
             </h2>
-          </motion.div>
+          </div>
 
           {/* Timer Display */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.94 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.94 }}
-            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-row items-baseline justify-center gap-3 sm:gap-6 md:gap-10 my-4 sm:my-6"
-          >
+          <div className="flex flex-row items-baseline justify-center gap-3 sm:gap-6 md:gap-10 my-4 sm:my-6">
             {/* Days */}
             <div className="flex flex-col items-center">
               <span className="font-timer text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-widest text-white leading-none">
@@ -209,19 +201,14 @@ export function CountdownSection() {
                 Segundos / Seconds
               </span>
             </div>
-          </motion.div>
+          </div>
 
           {/* Sub-info line */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="pt-6 sm:pt-8 border-t border-white/20 max-w-4xl mx-auto mt-8"
-          >
+          <div className="pt-6 sm:pt-8 border-t border-white/20 max-w-4xl mx-auto mt-8">
             <p className="text-xs sm:text-sm font-semibold tracking-widest text-white/90 uppercase">
               SAN SALVADOR DE JUJUY &bull; 9 AL 18 DE OCTUBRE DE 2026
             </p>
-          </motion.div>
+          </div>
 
         </div>
       </section>
