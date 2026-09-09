@@ -249,45 +249,40 @@ export function Expo3DCarousel() {
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onPointerCancel={handlePointerUp}
-      className="relative h-full w-full overflow-hidden flex flex-col justify-between p-6 sm:p-10 lg:p-14 select-none touch-pan-y cursor-grab active:cursor-grabbing bg-[#050711]"
+      className="relative h-full w-full overflow-hidden flex flex-col justify-between px-6 pt-16 pb-20 sm:px-10 lg:px-16 select-none touch-pan-y cursor-grab active:cursor-grabbing"
       aria-label="Galería Tridimensional de Sectores Productivos"
     >
-      {/* Subtle Dark Radial Atmosphere */}
-      <div 
-        aria-hidden="true" 
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,rgba(130,12,208,0.18),rgba(5,7,17,0.98))]" 
-      />
-
       {/* TOP ROW: Large Editorial Headline & Counter */}
       <div className="relative z-30 flex items-start justify-between w-full max-w-7xl mx-auto pointer-events-none">
-        {/* Curatorial Header & Big Title */}
-        <div className="flex flex-col items-start max-w-xl">
-          <div className="flex items-center gap-3 mb-2">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[3px] bg-[#820CD0]/20 border border-[#820CD0]/40 font-mono text-[10px] font-bold text-[#bb8cff] uppercase tracking-wider">
+        {/* Curatorial Header inside alabaster plaque */}
+        <div className="about-editorial-plaque relative max-w-2xl p-6 sm:p-8 pointer-events-auto">
+          <div className="flex items-center gap-3 border-b border-[#e5e9f4] pb-3 mb-3">
+            <span className="about-editorial-tag">
               EXP · 03
             </span>
-            <span className="font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-[#25C0D4]">
-              CUATRO MUNDOS, UNA MISMA VISIÓN
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#4b5275]">
+              Cuatro Mundos, Una Misma Visión
             </span>
           </div>
 
-          <h2 className="text-[clamp(1.8rem,3.6vw,3.8rem)] font-extrabold leading-[0.92] tracking-[-0.06em] text-white">
-            Una feria para producir, <br />
-            <span className="text-white/40 font-light">intercambiar y proyectar.</span>
+          <h2 className="text-[clamp(1.7rem,3.2vw,2.8rem)] font-extrabold leading-[0.95] tracking-[-0.05em] text-[#0e122b]">
+            Una feria para producir,{" "}
+            <span className="text-[#820CD0]">intercambiar</span>{" "}
+            <span className="font-light text-[#25C0D4]">y proyectar.</span>
           </h2>
           
-          <p className="mt-2 text-xs sm:text-sm font-medium tracking-wide text-white/65 max-w-lg leading-relaxed hidden sm:block">
+          <p className="mt-2.5 text-xs sm:text-sm font-medium tracking-wide text-[#1a2038] max-w-xl leading-relaxed hidden sm:block">
             Muestra comercial e institucional, conferencias de alto nivel y espacios de vinculación regional y global.
           </p>
         </div>
 
-        {/* Live Slide Counter */}
-        <div className="flex flex-col items-end text-right">
-          <div className="font-mono text-2xl sm:text-4xl font-extrabold tracking-tight text-[#25C0D4]">
+        {/* Live Slide Counter Plaque */}
+        <div className="about-editorial-plaque hidden sm:flex flex-col items-end text-right px-6 py-4 pointer-events-auto">
+          <div className="font-mono text-2xl sm:text-3xl font-extrabold tracking-tight text-[#820CD0]">
             {CAROUSEL_SLIDES[activeSlideIndex]?.number || "01"}
-            <span className="text-white/30 text-base sm:text-xl font-light"> / 06</span>
+            <span className="text-[#6a7294] text-base sm:text-lg font-light"> / 06</span>
           </div>
-          <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/60 mt-1">
+          <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#4b5275] mt-1">
             {CAROUSEL_SLIDES[activeSlideIndex]?.category || "SECTOR"}
           </span>
         </div>
@@ -321,8 +316,8 @@ export function Expo3DCarousel() {
               }}
             >
               {/* Floating Editorial Photo Card */}
-              <div className="relative group overflow-hidden rounded-[3px] border border-white/20 bg-[#080c1e] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.9)] transition-colors duration-300 hover:border-white/60">
-                <div className={`relative ${slide.aspectRatio} w-full overflow-hidden bg-black`}>
+              <div className="relative group overflow-hidden rounded-[8px] border border-[#dfe3ef] bg-white shadow-[0_24px_48px_-12px_rgba(14,18,43,0.20),0_8px_20px_-6px_rgba(14,18,43,0.10)] transition-all duration-300 hover:border-[#820CD0] hover:shadow-[0_28px_56px_-12px_rgba(130,12,208,0.28)]">
+                <div className={`relative ${slide.aspectRatio} w-full overflow-hidden bg-[#e5e9f4]`}>
                   <Image
                     src={slide.image}
                     alt={slide.title}
@@ -332,23 +327,23 @@ export function Expo3DCarousel() {
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
 
-                  {/* Dark Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent pointer-events-none" />
+                  {/* High contrast gradient at the bottom so text is razor-sharp */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0e122b]/95 via-[#0e122b]/35 to-transparent pointer-events-none" />
 
                   {/* Monospace Floating Index Tag */}
-                  <div className="absolute top-3 left-3 z-10 font-mono text-[11px] font-extrabold tracking-widest text-white/90 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded-[2px] border border-white/15">
+                  <div className="absolute top-3 left-3 z-10 font-mono text-[11px] font-extrabold tracking-widest text-[#820CD0] bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-[4px] border border-[#e5e9f4] shadow-xs">
                     {slide.number}
                   </div>
 
                   {/* Editorial Card Bottom Details */}
-                  <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 z-10 flex flex-col justify-end">
+                  <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 z-10 flex flex-col justify-end text-left">
                     <span className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-[#25C0D4] mb-1">
                       {slide.category}
                     </span>
                     <h3 className="text-lg sm:text-xl font-bold tracking-tight text-white leading-snug">
                       {slide.title}
                     </h3>
-                    <p className="mt-1 text-[11px] sm:text-xs text-white/70 leading-relaxed line-clamp-2">
+                    <p className="mt-1 text-[11px] sm:text-xs text-white/80 leading-relaxed line-clamp-2">
                       {slide.subtitle}
                     </p>
                   </div>
@@ -360,28 +355,28 @@ export function Expo3DCarousel() {
       </div>
 
       {/* BOTTOM ROW: Navigation Controls & Cues */}
-      <div className="relative z-30 flex items-end justify-between w-full max-w-7xl mx-auto">
+      <div className="relative z-30 flex items-center justify-between w-full max-w-7xl mx-auto">
         {/* Step dots & arrows */}
-        <div className="flex items-center gap-2 pointer-events-auto">
+        <div className="about-editorial-plaque flex items-center gap-2 px-3 py-2 pointer-events-auto">
           <button
             type="button"
             onClick={prevSlide}
             aria-label="Sector anterior"
-            className="size-8 rounded-full border border-white/20 bg-white/5 text-white/80 hover:bg-white hover:text-black transition-colors grid place-items-center cursor-pointer"
+            className="size-8 rounded-full border border-[#dfe3ef] bg-white text-[#0e122b] hover:bg-[#820CD0] hover:text-white transition-colors grid place-items-center cursor-pointer shadow-xs"
           >
             <FaChevronLeft className="size-3" />
           </button>
 
-          <div className="flex items-center gap-1.5 px-2">
+          <div className="flex items-center gap-1 px-1">
             {CAROUSEL_SLIDES.map((slide, idx) => (
               <button
                 key={slide.id}
                 type="button"
                 onClick={() => jumpToSlide(idx)}
-                className={`font-mono text-[10px] font-bold px-2 py-0.5 rounded-[2px] transition-all cursor-pointer ${
+                className={`font-mono text-[10px] font-bold px-2.5 py-1 rounded-[4px] transition-all cursor-pointer ${
                   activeSlideIndex === idx
-                    ? "bg-[#820CD0] text-white"
-                    : "text-white/40 hover:text-white"
+                    ? "bg-[#820CD0] text-white shadow-xs"
+                    : "text-[#4b5275] hover:text-[#0e122b] hover:bg-[#f1f4fb]"
                 }`}
               >
                 {slide.number}
@@ -393,16 +388,18 @@ export function Expo3DCarousel() {
             type="button"
             onClick={nextSlide}
             aria-label="Sector siguiente"
-            className="size-8 rounded-full border border-white/20 bg-white/5 text-white/80 hover:bg-white hover:text-black transition-colors grid place-items-center cursor-pointer"
+            className="size-8 rounded-full border border-[#dfe3ef] bg-white text-[#0e122b] hover:bg-[#820CD0] hover:text-white transition-colors grid place-items-center cursor-pointer shadow-xs"
           >
             <FaChevronRight className="size-3" />
           </button>
         </div>
 
         {/* Scroll / Drag Cue */}
-        <div className="pointer-events-none flex items-center gap-2.5 font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.25em] text-white/70">
-          <span>SCROLL / ARRASTRAR 3D</span>
-          <span className="animate-bounce">↓</span>
+        <div className="about-editorial-plaque pointer-events-none hidden sm:flex items-center gap-2.5 px-4 py-2 font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-[#4b5275]">
+          <span className="text-[#820CD0]">3D SPATIAL</span>
+          <span>·</span>
+          <span>ARRASTRAR / SCROLL</span>
+          <span className="text-[#25C0D4]">↔</span>
         </div>
       </div>
     </div>

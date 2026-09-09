@@ -500,7 +500,7 @@ export function AboutExperience() {
             =============================================================== */}
         <article
           data-about-panel
-          className="about-panel relative flex min-h-[660px] md:min-h-0 h-full w-full flex-col justify-between overflow-hidden bg-[#050711] text-white border-r border-[#1a203a] p-0"
+          className="about-panel relative flex min-h-[660px] md:min-h-0 h-full w-full flex-col justify-between overflow-hidden border-r border-[#e5e7eb] p-0"
         >
           <Expo3DCarousel />
         </article>
