@@ -45,49 +45,49 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="py-16 sm:py-20 bg-[#070914] text-white border-t border-white/10 relative">
+    <section id="faq" className="py-16 sm:py-20 bg-[#f7f8fc] text-[#0b123b] border-t border-[#dfe3ef] relative">
       <div className="max-w-[900px] mx-auto px-6 sm:px-8">
         
-        {/* Minimalist Section Header */}
+        {/* Minimalist Light Section Header */}
         <div className="text-center max-w-xl mx-auto space-y-2 mb-12">
-          <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white">
-            Preguntas <span className="text-[#F8BF00]">Frecuentes</span>
+          <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-[#0b123b]">
+            Preguntas <span className="text-[#6424dc]">Frecuentes</span>
           </h2>
-          <p className="text-gray-400 text-sm leading-relaxed">
+          <p className="text-[#646a85] text-sm sm:text-base leading-relaxed">
             Respuestas a las dudas más comunes sobre la exposición, acreditaciones y participación.
           </p>
         </div>
 
-        {/* Clean Accordions */}
+        {/* Clean Light Accordions */}
         <div className="space-y-3">
           {FAQS.map((faq) => {
             const isOpen = openId === faq.id;
             return (
               <div
                 key={faq.id}
-                className={`border rounded-lg transition-all duration-200 overflow-hidden ${
+                className={`border rounded-xl transition-all duration-200 overflow-hidden bg-white ${
                   isOpen
-                    ? "bg-white/[0.04] border-[#2b00ff]/60"
-                    : "bg-white/[0.01] border-white/10 hover:border-white/20"
+                    ? "border-[#6424dc] shadow-md shadow-[#6424dc]/10"
+                    : "border-[#dfe3ef] hover:border-[#ac7ff0]/50"
                 }`}
               >
                 <button
                   onClick={() => toggle(faq.id)}
-                  className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left focus:outline-none cursor-pointer"
+                  className="w-full flex items-center justify-between gap-4 px-6 py-4.5 text-left focus:outline-none cursor-pointer"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-base font-bold text-white leading-snug">
+                  <span className="text-base font-bold text-[#0b123b] leading-snug">
                     {faq.q}
                   </span>
-                  <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
-                    isOpen ? "bg-[#2b00ff] text-white rotate-180" : "bg-white/5 text-gray-400"
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
+                    isOpen ? "bg-[#6424dc] text-white rotate-180" : "bg-[#f7f8fc] text-[#646a85]"
                   }`}>
                     <ChevronDown className="w-4 h-4" />
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 pb-5 pt-1 text-sm text-gray-300 leading-relaxed border-t border-white/5">
+                  <div className="px-6 pb-5 pt-1 text-sm text-[#484e68] leading-relaxed border-t border-[#f0f2f8]">
                     {faq.a}
                   </div>
                 )}
