@@ -136,32 +136,91 @@ export function HeroSection({ introFinished = true }: HeroSectionProps) {
         </button>
       )}
 
-      <div className="hero-content mx-auto my-auto flex w-full max-w-[1480px] flex-col justify-center px-5 pt-24 pb-10 sm:px-8 sm:pt-28 sm:pb-12 lg:px-12 lg:pt-32 lg:pb-14 -translate-y-4 sm:-translate-y-8 lg:-translate-y-12">
+      <div className="hero-content mx-auto my-auto flex w-full max-w-[1480px] flex-col justify-center px-4 pt-20 pb-12 sm:px-8 sm:pt-28 sm:pb-14 lg:px-12 lg:pt-32 lg:pb-16 translate-y-0 sm:-translate-y-6 lg:-translate-y-10">
         <div className="max-w-[820px]">
-          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.24em] text-white/85">
-            17.ª edición · 09 al 12 de octubre · Ciudad Cultural
+          <p className="mb-3 sm:mb-4 text-[11px] sm:text-xs font-semibold uppercase tracking-[0.20em] sm:tracking-[0.24em] text-[#25C0D4]">
+            Muestra Multisectorial del NOA · Argentina
           </p>
-          <h1 className="max-w-[780px] text-[clamp(3.45rem,7.1vw,7.35rem)] font-semibold leading-[0.86] tracking-[-0.065em]">
+          <h1 className="max-w-[780px] text-[clamp(2.35rem,8.5vw,7.35rem)] font-semibold leading-[0.88] tracking-[-0.06em]">
             El futuro
             <br />
             se encuentra
             <br />
             <span className="text-[#25C0D4]">en Jujuy.</span>
           </h1>
-          <p className="mt-5 flex max-w-[650px] items-center gap-3 text-sm font-bold uppercase tracking-[0.06em] text-white sm:text-base">
-            <span aria-hidden className="h-px w-8 shrink-0 bg-[#25C0D4]" />
-            Conectando países <span className="text-[#BB8CFF]">—</span> creando oportunidades
+          <p className="mt-4 sm:mt-5 flex max-w-[650px] items-center gap-2.5 sm:gap-3 text-xs sm:text-base font-bold uppercase tracking-[0.05em] sm:tracking-[0.06em] text-white">
+            <span aria-hidden className="h-px w-5 sm:w-8 shrink-0 bg-[#25C0D4]" />
+            <span>Conectando países <span className="text-[#BB8CFF]">—</span> creando oportunidades</span>
           </p>
-          <p className="mt-5 max-w-[580px] text-base leading-relaxed text-white/88 sm:text-lg">
+
+          {/* BADGE INSTITUCIONAL OFICIAL (17° Edición · Fechas · 2026 · Cámara de Comercio Exterior) - Rectangular & Responsivo */}
+          <div className="mt-5 mb-5 sm:mt-6 sm:mb-6 w-full max-w-[640px] rounded-none border border-white/20 bg-gradient-to-r from-black/85 via-[#070e24]/90 to-black/85 p-2 xs:p-2.5 sm:p-4 backdrop-blur-md shadow-[0_12px_36px_rgba(0,0,0,0.55)]">
+            <div className="grid grid-cols-12 items-center divide-x divide-white/20">
+              {/* 17° Edición */}
+              <div className="col-span-3 flex flex-col items-center justify-center text-center px-1 sm:px-2">
+                <span className="text-2xl xs:text-3xl sm:text-4xl font-black tracking-tight text-white leading-none">
+                  17°
+                </span>
+                <span className="text-[9px] xs:text-[10px] sm:text-xs font-semibold text-white/90 tracking-wide mt-1 uppercase">
+                  Edición
+                </span>
+              </div>
+
+              {/* 09 al 12 OCTUBRE + CIUDAD CULTURAL */}
+              <div className="col-span-4 flex flex-col items-center justify-center text-center px-1 sm:px-3">
+                <div className="bg-[#00c2de] text-white px-2 py-1 sm:px-3.5 sm:py-1.5 rounded-none shadow-sm flex flex-col items-center justify-center w-full max-w-[130px]">
+                  <span className="text-[10px] xs:text-xs sm:text-sm font-bold tracking-tight text-white leading-tight">
+                    09 al 12
+                  </span>
+                  <span className="text-[10px] xs:text-xs sm:text-sm font-black tracking-wider text-white leading-tight uppercase">
+                    OCTUBRE
+                  </span>
+                </div>
+                <span className="text-[8px] xs:text-[9px] sm:text-[11px] font-bold tracking-[0.10em] sm:tracking-[0.16em] text-[#BB8CFF] mt-1 sm:mt-1.5 uppercase leading-none whitespace-nowrap">
+                  CIUDAD CULTURAL
+                </span>
+              </div>
+
+              {/* 20 / 26 + Línea púrpura */}
+              <div className="col-span-2 flex flex-col items-center justify-center text-center px-1 sm:px-2">
+                <div className="flex flex-col items-center justify-center leading-none">
+                  <span
+                    className="text-xl xs:text-2xl sm:text-3xl font-light tracking-tight text-transparent leading-none"
+                    style={{ WebkitTextStroke: "1.25px #ffffff" }}
+                  >
+                    20
+                  </span>
+                  <span className="text-xl xs:text-2xl sm:text-3xl font-black tracking-tight text-white leading-none">
+                    26
+                  </span>
+                </div>
+                <div className="w-full max-w-[32px] sm:max-w-[42px] h-0.5 sm:h-[2.5px] bg-[#BB8CFF] mt-1 sm:mt-1.5 rounded-none" />
+              </div>
+
+              {/* Logo Cámara de Comercio Exterior de Jujuy */}
+              <div className="col-span-3 flex flex-col items-center justify-center text-center px-1 sm:px-2">
+                <div className="relative h-10 w-12 xs:h-12 xs:w-14 sm:h-14 sm:w-16">
+                  <Image
+                    src="/images/brand/logo_camcomext_white.png"
+                    alt="Cámara de Comercio Exterior de Jujuy"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p className="max-w-[580px] text-sm sm:text-base leading-relaxed text-white/88 sm:text-lg">
             Industria, innovación, cultura y oportunidades. Un lugar para conectar,
             crear y crecer.
           </p>
 
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-wrap items-center gap-3">
             <Button
               asChild
               size="lg"
-              className="h-12 rounded-md bg-[#820CD0] px-6 text-base font-semibold text-white shadow-[0_12px_34px_rgba(130,12,208,.35)] hover:bg-[#6c0aa9]"
+              className="h-12 w-auto rounded-md bg-[#820CD0] px-6 text-base font-semibold text-white shadow-[0_12px_34px_rgba(130,12,208,.35)] hover:bg-[#6c0aa9]"
             >
               <a href="#sobre" className="inline-flex items-center gap-2">
                 Conocé ExpoJuy
@@ -172,22 +231,11 @@ export function HeroSection({ introFinished = true }: HeroSectionProps) {
               asChild
               size="lg"
               variant="outline"
-              className="h-12 rounded-md border-white/50 bg-black/10 px-6 text-base text-white backdrop-blur-sm hover:bg-white hover:text-[#0b123b]"
+              className="h-12 w-auto rounded-md border-white/50 bg-black/10 px-6 text-base text-white backdrop-blur-sm hover:bg-white hover:text-[#0b123b]"
             >
               <a href="#expositores">Ver expositores</a>
             </Button>
           </div>
-        </div>
-
-        <div className="mt-10 sm:mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/25 pt-5 text-sm text-white/82">
-          <span className="inline-flex items-center gap-2">
-            <FaCalendarDays aria-hidden className="size-3.5 text-[#25C0D4]" />
-            09 al 12 de octubre · 2026
-          </span>
-          <span className="inline-flex items-center gap-2">
-            <FaLocationDot aria-hidden className="size-3.5 text-[#BB8CFF]" />
-            Ciudad Cultural · Jujuy
-          </span>
         </div>
       </div>
     </section>
