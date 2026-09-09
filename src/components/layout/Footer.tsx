@@ -99,23 +99,18 @@ export function Footer() {
           {/* Col 2: Cámara de Comercio Exterior de Jujuy (6 cols) */}
           <div className="lg:col-span-6 flex flex-col justify-between space-y-4 lg:border-l lg:border-white/10 lg:pl-8">
             <div className="space-y-3">
-              <div className="flex items-center gap-3.5">
-                <div className="relative h-10 w-36 shrink-0">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                <div className="relative h-12 w-48 shrink-0">
                   <Image
-                    src="/images/logo/logo_camcomext.png"
+                    src="/images/logo/logo_camcomext-record.PNG"
                     alt="Logo Cámara de Comercio Exterior de Jujuy"
                     fill
                     className="object-contain object-left"
                   />
                 </div>
-                <div className="flex flex-col">
-                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#19b9ca]">
-                    Organización & Entidad Oficial
-                  </span>
-                  <h3 className="text-sm font-black text-white leading-tight uppercase tracking-tight">
-                    Cámara de Comercio Exterior de Jujuy
-                  </h3>
-                </div>
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#19b9ca] sm:border-l sm:border-white/10 sm:pl-3">
+                  Organización & Entidad Oficial
+                </span>
               </div>
 
               <p className="text-gray-300 text-sm leading-relaxed max-w-lg">
