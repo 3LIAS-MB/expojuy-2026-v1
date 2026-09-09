@@ -178,4 +178,47 @@ export const NEWS_ARTICLES: NewsArticle[] = [
       role: 'Gobierno de Jujuy',
     },
   },
+  {
+    id: 'noticia-7',
+    slug: 'ecosistema-tech-startups-software-jujuy',
+    title: 'Economía del conocimiento: startups jujeñas exhibirán desarrollos en IA y agro-tech',
+    summary:
+      'El polo tecnológico provincial reunirá a 20 emprendimientos digitales con soluciones aplicadas al agro, la minería y el comercio exterior.',
+    paragraphs: [
+      'El espacio de innovación en Ciudad Cultural pondrá el foco en el talento joven de la provincia. Desarrolladores y fundadores presentarán sensores IoT para monitoreo de cultivos en altura y algoritmos de optimización de rutas para el transporte minero.',
+      'Además, se realizarán clínicas de vinculación con aceleradoras y fondos de capital de riesgo para escalar productos concebidos en Jujuy hacia el mercado global.',
+    ],
+    category: 'Comercio & B2B',
+    date: '5 de Agosto, 2026',
+    publishedAt: '2026-08-05',
+    readTime: '3 min de lectura',
+    image: '/images/evento/4c13475b-322b-4097-a0d0.jpg',
+    tags: ['Tecnología', 'Startups', 'IA', 'AgroTech'],
+    author: {
+      name: 'Polo Tecnológico Jujuy',
+      role: 'Dirección de Innovación',
+    },
+  },
+  {
+    id: 'noticia-8',
+    slug: 'acreditacion-periodistas-medios-sala-prensa',
+    title: 'Abrió el registro de acreditaciones de prensa para cobertura nacional e internacional',
+    summary:
+      'Periodistas y reporteros gráficos ya pueden tramitar su pase digital con acceso prioritario al auditorio y conferencias exclusivas.',
+    paragraphs: [
+      'Los equipos de comunicación dispondrán de una sala de prensa totalmente equipada con conectividad de alta velocidad, streaming oficial y gacetillas con embargo coordinadas por la Cámara de Comercio Exterior.',
+      'El trámite se realiza en línea a través de la sección de Acreditación con emisión inmediata de credencial con código QR.',
+    ],
+    category: 'Comercio & B2B',
+    date: '1 de Agosto, 2026',
+    publishedAt: '2026-08-01',
+    readTime: '2 min de lectura',
+    image: '/images/evento/about-us.jpg',
+    tags: ['Prensa', 'Acreditaciones', 'Medios', 'Ciudad Cultural'],
+    author: {
+      name: 'Departamento de Prensa',
+      role: 'CCEJ',
+    },
+  },
 ];
+
