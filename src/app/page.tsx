@@ -6,6 +6,7 @@ import { AboutExperience } from "@/components/prototype/about-experience";
 import { ExhibitorsSection } from "@/components/prototype/exhibitors-section";
 import { HeroSection } from "@/components/prototype/hero-section";
 import { SiteHeader } from "@/components/prototype/site-header";
+import { NewsSection } from "@/components/news/NewsSection";
 
 export default function Home() {
   const [isPlayingIntro, setIsPlayingIntro] = useState(true);
@@ -43,6 +44,7 @@ export default function Home() {
         <HeroSection introFinished={introFinished} />
         <AboutExperience />
         <ExhibitorsSection />
+        <NewsSection />
       </main>
     </>
   );
