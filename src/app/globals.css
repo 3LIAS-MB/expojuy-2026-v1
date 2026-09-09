@@ -368,6 +368,42 @@ a {
   pointer-events: none;
 }
 
+/* Tono blanco transparente en degradé de abajo a arriba detrás de los cerros */
+.about-mountain-parallax::before {
+  content: "";
+  position: absolute;
+  inset: -15% 0 0 0;
+  z-index: 0;
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(255, 255, 255, 0.82) 30%,
+    rgba(255, 255, 255, 0.40) 65%,
+    rgba(255, 255, 255, 0.10) 85%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+
+/* Difuminado suave en degradé de abajo a arriba en la base inferior de los cerros */
+.about-mountain-parallax::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(100px, 16vh, 180px);
+  z-index: 4;
+  background: linear-gradient(
+    to top,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.88) 28%,
+    rgba(255, 255, 255, 0.42) 62%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+
 .about-glass-card,
 .about-circle-container {
   position: relative;
