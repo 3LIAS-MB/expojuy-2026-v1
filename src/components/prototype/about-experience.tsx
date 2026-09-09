@@ -38,10 +38,10 @@ export function AboutExperience() {
   const triggerRef = useRef<ScrollTrigger | null>(null);
 
   useGSAP(
-    (_context, contextSafe) => {
+    () => {
       const section = sectionRef.current;
       const track = trackRef.current;
-      if (!section || !track || !contextSafe) return;
+      if (!section || !track) return;
       const media = gsap.matchMedia();
       const panels = Array.from(
         track.querySelectorAll<HTMLElement>("[data-about-panel]"),
@@ -119,7 +119,7 @@ export function AboutExperience() {
         triggerRef.current = tween.scrollTrigger ?? null;
 
         panels.forEach((panel, index) => {
-          const enter = contextSafe(() => {
+          const enter = () => {
             gsap.fromTo(
               panel.querySelectorAll("[data-about-reveal]"),
               { y: 22, opacity: 0.1 },
@@ -132,7 +132,7 @@ export function AboutExperience() {
                 clearProps: "transform,opacity",
               },
             );
-          });
+          };
 
           ScrollTrigger.create(
             index === 0
@@ -230,7 +230,7 @@ export function AboutExperience() {
           );
         }
 
-        const enter = contextSafe((entries: IntersectionObserverEntry[]) => {
+        const enter = (entries: IntersectionObserverEntry[]) => {
           entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
             gsap.fromTo(
@@ -246,7 +246,7 @@ export function AboutExperience() {
             );
             observer.unobserve(entry.target);
           });
-        });
+        };
         const observer = new IntersectionObserver(enter, { threshold: 0.08 });
         section
           .querySelectorAll("[data-about-reveal]")
