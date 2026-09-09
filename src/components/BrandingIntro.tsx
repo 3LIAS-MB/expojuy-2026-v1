@@ -40,7 +40,7 @@ export default function BrandingIntro({ isPlaying, onAnimationComplete }: Brandi
     gsap.set(curtain, { opacity: 1 });
     gsap.set(trailPath, { opacity: 0, attr: { d: '' } });
     gsap.set(wordmark, { opacity: 0, y: 14 });
-    gsap.set(logo, { opacity: 1, scale: 0.95, x: 0, y: 0, transformOrigin: 'center center' });
+    gsap.set(logo, { opacity: 1, scale: 0.42, rotateX: 18, rotateY: -15, z: -400, x: 0, y: 0, transformPerspective: 1200, transformOrigin: 'center center' });
     if (skipBtn) gsap.set(skipBtn, { opacity: 1 });
 
     // Target the individual SVG pieces inside the logo
@@ -49,68 +49,80 @@ export default function BrandingIntro({ isPlaying, onAnimationComplete }: Brandi
     const piecePurple = logo.querySelector('[data-piece="purple"]');
     const pieceU = logo.querySelector('[data-piece="u-path"]');
 
-    if (pieceCyan) gsap.set(pieceCyan, { x: -300, y: -180, opacity: 0 });
-    if (pieceViolet) gsap.set(pieceViolet, { x: -300, y: 90, opacity: 0 });
-    if (piecePurple) gsap.set(piecePurple, { x: 300, y: -120, opacity: 0 });
-    if (pieceU) gsap.set(pieceU, { y: 280, opacity: 0 });
+    if (pieceCyan) {
+      gsap.set(pieceCyan, { x: -620, y: -420, rotation: -48, scale: 0.35, opacity: 0, transformOrigin: '50% 50%' });
+    }
+    if (pieceViolet) {
+      gsap.set(pieceViolet, { x: -650, y: 320, rotation: 42, scale: 0.38, opacity: 0, transformOrigin: '50% 50%' });
+    }
+    if (piecePurple) {
+      gsap.set(piecePurple, { x: 640, y: -380, rotation: -38, scale: 0.38, opacity: 0, transformOrigin: '50% 50%' });
+    }
+    if (pieceU) {
+      gsap.set(pieceU, { x: 40, y: 640, rotation: 28, scale: 0.32, opacity: 0, transformOrigin: '50% 50%' });
+    }
 
     const tl = gsap.timeline();
     timelineRef.current = tl;
 
     // =========================================================================
-    // FASE 1: Ensamble cinemático de las 4 piezas en el centro
+    // FASE 1: Ensamble cinemático desde la profundidad (mayor distancia 3D)
     // =========================================================================
-    tl.addLabel('assemble', 0.2);
+    tl.addLabel('assemble', 0.05);
+
+    // El logo en su conjunto se aproxima desde el fondo hacia el frente
+    tl.to(
+      logo,
+      { scale: 1, z: 0, rotateX: 0, rotateY: 0, duration: 0.65, ease: 'power2.out' },
+      'assemble',
+    );
 
     if (pieceCyan) {
       tl.to(
         pieceCyan,
-        { x: 0, y: 0, opacity: 1, duration: 0.75, ease: 'power3.out' },
+        { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1, duration: 0.58, ease: 'back.out(1.2)' },
         'assemble',
       );
     }
     if (pieceViolet) {
       tl.to(
         pieceViolet,
-        { x: 0, y: 0, opacity: 1, duration: 0.75, ease: 'power3.out' },
-        'assemble+=0.08',
+        { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1, duration: 0.58, ease: 'back.out(1.2)' },
+        'assemble+=0.05',
       );
     }
     if (piecePurple) {
       tl.to(
         piecePurple,
-        { x: 0, y: 0, opacity: 1, duration: 0.75, ease: 'power3.out' },
-        'assemble+=0.14',
+        { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1, duration: 0.58, ease: 'back.out(1.2)' },
+        'assemble+=0.10',
       );
     }
     if (pieceU) {
       tl.to(
         pieceU,
-        { y: 0, opacity: 1, duration: 0.85, ease: 'power3.out' },
-        'assemble+=0.22',
+        { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1, duration: 0.62, ease: 'back.out(1.4)' },
+        'assemble+=0.15',
       );
     }
 
     // =========================================================================
-    // FASE 2: Pulso de ensamble e impacto + Revelación del Wordmark
+    // FASE 2: Revelación limpia del Wordmark (sin zoom en el logo)
     // =========================================================================
-    tl.to(logo, { scale: 1.05, duration: 0.2, ease: 'power2.out' }, '-=0.15');
-    tl.to(logo, { scale: 1.0, duration: 0.25, ease: 'power2.inOut' });
-
     tl.to(
       wordmark,
-      { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' },
-      '<',
+      { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out' },
+      '-=0.1',
     );
 
     // =========================================================================
-    // FASE 3: Contemplación breve y ocultamiento de texto previo al despegue
+    // FASE 3: Contemplación breve y transición ágil al vuelo
     // =========================================================================
-    tl.to({}, { duration: 0.5 }); // Pausa de contemplación de marca
-    tl.to(wordmark, { opacity: 0, y: -10, duration: 0.25, ease: 'power2.in' });
+    tl.to({}, { duration: 0.25 }); // Pausa rítmica para apreciar el logo
+    tl.to(wordmark, { opacity: 0, y: -8, duration: 0.16, ease: 'power2.in' });
 
     // =========================================================================
-    // FASE 4: Vuelo curvo Bézier hacia el logo del Navbar
+    // FASE 4: Vuelo curvo Bézier ágil hacia el logo del Navbar
     // =========================================================================
     let sx = 0, sy = 0, tx = 0, ty = 0, dx = 0, dy = 0, cx = 0, cy = 0, finalScale = 0.2;
 
@@ -139,7 +151,7 @@ export default function BrandingIntro({ isPlaying, onAnimationComplete }: Brandi
     const flightProgress = { p: 0 };
     tl.to(flightProgress, {
       p: 1,
-      duration: 1.25,
+      duration: 0.65,
       ease: 'power3.inOut',
       onUpdate: () => {
         const p = flightProgress.p;
@@ -166,19 +178,19 @@ export default function BrandingIntro({ isPlaying, onAnimationComplete }: Brandi
     tl.add(() => {
       document.body.style.overflow = previousOverflow;
       setIsDissolving(true);
-    }, '-=0.15');
+    }, '-=0.12');
 
-    tl.to(trailPath, { opacity: 0, duration: 0.35, ease: 'power2.out' }, '-=0.15');
-    tl.to(logo, { opacity: 0, duration: 0.35, ease: 'power2.out' }, '<');
+    tl.to(trailPath, { opacity: 0, duration: 0.22, ease: 'power2.out' }, '-=0.12');
+    tl.to(logo, { opacity: 0, duration: 0.22, ease: 'power2.out' }, '<');
     if (skipBtn) {
-      tl.to(skipBtn, { opacity: 0, duration: 0.2 }, '<');
+      tl.to(skipBtn, { opacity: 0, duration: 0.15 }, '<');
     }
 
     tl.to(
       curtain,
       {
         opacity: 0,
-        duration: 0.8,
+        duration: 0.4,
         ease: 'power2.out',
         onComplete: () => {
           onAnimationComplete();
