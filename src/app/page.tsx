@@ -15,6 +15,7 @@ import FaqSection from "@/components/FaqSection";
 import ContactSection from "@/components/ContactSection";
 import { SocialSection } from "@/components/social/SocialSection";
 import { Footer } from "@/components/layout/Footer";
+import { ExpoBotWidget } from "@/components/chat/ExpoBotWidget";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -69,6 +70,9 @@ export default function Home() {
       </main>
 
       <Footer />
+
+      {/* ASISTENTE VIRTUAL INTELIGENTE FLOTANTE */}
+      {mounted && <ExpoBotWidget />}
     </>
   );
 }
