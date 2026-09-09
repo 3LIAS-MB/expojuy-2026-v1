@@ -13,7 +13,7 @@ import {
 export function Footer() {
   return (
     <footer className="w-full bg-[#070914] text-white border-t border-white/10 overflow-hidden relative">
-      {/* Subtle Top Accent Line with Brand Gradient */}
+      {/* Accent Line with Brand Gradient */}
       <div className="w-full h-1 bg-gradient-to-r from-[#6424dc] via-[#19b9ca] to-[#7f08d5]" />
 
       {/* Main Container */}
@@ -56,28 +56,28 @@ export function Footer() {
           {/* Col 2: Cámara de Comercio Exterior de Jujuy (7 cols) */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-5">
             
-            {/* Header con Logo oficial de la Cámara */}
-            <div className="flex items-center gap-4">
-              <div className="relative h-12 w-28 shrink-0 bg-white/10 rounded p-1.5 flex items-center justify-center">
+            {/* Header con Logo oficial de la Cámara (bg-white para nitidez impecable) */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <div className="relative h-14 w-36 shrink-0 bg-white rounded-lg p-2 shadow-sm border border-white/20 flex items-center justify-center">
                 <Image
                   src="/images/brand/logo-camcomext.png"
-                  alt="Cámara de Comercio Exterior de Jujuy Logo"
+                  alt="Logo Cámara de Comercio Exterior de Jujuy"
                   fill
                   className="object-contain p-1"
                 />
               </div>
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#6424dc]">
-                  Organización Oficial
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#6424dc]">
+                  Organización & Entidad Oficial
                 </span>
-                <h3 className="text-base sm:text-lg font-bold text-white leading-tight">
+                <h3 className="text-base sm:text-lg font-extrabold text-white leading-tight">
                   CÁMARA DE COMERCIO EXTERIOR DE JUJUY
                 </h3>
               </div>
             </div>
 
-            {/* Datos de contacto de la Cámara */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-1 text-xs">
+            {/* Datos de contacto de la Cámara - Grid Responsive */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-2 text-xs">
               
               {/* Sede / Dirección */}
               <div className="flex flex-col space-y-1">
@@ -85,7 +85,7 @@ export function Footer() {
                   <MapPin className="w-3.5 h-3.5 text-[#19b9ca]" />
                   Sede Central
                 </span>
-                <span className="text-gray-200 font-medium">
+                <span className="text-gray-200 font-semibold">
                   Belgrano 860 - 2° Piso
                 </span>
                 <span className="text-gray-400 text-[11px]">
@@ -117,7 +117,7 @@ export function Footer() {
                 </span>
                 <a 
                   href="mailto:camaradecomercioexterior@gmail.com" 
-                  className="text-white hover:text-[#6424dc] font-medium transition-colors truncate"
+                  className="text-white hover:text-[#6424dc] font-medium transition-colors break-all sm:break-normal truncate"
                   title="camaradecomercioexterior@gmail.com"
                 >
                   camaradecomercioexterior@gmail.com
