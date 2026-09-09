@@ -13,7 +13,6 @@ import { LocationSection } from "@/components/prototype/location-section";
 import FaqSection from "@/components/FaqSection";
 import AgendaSection from "@/components/AgendaSection";
 import AcreditacionSection from "@/components/AcreditacionSection";
-import { SocialSection } from "@/components/social/SocialSection";
 import { Expo3DCarousel } from "@/components/Expo3DCarousel";
 import { Footer } from "@/components/layout/Footer";
 
@@ -67,7 +66,6 @@ export default function Home() {
         <LocationSection />
         <AcreditacionSection />
         <FaqSection />
-        <SocialSection />
       </main>
 
       <Footer />
