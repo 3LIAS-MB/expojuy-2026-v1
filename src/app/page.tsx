@@ -6,7 +6,7 @@ import { AboutExperience } from "@/components/prototype/about-experience";
 import { ExhibitorsSection } from "@/components/prototype/exhibitors-section";
 import { HeroSection } from "@/components/prototype/hero-section";
 import { SiteHeader } from "@/components/prototype/site-header";
-import { SponsorsMarquee } from "@/components/prototype/sponsors-marquee";
+import SponsorsSection from "@/components/SponsorsSection";
 import { NewsSection } from "@/components/news/NewsSection";
 import { LocationSection } from "@/components/prototype/location-section";
 
@@ -55,7 +55,7 @@ export default function Home() {
       <main id="contenido">
         <HeroSection introFinished={introFinished} />
         <AboutExperience />
-        <SponsorsMarquee />
+        <SponsorsSection />
         <ExhibitorsSection />
         <NewsSection />
         <LocationSection />
