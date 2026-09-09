@@ -13,14 +13,14 @@ import {
 export function Footer() {
   return (
     <footer className="w-full bg-[#070914] text-white border-t border-white/10 overflow-hidden relative">
-      {/* Decorative Top Accent Line */}
-      <div className="w-full h-1 bg-gradient-to-r from-[#2b00ff] via-[#F8BF00] to-[#2b00ff]" />
+      {/* Subtle Top Accent Line with Brand Gradient */}
+      <div className="w-full h-1 bg-gradient-to-r from-[#6424dc] via-[#19b9ca] to-[#7f08d5]" />
 
       {/* Main Container */}
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12 pt-14 pb-10">
         
-        {/* TOP ROW: Brand + Contact Block */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 pb-12 border-b border-white/10">
+        {/* TOP ROW: Brand Info & Direct Contact Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
           
           {/* Brand Info (5 cols) */}
           <div className="lg:col-span-5 flex flex-col space-y-4">
@@ -35,9 +35,9 @@ export function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="font-black text-2xl tracking-tight text-white leading-none">
-                  EXPOJUY <span className="text-[#F8BF00]">2026</span>
+                  EXPOJUY <span className="text-[#19b9ca]">2026</span>
                 </span>
-                <span className="text-[11px] font-semibold tracking-widest text-gray-400 uppercase mt-0.5">
+                <span className="text-[11px] font-semibold tracking-widest text-gray-400 uppercase mt-1">
                   SAN SALVADOR DE JUJUY
                 </span>
               </div>
@@ -47,71 +47,76 @@ export function Footer() {
               Muestra Multisectorial del NOA y punto de encuentro estratégico para la producción, el comercio exterior, la innovación y el turismo.
             </p>
 
-            <div className="flex items-center gap-2 text-xs text-gray-400">
-              <MapPin className="w-4 h-4 text-[#F8BF00] shrink-0" />
-              <span>Predio Ferial Ciudad Cultural, San Salvador de Jujuy</span>
+            <div className="flex items-start gap-2.5 text-xs text-gray-400 pt-1">
+              <MapPin className="w-4 h-4 text-[#19b9ca] shrink-0 mt-0.5" />
+              <span>Predio Ferial Ciudad Cultural, San Salvador de Jujuy, Argentina</span>
             </div>
           </div>
 
-          {/* Contact Box (7 cols) - Balanced & Compact */}
-          <div className="lg:col-span-7 bg-white/[0.03] border border-white/10 rounded-lg p-5 sm:p-6 flex flex-col justify-center space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-[#F8BF00] font-extrabold text-xs tracking-wider uppercase">
-                <Phone className="w-4 h-4" />
-                <span>Organización & Consultas</span>
-              </div>
-              <span className="text-[11px] text-gray-400 font-medium hidden sm:inline">
-                Cámara de Comercio Exterior de Jujuy
+          {/* Direct Organization & Contact (7 cols) - Clean, Unboxed Layout */}
+          <div className="lg:col-span-7 flex flex-col justify-between space-y-4">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#6424dc]">
+                Organización & Consultas
               </span>
+              <h3 className="text-lg font-bold text-white mt-1">
+                Cámara de Comercio Exterior de Jujuy
+              </h3>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2">
               {/* Teléfono 1 */}
               <a
                 href="tel:+543884233539"
-                className="flex items-center gap-2.5 bg-black/40 hover:bg-[#2b00ff]/20 border border-white/10 hover:border-[#2b00ff] p-3 rounded transition-all group"
+                className="flex flex-col space-y-1 group"
               >
-                <Phone className="w-4 h-4 text-[#F8BF00] group-hover:scale-110 transition-transform shrink-0" />
-                <div className="flex flex-col min-w-0">
-                  <span className="text-[9px] uppercase font-bold text-gray-400 tracking-wider">Tel. Oficina</span>
-                  <span className="text-xs font-bold text-white group-hover:text-[#F8BF00] transition-colors truncate">+54 388 4233539</span>
-                </div>
+                <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider flex items-center gap-1.5">
+                  <Phone className="w-3.5 h-3.5 text-[#19b9ca] group-hover:scale-110 transition-transform" />
+                  Tel. Oficina
+                </span>
+                <span className="text-sm font-semibold text-white group-hover:text-[#19b9ca] transition-colors">
+                  +54 388 4233539
+                </span>
               </a>
 
               {/* Teléfono 2 */}
               <a
                 href="tel:+543884212955"
-                className="flex items-center gap-2.5 bg-black/40 hover:bg-[#2b00ff]/20 border border-white/10 hover:border-[#2b00ff] p-3 rounded transition-all group"
+                className="flex flex-col space-y-1 group"
               >
-                <Phone className="w-4 h-4 text-[#F8BF00] group-hover:scale-110 transition-transform shrink-0" />
-                <div className="flex flex-col min-w-0">
-                  <span className="text-[9px] uppercase font-bold text-gray-400 tracking-wider">Tel. Alternativo</span>
-                  <span className="text-xs font-bold text-white group-hover:text-[#F8BF00] transition-colors truncate">+54 388 4212955</span>
-                </div>
+                <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider flex items-center gap-1.5">
+                  <Phone className="w-3.5 h-3.5 text-[#19b9ca] group-hover:scale-110 transition-transform" />
+                  Tel. Alternativo
+                </span>
+                <span className="text-sm font-semibold text-white group-hover:text-[#19b9ca] transition-colors">
+                  +54 388 4212955
+                </span>
               </a>
 
               {/* Email */}
               <a
                 href="mailto:expojuy2.0@gmail.com"
-                className="flex items-center gap-2.5 bg-black/40 hover:bg-[#2b00ff]/20 border border-white/10 hover:border-[#2b00ff] p-3 rounded transition-all group"
+                className="flex flex-col space-y-1 group"
               >
-                <Mail className="w-4 h-4 text-[#2b00ff] group-hover:scale-110 transition-transform shrink-0" />
-                <div className="flex flex-col min-w-0">
-                  <span className="text-[9px] uppercase font-bold text-gray-400 tracking-wider">Email Oficial</span>
-                  <span className="text-xs font-bold text-white group-hover:text-[#F8BF00] transition-colors truncate">expojuy2.0@gmail.com</span>
-                </div>
+                <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider flex items-center gap-1.5">
+                  <Mail className="w-3.5 h-3.5 text-[#6424dc] group-hover:scale-110 transition-transform" />
+                  Email Oficial
+                </span>
+                <span className="text-sm font-semibold text-white group-hover:text-[#6424dc] transition-colors truncate">
+                  expojuy2.0@gmail.com
+                </span>
               </a>
             </div>
           </div>
 
         </div>
 
-        {/* MIDDLE ROW: Useful Navigation Columns */}
+        {/* MIDDLE ROW: Navigation Links */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 py-10 border-b border-white/10 text-left">
           
           {/* Col 1: Exposición */}
           <div className="flex flex-col space-y-3">
-            <h4 className="font-extrabold text-xs text-[#F8BF00] uppercase tracking-wider">
+            <h4 className="font-extrabold text-xs text-gray-400 uppercase tracking-wider">
               Exposición
             </h4>
             <ul className="space-y-2 text-xs text-gray-300">
@@ -133,9 +138,9 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Col 2: Ejes Estratégicos */}
+          {/* Col 2: Sectores */}
           <div className="flex flex-col space-y-3">
-            <h4 className="font-extrabold text-xs text-[#F8BF00] uppercase tracking-wider">
+            <h4 className="font-extrabold text-xs text-gray-400 uppercase tracking-wider">
               Sectores
             </h4>
             <ul className="space-y-2 text-xs text-gray-300">
@@ -159,14 +164,14 @@ export function Footer() {
 
           {/* Col 3: Participación */}
           <div className="flex flex-col space-y-3">
-            <h4 className="font-extrabold text-xs text-[#F8BF00] uppercase tracking-wider">
+            <h4 className="font-extrabold text-xs text-gray-400 uppercase tracking-wider">
               Participación
             </h4>
             <ul className="space-y-2 text-xs text-gray-300">
               <li>
                 <a href="#expositores" className="hover:text-white transition-colors inline-flex items-center gap-1">
                   Reserva de Stands
-                  <ArrowUpRight className="w-3 h-3 text-[#F8BF00]" />
+                  <ArrowUpRight className="w-3 h-3 text-[#19b9ca]" />
                 </a>
               </li>
               <li>
@@ -179,7 +184,7 @@ export function Footer() {
 
           {/* Col 4: Institucional */}
           <div className="flex flex-col space-y-3">
-            <h4 className="font-extrabold text-xs text-[#F8BF00] uppercase tracking-wider">
+            <h4 className="font-extrabold text-xs text-gray-400 uppercase tracking-wider">
               Institucional
             </h4>
             <ul className="space-y-2 text-xs text-gray-300">
@@ -240,7 +245,7 @@ export function Footer() {
               rel="noopener noreferrer" 
               aria-label="Sitio Web Oficial ExpoJuy" 
               title="www.expojuy.com.ar"
-              className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:bg-[#2b00ff] hover:border-transparent transition-all shadow-md hover:scale-105"
+              className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:bg-[#6424dc] hover:border-transparent transition-all shadow-md hover:scale-105"
             >
               <Globe className="w-4 h-4" />
             </a>
