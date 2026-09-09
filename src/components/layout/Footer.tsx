@@ -20,123 +20,84 @@ export function Footer() {
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12 pt-14 pb-10">
         
         {/* TOP ROW: ExpoJuy Brand Info & Cámara de Comercio Exterior Block */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-white/10 items-stretch">
           
-          {/* Col 1: ExpoJuy Brand Info (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="relative h-11 w-11 shrink-0">
-                <Image
-                  src="/images/logo/expojuy26_isologotipo.png"
-                  alt="ExpoJuy 2026 Isologotipo"
-                  fill
-                  className="object-contain"
-                />
+          {/* Col 1: ExpoJuy Brand Info (6 cols) */}
+          <div className="lg:col-span-6 flex flex-col justify-between space-y-4">
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <div className="relative h-11 w-11 shrink-0">
+                  <Image
+                    src="/images/logo/expojuy26_isologotipo.png"
+                    alt="ExpoJuy 2026 Isologotipo"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-black text-2xl tracking-tight text-white leading-none">
+                    EXPOJUY <span className="text-[#19b9ca]">2026</span>
+                  </span>
+                  <span className="text-[11px] font-semibold tracking-widest text-gray-400 uppercase mt-1">
+                    SAN SALVADOR DE JUJUY
+                  </span>
+                </div>
               </div>
-              <div className="flex flex-col">
-                <span className="font-black text-2xl tracking-tight text-white leading-none">
-                  EXPOJUY <span className="text-[#19b9ca]">2026</span>
-                </span>
-                <span className="text-[11px] font-semibold tracking-widest text-gray-400 uppercase mt-1">
-                  SAN SALVADOR DE JUJUY
-                </span>
-              </div>
+
+              <p className="text-gray-300 text-sm leading-relaxed max-w-lg">
+                Muestra Multisectorial del NOA y punto de encuentro estratégico para la producción, el comercio exterior, la innovación y el turismo.
+              </p>
             </div>
 
-            <p className="text-gray-300 text-sm leading-relaxed max-w-md">
-              Muestra Multisectorial del NOA y punto de encuentro estratégico para la producción, el comercio exterior, la innovación y el turismo.
-            </p>
-
-            <div className="flex items-start gap-2.5 text-xs text-gray-400 pt-1">
-              <FaLocationDot className="w-3.5 h-3.5 text-[#19b9ca] shrink-0 mt-0.5" />
+            <div className="flex items-center gap-2.5 text-xs text-gray-400 pt-2 border-t border-white/5">
+              <FaLocationDot className="w-3.5 h-3.5 text-[#19b9ca] shrink-0" />
               <span>Predio Ferial Ciudad Cultural, San Salvador de Jujuy, Argentina</span>
             </div>
           </div>
 
-          {/* Col 2: Cámara de Comercio Exterior de Jujuy (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col justify-between space-y-5">
-            
-            {/* Header con Logo oficial y Texto agrupado más compacto */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3.5">
-              <div className="relative h-12 sm:h-14 w-36 sm:w-44 shrink-0">
-                <Image
-                  src="/images/logo/logo_camcomext.png"
-                  alt="Logo Cámara de Comercio Exterior de Jujuy"
-                  fill
-                  className="object-contain object-left"
-                />
-              </div>
-
-              <div className="flex flex-col space-y-0.5 border-l-0 sm:border-l border-white/10 sm:pl-3.5">
-                <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#19b9ca]">
-                  Organización & Entidad Oficial
-                </span>
-                <h3 className="text-xs sm:text-sm font-black text-white leading-tight uppercase tracking-tight">
-                  CÁMARA DE COMERCIO <br className="hidden sm:block" /> EXTERIOR DE JUJUY
-                </h3>
-                <p className="text-[10px] sm:text-[11px] text-gray-400 font-medium">
-                  Entidad gremial empresaria organizadora de la exposición.
-                </p>
-              </div>
-            </div>
-
-            {/* Datos de contacto de la Cámara - Grid Responsive */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-2 text-xs">
-              
-              {/* Sede / Dirección */}
-              <div className="flex flex-col space-y-1">
-                <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider flex items-center gap-1.5">
-                  <FaLocationDot className="w-3 h-3 text-[#19b9ca]" />
-                  Sede Central
-                </span>
-                <span className="text-gray-200 font-semibold">
-                  Belgrano 860 - 2° Piso
-                </span>
-                <span className="text-gray-400 text-[11px]">
-                  San Salvador de Jujuy
-                </span>
-              </div>
-
-              {/* Teléfonos */}
-              <div className="flex flex-col space-y-1">
-                <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider flex items-center gap-1.5">
-                  <FaPhone className="w-3 h-3 text-[#19b9ca]" />
-                  Teléfonos de Contacto
-                </span>
-                <div className="flex flex-col space-y-0.5">
-                  <a href="tel:+543884233539" className="text-white hover:text-[#19b9ca] font-semibold transition-colors">
-                    388 4233539
-                  </a>
-                  <a href="tel:+543884212955" className="text-white hover:text-[#19b9ca] font-semibold transition-colors">
-                    388 4212955
-                  </a>
+          {/* Col 2: Cámara de Comercio Exterior de Jujuy (6 cols) */}
+          <div className="lg:col-span-6 flex flex-col justify-between space-y-4 lg:border-l lg:border-white/10 lg:pl-8">
+            <div className="space-y-3">
+              <div className="flex items-center gap-3.5">
+                <div className="relative h-10 w-36 shrink-0">
+                  <Image
+                    src="/images/logo/logo_camcomext.png"
+                    alt="Logo Cámara de Comercio Exterior de Jujuy"
+                    fill
+                    className="object-contain object-left"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#19b9ca]">
+                    Organización & Entidad Oficial
+                  </span>
+                  <h3 className="text-sm font-black text-white leading-tight uppercase tracking-tight">
+                    Cámara de Comercio Exterior de Jujuy
+                  </h3>
                 </div>
               </div>
 
-              {/* Email & Web */}
-              <div className="flex flex-col space-y-1 sm:col-span-2 lg:col-span-1">
-                <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider flex items-center gap-1.5">
-                  <FaEnvelope className="w-3 h-3 text-[#6424dc]" />
-                  Contacto & Web
-                </span>
-                <a 
-                  href="mailto:camaradecomercioexterior@gmail.com" 
-                  className="text-white hover:text-[#6424dc] font-medium transition-colors break-all sm:break-normal truncate"
-                  title="camaradecomercioexterior@gmail.com"
-                >
-                  camaradecomercioexterior@gmail.com
-                </a>
-                <a 
-                  href="https://www.camcomexjujuy.com.ar" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-[#19b9ca] hover:underline font-semibold flex items-center gap-1 pt-0.5"
-                >
-                  www.camcomexjujuy.com.ar
-                  <FaArrowUpRightFromSquare className="w-2.5 h-2.5" />
+              <p className="text-gray-300 text-sm leading-relaxed max-w-lg">
+                Entidad gremial empresaria organizadora de la exposición ferial y promotora de la integración productiva regional.
+              </p>
+            </div>
+
+            {/* Datos de contacto alineados en la línea de base inferior */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-gray-300 pt-2 border-t border-white/5">
+              <div className="flex items-center gap-2">
+                <FaLocationDot className="w-3 h-3 text-[#19b9ca] shrink-0" />
+                <span className="truncate" title="Belgrano 860 - 2° Piso">Belgrano 860 - 2° Piso</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaPhone className="w-3 h-3 text-[#19b9ca] shrink-0" />
+                <a href="tel:+543884233539" className="hover:text-white transition-colors truncate">388 4233539</a>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaEnvelope className="w-3 h-3 text-[#6424dc] shrink-0" />
+                <a href="mailto:camaradecomercioexterior@gmail.com" className="hover:text-white transition-colors truncate" title="camaradecomercioexterior@gmail.com">
+                  camcomexjujuy.com.ar
                 </a>
               </div>
-
             </div>
 
           </div>
