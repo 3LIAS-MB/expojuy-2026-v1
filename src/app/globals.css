@@ -635,10 +635,6 @@ a {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .about-mountain-layer {
-    transform: translate3d(-50%, 0, 0) scale(1.1) !important;
-    will-change: auto;
-  }
 }
 
 .expo-location { padding: clamp(48px, 7vw, 96px) clamp(20px, 4vw, 64px); background: #fff; scroll-margin-top: 76px; }

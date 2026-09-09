@@ -47,14 +47,12 @@ export function AboutExperience() {
         track.querySelectorAll<HTMLElement>("[data-about-panel]"),
       );
 
-      media.add({ desktop: "(min-width: 768px)", reduce: "(prefers-reduced-motion: reduce)" }, (context) => {
+      media.add({ desktop: "(min-width: 768px)" }, (context) => {
         if (!context.conditions?.desktop) return;
-        const reducedMotion = context.conditions.reduce;
         section.dataset.horizontal = "true";
 
         const distance = () => (panels.length - 1) * window.innerWidth;
         const updateMountain = (progress: number) => {
-          if (reducedMotion) return;
           const isLg = window.innerWidth >= 1024;
 
           // Capa 3: Cerro 03 (el cerro más lejano al fondo - mayor desplazamiento parallax)
@@ -162,76 +160,73 @@ export function AboutExperience() {
         };
       });
 
-      media.add({ mobile: "(max-width: 767px)", reduce: "(prefers-reduced-motion: reduce)" }, (context) => {
+      media.add({ mobile: "(max-width: 767px)" }, (context) => {
         if (!context.conditions?.mobile) return;
-        const reducedMotion = context.conditions.reduce;
-        if (!reducedMotion) {
-          const back = mountainBackRef.current;
-          const mid = mountainMidRef.current;
-          const front = mountainFrontRef.current;
+        const back = mountainBackRef.current;
+        const mid = mountainMidRef.current;
+        const front = mountainFrontRef.current;
 
-          if (back) {
-            gsap.fromTo(
-              back,
-              { x: 20, y: 10, scale: 1.06 },
-              {
-                x: -20,
-                y: -10,
-                scale: 1.06,
-                ease: "none",
-                force3D: true,
-                scrollTrigger: {
-                  trigger: section,
-                  start: "top bottom",
-                  end: "bottom top",
-                  scrub: true,
-                  invalidateOnRefresh: true,
-                },
+        if (back) {
+          gsap.fromTo(
+            back,
+            { x: 20, y: 10, scale: 1.06 },
+            {
+              x: -20,
+              y: -10,
+              scale: 1.06,
+              ease: "none",
+              force3D: true,
+              scrollTrigger: {
+                trigger: section,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+                invalidateOnRefresh: true,
               },
-            );
-          }
+            },
+          );
+        }
 
-          if (mid) {
-            gsap.fromTo(
-              mid,
-              { x: 10, y: 5, scale: 1.04 },
-              {
-                x: -10,
-                y: -5,
-                scale: 1.04,
-                ease: "none",
-                force3D: true,
-                scrollTrigger: {
-                  trigger: section,
-                  start: "top bottom",
-                  end: "bottom top",
-                  scrub: true,
-                  invalidateOnRefresh: true,
-                },
+        if (mid) {
+          gsap.fromTo(
+            mid,
+            { x: 10, y: 5, scale: 1.04 },
+            {
+              x: -10,
+              y: -5,
+              scale: 1.04,
+              ease: "none",
+              force3D: true,
+              scrollTrigger: {
+                trigger: section,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+                invalidateOnRefresh: true,
               },
-            );
-          }
+            },
+          );
+        }
 
-          if (front) {
-            gsap.fromTo(
-              front,
-              { x: 4, y: 0, scale: 1.02 },
-              {
-                x: -4,
-                y: 0,
-                scale: 1.02,
-                ease: "none",
-                force3D: true,
-                scrollTrigger: {
-                  trigger: section,
-                  start: "top bottom",
-                  end: "bottom top",
-                  scrub: true,
-                  invalidateOnRefresh: true,
-                },
+        if (front) {
+          gsap.fromTo(
+            front,
+            { x: 4, y: 0, scale: 1.02 },
+            {
+              x: -4,
+              y: 0,
+              scale: 1.02,
+              ease: "none",
+              force3D: true,
+              scrollTrigger: {
+                trigger: section,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+                invalidateOnRefresh: true,
               },
-            );
-          }
+            },
+          );
         }
 
         const enter = contextSafe((entries: IntersectionObserverEntry[]) => {
