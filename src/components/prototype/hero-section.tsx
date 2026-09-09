@@ -78,12 +78,12 @@ export function HeroSection({ introFinished = true }: HeroSectionProps) {
 
         <video
           ref={videoRef}
-          src={introFinished ? "/video/Best%20of%20HANNOVER%20MESSE%202026.mp4" : undefined}
+          src={introFinished ? "/video/videoplayback.webm" : undefined}
           poster="/images/hero/hero-banner.png"
           muted
           loop
           playsInline
-          preload="none"
+          preload="metadata"
           aria-hidden="true"
           className="absolute inset-0 h-full w-full object-cover object-[68%_center]"
         />
@@ -126,7 +126,7 @@ export function HeroSection({ introFinished = true }: HeroSectionProps) {
           onClick={() => setVideoPaused((paused) => !paused)}
           aria-label={videoPaused ? "Reproducir video de fondo" : "Pausar video de fondo"}
           title={videoPaused ? "Reproducir video de fondo" : "Pausar video de fondo"}
-          className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 z-30 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center border border-white/40 bg-black/60 backdrop-blur-md text-white hover:bg-black/80 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white shadow-lg cursor-pointer rounded-xs"
+          className="absolute bottom-4 left-4 sm:bottom-8 sm:left-8 z-30 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center border border-white/40 bg-black/60 backdrop-blur-md text-white hover:bg-black/80 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white shadow-lg cursor-pointer rounded-xs"
         >
           {videoPaused ? (
             <FaPlay className="h-3.5 w-3.5 sm:h-4 sm:w-4" />

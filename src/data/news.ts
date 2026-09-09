@@ -220,5 +220,32 @@ export const NEWS_ARTICLES: NewsArticle[] = [
       role: 'CCEJ',
     },
   },
+  {
+    id: 'noticia-9',
+    slug: 'cadena-valor-minera-catalogo-proveedores-locales',
+    title: 'Cadena de valor minera: presentarán el nuevo catálogo de proveedores locales y compras sostenibles',
+    summary:
+      'La Cámara Minera de Jujuy y la CCEJ expondrán la plataforma de vinculación directa entre las grandes operadoras de la Puna y pymes metalmecánicas y de servicios.',
+    paragraphs: [
+      'Con el objetivo de maximizar el compre local y fortalecer el desarrollo productivo provincial, ExpoJuy 2026 será sede del lanzamiento oficial del Catálogo Unificado de Proveedores Mineros de Jujuy.',
+      'La iniciativa reúne a más de 140 empresas prestadoras de ingeniería, transporte pesado, indumentaria técnica, gastronomía industrial y soluciones ambientales que ya operan bajo estándares internacionales ISO y de minería responsable.',
+      'Durante las jornadas feriales se realizarán mesas de trabajo específicas con gerentes de compras de los yacimientos de litio, plata, plomo y zinc para cerrar convenios plurianuales de abastecimiento.',
+    ],
+    category: 'Minería & Litio',
+    date: '26 de Julio, 2026',
+    publishedAt: '2026-07-26',
+    readTime: '3 min de lectura',
+    image: '/images/sectores/litio_salar.jpg',
+    tags: ['Proveedores Mineros', 'Puna', 'Cadena de Valor', 'Compre Local'],
+    author: {
+      name: 'Cámara Minera de Jujuy',
+      role: 'Entidad Asociada CCEJ',
+    },
+    highlightQuote: {
+      quote:
+        'El verdadero impacto multiplicador de la minería radica en las PyMEs jujeñas que abastecen a los salares y campamentos día a día con máxima calidad.',
+      author: 'Comisión de Proveedores Mineros',
+    },
+  },
 ];
 

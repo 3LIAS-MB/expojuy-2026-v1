@@ -87,17 +87,6 @@ export function SiteHeader({ onReplayIntro }: SiteHeaderProps) {
             </span>
           </a>
 
-          {/* BOTÓN SUTIL PARA REPETIR LA INTRO */}
-          {onReplayIntro && (
-            <button
-              type="button"
-              onClick={onReplayIntro}
-              title="Ver animación de entrada de marca"
-              className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-current/70 hover:text-current border border-current/20 hover:border-current/50 rounded-sm transition-all cursor-pointer"
-            >
-              <span>↺ Intro</span>
-            </button>
-          )}
         </div>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Navegación principal">
@@ -153,19 +142,6 @@ export function SiteHeader({ onReplayIntro }: SiteHeaderProps) {
               <FaArrowUpRightFromSquare aria-hidden className="size-3.5" />
             </a>
           </Button>
-
-          {onReplayIntro && (
-            <button
-              type="button"
-              onClick={() => {
-                setOpen(false);
-                onReplayIntro();
-              }}
-              className="mt-2 text-center text-xs font-mono uppercase tracking-wider text-neutral-500 hover:text-black py-2 border-t border-neutral-200"
-            >
-              ↺ Ver animación de entrada
-            </button>
-          )}
         </nav>
       )}
     </header>

@@ -289,18 +289,6 @@ export default function BrandingIntro({ isPlaying, onAnimationComplete }: Brandi
           </span>
         </div>
       </div>
-
-      {/* Botón para saltar intro */}
-      {!isDissolving && (
-        <button
-          ref={skipBtnRef}
-          type="button"
-          onClick={handleSkip}
-          className="absolute bottom-6 sm:bottom-8 z-[10000] px-4 py-2 text-[11px] font-mono uppercase tracking-widest text-neutral-300 hover:text-white border border-neutral-700 hover:border-neutral-400 bg-black/70 backdrop-blur-md transition-all rounded-xs focus:outline-none cursor-pointer"
-        >
-          Saltar intro →
-        </button>
-      )}
     </div>
   );
 }

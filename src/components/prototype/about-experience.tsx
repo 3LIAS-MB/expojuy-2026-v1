@@ -601,23 +601,28 @@ export function AboutExperience() {
                   <Button
                     asChild
                     size="lg"
-                    className="h-12 rounded-lg bg-[#820CD0] px-7 text-sm font-bold text-white shadow-[0_10px_25px_rgba(130,12,208,0.25)] hover:bg-[#6c0aa9]"
+                    className="h-12 rounded-lg bg-[#820CD0] px-7 text-sm font-bold !text-white text-white shadow-[0_10px_25px_rgba(130,12,208,0.35)] hover:bg-[#6c0aa9] transition-all cursor-pointer"
                   >
                     <a
                       href="#expositores"
-                      className="inline-flex items-center gap-2.5"
+                      className="inline-flex items-center gap-2.5 !text-white text-white font-bold"
+                      style={{ color: "#ffffff" }}
                     >
-                      Ver expositores
-                      <FaArrowRight aria-hidden className="size-3" />
+                      <span className="!text-white text-white font-bold" style={{ color: "#ffffff" }}>
+                        Ver expositores
+                      </span>
+                      <FaArrowRight aria-hidden className="size-3 !text-white text-white" style={{ color: "#ffffff" }} />
                     </a>
                   </Button>
                   <Button
                     asChild
                     size="lg"
                     variant="outline"
-                    className="h-12 rounded-lg border border-gray-300 bg-white/90 px-7 text-sm font-bold text-[#0e122b] hover:border-[#820CD0] hover:text-[#820CD0]"
+                    className="h-12 rounded-lg border-2 border-[#0e122b]/25 bg-white px-7 text-sm font-bold text-[#0e122b] hover:border-[#820CD0] hover:text-[#820CD0] hover:bg-gray-50 transition-all shadow-xs cursor-pointer"
                   >
-                    <a href="#ubicacion">Cómo llegar</a>
+                    <a href="#ubicacion" className="inline-flex items-center gap-2.5 text-[#0e122b] font-bold">
+                      Cómo llegar
+                    </a>
                   </Button>
                 </div>
               </div>
