@@ -35,7 +35,14 @@
   flex-shrink: 0;
 }
 .expo-sponsors-frame { position: relative; width: 180px; height: 110px; margin: 0; flex-shrink: 0; }
-.expo-sponsors-frame img { object-fit: contain; user-select: none; pointer-events: none; }
+.expo-sponsors-frame img {
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  transition: filter 300ms ease-out, opacity 300ms ease-out, transform 300ms ease-out;
+}
 .expo-supporters {
   max-width: 1120px;
   margin: 40px auto 0;
@@ -64,6 +71,11 @@
 @keyframes expo-sponsors-scroll { to { transform: translateX(-50%); } }
 @media (hover: hover) and (pointer: fine) {
   .expo-sponsors-viewport:hover .expo-sponsors-track { animation-play-state: paused; }
+  .expo-sponsors-frame:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+  }
 }
 @media (max-width: 640px) {
   .expo-sponsors { padding-inline: 20px; }
@@ -75,6 +87,7 @@
   .expo-supporters-logo { width: calc((100% - 24px) / 2); max-width: 180px; height: 90px; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .expo-sponsors-frame:hover img { transform: none; }
   .expo-sponsors-viewport { overflow-x: auto; mask-image: none; }
   .expo-sponsors-track { animation: none; }
   .expo-sponsors-group[aria-hidden="true"] { display: none; }
