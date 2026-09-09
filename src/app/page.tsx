@@ -11,8 +11,6 @@ import { NewsSection } from "@/components/news/NewsSection";
 import { LocationSection } from "@/components/prototype/location-section";
 
 import FaqSection from "@/components/FaqSection";
-import AgendaSection from "@/components/AgendaSection";
-import AcreditacionSection from "@/components/AcreditacionSection";
 import { Expo3DCarousel } from "@/components/Expo3DCarousel";
 import { Footer } from "@/components/layout/Footer";
 
@@ -61,10 +59,8 @@ export default function Home() {
         <Expo3DCarousel />
         <SponsorsMarquee />
         <ExhibitorsSection />
-        <AgendaSection />
         <NewsSection />
         <LocationSection />
-        <AcreditacionSection />
         <FaqSection />
       </main>
 
