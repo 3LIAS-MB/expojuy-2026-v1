@@ -56,7 +56,6 @@ export default function Home() {
       <main id="contenido">
         <HeroSection introFinished={introFinished} />
         <AboutExperience />
-        <Expo3DCarousel />
         <SponsorsMarquee />
         <ExhibitorsSection />
         <NewsSection />
