@@ -4,7 +4,7 @@ import Link from "next/link";
 import { 
   Mail, 
   MapPin, 
-  ArrowRight,
+  Phone,
   Globe
 } from "lucide-react";
 
@@ -18,7 +18,7 @@ export function Footer() {
       {/* Main Footer Container */}
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12 pt-16 pb-12">
         
-        {/* TOP SECTION: Branding & Newsletter Card */}
+        {/* TOP SECTION: Branding & Contact Info Card */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b border-gray-800/80">
           
           {/* Brand Column */}
@@ -55,39 +55,67 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Newsletter Subscription Card */}
-          <div className="lg:col-span-7 bg-gradient-to-br from-gray-900/90 to-black border border-gray-800/90 rounded-xs p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden shadow-2xl">
-            <div className="absolute -top-12 -right-12 w-40 h-40 bg-[#2b00ff]/20 rounded-full blur-3xl pointer-events-none" />
+          {/* Official Contact Info Card */}
+          <div className="lg:col-span-7 bg-gradient-to-br from-gray-900/90 via-gray-900/40 to-black border border-gray-800/90 rounded-xs p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden shadow-2xl">
+            <div className="absolute -top-12 -right-12 w-48 h-48 bg-[#2b00ff]/15 rounded-full blur-3xl pointer-events-none" />
 
-            <div className="relative z-10 flex flex-col space-y-4">
+            <div className="relative z-10 flex flex-col space-y-5">
               <div className="flex items-center gap-2 text-[#F8BF00] font-extrabold text-xs tracking-widest uppercase">
-                <Mail className="w-4 h-4" />
-                <span>Novedades & Agenda Exclusiva</span>
+                <Phone className="w-4 h-4" />
+                <span>Contacto Directo & Consultas</span>
               </div>
 
               <h3 className="text-xl sm:text-2xl font-black text-white">
-                Suscribite al Newsletter Oficial de ExpoJuy
+                Comunicate con la Organización
               </h3>
 
               <p className="text-gray-300 text-xs sm:text-sm">
-                Recibí las últimas novedades de expositores, acreditaciones de prensa, cronogramas de conferencias y rondas de negocios en tu email.
+                Atención a expositores, acreditaciones de prensa y consultas generales de la Cámara de Comercio Exterior de Jujuy.
               </p>
 
-              <form onSubmit={(e) => e.preventDefault()} className="pt-2 flex flex-col sm:flex-row gap-3">
-                <input
-                  type="email"
-                  placeholder="Tu correo electrónico..."
-                  className="flex-1 bg-black/80 border border-gray-800 text-white placeholder-gray-400 px-4 py-3 text-sm rounded-xs focus:outline-none focus:border-[#2b00ff] transition-colors"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="inline-flex items-center justify-center gap-2 bg-[#2b00ff] hover:bg-[#1e00ca] text-white font-extrabold text-xs uppercase tracking-wider px-6 py-3 rounded-xs shadow-md transition-all duration-200 cursor-pointer"
+              <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Teléfono 1 */}
+                <a
+                  href="tel:+543884233539"
+                  className="flex items-center gap-3 bg-black/70 hover:bg-gray-900 border border-gray-800 hover:border-[#2b00ff] p-3.5 rounded-xs transition-all duration-200 group"
                 >
-                  <span>SUSCRIBIRME</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </form>
+                  <div className="w-9 h-9 rounded-xs bg-[#2b00ff]/20 flex items-center justify-center text-[#F8BF00] group-hover:bg-[#2b00ff] group-hover:text-white transition-colors">
+                    <Phone className="w-4 h-4" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-gray-400">Teléfono Oficina</span>
+                    <span className="text-xs sm:text-sm font-bold text-white group-hover:text-[#F8BF00] transition-colors">+54 388 4233539</span>
+                  </div>
+                </a>
+
+                {/* Teléfono 2 */}
+                <a
+                  href="tel:+543884212955"
+                  className="flex items-center gap-3 bg-black/70 hover:bg-gray-900 border border-gray-800 hover:border-[#2b00ff] p-3.5 rounded-xs transition-all duration-200 group"
+                >
+                  <div className="w-9 h-9 rounded-xs bg-[#2b00ff]/20 flex items-center justify-center text-[#F8BF00] group-hover:bg-[#2b00ff] group-hover:text-white transition-colors">
+                    <Phone className="w-4 h-4" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-gray-400">Teléfono Alternativo</span>
+                    <span className="text-xs sm:text-sm font-bold text-white group-hover:text-[#F8BF00] transition-colors">+54 388 4212955</span>
+                  </div>
+                </a>
+
+                {/* Email */}
+                <a
+                  href="mailto:expojuy2.0@gmail.com"
+                  className="sm:col-span-2 flex items-center gap-3 bg-black/70 hover:bg-gray-900 border border-gray-800 hover:border-[#2b00ff] p-3.5 rounded-xs transition-all duration-200 group"
+                >
+                  <div className="w-9 h-9 rounded-xs bg-[#2b00ff]/20 flex items-center justify-center text-[#F8BF00] group-hover:bg-[#2b00ff] group-hover:text-white transition-colors">
+                    <Mail className="w-4 h-4" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-gray-400">Correo Electrónico Oficial</span>
+                    <span className="text-xs sm:text-sm font-bold text-white group-hover:text-[#F8BF00] transition-colors">expojuy2.0@gmail.com</span>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
 
