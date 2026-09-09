@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { FaChevronDown } from "react-icons/fa6";
 
 interface FaqItem {
   id: string;
@@ -82,7 +82,7 @@ export default function FaqSection() {
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
                     isOpen ? "bg-[#6424dc] text-white rotate-180" : "bg-[#f7f8fc] text-[#646a85]"
                   }`}>
-                    <ChevronDown className="w-4 h-4" />
+                    <FaChevronDown className="w-3.5 h-3.5" />
                   </div>
                 </button>
 

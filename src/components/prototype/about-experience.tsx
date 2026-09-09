@@ -6,15 +6,15 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  ArrowRight,
-  Boxes,
-  ChevronLeft,
-  ChevronRight,
-  Lightbulb,
-  MapPinned,
-  Play,
-  UsersRound,
-} from "lucide-react";
+  FaIndustry,
+  FaLightbulb,
+  FaMountainSun,
+  FaHandshake,
+  FaPlay,
+  FaArrowRight,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -362,7 +362,7 @@ export function AboutExperience() {
                 className="mt-7 inline-flex items-center gap-3 text-sm font-bold text-[#820CD0] transition-opacity hover:opacity-80"
               >
                 <span className="grid size-10 place-items-center rounded-full border border-[#820CD0]">
-                  <Play aria-hidden className="ml-0.5 size-3.5 fill-[#820CD0]" />
+                  <FaPlay aria-hidden className="ml-0.5 size-3.5 fill-[#820CD0]" />
                 </span>
                 Descubrí la edición 2026
               </a>
@@ -538,7 +538,7 @@ export function AboutExperience() {
                 {/* Col 2 Top: Card 1 */}
                 <div className="flex flex-col justify-center border-b border-[#dfe3ef] bg-white p-4 md:border-r">
                   <span className="grid size-7 place-items-center rounded bg-[#6424dc] text-white">
-                    <Boxes className="size-3.5" />
+                    <FaIndustry className="size-3.5" />
                   </span>
                   <h3 className="mt-2.5 text-base font-bold tracking-tight text-[#0e122b]">
                     Industria y energía
@@ -546,7 +546,7 @@ export function AboutExperience() {
                   <p className="mt-1 text-xs leading-relaxed text-[#374151]">
                     Producción e infraestructura para transformar el territorio.
                   </p>
-                  <ArrowRight className="mt-2.5 size-3.5 text-[#6424dc]" />
+                  <FaArrowRight className="mt-2.5 size-3 text-[#6424dc]" />
                 </div>
 
                 {/* Col 3 Top: Photo 2 */}
@@ -562,7 +562,7 @@ export function AboutExperience() {
                 {/* Col 4 Top: Card 2 */}
                 <div className="flex flex-col justify-center border-b border-[#dfe3ef] bg-white p-4">
                   <span className="grid size-7 place-items-center rounded bg-[#0b7c8a] text-white">
-                    <Lightbulb className="size-3.5" />
+                    <FaLightbulb className="size-3.5" />
                   </span>
                   <h3 className="mt-2.5 text-base font-bold tracking-tight text-[#0e122b]">
                     Innovación aplicada
@@ -570,7 +570,7 @@ export function AboutExperience() {
                   <p className="mt-1 text-xs leading-relaxed text-[#374151]">
                     Talento y soluciones que impulsan nuevos proyectos.
                   </p>
-                  <ArrowRight className="mt-2.5 size-3.5 text-[#0b7c8a]" />
+                  <FaArrowRight className="mt-2.5 size-3 text-[#0b7c8a]" />
                 </div>
 
                 {/* Col 1 Bottom: Photo 3 */}
@@ -586,7 +586,7 @@ export function AboutExperience() {
                 {/* Col 2 Bottom: Card 3 */}
                 <div className="flex flex-col justify-center border-[#dfe3ef] bg-white p-4 md:border-r">
                   <span className="grid size-7 place-items-center rounded bg-[#7f08d5] text-white">
-                    <MapPinned className="size-3.5" />
+                    <FaMountainSun className="size-3.5" />
                   </span>
                   <h3 className="mt-2.5 text-base font-bold tracking-tight text-[#0e122b]">
                     Producción e identidad
@@ -594,7 +594,7 @@ export function AboutExperience() {
                   <p className="mt-1 text-xs leading-relaxed text-[#374151]">
                     Economías regionales, y cultura que proyectan a Jujuy.
                   </p>
-                  <ArrowRight className="mt-2.5 size-3.5 text-[#7f08d5]" />
+                  <FaArrowRight className="mt-2.5 size-3 text-[#7f08d5]" />
                 </div>
 
                 {/* Col 3 Bottom: Photo 4 */}
@@ -610,7 +610,7 @@ export function AboutExperience() {
                 {/* Col 4 Bottom: Card 4 */}
                 <div className="flex flex-col justify-center bg-white p-4">
                   <span className="grid size-7 place-items-center rounded bg-[#6424dc] text-white">
-                    <UsersRound className="size-3.5" />
+                    <FaHandshake className="size-3.5" />
                   </span>
                   <h3 className="mt-2.5 text-base font-bold tracking-tight text-[#0e122b]">
                     Comercio y alianzas
@@ -619,7 +619,7 @@ export function AboutExperience() {
                     Rondas, vínculos empresariales y oportunidades hacia nuevos
                     mercados.
                   </p>
-                  <ArrowRight className="mt-2.5 size-3.5 text-[#6424dc]" />
+                  <FaArrowRight className="mt-2.5 size-3 text-[#6424dc]" />
                 </div>
               </div>
             </div>
@@ -710,7 +710,7 @@ export function AboutExperience() {
                       className="inline-flex items-center gap-2"
                     >
                       Ver expositores
-                      <ArrowRight aria-hidden className="size-4" />
+                      <FaArrowRight aria-hidden className="size-3.5" />
                     </a>
                   </Button>
                   <Button
@@ -777,7 +777,7 @@ export function AboutExperience() {
           className="grid size-11 shrink-0 place-items-center rounded-full border border-gray-300 text-gray-700 transition-colors hover:border-[#6424dc] hover:text-[#6424dc] xl:ml-8"
           aria-label="Panel anterior"
         >
-          <ChevronLeft aria-hidden className="size-5" />
+          <FaChevronLeft aria-hidden className="size-4" />
         </button>
 
         <p className="ml-5 shrink-0 text-sm font-medium text-gray-600">
@@ -826,7 +826,7 @@ export function AboutExperience() {
           className="grid size-11 shrink-0 place-items-center rounded-full border border-gray-300 text-gray-700 transition-colors hover:border-[#6424dc] hover:text-[#6424dc]"
           aria-label="Panel siguiente"
         >
-          <ChevronRight aria-hidden className="size-5" />
+          <FaChevronRight aria-hidden className="size-4" />
         </button>
 
         <p className="ml-8 hidden border-l border-gray-200 pl-8 text-[0.62rem] font-bold leading-tight tracking-[0.1em] text-gray-500 uppercase xl:block">
