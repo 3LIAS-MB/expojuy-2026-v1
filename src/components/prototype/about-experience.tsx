@@ -55,25 +55,25 @@ export function AboutExperience() {
         const updateMountain = (progress: number) => {
           const isLg = window.innerWidth >= 1024;
 
-          // Capa 3: Cerro 03 (el cerro más lejano al fondo - mayor desplazamiento parallax)
+          // Capa 3: Cerro 03 (el cerro más lejano al fondo - mayor desplazamiento parallax notorio)
           if (mountainBackRef.current) {
-            const shiftX = (0.5 - progress) * (isLg ? 120 : 65);
-            const shiftY = (1 - 2 * progress) * (isLg ? 14 : 8);
-            mountainBackRef.current.style.transform = `translate3d(calc(-50% + ${shiftX}px), ${shiftY}px, 0) scale(1.08)`;
+            const shiftX = (0.5 - progress) * (isLg ? 480 : 280);
+            const shiftY = Math.sin(progress * Math.PI) * (isLg ? -28 : -16);
+            mountainBackRef.current.style.transform = `translate3d(calc(-50% + ${shiftX}px), ${shiftY}px, 0) scale(1.20)`;
           }
 
           // Capa 2: Cerro 02 (capa intermedia)
           if (mountainMidRef.current) {
-            const shiftX = (0.5 - progress) * (isLg ? 60 : 32);
-            const shiftY = (1 - 2 * progress) * (isLg ? 8 : 4);
-            mountainMidRef.current.style.transform = `translate3d(calc(-50% + ${shiftX}px), ${shiftY}px, 0) scale(1.05)`;
+            const shiftX = (0.5 - progress) * (isLg ? 240 : 140);
+            const shiftY = Math.sin(progress * Math.PI) * (isLg ? -14 : -8);
+            mountainMidRef.current.style.transform = `translate3d(calc(-50% + ${shiftX}px), ${shiftY}px, 0) scale(1.14)`;
           }
 
           // Capa 1: Cerro 01 (parte más baja o cercana en primer plano)
           if (mountainFrontRef.current) {
-            const shiftX = (0.5 - progress) * (isLg ? 20 : 10);
-            const shiftY = (1 - 2 * progress) * 2;
-            mountainFrontRef.current.style.transform = `translate3d(calc(-50% + ${shiftX}px), ${shiftY}px, 0) scale(1.02)`;
+            const shiftX = (0.5 - progress) * (isLg ? 80 : 45);
+            const shiftY = (1 - 2 * progress) * 4;
+            mountainFrontRef.current.style.transform = `translate3d(calc(-50% + ${shiftX}px), ${shiftY}px, 0) scale(1.08)`;
           }
         };
         updateMountain(0);
@@ -82,6 +82,7 @@ export function AboutExperience() {
           ease: "none",
           onUpdate: function () {
             const progress = this.progress();
+            updateMountain(progress);
             const activeIndex = Math.min(
               panels.length - 1,
               Math.floor(progress * panels.length),
@@ -169,11 +170,11 @@ export function AboutExperience() {
         if (back) {
           gsap.fromTo(
             back,
-            { x: 20, y: 10, scale: 1.06 },
+            { x: 90, y: 40, scale: 1.22 },
             {
-              x: -20,
-              y: -10,
-              scale: 1.06,
+              x: -90,
+              y: -40,
+              scale: 1.22,
               ease: "none",
               force3D: true,
               scrollTrigger: {
@@ -190,11 +191,11 @@ export function AboutExperience() {
         if (mid) {
           gsap.fromTo(
             mid,
-            { x: 10, y: 5, scale: 1.04 },
+            { x: 45, y: 20, scale: 1.15 },
             {
-              x: -10,
-              y: -5,
-              scale: 1.04,
+              x: -45,
+              y: -20,
+              scale: 1.15,
               ease: "none",
               force3D: true,
               scrollTrigger: {
@@ -211,11 +212,11 @@ export function AboutExperience() {
         if (front) {
           gsap.fromTo(
             front,
-            { x: 4, y: 0, scale: 1.02 },
+            { x: 18, y: 8, scale: 1.08 },
             {
-              x: -4,
-              y: 0,
-              scale: 1.02,
+              x: -18,
+              y: -8,
+              scale: 1.08,
               ease: "none",
               force3D: true,
               scrollTrigger: {
