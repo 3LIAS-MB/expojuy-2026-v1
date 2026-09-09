@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface FaqItem {
   id: string;
@@ -58,14 +59,14 @@ export default function FaqSection() {
           </p>
         </div>
 
-        {/* Clean Light Accordions */}
+        {/* Clean Accordions with Framer Motion Smooth Dropdown */}
         <div className="space-y-3">
           {FAQS.map((faq) => {
             const isOpen = openId === faq.id;
             return (
               <div
                 key={faq.id}
-                className={`border rounded-xl transition-all duration-200 overflow-hidden bg-white ${
+                className={`border rounded-xl transition-colors duration-300 overflow-hidden bg-white ${
                   isOpen
                     ? "border-[#6424dc] shadow-md shadow-[#6424dc]/10"
                     : "border-[#dfe3ef] hover:border-[#ac7ff0]/50"
@@ -86,11 +87,25 @@ export default function FaqSection() {
                   </div>
                 </button>
 
-                {isOpen && (
-                  <div className="px-6 pb-5 pt-1 text-sm text-[#484e68] leading-relaxed border-t border-[#f0f2f8]">
-                    {faq.a}
-                  </div>
-                )}
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      key="content"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ 
+                        height: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
+                        opacity: { duration: 0.25, ease: "easeOut" } 
+                      }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-5 pt-1 text-sm text-[#484e68] leading-relaxed border-t border-[#f0f2f8]">
+                        {faq.a}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             );
           })}
