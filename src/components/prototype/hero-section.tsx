@@ -136,9 +136,9 @@ export function HeroSection({ introFinished = true }: HeroSectionProps) {
         </button>
       )}
 
-      <div className="hero-content mx-auto flex w-full max-w-[1480px] flex-col justify-end px-5 pb-9 pt-32 sm:px-8 sm:pb-12 lg:px-12 lg:pb-14">
+      <div className="hero-content mx-auto my-auto flex w-full max-w-[1480px] flex-col justify-center px-5 pt-24 pb-10 sm:px-8 sm:pt-28 sm:pb-12 lg:px-12 lg:pt-32 lg:pb-14 -translate-y-4 sm:-translate-y-8 lg:-translate-y-12">
         <div className="max-w-[820px]">
-          <p className="mb-7 text-xs font-semibold uppercase tracking-[0.24em] text-white/85">
+          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.24em] text-white/85">
             17.ª edición · 09 al 12 de octubre · Ciudad Cultural
           </p>
           <h1 className="max-w-[780px] text-[clamp(3.45rem,7.1vw,7.35rem)] font-semibold leading-[0.86] tracking-[-0.065em]">
@@ -148,16 +148,16 @@ export function HeroSection({ introFinished = true }: HeroSectionProps) {
             <br />
             <span className="text-[#25C0D4]">en Jujuy.</span>
           </h1>
-          <p className="mt-6 flex max-w-[650px] items-center gap-3 text-sm font-bold uppercase tracking-[0.06em] text-white sm:text-base">
+          <p className="mt-5 flex max-w-[650px] items-center gap-3 text-sm font-bold uppercase tracking-[0.06em] text-white sm:text-base">
             <span aria-hidden className="h-px w-8 shrink-0 bg-[#25C0D4]" />
             Conectando países <span className="text-[#BB8CFF]">—</span> creando oportunidades
           </p>
-          <p className="mt-7 max-w-[580px] text-base leading-relaxed text-white/88 sm:text-lg">
+          <p className="mt-5 max-w-[580px] text-base leading-relaxed text-white/88 sm:text-lg">
             Industria, innovación, cultura y oportunidades. Un lugar para conectar,
             crear y crecer.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-wrap gap-3">
             <Button
               asChild
               size="lg"
@@ -179,7 +179,7 @@ export function HeroSection({ introFinished = true }: HeroSectionProps) {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/25 pt-5 text-sm text-white/82">
+        <div className="mt-10 sm:mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/25 pt-5 text-sm text-white/82">
           <span className="inline-flex items-center gap-2">
             <FaCalendarDays aria-hidden className="size-3.5 text-[#25C0D4]" />
             09 al 12 de octubre · 2026

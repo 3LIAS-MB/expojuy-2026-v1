@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExpoJuy 2026 | Opción 3: Executive B2B & Mineral Amber Hub</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            amberHub: {
+              bg: '#0A0D14',
+              card: '#121722',
+              cardBorder: 'rgba(245, 158, 11, 0.25)',
+              gold: '#F59E0B',
+              amberLight: '#FBBF24',
+              copper: '#D97706',
+              mineral: '#10B981',
+              lithium: '#38BDF8',
+              slateText: '#94A3B8'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['Space Grotesk', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    body {
+      background-color: #0A0D14;
+      color: #F8FAFC;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .amber-gradient-text {
+      background: linear-gradient(135deg, #FFF 20%, #FBBF24 60%, #D97706 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gold-glow {
+      box-shadow: 0 0 30px rgba(245, 158, 11, 0.25);
+    }
+    .gold-glow-btn {
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+      transition: all 0.3s ease;
+    }
+    .gold-glow-btn:hover {
+      box-shadow: 0 0 35px rgba(245, 158, 11, 0.7);
+      transform: translateY(-2px);
+    }
+
+    .glass-panel {
+      background: rgba(18, 23, 34, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+    .glass-panel:hover {
+      border-color: rgba(245, 158, 11, 0.5);
+    }
+
+    .bg-topography {
+      background-image: radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.15) 0%, transparent 60%),
+                        radial-gradient(circle at 90% 40%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 10% 70%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+    }
+
+    .badge-copper {
+      background: rgba(217, 119, 6, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: #FBBF24;
+    }
+  </style>
+</head>
+<body class="selection:bg-amber-500 selection:text-black bg-topography min-h-screen">
+
+  <!-- ================= HEADER / NAVBAR ================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 px-4 py-3 bg-[#0A0D14]/85 backdrop-blur-xl border-b border-amber-500/20">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-600 via-amber-500 to-yellow-400 p-0.5 shadow-[0_0_15px_rgba(245,158,11,0.5)]">
+          <div class="w-full h-full bg-[#0A0D14] rounded-[10px] flex items-center justify-center">
+            <i data-lucide="mountain-snow" class="w-5 h-5 text-amber-400"></i>
+          </div>
+        </div>
+        <div>
+          <span class="font-heading font-extrabold text-lg text-white tracking-tight flex items-center gap-1">
+            EXPOJUY <span class="text-amber-400 font-mono text-xs px-1.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/30">2026</span>
+          </span>
+          <span class="text-[10px] text-amberHub-slateText block tracking-wider uppercase">17° Edición • San Salvador de Jujuy</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+        <a href="#about" class="hover:text-amber-400 transition-colors">Sobre la Expo</a>
+        <a href="#expositores" class="hover:text-amber-400 transition-colors">Expositores</a>
+        <a href="#agenda" class="hover:text-amber-400 transition-colors">Agenda</a>
+        <a href="#plano" class="hover:text-amber-400 transition-colors">Plano Predio</a>
+        <a href="#acreditacion" class="hover:text-amber-400 transition-colors">Acreditación QR</a>
+        <a href="#contacto" class="hover:text-amber-400 transition-colors">Contacto</a>
+      </nav>
+
+      <!-- CTA -->
+      <div class="flex items-center gap-3">
+        <a href="#acreditacion" class="px-4 py-2 text-xs font-bold font-heading rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-black gold-glow-btn flex items-center gap-2">
+          <i data-lucide="qr-code" class="w-4 h-4"></i>
+          <span>Pase Digital B2B</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section id="hero" class="pt-32 pb-20 px-4 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Top Tagline -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full badge-copper text-xs font-medium mb-6">
+        <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+        <i data-lucide="globe-2" class="w-3.5 h-3.5"></i>
+        <span>Conectando países • Creando oportunidades en la ZICUR</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Main Title & CTA -->
+        <div class="lg:col-span-7 space-y-6">
+          <h1 class="font-heading font-black text-4xl sm:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
+            La Cumbre Agroindustrial y <span class="amber-gradient-text">Minera del Noroeste</span>
+          </h1>
+          <p class="text-slate-300 text-base sm:text-lg max-w-2xl font-normal leading-relaxed">
+            Del <strong class="text-white">9 al 12 de Octubre de 2026</strong> en la Ciudad Cultural de Jujuy. Más de 200 empresas se reúnen en el hub logístico, energético y comercial del Corredor Bioceánico.
+          </p>
+
+          <!-- Interactive Profile Switcher -->
+          <div class="p-1.5 rounded-2xl bg-[#121722] border border-amber-500/20 max-w-lg">
+            <div class="grid grid-cols-2 gap-1" id="hero-tabs">
+              <button onclick="switchHeroTab('b2b')" id="tab-b2b" class="py-2.5 px-4 rounded-xl text-xs font-bold font-heading flex items-center justify-center gap-2 bg-amber-500 text-black shadow-md transition-all">
+                <i data-lucide="briefcase" class="w-4 h-4"></i>
+                <span>Perfil B2B / Inversor</span>
+              </button>
+              <button onclick="switchHeroTab('public')" id="tab-public" class="py-2.5 px-4 rounded-xl text-xs font-bold font-heading flex items-center justify-center gap-2 text-slate-400 hover:text-white transition-all">
+                <i data-lucide="users" class="w-4 h-4"></i>
+                <span>Público / Visitantes</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Tab Content Display -->
+          <div id="hero-tab-content" class="glass-panel p-5 rounded-2xl border border-amber-500/30 text-sm space-y-3 max-w-lg">
+            <div class="flex items-center gap-3 text-amber-400 font-semibold font-heading">
+              <i data-lucide="trending-up" class="w-5 h-5"></i>
+              <span id="tab-title">Rondas de Negocios e Inversión Minera</span>
+            </div>
+            <p id="tab-desc" class="text-slate-300 text-xs leading-relaxed">
+              Accedé al catálogo exclusivo de proveedores mineros de Litio, energía renovable y logística transfronteriza con agendamiento directo de reuniones.
+            </p>
+            <div class="pt-2 flex items-center gap-3">
+              <a href="#acreditacion" class="text-xs font-bold text-amber-400 hover:underline flex items-center gap-1">
+                Registrar Credencial de Negocios <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero Metrics -->
+          <div class="grid grid-cols-3 gap-4 pt-4 border-t border-slate-800">
+            <div>
+              <div class="font-heading font-black text-2xl sm:text-3xl text-amber-400">17ª</div>
+              <div class="text-[11px] text-slate-400">Edición Histórica</div>
+            </div>
+            <div>
+              <div class="font-heading font-black text-2xl sm:text-3xl text-amber-400">+200</div>
+              <div class="text-[11px] text-slate-400">Stands Oficiales</div>
+            </div>
+            <div>
+              <div class="font-heading font-black text-2xl sm:text-3xl text-amber-400">+100K</div>
+              <div class="text-[11px] text-slate-400">Asistentes Esperados</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Countdown & Live Status Card -->
+        <div class="lg:col-span-5">
+          <div class="glass-panel p-6 sm:p-8 rounded-3xl relative shadow-2xl space-y-6 border border-amber-500/30">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-semibold">Acreditaciones Abiertas</span>
+              </div>
+              <span class="text-xs text-slate-400 font-mono">09-12 OCT 2026</span>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div class="space-y-3">
+              <div class="text-xs text-slate-400 font-medium text-center uppercase tracking-widest font-mono">Cuenta Regresiva para la Apertura</div>
+              <div class="grid grid-cols-4 gap-3 text-center">
+                <div class="bg-[#0A0D14] p-3 rounded-2xl border border-amber-500/20">
+                  <span id="cd-days" class="font-mono font-black text-2xl sm:text-3xl text-amber-400 block">398</span>
+                  <span class="text-[10px] text-slate-400 uppercase font-semibold">Días</span>
+                </div>
+                <div class="bg-[#0A0D14] p-3 rounded-2xl border border-amber-500/20">
+                  <span id="cd-hours" class="font-mono font-black text-2xl sm:text-3xl text-white block">14</span>
+                  <span class="text-[10px] text-slate-400 uppercase font-semibold">Hs</span>
+                </div>
+                <div class="bg-[#0A0D14] p-3 rounded-2xl border border-amber-500/20">
+                  <span id="cd-mins" class="font-mono font-black text-2xl sm:text-3xl text-white block">42</span>
+                  <span class="text-[10px] text-slate-400 uppercase font-semibold">Min</span>
+                </div>
+                <div class="bg-[#0A0D14] p-3 rounded-2xl border border-amber-500/20">
+                  <span id="cd-secs" class="font-mono font-black text-2xl sm:text-3xl text-amber-400 block">18</span>
+                  <span class="text-[10px] text-slate-400 uppercase font-semibold">Seg</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Location Card -->
+            <div class="p-4 rounded-2xl bg-[#0A0D14]/80 border border-slate-800 flex items-start gap-3">
+              <div class="p-2.5 rounded-xl bg-amber-500/10 text-amber-400">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </div>
+              <div class="text-xs">
+                <div class="font-bold text-white font-heading">Predio Ciudad Cultural</div>
+                <div class="text-slate-400">Alto Padilla, San Salvador de Jujuy, Argentina</div>
+                <a href="#plano" class="text-amber-400 hover:underline inline-block mt-1 font-semibold">Ver Mapa de Sectores &rarr;</a>
+              </div>
+            </div>
+
+            <!-- Quick Action Buttons -->
+            <div class="space-y-2">
+              <a href="#acreditacion" class="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-black font-heading font-extrabold text-sm gold-glow-btn flex items-center justify-center gap-2">
+                <i data-lucide="ticket" class="w-4 h-4"></i>
+                Generar Entrada Digital
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT SECTION ================= -->
+  <section id="about" class="py-20 px-4 bg-[#0A0D14]/60 border-t border-b border-amber-500/10">
+    <div class="max-w-7xl mx-auto space-y-12">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-4">
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/30">
+          Institucional & Alianza Regional
+        </span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-5xl text-white">
+          Motor Económico de la <span class="text-amber-400">Región ZICUR</span>
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+          Organizada por la Cámara de Comercio Exterior de Jujuy junto con el Gobierno Provincial, la ExpoJuy vincula la matriz productiva andina con mercados de Chile, Bolivia, Brasil y Paraguay.
+        </p>
+      </div>
+
+      <!-- 4 Pillars Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="glass-panel p-6 rounded-2xl space-y-3">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+            <i data-lucide="pickaxe" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-white">Minería & Litio</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Cadena de valor para la extracción sustentable de litio, plata y zinc en el Triángulo del Litio.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl space-y-3">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+            <i data-lucide="sun" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-white">Energía Fotovoltaica</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Proyectos de radiación solar de alta altitud y parques de generación limpia Cauchari.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl space-y-3">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+            <i data-lucide="truck" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-white">Corredor Bioceánico</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Conexión logística internacional entre los puertos del Atlántico y el Pacífico mediante Paso de Jama.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl space-y-3">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+            <i data-lucide="sprout" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-white">Agroindustria & Cannabis</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Tabaco, caña de azúcar, cítricos y desarrollo científico de cannabis medicinal provincial (Cannava).
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPOSITORES DIRECTORY SECTION ================= -->
+  <section id="expositores" class="py-20 px-4">
+    <div class="max-w-7xl mx-auto space-y-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono font-bold uppercase tracking-widest text-amber-400">Directorio Oficial</span>
+          <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Catálogo de Expositores</h2>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="relative w-full md:w-80">
+          <input type="text" id="expo-search" onkeyup="filterExpositores()" placeholder="Buscar empresa o rubro..." class="w-full pl-10 pr-4 py-2.5 bg-[#121722] border border-amber-500/30 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 transition-all">
+          <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3"></i>
+        </div>
+      </div>
+
+      <!-- Rubros Filters -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none" id="expo-filters">
+        <button onclick="setFilter('all')" class="filter-btn active py-1.5 px-4 rounded-xl text-xs font-bold bg-amber-500 text-black">Todos</button>
+        <button onclick="setFilter('Minería')" class="filter-btn py-1.5 px-4 rounded-xl text-xs font-bold bg-[#121722] text-slate-400 hover:text-white border border-amber-500/20">Minería & Litio</button>
+        <button onclick="setFilter('Energía')" class="filter-btn py-1.5 px-4 rounded-xl text-xs font-bold bg-[#121722] text-slate-400 hover:text-white border border-amber-500/20">Energía Renovables</button>
+        <button onclick="setFilter('Logística')" class="filter-btn py-1.5 px-4 rounded-xl text-xs font-bold bg-[#121722] text-slate-400 hover:text-white border border-amber-500/20">Logística & Comercio</button>
+        <button onclick="setFilter('Agro')" class="filter-btn py-1.5 px-4 rounded-xl text-xs font-bold bg-[#121722] text-slate-400 hover:text-white border border-amber-500/20">Agro & Alimentos</button>
+        <button onclick="setFilter('Institucional')" class="filter-btn py-1.5 px-4 rounded-xl text-xs font-bold bg-[#121722] text-slate-400 hover:text-white border border-amber-500/20">Institucional / Gobiernos</button>
+      </div>
+
+      <!-- Expositores Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="expositores-grid">
+        
+        <!-- Stand Card 1 -->
+        <div class="expo-card glass-panel p-6 rounded-2xl space-y-4 border border-amber-500/20 hover:border-amber-400/50 transition-all" data-rubro="Minería">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30">Stand A-12</span>
+            <span class="text-xs text-slate-400">Pabellón Litio</span>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-xl text-white">Jujuy Lithium Corp</h3>
+            <p class="text-xs text-slate-400 mt-1">Exploración y refinamiento de sales de litio grado batería para exportación.</p>
+          </div>
+          <div class="pt-2 flex items-center justify-between text-xs border-t border-slate-800">
+            <span class="text-slate-400">Rubro: <strong class="text-white">Minería</strong></span>
+            <button onclick="selectStand('A-12', 'Jujuy Lithium Corp')" class="text-amber-400 hover:underline font-semibold flex items-center gap-1">
+              Ver ubicación <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Stand Card 2 -->
+        <div class="expo-card glass-panel p-6 rounded-2xl space-y-4 border border-amber-500/20 hover:border-amber-400/50 transition-all" data-rubro="Energía">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30">Stand B-05</span>
+            <span class="text-xs text-slate-400">Pabellón Sol</span>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-xl text-white">Cauchari Solar Energy</h3>
+            <p class="text-xs text-slate-400 mt-1">Operadora del parque solar fotovoltaico de gran escala más alto de Sudamérica.</p>
+          </div>
+          <div class="pt-2 flex items-center justify-between text-xs border-t border-slate-800">
+            <span class="text-slate-400">Rubro: <strong class="text-white">Energía</strong></span>
+            <button onclick="selectStand('B-05', 'Cauchari Solar Energy')" class="text-amber-400 hover:underline font-semibold flex items-center gap-1">
+              Ver ubicación <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Stand Card 3 -->
+        <div class="expo-card glass-panel p-6 rounded-2xl space-y-4 border border-amber-500/20 hover:border-amber-400/50 transition-all" data-rubro="Logística">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30">Stand C-18</span>
+            <span class="text-xs text-slate-400">Pabellón Logística</span>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-xl text-white">Trans-Jama Logistics</h3>
+            <p class="text-xs text-slate-400 mt-1">Soluciones de transporte de carga pesada y aduana para el paso internacional de Jama.</p>
+          </div>
+          <div class="pt-2 flex items-center justify-between text-xs border-t border-slate-800">
+            <span class="text-slate-400">Rubro: <strong class="text-white">Logística</strong></span>
+            <button onclick="selectStand('C-18', 'Trans-Jama Logistics')" class="text-amber-400 hover:underline font-semibold flex items-center gap-1">
+              Ver ubicación <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Stand Card 4 -->
+        <div class="expo-card glass-panel p-6 rounded-2xl space-y-4 border border-amber-500/20 hover:border-amber-400/50 transition-all" data-rubro="Agro">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30">Stand A-20</span>
+            <span class="text-xs text-slate-400">Pabellón Agro</span>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-xl text-white">Cannava SE</h3>
+            <p class="text-xs text-slate-400 mt-1">Sociedad estatal dedicada a la producción pública de aceite de cannabis medicinal con grado biotecnológico.</p>
+          </div>
+          <div class="pt-2 flex items-center justify-between text-xs border-t border-slate-800">
+            <span class="text-slate-400">Rubro: <strong class="text-white">Agro</strong></span>
+            <button onclick="selectStand('A-20', 'Cannava SE')" class="text-amber-400 hover:underline font-semibold flex items-center gap-1">
+              Ver ubicación <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Stand Card 5 -->
+        <div class="expo-card glass-panel p-6 rounded-2xl space-y-4 border border-amber-500/20 hover:border-amber-400/50 transition-all" data-rubro="Institucional">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30">Stand Inst-01</span>
+            <span class="text-xs text-slate-400">Pabellón Central</span>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-xl text-white">Cámara de Comercio Exterior</h3>
+            <p class="text-xs text-slate-400 mt-1">Entidad organizadora principal. Asesoría técnica en comercio exterior y vinculación B2B.</p>
+          </div>
+          <div class="pt-2 flex items-center justify-between text-xs border-t border-slate-800">
+            <span class="text-slate-400">Rubro: <strong class="text-white">Institucional</strong></span>
+            <button onclick="selectStand('Inst-01', 'Cámara de Comercio Exterior')" class="text-amber-400 hover:underline font-semibold flex items-center gap-1">
+              Ver ubicación <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Stand Card 6 -->
+        <div class="expo-card glass-panel p-6 rounded-2xl space-y-4 border border-amber-500/20 hover:border-amber-400/50 transition-all" data-rubro="Minería">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30">Stand A-08</span>
+            <span class="text-xs text-slate-400">Pabellón Litio</span>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-xl text-white">Minera Pirquitas / Mina Chinchillas</h3>
+            <p class="text-xs text-slate-400 mt-1">Complejo minero polimetálico líder en extracción sustentable de plata y plomo.</p>
+          </div>
+          <div class="pt-2 flex items-center justify-between text-xs border-t border-slate-800">
+            <span class="text-slate-400">Rubro: <strong class="text-white">Minería</strong></span>
+            <button onclick="selectStand('A-08', 'Minera Pirquitas')" class="text-amber-400 hover:underline font-semibold flex items-center gap-1">
+              Ver ubicación <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PLANO DEL PREDIO SECTION ================= -->
+  <section id="plano" class="py-20 px-4 bg-[#0A0D14]/80 border-t border-b border-amber-500/10">
+    <div class="max-w-7xl mx-auto space-y-8">
+      
+      <div>
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-amber-400">Mapa Interactivo</span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Plano del Predio Ciudad Cultural</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Interactive Canvas / SVG Map -->
+        <div class="lg:col-span-8 glass-panel p-6 rounded-3xl relative min-h-[380px] flex flex-col justify-between overflow-hidden border border-amber-500/30">
+          <div class="flex items-center justify-between text-xs text-slate-400 font-mono">
+            <span>MAPA DE SECTORES • SAN SALVADOR DE JUJUY</span>
+            <span id="selected-stand-tag" class="text-amber-400 font-bold">Seleccioná un sector</span>
+          </div>
+
+          <!-- Vector Layout Diagram -->
+          <div class="my-6 grid grid-cols-3 gap-4">
+            
+            <div onclick="highlightSector('Pabellón A - Litio & Minería')" class="p-6 rounded-2xl bg-amber-500/10 border-2 border-amber-500/40 hover:border-amber-400 cursor-pointer transition-all text-center space-y-2 group">
+              <i data-lucide="pickaxe" class="w-8 h-8 mx-auto text-amber-400 group-hover:scale-110 transition-transform"></i>
+              <div class="font-heading font-bold text-white text-sm">Pabellón A</div>
+              <div class="text-[10px] text-amber-400 font-mono">Litio & Minería</div>
+            </div>
+
+            <div onclick="highlightSector('Pabellón B - Energías Renovables')" class="p-6 rounded-2xl bg-sky-500/10 border-2 border-sky-500/40 hover:border-sky-400 cursor-pointer transition-all text-center space-y-2 group">
+              <i data-lucide="zap" class="w-8 h-8 mx-auto text-sky-400 group-hover:scale-110 transition-transform"></i>
+              <div class="font-heading font-bold text-white text-sm">Pabellón B</div>
+              <div class="text-[10px] text-sky-400 font-mono">Energías Renovables</div>
+            </div>
+
+            <div onclick="highlightSector('Pabellón C - Logística ZICUR')" class="p-6 rounded-2xl bg-emerald-500/10 border-2 border-emerald-500/40 hover:border-emerald-400 cursor-pointer transition-all text-center space-y-2 group">
+              <i data-lucide="globe" class="w-8 h-8 mx-auto text-emerald-400 group-hover:scale-110 transition-transform"></i>
+              <div class="font-heading font-bold text-white text-sm">Pabellón C</div>
+              <div class="text-[10px] text-emerald-400 font-mono">Logística & ZICUR</div>
+            </div>
+
+          </div>
+
+          <div class="p-4 rounded-xl bg-[#0A0D14] text-xs text-slate-300 flex items-center justify-between border border-slate-800">
+            <span class="flex items-center gap-2">
+              <i data-lucide="info" class="w-4 h-4 text-amber-400"></i>
+              Hacé clic en cualquier pabellón para ver detalles de accesos y servicios.
+            </span>
+            <span class="text-amber-400 font-mono font-bold">100% Accesible</span>
+          </div>
+        </div>
+
+        <!-- Sector Details Box -->
+        <div class="lg:col-span-4 glass-panel p-6 rounded-3xl border border-amber-500/30 space-y-6">
+          <h3 class="font-heading font-bold text-xl text-white flex items-center gap-2">
+            <i data-lucide="layers" class="w-5 h-5 text-amber-400"></i>
+            Detalle del Sector
+          </h3>
+
+          <div id="sector-details" class="space-y-4 text-xs text-slate-300">
+            <div class="p-4 rounded-2xl bg-[#0A0D14] border border-amber-500/20 space-y-2">
+              <div class="font-bold text-amber-400 text-sm font-heading" id="sector-name">Pabellón A - Litio & Minería</div>
+              <p id="sector-desc" class="text-slate-400 leading-relaxed">
+                Ubicación principal con más de 60 stands dedicados a proveedores de insumos mineros, laboratorios biotecnológicos y soluciones de extracción de litio.
+              </p>
+            </div>
+
+            <div class="space-y-2">
+              <div class="text-slate-400 font-semibold">Servicios disponibles:</div>
+              <ul class="space-y-1 text-slate-300">
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Red Wi-Fi de Alta Velocidad (5G)</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Salas VIP B2B para reuniones</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Servicio de gastronomía y coffee break</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Puntos de carga eléctrica y accesibilidad rampa</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AGENDA SECTION ================= -->
+  <section id="agenda" class="py-20 px-4">
+    <div class="max-w-7xl mx-auto space-y-8">
+      
+      <div>
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-amber-400">Cronograma de Actividades</span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Agenda Oficial ExpoJuy 2026</h2>
+      </div>
+
+      <!-- Days Tabs -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <button onclick="setAgendaDay(1)" id="agenda-day-1" class="agenda-tab active p-4 rounded-2xl bg-amber-500 text-black font-heading font-bold text-left transition-all">
+          <div class="text-[10px] font-mono uppercase tracking-wider opacity-80">Viernes 09 OCT</div>
+          <div class="text-sm">Jornada 1: Inauguración & Litio</div>
+        </button>
+        <button onclick="setAgendaDay(2)" id="agenda-day-2" class="agenda-tab p-4 rounded-2xl bg-[#121722] border border-amber-500/20 text-slate-400 hover:text-white font-heading font-bold text-left transition-all">
+          <div class="text-[10px] font-mono uppercase tracking-wider">Sábado 10 OCT</div>
+          <div class="text-sm">Jornada 2: Energías & B2B</div>
+        </button>
+        <button onclick="setAgendaDay(3)" id="agenda-day-3" class="agenda-tab p-4 rounded-2xl bg-[#121722] border border-amber-500/20 text-slate-400 hover:text-white font-heading font-bold text-left transition-all">
+          <div class="text-[10px] font-mono uppercase tracking-wider">Domingo 11 OCT</div>
+          <div class="text-sm">Jornada 3: Corredor Bioceánico</div>
+        </button>
+        <button onclick="setAgendaDay(4)" id="agenda-day-4" class="agenda-tab p-4 rounded-2xl bg-[#121722] border border-amber-500/20 text-slate-400 hover:text-white font-heading font-bold text-left transition-all">
+          <div class="text-[10px] font-mono uppercase tracking-wider">Lunes 12 OCT</div>
+          <div class="text-sm">Jornada 4: Cierre & Rondas</div>
+        </button>
+      </div>
+
+      <!-- Agenda Timeline Items -->
+      <div id="agenda-content" class="space-y-4">
+        
+        <div class="glass-panel p-6 rounded-2xl border border-amber-500/20 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-start gap-4">
+            <div class="px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono font-bold text-sm">
+              10:00 HS
+            </div>
+            <div>
+              <h3 class="font-heading font-bold text-lg text-white">Corte de Cinta & Apertura Oficial de ExpoJuy 2026</h3>
+              <p class="text-xs text-slate-400 mt-1">Con la presencia de autoridades nacionales, provinciales e intencionales de la ZICUR.</p>
+            </div>
+          </div>
+          <span class="text-xs font-mono px-3 py-1 rounded-full bg-slate-800 text-slate-300 w-fit">Auditorio Central</span>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl border border-amber-500/20 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-start gap-4">
+            <div class="px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono font-bold text-sm">
+              14:30 HS
+            </div>
+            <div>
+              <h3 class="font-heading font-bold text-lg text-white">Foro Internacional: El Rol del Litio Jujuy en la Transición Energética</h3>
+              <p class="text-xs text-slate-400 mt-1">Exposición a cargo de especialistas mineros y representantes del Ministerio de Producción.</p>
+            </div>
+          </div>
+          <span class="text-xs font-mono px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 w-fit">Sala B2B 1</span>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl border border-amber-500/20 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="flex items-start gap-4">
+            <div class="px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono font-bold text-sm">
+              18:00 HS
+            </div>
+            <div>
+              <h3 class="font-heading font-bold text-lg text-white">Ronda de Negocios Comercio Exterior & Corredor Bioceánico</h3>
+              <p class="text-xs text-slate-400 mt-1">Reuniones bilaterales entre exportadores locales e importadores de la región ZICUR.</p>
+            </div>
+          </div>
+          <span class="text-xs font-mono px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 w-fit">Espacio Rondas</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DIGITAL TICKET QR SIMULATOR ================= -->
+  <section id="acreditacion" class="py-20 px-4 bg-[#0A0D14]/80 border-t border-amber-500/10">
+    <div class="max-w-4xl mx-auto space-y-8">
+      
+      <div class="text-center space-y-3">
+        <span class="text-xs font-mono font-bold uppercase tracking-widest text-amber-400">Acreditación Inmediata</span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Pase Digital QR de Acceso</h2>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">
+          Completá tus datos para generar tu credencial con código QR único para ingresar al predio.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        
+        <!-- Form -->
+        <form id="qr-form" onsubmit="generatePass(event)" class="glass-panel p-6 sm:p-8 rounded-3xl border border-amber-500/30 space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Nombre Completo</label>
+            <input type="text" id="user-name" required placeholder="Ej: Carlos Mendoza" class="w-full px-4 py-2.5 bg-[#0A0D14] border border-amber-500/20 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Empresa / Institución</label>
+            <input type="text" id="user-company" required placeholder="Ej: Andes Mining S.A." class="w-full px-4 py-2.5 bg-[#0A0D14] border border-amber-500/20 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Tipo de Pase</label>
+            <select id="user-type" class="w-full px-4 py-2.5 bg-[#0A0D14] border border-amber-500/20 rounded-xl text-xs text-white focus:outline-none focus:border-amber-400">
+              <option value="B2B Executive / Inversor">B2B Executive / Inversor</option>
+              <option value="Expositor Registrado">Expositor Registrado</option>
+              <option value="Público General">Público General</option>
+              <option value="Prensa Oficial">Prensa Oficial</option>
+            </select>
+          </div>
+          <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-black font-heading font-extrabold text-xs gold-glow-btn flex items-center justify-center gap-2">
+            <i data-lucide="qr-code" class="w-4 h-4"></i>
+            Generar Credencial QR
+          </button>
+        </form>
+
+        <!-- Digital Ticket Render Card -->
+        <div class="glass-panel p-6 sm:p-8 rounded-3xl border-2 border-amber-500/40 space-y-6 text-center relative gold-glow">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <span class="text-[10px] font-mono font-bold text-amber-400 tracking-wider uppercase">ExpoJuy 2026 Pass</span>
+            <span class="text-[10px] font-mono text-emerald-400 font-bold uppercase">● VÁLIDO 09-12 OCT</span>
+          </div>
+
+          <!-- User Info -->
+          <div>
+            <div id="pass-name" class="font-heading font-black text-xl text-white">Carlos Mendoza</div>
+            <div id="pass-company" class="text-xs text-amber-400 font-medium">Andes Mining S.A.</div>
+            <div id="pass-type" class="inline-block mt-2 px-3 py-1 rounded-full badge-copper text-[10px] font-bold">
+              B2B Executive / Inversor
+            </div>
+          </div>
+
+          <!-- QR Code Container -->
+          <div class="bg-white p-4 rounded-2xl w-40 h-40 mx-auto flex items-center justify-center border-4 border-amber-500/30" id="qrcode-box">
+            <!-- QR renders dynamically -->
+          </div>
+
+          <div class="text-[10px] text-slate-400 font-mono">
+            ID CREDENCIAL: <span id="pass-id" class="text-white font-bold">EJ2026-89412</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="py-12 px-4 border-t border-amber-500/20 bg-[#06080E] text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+      
+      <div class="space-y-3">
+        <div class="font-heading font-bold text-white text-base">EXPOJUY 2026</div>
+        <p class="text-slate-400 leading-relaxed text-[11px]">
+          Organizado por la Cámara de Comercio Exterior de Jujuy. 17° Edición de la exposición más relevante del Norte Argentino.
+        </p>
+      </div>
+
+      <div>
+        <div class="font-heading font-bold text-white mb-3">Accesos Rápidos</div>
+        <ul class="space-y-2">
+          <li><a href="#about" class="hover:text-amber-400 transition-colors">Sobre la Expo</a></li>
+          <li><a href="#expositores" class="hover:text-amber-400 transition-colors">Catálogo de Expositores</a></li>
+          <li><a href="#plano" class="hover:text-amber-400 transition-colors">Plano del Predio</a></li>
+          <li><a href="#agenda" class="hover:text-amber-400 transition-colors">Agenda de Actividades</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="font-heading font-bold text-white mb-3">Sede & Organización</div>
+        <ul class="space-y-2 text-[11px]">
+          <li>📍 Predio Ciudad Cultural, San Salvador de Jujuy</li>
+          <li>🏛️ Cámara de Comercio Exterior de Jujuy</li>
+          <li>📧 info@expojuy.com.ar</li>
+          <li>📞 +54 (0388) 423-0000</li>
+        </ul>
+      </div>
+
+      <div class="space-y-3">
+        <div class="font-heading font-bold text-white">Redes Oficiales</div>
+        <div class="flex items-center gap-3">
+          <a href="#" class="w-9 h-9 rounded-xl bg-[#121722] border border-amber-500/30 flex items-center justify-center text-slate-300 hover:text-amber-400 transition-all">
+            <i data-lucide="instagram" class="w-4 h-4"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-xl bg-[#121722] border border-amber-500/30 flex items-center justify-center text-slate-300 hover:text-amber-400 transition-all">
+            <i data-lucide="facebook" class="w-4 h-4"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-xl bg-[#121722] border border-amber-500/30 flex items-center justify-center text-slate-300 hover:text-amber-400 transition-all">
+            <i data-lucide="linkedin" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+    <div class="max-w-7xl mx-auto pt-8 mt-8 border-t border-slate-900 text-center text-[11px] text-slate-500">
+      ExpoJuy 2026 © Todos los derechos reservados. San Salvador de Jujuy, Argentina.
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    // Initialize Lucide icons
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      initQR('EJ2026-89412');
+    });
+
+    // Hero Tab Switcher
+    function switchHeroTab(profile) {
+      const b2bBtn = document.getElementById('tab-b2b');
+      const publicBtn = document.getElementById('tab-public');
+      const title = document.getElementById('tab-title');
+      const desc = document.getElementById('tab-desc');
+
+      if (profile === 'b2b') {
+        b2bBtn.className = "py-2.5 px-4 rounded-xl text-xs font-bold font-heading flex items-center justify-center gap-2 bg-amber-500 text-black shadow-md transition-all";
+        publicBtn.className = "py-2.5 px-4 rounded-xl text-xs font-bold font-heading flex items-center justify-center gap-2 text-slate-400 hover:text-white transition-all";
+        title.innerText = "Rondas de Negocios e Inversión Minera";
+        desc.innerText = "Accedé al catálogo exclusivo de proveedores mineros de Litio, energía renovable y logística transfronteriza con agendamiento directo de reuniones.";
+      } else {
+        publicBtn.className = "py-2.5 px-4 rounded-xl text-xs font-bold font-heading flex items-center justify-center gap-2 bg-amber-500 text-black shadow-md transition-all";
+        b2bBtn.className = "py-2.5 px-4 rounded-xl text-xs font-bold font-heading flex items-center justify-center gap-2 text-slate-400 hover:text-white transition-all";
+        title.innerText = "Paseos Gastronómicos & Espectáculos Culturales";
+        desc.innerText = "Disfrutá del patio gastronómico jujeño, espectáculos folclóricos en vivo y ferias artesanales regionales para toda la familia.";
+      }
+    }
+
+    // Expositores Filter
+    function setFilter(rubro) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-amber-500', 'text-black');
+        btn.classList.add('bg-[#121722]', 'text-slate-400');
+      });
+      event.target.classList.remove('bg-[#121722]', 'text-slate-400');
+      event.target.classList.add('bg-amber-500', 'text-black');
+
+      const cards = document.querySelectorAll('.expo-card');
+      cards.forEach(card => {
+        if (rubro === 'all' || card.dataset.rubro === rubro) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function filterExpositores() {
+      const query = document.getElementById('expo-search').value.toLowerCase();
+      document.querySelectorAll('.expo-card').forEach(card => {
+        const text = card.innerText.toLowerCase();
+        if (text.includes(query)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Highlight Map Sector
+    function highlightSector(name) {
+      document.getElementById('sector-name').innerText = name;
+      document.getElementById('selected-stand-tag').innerText = name;
+    }
+
+    function selectStand(standCode, name) {
+      highlightSector(`Stand ${standCode}: ${name}`);
+      window.location.hash = 'plano';
+    }
+
+    // Agenda Tab Switcher
+    function setAgendaDay(day) {
+      document.querySelectorAll('.agenda-tab').forEach(t => {
+        t.className = "agenda-tab p-4 rounded-2xl bg-[#121722] border border-amber-500/20 text-slate-400 font-heading font-bold text-left transition-all";
+      });
+      document.getElementById(`agenda-day-${day}`).className = "agenda-tab active p-4 rounded-2xl bg-amber-500 text-black font-heading font-bold text-left transition-all";
+    }
+
+    // QR Code Generator
+    let qrObj = null;
+    function initQR(data) {
+      const box = document.getElementById('qrcode-box');
+      box.innerHTML = '';
+      qrObj = new QRCode(box, {
+        text: data,
+        width: 130,
+        height: 130,
+        colorDark: "#0A0D14",
+        colorLight: "#FFFFFF",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    }
+
+    function generatePass(e) {
+      e.preventDefault();
+      const name = document.getElementById('user-name').value;
+      const company = document.getElementById('user-company').value;
+      const type = document.getElementById('user-type').value;
+      const passId = 'EJ2026-' + Math.floor(10000 + Math.random() * 90000);
+
+      document.getElementById('pass-name').innerText = name;
+      document.getElementById('pass-company').innerText = company;
+      document.getElementById('pass-type').innerText = type;
+      document.getElementById('pass-id').innerText = passId;
+
+      initQR(`https://expojuy.com.ar/pass?id=${passId}&name=${encodeURIComponent(name)}`);
+    }
+
+    // Countdown Timer Logic
+    const targetDate = new Date('2026-10-09T10:00:00').getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+      if (diff > 0) {
+        document.getElementById('cd-days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById('cd-hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById('cd-mins').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById('cd-secs').innerText = Math.floor((diff % (1000 * 60)) / 1000);
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExpoJuy 2026 | Opción 2: Deep-Tech & Topografía Vectorial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            deep: {
+              void: '#030712',
+              grid: '#080E1E',
+              border: '#1E293B',
+              cyan: '#00F5D4',
+              aqua: '#06B6D4',
+              violet: '#A855F7',
+              purple: '#7C3AED'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    body {
+      background-color: #030712;
+      color: #E2E8F0;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      /* Technical Blueprint Background Grid */
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .font-tech {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Terminal bracket buttons */
+    .btn-bracket {
+      font-family: 'JetBrains Mono', monospace;
+      position: relative;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      transition: all 0.2s ease;
+    }
+    .btn-bracket:hover {
+      border-color: #00F5D4;
+      box-shadow: 0 0 15px rgba(0, 245, 212, 0.2);
+    }
+
+    /* Vector Contour Waves */
+    .topography-wave {
+      position: absolute;
+      width: 100%;
+      pointer-events: none;
+      opacity: 0.65;
+    }
+
+    /* Isometric Interactive Stage */
+    .iso-card {
+      background: rgba(8, 14, 30, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      border-radius: 1.25rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .iso-card:hover {
+      border-color: rgba(0, 245, 212, 0.5);
+      box-shadow: 0 0 30px -5px rgba(0, 245, 212, 0.2);
+    }
+  </style>
+</head>
+<body class="selection:bg-deep-cyan selection:text-black">
+
+  <!-- ================= TOP NAVIGATION (Deep-Tech Blueprint Header) ================= -->
+  <header class="border-b border-slate-800/80 bg-deep-void/90 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-18 flex items-center justify-between py-3">
+      
+      <!-- Brand Logo Tech Badge (Exact Image 3 style) -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-700 flex items-center justify-center font-mono font-black text-white text-xs group-hover:border-deep-cyan transition-colors">
+          <span class="text-deep-cyan">E</span><span class="text-deep-violet">J</span>
+        </div>
+        <div>
+          <div class="font-tech font-black text-lg tracking-wider text-white flex items-center gap-1.5">
+            EXPO<span class="text-transparent bg-clip-text bg-gradient-to-r from-deep-cyan to-deep-violet">JUY</span>
+            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">2026</span>
+          </div>
+          <span class="text-[9px] font-mono text-slate-500 uppercase tracking-widest block">17° Edición Oficial</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Items -->
+      <nav class="hidden md:flex items-center gap-6 font-mono text-xs text-slate-300">
+        <a href="#hero" class="text-white hover:text-deep-cyan transition-colors">INICIO</a>
+        <a href="#rondas" class="hover:text-deep-cyan transition-colors">RONDAS B2B</a>
+        <a href="#sectores" class="hover:text-deep-cyan transition-colors">SECTORES</a>
+        <a href="#agenda" class="hover:text-deep-cyan transition-colors">AGENDA</a>
+        <a href="#plano" class="hover:text-deep-cyan transition-colors">PLANO</a>
+        <a href="#entradas" class="hover:text-deep-cyan transition-colors">ENTRADAS</a>
+      </nav>
+
+      <!-- Language & Terminal Action Buttons -->
+      <div class="flex items-center gap-3">
+        <span class="hidden sm:inline-block text-[11px] font-mono text-slate-400 border border-slate-800 px-2 py-1 rounded">ES ▼</span>
+        <a href="#rondas" class="btn-bracket px-3.5 py-1.5 rounded-lg text-xs text-deep-violet hover:text-white bg-deep-violet/10">
+          [ PORTAL B2B ]
+        </a>
+        <a href="#entradas" class="btn-bracket px-4 py-1.5 rounded-lg text-xs font-bold text-black bg-deep-cyan hover:bg-white transition-colors">
+          ENTRADAS /
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION (Vector Topography & HUD Telemetry) ================= -->
+  <section id="hero" class="relative pt-12 pb-20 px-4 overflow-hidden">
+    
+    <!-- Vector Topographic Elevation Curves (Generative Neon Lines from Reference 2) -->
+    <div class="topography-wave top-10 left-0 right-0 h-96">
+      <svg viewBox="0 0 1440 400" fill="none" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <!-- Multiple flowing elevation contour lines in cyan and violet -->
+        <path d="M-50 200 C 200 80, 450 320, 720 180 C 980 40, 1250 280, 1500 150" stroke="#00F5D4" stroke-width="1.2" opacity="0.6" stroke-dasharray="8 6" />
+        <path d="M-50 220 C 200 100, 450 340, 720 200 C 980 60, 1250 300, 1500 170" stroke="#06B6D4" stroke-width="1.5" opacity="0.5" />
+        <path d="M-50 240 C 200 120, 450 360, 720 220 C 980 80, 1250 320, 1500 190" stroke="#8B5CF6" stroke-width="1.2" opacity="0.5" />
+        <path d="M-50 260 C 200 140, 450 380, 720 240 C 980 100, 1250 340, 1500 210" stroke="#7C3AED" stroke-width="1" opacity="0.4" stroke-dasharray="4 4" />
+        <path d="M-50 280 C 200 160, 450 400, 720 260 C 980 120, 1250 360, 1500 230" stroke="#00F5D4" stroke-width="0.8" opacity="0.3" />
+      </svg>
+    </div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      
+      <!-- Terminal Tag Badge -->
+      <div class="inline-flex items-center gap-2 font-mono text-[11px] text-slate-400 border border-slate-800 bg-deep-void/80 px-3 py-1 rounded-md mb-6">
+        <span class="text-deep-cyan">17° EDICIÓN</span>
+        <span class="text-slate-600">❖</span>
+        <span>09/12 OCT 2026</span>
+        <span class="text-slate-600">❖</span>
+        <span class="text-slate-300">CIUDAD CULTURAL, ALTO PADILLA</span>
+      </div>
+
+      <!-- Main Headline (From Image 3) -->
+      <div class="max-w-3xl mb-8">
+        <h1 class="font-tech font-black text-6xl sm:text-7xl lg:text-8xl tracking-tight text-white mb-4 leading-none">
+          EXPO<span class="text-transparent bg-clip-text bg-gradient-to-r from-deep-cyan via-deep-violet to-purple-400">JUY</span><br/>
+          <span class="text-white">2026</span>
+        </h1>
+
+        <div class="flex items-center gap-3 mb-4">
+          <span class="h-0.5 w-10 bg-deep-cyan"></span>
+          <span class="font-mono text-xs uppercase tracking-widest text-deep-cyan font-bold">
+            CONECTANDO PAÍSES ❖ CREANDO OPORTUNIDADES
+          </span>
+        </div>
+
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-normal">
+          La mayor muestra multisectorial y de comercio internacional del Noroeste Argentino. 4 días de integración en el Corredor Bioceánico del Eje de Capricornio, minería estratégica de litio, parques solares de altura y rondas de negocios algorítmicas.
+        </p>
+
+        <!-- Bracket Action Buttons -->
+        <div class="flex flex-wrap items-center gap-3 mt-8">
+          <a href="#rondas" class="btn-bracket px-6 py-3 rounded-lg text-xs font-bold text-black bg-white hover:bg-deep-cyan transition-colors flex items-center gap-2">
+            Rondas B2B <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="#entradas" class="btn-bracket px-6 py-3 rounded-lg text-xs font-bold text-deep-cyan border-deep-cyan/60 hover:bg-deep-cyan/10 transition-colors flex items-center gap-2">
+            ENTRADAS <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+          </a>
+          <a href="#revista" class="btn-bracket px-5 py-3 rounded-lg text-xs font-mono text-slate-400 hover:text-white transition-colors flex items-center gap-2">
+            Revista Oficial <i data-lucide="arrow-down" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- ================= HUD TELEMETRY METRIC STRIP (From Image 3) ================= -->
+      <div class="border border-slate-800 bg-deep-grid/70 rounded-2xl p-4 sm:p-6 mb-16 grid grid-cols-2 md:grid-cols-4 gap-6 backdrop-blur-md">
+        
+        <!-- Metric 1: Countdown -->
+        <div class="border-r border-slate-800/80 pr-4">
+          <div class="flex items-center gap-1.5 text-[10px] font-mono text-deep-violet uppercase tracking-widest mb-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-deep-cyan animate-pulse"></span>
+            Apertura en
+          </div>
+          <div class="font-mono font-bold text-2xl text-white">
+            <span id="hud-d">35</span> <span class="text-deep-cyan text-sm">D</span>
+            <span id="hud-h">14</span> <span class="text-deep-cyan text-sm">H</span>
+            <span id="hud-m">22</span> <span class="text-deep-cyan text-sm">M</span>
+          </div>
+          <div class="text-[10px] font-mono text-slate-500 mt-0.5">Viernes 9 de Octubre 2026</div>
+        </div>
+
+        <!-- Metric 2: Superficie -->
+        <div class="border-r border-slate-800/80 pr-4">
+          <div class="text-[10px] font-mono text-slate-400 uppercase tracking-widest mb-1">Superficie Ferial</div>
+          <div class="font-mono font-bold text-2xl text-deep-cyan">+18K <span class="text-sm font-normal text-slate-400">m²</span></div>
+          <div class="text-[10px] font-mono text-slate-500 mt-0.5">Ciudad Cultural Alto Padilla</div>
+        </div>
+
+        <!-- Metric 3: Stands -->
+        <div class="border-r border-slate-800/80 pr-4">
+          <div class="text-[10px] font-mono text-slate-400 uppercase tracking-widest mb-1">Empresas & Stands</div>
+          <div class="font-mono font-bold text-2xl text-deep-violet">+280</div>
+          <div class="text-[10px] font-mono text-slate-500 mt-0.5">5 Pilares Productivos</div>
+        </div>
+
+        <!-- Metric 4: ZICOSUR -->
+        <div>
+          <div class="text-[10px] font-mono text-slate-400 uppercase tracking-widest mb-1">Eje Capricornio</div>
+          <div class="font-mono font-bold text-2xl text-white">4 <span class="text-sm font-normal text-slate-400">Países</span></div>
+          <div class="text-[10px] font-mono text-slate-500 mt-0.5">Chile, Bolivia, Paraguay, Arg</div>
+        </div>
+
+      </div>
+
+      <!-- ================= INTERACTIVE CONSOLE CARDS (From Reference 2) ================= -->
+      <div class="grid lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- CARD 1: "Tu Agenda" Console Widget (5 cols) -->
+        <div class="lg:col-span-5 iso-card p-6 border-deep-violet/40">
+          
+          <div class="flex items-center justify-between mb-5">
+            <h3 class="font-tech font-bold text-lg text-white flex items-center gap-2">
+              <i data-lucide="sliders" class="w-4 h-4 text-deep-cyan"></i>
+              Tu Agenda Ferial
+            </h3>
+            
+            <!-- Sliding Toggle: B2B vs General -->
+            <div class="bg-slate-950 p-1 rounded-full border border-slate-800 flex items-center text-[10px] font-mono">
+              <button id="togB2B" onclick="toggleAgendaView('b2b')" class="px-3 py-1 rounded-full font-bold bg-deep-cyan text-black transition-all">
+                B2B
+              </button>
+              <button id="togGen" onclick="toggleAgendaView('gen')" class="px-3 py-1 rounded-full text-slate-400 hover:text-white transition-all">
+                General
+              </button>
+            </div>
+          </div>
+
+          <!-- 5 Category Wireframe Icons (Exactly like in Image 2) -->
+          <div class="grid grid-cols-5 gap-2 text-center pb-4 mb-4 border-b border-slate-800/80">
+            <button onclick="filterSector('mining')" class="p-2 rounded-xl bg-slate-950/60 hover:bg-deep-cyan/10 border border-slate-800 hover:border-deep-cyan transition-all group">
+              <i data-lucide="pickaxe" class="w-5 h-5 text-deep-cyan mx-auto mb-1 group-hover:scale-110 transition-transform"></i>
+              <span class="text-[8px] font-mono text-slate-300 block">Mining</span>
+            </button>
+            <button onclick="filterSector('energy')" class="p-2 rounded-xl bg-slate-950/60 hover:bg-deep-cyan/10 border border-slate-800 hover:border-deep-cyan transition-all group">
+              <i data-lucide="wind" class="w-5 h-5 text-deep-cyan mx-auto mb-1 group-hover:scale-110 transition-transform"></i>
+              <span class="text-[8px] font-mono text-slate-300 block">Energy</span>
+            </button>
+            <button onclick="filterSector('agro')" class="p-2 rounded-xl bg-slate-950/60 hover:bg-deep-cyan/10 border border-slate-800 hover:border-deep-cyan transition-all group">
+              <i data-lucide="sprout" class="w-5 h-5 text-deep-cyan mx-auto mb-1 group-hover:scale-110 transition-transform"></i>
+              <span class="text-[8px] font-mono text-slate-300 block">Agro</span>
+            </button>
+            <button onclick="filterSector('logistics')" class="p-2 rounded-xl bg-slate-950/60 hover:bg-deep-cyan/10 border border-slate-800 hover:border-deep-cyan transition-all group">
+              <i data-lucide="truck" class="w-5 h-5 text-deep-cyan mx-auto mb-1 group-hover:scale-110 transition-transform"></i>
+              <span class="text-[8px] font-mono text-slate-300 block">Logistics</span>
+            </button>
+            <button onclick="filterSector('tech')" class="p-2 rounded-xl bg-slate-950/60 hover:bg-deep-cyan/10 border border-slate-800 hover:border-deep-cyan transition-all group">
+              <i data-lucide="cpu" class="w-5 h-5 text-deep-cyan mx-auto mb-1 group-hover:scale-110 transition-transform"></i>
+              <span class="text-[8px] font-mono text-slate-300 block">Tech</span>
+            </button>
+          </div>
+
+          <!-- Schedule preview item in widget -->
+          <div id="agendaWidgetList" class="space-y-2">
+            <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between text-xs">
+              <div>
+                <span class="font-mono text-deep-cyan text-[10px] block">09:30 - 11:30 HS • ESPACIO B2B</span>
+                <span class="font-medium text-white">Foro Inversiones Corredor Bioceánico</span>
+              </div>
+              <span class="px-2 py-0.5 rounded bg-deep-violet/20 text-deep-violet text-[9px] font-mono border border-deep-violet/40">B2B</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between text-xs">
+              <div>
+                <span class="font-mono text-deep-cyan text-[10px] block">11:45 - 14:00 HS • CARPA MATCHMAKING</span>
+                <span class="font-medium text-white">Rondas de Negocios Mineras & Proveedores</span>
+              </div>
+              <span class="px-2 py-0.5 rounded bg-deep-cyan/20 text-deep-cyan text-[9px] font-mono border border-deep-cyan/40">IA CRUCE</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: "EXPOJUY Exhibition Center" 3D Isometric Map (7 cols) (From Image 2) -->
+        <div class="lg:col-span-7 iso-card p-6 relative">
+          
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h3 class="font-tech font-bold text-lg text-white">EXPOJUY Exhibition Center</h3>
+              <p class="text-xs text-slate-400 font-mono">Digital Twin • Ciudad Cultural Alto Padilla</p>
+            </div>
+
+            <!-- Compass Widget -->
+            <div class="w-10 h-10 rounded-full border border-slate-700 bg-slate-950 flex items-center justify-center font-mono text-[9px] text-deep-cyan">
+              N ↑
+            </div>
+          </div>
+
+          <!-- SVG 3D Isometric Wireframe Vector Map (Identical to reference) -->
+          <div class="relative w-full aspect-[16/9] bg-deep-void rounded-xl border border-slate-800 overflow-hidden flex items-center justify-center p-2">
+            <svg viewBox="0 0 600 320" class="w-full h-full select-none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Grid Floor -->
+              <g stroke="#1E293B" stroke-width="1" opacity="0.4">
+                <line x1="0" y1="160" x2="300" y2="310" />
+                <line x1="300" y1="310" x2="600" y2="160" />
+                <line x1="0" y1="160" x2="300" y2="10" />
+                <line x1="300" y1="10" x2="600" y2="160" />
+                
+                <line x1="100" y1="110" x2="400" y2="260" />
+                <line x1="200" y1="60" x2="500" y2="210" />
+                <line x1="200" y1="260" x2="500" y2="110" />
+                <line x1="100" y1="210" x2="400" y2="60" />
+              </g>
+
+              <!-- TECH HALL (Purple Isometric Pavilion 1) -->
+              <g class="cursor-pointer group" onclick="alert('Pabellón TECH & IA: Software, ClusteAR y Robótica.')">
+                <polygon points="120,130 200,90 280,130 200,170" fill="#7C3AED" fill-opacity="0.3" stroke="#A855F7" stroke-width="2" />
+                <polygon points="120,130 200,170 200,200 120,160" fill="#4C1D95" fill-opacity="0.7" stroke="#A855F7" stroke-width="2" />
+                <polygon points="200,170 280,130 280,160 200,200" fill="#3B0764" fill-opacity="0.9" stroke="#A855F7" stroke-width="2" />
+                <text x="200" y="135" fill="#FFFFFF" font-family="Space Grotesk" font-size="11" font-weight="bold" text-anchor="middle">TECH HALL</text>
+                <text x="200" y="150" fill="#C084FC" font-family="JetBrains Mono" font-size="8" text-anchor="middle">PAVILION 1</text>
+              </g>
+
+              <!-- AGRO & LOGISTICS (Cyan Isometric Pavilion) -->
+              <g class="cursor-pointer group" onclick="alert('Pabellón AGRO & LOGÍSTICA: Ledesma, Zonas Francas y Vinos.')">
+                <polygon points="320,180 400,140 480,180 400,220" fill="#00F5D4" fill-opacity="0.25" stroke="#00F5D4" stroke-width="2" />
+                <polygon points="320,180 400,220 400,248 320,208" fill="#0E7490" fill-opacity="0.6" stroke="#00F5D4" stroke-width="2" />
+                <polygon points="400,220 480,180 480,208 400,248" fill="#155E75" fill-opacity="0.8" stroke="#00F5D4" stroke-width="2" />
+                <text x="400" y="185" fill="#00F5D4" font-family="Space Grotesk" font-size="11" font-weight="bold" text-anchor="middle">AGRO PAVILION</text>
+                <text x="400" y="200" fill="#E2E8F0" font-family="JetBrains Mono" font-size="8" text-anchor="middle">MINING HUB</text>
+              </g>
+
+              <!-- Central walkway -->
+              <line x1="280" y1="130" x2="320" y2="180" stroke="#00F5D4" stroke-width="2" stroke-dasharray="4 4" />
+            </svg>
+          </div>
+
+          <div class="flex items-center justify-between mt-4 text-xs font-mono">
+            <span class="text-slate-400">Click en un sector para inspeccionar empresas</span>
+            <a href="#plano" class="text-deep-cyan hover:underline">Ver Plano 2D Detallado →</a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= TERMINAL EXPOSITORES ================= -->
+  <section id="sectores" class="max-w-7xl mx-auto px-4 py-16 border-t border-slate-800">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <span class="font-mono text-xs text-deep-cyan uppercase tracking-widest">[ DIRECTORIO EMPRESARIAL ]</span>
+        <h2 class="font-tech font-bold text-3xl text-white mt-1">Ecosistema Productivo ExpoJuy</h2>
+      </div>
+      <div class="font-mono text-xs text-slate-500">Total: 8 Muestras Activas</div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="p-5 rounded-xl bg-deep-grid border border-slate-800 hover:border-deep-cyan transition-colors">
+        <div class="font-mono text-[10px] text-deep-cyan mb-1">STAND A-12 • PABELLÓN 1</div>
+        <h4 class="font-tech font-bold text-base text-white">Sales de Jujuy / Allkem</h4>
+        <p class="text-xs text-slate-400 mt-2">Complejo de litio en Salar de Olaroz. Carbonato de litio grado batería.</p>
+      </div>
+      <div class="p-5 rounded-xl bg-deep-grid border border-slate-800 hover:border-deep-cyan transition-colors">
+        <div class="font-mono text-[10px] text-amber-400 mb-1">STAND A-25 • PABELLÓN 1</div>
+        <h4 class="font-tech font-bold text-base text-white">Cauchari Solar 300MW</h4>
+        <p class="text-xs text-slate-400 mt-2">Planta solar fotovoltaica a 4.000 msnm con generación limpia continua.</p>
+      </div>
+      <div class="p-5 rounded-xl bg-deep-grid border border-slate-800 hover:border-deep-cyan transition-colors">
+        <div class="font-mono text-[10px] text-deep-violet mb-1">STAND B-30 • TECH HALL</div>
+        <h4 class="font-tech font-bold text-base text-white">ClusteAR Tech Hub</h4>
+        <p class="text-xs text-slate-400 mt-2">Cámara de empresas de software, IA y soluciones tecnológicas provinciales.</p>
+      </div>
+      <div class="p-5 rounded-xl bg-deep-grid border border-slate-800 hover:border-deep-cyan transition-colors">
+        <div class="font-mono text-[10px] text-emerald-400 mb-1">STAND B-18 • PABELLÓN AGRO</div>
+        <h4 class="font-tech font-bold text-base text-white">Zona Franca Perico</h4>
+        <p class="text-xs text-slate-400 mt-2">Enclave logístico y aduanero del Corredor Bioceánico Eje de Capricornio.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ENTRADAS & QR DESMATERIALIZADO ================= -->
+  <section id="entradas" class="max-w-4xl mx-auto px-4 py-16">
+    <div class="border border-slate-800 bg-deep-void rounded-2xl p-8 relative">
+      <div class="flex items-center justify-between pb-6 mb-6 border-b border-slate-800">
+        <div>
+          <span class="font-mono text-xs text-deep-cyan">[ ACREDITACIÓN TELEMÁTICA ]</span>
+          <h2 class="font-tech font-bold text-2xl text-white mt-1">Pase Virtual Cero Papel (QR)</h2>
+        </div>
+        <div class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <form onsubmit="handlePass2(event)" class="space-y-3 font-mono text-xs">
+          <div>
+            <label class="block text-slate-400 mb-1">NOMBRE COMPLETO</label>
+            <input type="text" id="usrName" value="Dr. Ramiro Guanca" class="w-full p-2.5 bg-slate-950 border border-slate-800 rounded text-white focus:outline-none focus:border-deep-cyan">
+          </div>
+          <div>
+            <label class="block text-slate-400 mb-1">DNI / PASAPORTE</label>
+            <input type="text" id="usrDoc" value="31.298.411" class="w-full p-2.5 bg-slate-950 border border-slate-800 rounded text-white focus:outline-none focus:border-deep-cyan">
+          </div>
+          <div>
+            <label class="block text-slate-400 mb-1">MODALIDAD</label>
+            <select id="usrMod" class="w-full p-2.5 bg-slate-950 border border-slate-800 rounded text-white focus:outline-none focus:border-deep-cyan">
+              <option>B2B CORPORATIVO (RONDAS 09:00 - 14:00)</option>
+              <option>PÚBLICO GENERAL (SHOWS 15:00 - 23:30)</option>
+            </select>
+          </div>
+          <button type="submit" class="w-full py-3 bg-deep-cyan text-black font-bold rounded mt-2 hover:bg-white transition-colors">
+            [ EMITIR CREDENCIAL ENCRIPTADA ]
+          </button>
+        </form>
+
+        <div class="p-6 rounded-xl bg-slate-950 border border-slate-800 text-center font-mono">
+          <div class="text-[10px] text-slate-500 mb-2">EXPOJUY 2026 // PASS-KEY</div>
+          <div class="bg-white p-3 rounded-lg w-36 h-36 mx-auto mb-3 flex items-center justify-center">
+            <div id="qrBox2"></div>
+          </div>
+          <div id="tagHolder" class="text-white font-bold text-xs">Dr. Ramiro Guanca</div>
+          <div class="text-[10px] text-deep-cyan mt-1">TOKEN ACTIVO • CIUDAD CULTURAL</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="border-t border-slate-900 bg-deep-void py-10 font-mono text-xs text-slate-500 text-center">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>EXPOJUY 2026 • 17° Edición • San Salvador de Jujuy, Argentina</div>
+      <div class="text-deep-cyan">Opción 2: Deep-Tech & Topografía Vectorial</div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleAgendaView(m) {
+      const b1 = document.getElementById('togB2B');
+      const b2 = document.getElementById('togGen');
+      const w = document.getElementById('agendaWidgetList');
+
+      if (m === 'b2b') {
+        b1.className = "px-3 py-1 rounded-full font-bold bg-deep-cyan text-black transition-all";
+        b2.className = "px-3 py-1 rounded-full text-slate-400 hover:text-white transition-all";
+        w.innerHTML = `
+          <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between text-xs">
+            <div>
+              <span class="font-mono text-deep-cyan text-[10px] block">09:30 - 11:30 HS • ESPACIO B2B</span>
+              <span class="font-medium text-white">Foro Inversiones Corredor Bioceánico</span>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-deep-violet/20 text-deep-violet text-[9px] font-mono border border-deep-violet/40">B2B</span>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between text-xs">
+            <div>
+              <span class="font-mono text-deep-cyan text-[10px] block">11:45 - 14:00 HS • CARPA MATCHMAKING</span>
+              <span class="font-medium text-white">Rondas de Negocios Mineras & Proveedores</span>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-deep-cyan/20 text-deep-cyan text-[9px] font-mono border border-deep-cyan/40">IA CRUCE</span>
+          </div>
+        `;
+      } else {
+        b2.className = "px-3 py-1 rounded-full font-bold bg-deep-violet text-white transition-all";
+        b1.className = "px-3 py-1 rounded-full text-slate-400 hover:text-white transition-all";
+        w.innerHTML = `
+          <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between text-xs">
+            <div>
+              <span class="font-mono text-deep-violet text-[10px] block">17:00 - 19:30 HS • PATIO CENTRAL</span>
+              <span class="font-medium text-white">Apertura Familiar & Paseo de Sabores Jujeños</span>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[9px] font-mono border border-emerald-500/40">FESTIVAL</span>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between text-xs">
+            <div>
+              <span class="font-mono text-deep-violet text-[10px] block">20:30 - 23:30 HS • ESCENARIO</span>
+              <span class="font-medium text-white">Festival Folclórico & Bandas en Vivo</span>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-fuchsia-500/20 text-fuchsia-400 text-[9px] font-mono border border-fuchsia-500/40">SHOW</span>
+          </div>
+        `;
+      }
+    }
+
+    function filterSector(s) {
+      alert(`Filtro aplicado para el sector: ${s.toUpperCase()}. Actualizando telemetría.`);
+    }
+
+    function handlePass2(e) {
+      e.preventDefault();
+      const n = document.getElementById('usrName').value;
+      const d = document.getElementById('usrDoc').value;
+      document.getElementById('tagHolder').innerText = n;
+      renderQR2(`EXPOJUY-OP2:${d}:${n}`);
+      alert("Credencial telemática generada con éxito.");
+    }
+
+    function renderQR2(text) {
+      const b = document.getElementById('qrBox2');
+      b.innerHTML = '';
+      new QRCode(b, {
+        text: text,
+        width: 120,
+        height: 120,
+        colorDark: "#030712",
+        colorLight: "#FFFFFF"
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderQR2("EXPOJUY2026:31298411:RamiroGuanca");
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
