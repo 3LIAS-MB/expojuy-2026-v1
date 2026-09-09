@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
-import { Download, Check, QrCode, ShieldCheck } from 'lucide-react';
+import { Download, Check, QrCode } from 'lucide-react';
 
 export default function AcreditacionSection() {
   const [name, setName] = useState('Martín Gutiérrez');
@@ -30,10 +30,6 @@ export default function AcreditacionSection() {
             <div className="lg:col-span-7 space-y-6">
               
               <div className="space-y-2">
-                <span className="text-xs font-bold uppercase tracking-widest text-[#820cd0] flex items-center gap-2">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#25c0d4]" />
-                  Registro & Acreditaciones
-                </span>
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0b123b] tracking-tight">
                   Acreditación Oficial & Pase Digital QR
                 </h2>

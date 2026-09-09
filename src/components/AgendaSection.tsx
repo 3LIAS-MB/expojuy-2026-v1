@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Clock, MapPin, Check, Plus, Calendar } from 'lucide-react';
+import { Clock, MapPin, Check, Plus } from 'lucide-react';
 
 interface EventItem {
   time: string;
@@ -86,54 +86,62 @@ const AGENDA_DATA: Record<number, { date: string; label: string; highlight: stri
   3: {
     date: "Domingo 11 de Octubre",
     label: "Jornada 03",
-    highlight: "Agroindustria, Vinos de Altura & Comercio",
+    highlight: "Turismo, Gastronomía & Cultura",
     events: [
       {
-        time: "11:30 hs",
-        category: "Seminario",
-        categoryType: "b2b",
-        location: "Auditorio Valles",
-        title: "Panel Exportadores: Vinos de Extrema Altura & Oferta Exportable",
-        desc: "Análisis de mercados de exportación para bodegas de la Quebrada y productores agroindustriales."
+        time: "11:00 hs",
+        category: "Gourmet & Orígenes",
+        categoryType: "ferial",
+        location: "Plaza Gastronómica",
+        title: "Masterclass de Cocina Andina & Maridaje",
+        desc: "Chefs invitados elaboran platos autóctonos con ingredientes de la Quebrada y Puna."
       },
       {
         time: "16:00 hs",
-        category: "Gastronomía",
-        categoryType: "ferial",
-        location: "Patio Gastronómico",
-        title: "Masterclass & Catas de Productos Regionales",
-        desc: "Demostración gastronómica en vivo con insumos locales y maridaje de cepas jujeñas."
+        category: "Foro Turístico",
+        categoryType: "b2b",
+        location: "Auditorio Principal",
+        title: "Jujuy como Hub Turístico & Conectividad Aérea",
+        desc: "Presentación de nuevos circuitos turísticos e inversiones sostenibles."
       },
       {
-        time: "20:00 hs",
-        category: "Festival Cultural",
+        time: "21:00 hs",
+        category: "Espectáculo Ferial",
         categoryType: "show",
         location: "Escenario Central",
-        title: "Encuentro de Danzas Tradicionales & Sikuris",
-        desc: "Muestra de expresión cultural andina e integración regional."
+        title: "Gran Noche Popular & Carnaval Jujeño",
+        desc: "Desfile de comparsas, música en vivo y celebración cultural inclusiva."
       }
     ]
   },
   4: {
     date: "Lunes 12 de Octubre",
     label: "Jornada 04",
-    highlight: "Balance Comercial, Premiación & Clausura",
+    highlight: "Clausura & Sorteos Institucionales",
     events: [
       {
         time: "10:30 hs",
-        category: "Informe Ejecutivo",
+        category: "Balance Corporativo",
         categoryType: "b2b",
-        location: "Auditorio Principal",
-        title: "Presentación de Resultados del Corredor Bioceánico",
-        desc: "Informe final sobre volumen de acuerdos comerciales preacordados e intenciones de inversión."
+        location: "Sala de Conferencias A",
+        title: "Presentación de Resultados de las Rondas B2B",
+        desc: "Informe final de acuerdos comerciales e intención de negocios alcanzados."
       },
       {
-        time: "18:00 hs",
-        category: "Clausura",
+        time: "17:00 hs",
+        category: "Cierre de Stands",
         categoryType: "ferial",
+        location: "Pabellones A, B y C",
+        title: "Premiación al Mejor Stand ExpoJuy 2026",
+        desc: "Reconocimiento a la innovación, sustentabilidad y diseño arquitectónico ferial."
+      },
+      {
+        time: "19:00 hs",
+        category: "Acto de Clausura",
+        categoryType: "show",
         location: "Escenario Central",
-        title: "Ceremonia de Premiación a Expositores & Cierre Oficial",
-        desc: "Reconocimiento a los mejores diseños de stand, innovación sustentable y cierre de la 17° Edición."
+        title: "Sorteo Oficial de Cierre & Cierre Oficial",
+        desc: "Palabras finales de las autoridades de la Cámara de Comercio Exterior y sorteos para visitantes."
       }
     ]
   }
@@ -155,19 +163,10 @@ export default function AgendaSection() {
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12">
         
         {/* Editorial Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-[#dfe3ef]">
-          <div className="space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#820cd0] flex items-center gap-2">
-              <Calendar className="w-3.5 h-3.5 text-[#25c0d4]" />
-              Agenda Oficial de Actividades
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0b123b] tracking-tight">
-              Cronograma de Jornadas & Rondas B2B
-            </h2>
-          </div>
-          <p className="text-sm text-[#676370] max-w-md leading-relaxed">
-            Cronograma institucional organizado por días. Consultá las disertaciones ejecutivas, mesas comerciales y espectáculos feriales.
-          </p>
+        <div className="pb-8 border-b border-[#dfe3ef]">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0b123b] tracking-tight">
+            Cronograma de Jornadas & Rondas B2B
+          </h2>
         </div>
 
         {/* Corporate Day Selector Tabs with Active Press Feedback */}
@@ -199,21 +198,6 @@ export default function AgendaSection() {
               </button>
             );
           })}
-        </div>
-
-        {/* Active Day Header Info */}
-        <div className="bg-[#f7f8fc] border border-[#dfe3ef] rounded-xl p-4 sm:p-5 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-[#820cd0]">
-              {currentAgenda.label} &bull; {currentAgenda.date}
-            </span>
-            <h3 className="text-base sm:text-lg font-bold text-[#0b123b] mt-0.5">
-              {currentAgenda.highlight}
-            </h3>
-          </div>
-          <span className="text-xs text-[#676370] font-semibold">
-            {currentAgenda.events.length} eventos programados
-          </span>
         </div>
 
         {/* Executive Table / Event List */}
