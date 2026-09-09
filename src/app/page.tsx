@@ -11,6 +11,9 @@ import { NewsSection } from "@/components/news/NewsSection";
 import { LocationSection } from "@/components/prototype/location-section";
 
 import FaqSection from "@/components/FaqSection";
+import AgendaSection from "@/components/AgendaSection";
+import PlanoSection from "@/components/PlanoSection";
+import AcreditacionSection from "@/components/AcreditacionSection";
 import { Footer } from "@/components/layout/Footer";
 
 export default function Home() {
@@ -57,8 +60,11 @@ export default function Home() {
         <AboutExperience />
         <SponsorsMarquee />
         <ExhibitorsSection />
+        <AgendaSection />
+        <PlanoSection />
         <NewsSection />
         <LocationSection />
+        <AcreditacionSection />
         <FaqSection />
       </main>
 
