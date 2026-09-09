@@ -9,9 +9,12 @@ import {
   FaArrowRight,
   FaChevronLeft,
   FaChevronRight,
+  FaHandshake,
+  FaIndustry,
+  FaLightbulb,
+  FaMountainSun,
 } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
-import { Expo3DCarousel } from "@/components/Expo3DCarousel";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -317,11 +320,12 @@ export function AboutExperience() {
           data-about-panel
           className="about-panel relative flex h-full flex-col justify-between border-r border-[#e5e7eb] px-6 pt-24 pb-28 sm:px-10 lg:px-16"
         >
-          <div className="relative z-10 grid w-full max-w-7xl grid-cols-1 items-start gap-8 md:grid-cols-[1.1fr_0.9fr]">
+          <div className="relative z-10 grid w-full max-w-3xl grid-cols-1 items-start">
             {/* Main Editorial Plaque */}
             <div className="about-editorial-plaque relative max-w-2xl p-8 sm:p-11">
-<h2
+              <h2
                 data-about-reveal
+                aria-label="Sobre ExpoJuy 2026"
                 className="text-[clamp(3.2rem,4.8vw,5.2rem)] font-extrabold leading-[1.02] tracking-[-0.035em] text-[#0e122b]"
               >
                 Sobre{" "}
@@ -351,7 +355,6 @@ export function AboutExperience() {
               </a>
             </div>
 
-<figure className="about-place-photo" data-about-reveal><Image src="/images/evento/11-Bv-B7Fmn.jpg" alt="Producción y territorio de Jujuy" fill sizes="(max-width: 767px) 90vw, 36vw" className="object-cover" /><figcaption>Jujuy, punto de encuentro.</figcaption></figure>
           </div>
 
           {/* Bottom stats row in clean architectural plaque */}
@@ -444,16 +447,114 @@ export function AboutExperience() {
         </article>
 
         {/* ===============================================================
-            PANEL 03: CUATRO MUNDOS - ALTERNATING 2x4 GRID
-            =============================================================== */}
-        {/* ===============================================================
-            PANEL 03: CUATRO MUNDOS - EXPO 3D CAROUSEL
+            PANEL 03: CUATRO MUNDOS - EDITORIAL SECTOR GRID
             =============================================================== */}
         <article
           data-about-panel
-          className="about-panel relative flex min-h-[660px] md:min-h-0 h-full w-full flex-col justify-between overflow-hidden border-r border-[#e5e7eb] p-0"
+          className="about-panel relative flex h-full flex-col justify-center border-r border-[#e5e7eb] px-6 pt-20 pb-32 sm:px-10 lg:px-16"
         >
-          <Expo3DCarousel />
+          <div className="relative z-10 mx-auto w-full max-w-7xl pb-6">
+            <div className="about-editorial-plaque relative max-w-3xl p-8 sm:p-10">
+              <div data-about-reveal className="mb-6 flex items-center justify-between border-b border-[#e5e9f4] pb-4">
+                <span className="about-editorial-tag">EXP · 03</span>
+              </div>
+
+              <h2
+                data-about-reveal
+                className="text-[clamp(2.4rem,3.4vw,3.8rem)] font-extrabold leading-[0.92] tracking-[-0.05em] text-[#0e122b]"
+              >
+                Cuatro Mundos,{" "}
+                <span className="text-[#820CD0]">Una Misma Visión</span>
+              </h2>
+            </div>
+
+            <div
+              data-about-reveal
+              className="mt-6 w-full overflow-hidden rounded-xl border border-white/35 bg-white/55 backdrop-blur-md"
+            >
+              <div className="grid grid-cols-2 grid-rows-2 md:grid-cols-4">
+                <div className="relative h-36 w-full border-b border-r border-white/35 md:h-40">
+                  <Image
+                    src="/images/evento/hall-banner.jpg"
+                    alt="Industria y energía"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-col justify-center border-b border-white/35 bg-white/68 p-5 backdrop-blur-sm transition-colors hover:bg-white/78 md:border-r">
+                  <div className="flex items-center justify-between">
+                    <span className="grid size-8 place-items-center rounded-lg bg-[#6424dc] text-white shadow-sm">
+                      <FaIndustry className="size-3.5" />
+                    </span>
+                    <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-[#820CD0]">SECTOR 01</span>
+                  </div>
+                  <h3 className="mt-3 text-base font-bold tracking-tight text-[#0e122b]">Industria y energía</h3>
+                  <p className="mt-1 text-xs leading-relaxed text-[#374151]">Producción e infraestructura para transformar el territorio.</p>
+                  <FaArrowRight className="mt-3 size-3 text-[#6424dc]" />
+                </div>
+
+                <div className="relative h-36 w-full border-b border-r border-white/35 md:h-40">
+                  <Image
+                    src="/images/evento/evento_conferencia.png"
+                    alt="Innovación aplicada"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-col justify-center border-b border-white/35 bg-white/68 p-5 backdrop-blur-sm transition-colors hover:bg-white/78">
+                  <div className="flex items-center justify-between">
+                    <span className="grid size-8 place-items-center rounded-lg bg-[#0b7c8a] text-white shadow-sm">
+                      <FaLightbulb className="size-3.5" />
+                    </span>
+                    <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-[#0b7c8a]">SECTOR 02</span>
+                  </div>
+                  <h3 className="mt-3 text-base font-bold tracking-tight text-[#0e122b]">Innovación aplicada</h3>
+                  <p className="mt-1 text-xs leading-relaxed text-[#374151]">Talento y soluciones que impulsan nuevos proyectos.</p>
+                  <FaArrowRight className="mt-3 size-3 text-[#0b7c8a]" />
+                </div>
+
+                <div className="relative h-36 w-full border-r border-white/35 md:h-40">
+                  <Image
+                    src="/images/evento/11-Bv-B7Fmn.jpg"
+                    alt="Producción e identidad"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-col justify-center border-white/35 bg-white/68 p-5 backdrop-blur-sm transition-colors hover:bg-white/78 md:border-r">
+                  <div className="flex items-center justify-between">
+                    <span className="grid size-8 place-items-center rounded-lg bg-[#7f08d5] text-white shadow-sm">
+                      <FaMountainSun className="size-3.5" />
+                    </span>
+                    <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-[#7f08d5]">SECTOR 03</span>
+                  </div>
+                  <h3 className="mt-3 text-base font-bold tracking-tight text-[#0e122b]">Producción e identidad</h3>
+                  <p className="mt-1 text-xs leading-relaxed text-[#374151]">Economías regionales y cultura que proyectan a Jujuy.</p>
+                  <FaArrowRight className="mt-3 size-3 text-[#7f08d5]" />
+                </div>
+
+                <div className="relative h-36 w-full border-r border-white/35 md:h-40">
+                  <Image
+                    src="/images/evento/expo.png"
+                    alt="Comercio y alianzas"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-col justify-center bg-white/68 p-5 backdrop-blur-sm transition-colors hover:bg-white/78">
+                  <div className="flex items-center justify-between">
+                    <span className="grid size-8 place-items-center rounded-lg bg-[#6424dc] text-white shadow-sm">
+                      <FaHandshake className="size-3.5" />
+                    </span>
+                    <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-[#6424dc]">SECTOR 04</span>
+                  </div>
+                  <h3 className="mt-3 text-base font-bold tracking-tight text-[#0e122b]">Comercio y alianzas</h3>
+                  <p className="mt-1 text-xs leading-relaxed text-[#374151]">Rondas, vínculos empresariales y oportunidades hacia nuevos mercados.</p>
+                  <FaArrowRight className="mt-3 size-3 text-[#6424dc]" />
+                </div>
+              </div>
+            </div>
+          </div>
         </article>
 
         {/* ===============================================================
