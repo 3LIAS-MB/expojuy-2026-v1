@@ -18,7 +18,7 @@ export default function AcreditacionSection() {
   };
 
   return (
-    <section id="acreditacion" className="py-20 bg-[#f7f8fc] border-t border-[#dfe3ef]">
+    <section id="acreditacion" className="py-16 sm:py-24 bg-[#f7f8fc] border-t border-[#dfe3ef]">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12">
         
         {/* Container Principal Estilo Corporativo */}
@@ -30,10 +30,10 @@ export default function AcreditacionSection() {
             <div className="lg:col-span-7 space-y-6">
               
               <div className="space-y-2">
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#820cd0]">
-                  <ShieldCheck className="w-4 h-4 text-[#25c0d4]" />
-                  <span>05 &bull; Registro & Acreditaciones</span>
-                </div>
+                <span className="text-xs font-bold uppercase tracking-widest text-[#820cd0] flex items-center gap-2">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#25c0d4]" />
+                  Registro & Acreditaciones
+                </span>
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0b123b] tracking-tight">
                   Acreditación Oficial & Pase Digital QR
                 </h2>
@@ -53,7 +53,7 @@ export default function AcreditacionSection() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Ej. Lic. Martín Gutiérrez" 
-                    className="w-full px-4 py-3 rounded-xl bg-[#f7f8fc] border border-[#dfe3ef] text-[#0b123b] placeholder-gray-400 text-sm focus:outline-none focus:bg-white focus:border-[#0b123b] transition-all font-medium"
+                    className="w-full px-4 py-3 rounded-xl bg-[#f7f8fc] border border-[#dfe3ef] text-[#0b123b] placeholder-gray-400 text-sm focus:outline-none focus:bg-white focus:border-[#0b123b] transition-colors duration-150 font-medium"
                   />
                 </div>
 
@@ -68,7 +68,7 @@ export default function AcreditacionSection() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="martin@empresa.com" 
-                      className="w-full px-4 py-3 rounded-xl bg-[#f7f8fc] border border-[#dfe3ef] text-[#0b123b] placeholder-gray-400 text-sm focus:outline-none focus:bg-white focus:border-[#0b123b] transition-all font-medium"
+                      className="w-full px-4 py-3 rounded-xl bg-[#f7f8fc] border border-[#dfe3ef] text-[#0b123b] placeholder-gray-400 text-sm focus:outline-none focus:bg-white focus:border-[#0b123b] transition-colors duration-150 font-medium"
                     />
                   </div>
                   <div>
@@ -78,7 +78,7 @@ export default function AcreditacionSection() {
                     <select 
                       value={passType}
                       onChange={(e) => setPassType(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-[#f7f8fc] border border-[#dfe3ef] text-[#0b123b] text-sm focus:outline-none focus:bg-white focus:border-[#0b123b] transition-all font-semibold"
+                      className="w-full px-4 py-3 rounded-xl bg-[#f7f8fc] border border-[#dfe3ef] text-[#0b123b] text-sm focus:outline-none focus:bg-white focus:border-[#0b123b] transition-colors duration-150 font-semibold"
                     >
                       <option value="Empresa / Ronda B2B">Corporativo · Rondas B2B</option>
                       <option value="Visitante General">Público General</option>
@@ -90,7 +90,7 @@ export default function AcreditacionSection() {
 
                 <button 
                   type="submit" 
-                  className="w-full sm:w-auto px-8 py-3.5 rounded-xl font-bold text-white bg-[#0b123b] hover:bg-[#820cd0] transition-all cursor-pointer flex items-center justify-center gap-2 shadow-sm"
+                  className="w-full sm:w-auto px-8 py-3.5 rounded-xl font-bold text-white bg-[#0b123b] hover:bg-[#820cd0] transition-all duration-150 active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2 shadow-sm"
                 >
                   <QrCode className="w-4 h-4 text-[#25c0d4]" />
                   <span>Generar Credencial Digital</span>
@@ -146,7 +146,7 @@ export default function AcreditacionSection() {
 
                 <button 
                   onClick={() => alert('Credencial descargada')}
-                  className="mt-5 w-full py-2.5 rounded-xl bg-[#f7f8fc] hover:bg-[#0b123b] text-[#0b123b] hover:text-white transition-all border border-[#dfe3ef] text-xs font-bold flex items-center justify-center gap-2 cursor-pointer"
+                  className="mt-5 w-full py-2.5 rounded-xl bg-[#f7f8fc] hover:bg-[#0b123b] text-[#0b123b] hover:text-white transition-all duration-150 active:scale-[0.98] border border-[#dfe3ef] text-xs font-bold flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Download className="w-4 h-4" />
                   <span>Descargar Credencial</span>

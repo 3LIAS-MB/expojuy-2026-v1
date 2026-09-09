@@ -48,7 +48,7 @@ const AGENDA_DATA: Record<number, { date: string; label: string; highlight: stri
         categoryType: "show",
         location: "Escenario Central",
         title: "Gala Artística de Apertura & Ensamble Jujeño",
-        desc: "Cierre cultural de la primera jornada con la participación de la Orquesta Sinfónica Provincial y agrupaciones autóctonas."
+        desc: "Cierre artístico del primer día con la participación de la Orquesta Sinfónica Provincial y agrupaciones autóctonas."
       }
     ]
   },
@@ -151,27 +151,27 @@ export default function AgendaSection() {
   };
 
   return (
-    <section id="agenda" className="py-20 bg-white border-t border-[#dfe3ef]">
+    <section id="agenda" className="py-16 sm:py-24 bg-white border-t border-[#dfe3ef]">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12">
         
         {/* Editorial Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 border-b border-[#dfe3ef]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-[#dfe3ef]">
           <div className="space-y-2">
-            <div className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-widest text-[#820cd0]">
-              <Calendar className="w-4 h-4 text-[#25c0d4]" />
-              <span>04 &bull; Cronograma Oficial</span>
-            </div>
+            <span className="text-xs font-bold uppercase tracking-widest text-[#820cd0] flex items-center gap-2">
+              <Calendar className="w-3.5 h-3.5 text-[#25c0d4]" />
+              Agenda Oficial de Actividades
+            </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0b123b] tracking-tight">
-              Agenda de Actividades & Rondas B2B
+              Cronograma de Jornadas & Rondas B2B
             </h2>
           </div>
           <p className="text-sm text-[#676370] max-w-md leading-relaxed">
-            Cronograma institucional organizado por jornadas. Consultá las conferencias ejecutivas, espacio de negocios y presentaciones de la exposición.
+            Cronograma institucional organizado por días. Consultá las disertaciones ejecutivas, mesas comerciales y espectáculos feriales.
           </p>
         </div>
 
-        {/* Corporate Day Selector Tabs */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-8">
+        {/* Corporate Day Selector Tabs with Active Press Feedback */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 py-8">
           {[1, 2, 3, 4].map((day) => {
             const data = AGENDA_DATA[day];
             const isActive = selectedDay === day;
@@ -179,21 +179,21 @@ export default function AgendaSection() {
               <button
                 key={day}
                 onClick={() => setSelectedDay(day)}
-                className={`p-4 rounded-xl text-left border transition-all cursor-pointer flex flex-col justify-between space-y-2 ${
+                className={`p-4 rounded-xl text-left border transition-all duration-150 active:scale-[0.98] cursor-pointer flex flex-col justify-between space-y-2.5 ${
                   isActive
                     ? 'bg-[#0b123b] text-white border-[#0b123b] shadow-md'
                     : 'bg-[#f7f8fc] border-[#dfe3ef] text-[#3c3c3c] hover:border-[#820cd0] hover:bg-white'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className={`text-[10px] font-bold uppercase tracking-wider ${isActive ? 'text-[#25c0d4]' : 'text-[#676370]'}`}>
+                  <span className={`text-[10px] font-extrabold uppercase tracking-wider ${isActive ? 'text-[#25c0d4]' : 'text-[#676370]'}`}>
                     {data.label}
                   </span>
                   <span className={`text-[11px] font-mono font-semibold ${isActive ? 'text-gray-300' : 'text-[#820cd0]'}`}>
                     {data.date.split(' de ')[0]}
                   </span>
                 </div>
-                <span className="text-sm font-extrabold leading-snug line-clamp-1">
+                <span className="text-xs sm:text-sm font-extrabold leading-snug line-clamp-1">
                   {data.highlight}
                 </span>
               </button>
@@ -201,18 +201,18 @@ export default function AgendaSection() {
           })}
         </div>
 
-        {/* Active Day Header */}
+        {/* Active Day Header Info */}
         <div className="bg-[#f7f8fc] border border-[#dfe3ef] rounded-xl p-4 sm:p-5 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-[#820cd0]">
               {currentAgenda.label} &bull; {currentAgenda.date}
             </span>
-            <h3 className="text-lg font-bold text-[#0b123b] mt-0.5">
+            <h3 className="text-base sm:text-lg font-bold text-[#0b123b] mt-0.5">
               {currentAgenda.highlight}
             </h3>
           </div>
-          <span className="text-xs text-[#676370] font-medium">
-            {currentAgenda.events.length} actividades programadas
+          <span className="text-xs text-[#676370] font-semibold">
+            {currentAgenda.events.length} eventos programados
           </span>
         </div>
 
@@ -224,7 +224,7 @@ export default function AgendaSection() {
             return (
               <div
                 key={idx}
-                className="py-5 sm:py-6 px-3 sm:px-5 hover:bg-[#f7f8fc] transition-colors rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-5"
+                className="py-5 sm:py-6 px-3 sm:px-5 hover:bg-[#f7f8fc] transition-colors duration-150 rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-5"
               >
                 {/* Event Information */}
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 flex-1 min-w-0">
@@ -258,11 +258,11 @@ export default function AgendaSection() {
 
                 </div>
 
-                {/* Bookmark / Action Button */}
+                {/* Bookmark / Action Button with Press Feedback */}
                 <div className="shrink-0 self-start md:self-center">
                   <button
                     onClick={() => toggleBookmark(ev.title)}
-                    className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 border ${
+                    className={`px-4 py-2 rounded-lg text-xs font-bold transition-all duration-150 active:scale-[0.97] cursor-pointer flex items-center gap-1.5 border ${
                       isBookmarked
                         ? 'bg-emerald-600 border-emerald-600 text-white'
                         : 'bg-white border-[#0b123b] text-[#0b123b] hover:bg-[#0b123b] hover:text-white'
