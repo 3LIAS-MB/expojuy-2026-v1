@@ -10,6 +10,9 @@ import { SponsorsMarquee } from "@/components/prototype/sponsors-marquee";
 import { NewsSection } from "@/components/news/NewsSection";
 import { LocationSection } from "@/components/prototype/location-section";
 
+import FaqSection from "@/components/FaqSection";
+import { Footer } from "@/components/layout/Footer";
+
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [isPlayingIntro, setIsPlayingIntro] = useState(true);
@@ -56,7 +59,10 @@ export default function Home() {
         <ExhibitorsSection />
         <NewsSection />
         <LocationSection />
+        <FaqSection />
       </main>
+
+      <Footer />
     </>
   );
 }
