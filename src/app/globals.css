@@ -2,14 +2,32 @@
 @import "../../node_modules/tw-animate-css/dist/tw-animate.css";
 
 .expo-sponsors {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   padding: clamp(48px, 6vw, 80px) 24px;
-  background: #fff;
-  border-top: 1px solid var(--border);
+  background: #10072c;
+  color: #ffffff;
+  border: 0;
+}
+.expo-sponsors::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  color: rgba(119, 79, 240, 0.16);
+  content: "EXPOJUY  EXPOJUY  EXPOJUY";
+  font-size: clamp(5rem, 12vw, 13rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 0.8;
+  overflow: hidden;
+  pointer-events: none;
+  white-space: nowrap;
 }
 .expo-sponsors-heading { text-align: center; margin-bottom: 28px; }
 .expo-sponsors-heading h2 {
   margin: 0;
-  color: var(--expo-ink);
+  color: #ffffff;
   font-size: clamp(28px, 3vw, 38px);
   font-weight: 600;
   line-height: 1.15;
@@ -22,7 +40,7 @@
   padding-block: 12px;
   mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
   scrollbar-width: thin;
-  scrollbar-color: var(--expo-violet) #fff;
+  scrollbar-color: var(--expo-cyan) transparent;
 }
 .expo-sponsors-track { display: flex; width: max-content; animation: expo-sponsors-scroll 40s linear infinite; }
 .expo-sponsors-group {
@@ -39,20 +57,20 @@
   object-fit: contain;
   user-select: none;
   pointer-events: none;
-  filter: grayscale(100%);
-  opacity: 0.8;
+  filter: grayscale(100%) brightness(0) invert(1);
+  opacity: 0.9;
   transition: filter 300ms ease-out, opacity 300ms ease-out, transform 300ms ease-out;
 }
 .expo-supporters {
   max-width: 1120px;
   margin: 40px auto 0;
   padding-top: 36px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
   text-align: center;
 }
 .expo-supporters h2 {
   margin: 0 0 24px;
-  color: var(--muted-foreground);
+  color: rgba(255, 255, 255, 0.72);
   font-size: 18px;
   line-height: 1.3;
   font-weight: 500;
@@ -66,13 +84,13 @@
   gap: 20px 40px;
 }
 .expo-supporters-logo { position: relative; width: 180px; height: 100px; }
-.expo-supporters-logo img { object-fit: contain; }
+.expo-supporters-logo img { object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9; }
 .expo-sponsors-viewport:focus-within .expo-sponsors-track { animation-play-state: paused; }
 @keyframes expo-sponsors-scroll { to { transform: translateX(-50%); } }
 @media (hover: hover) and (pointer: fine) {
   .expo-sponsors-viewport:hover .expo-sponsors-track { animation-play-state: paused; }
-  .expo-sponsors-frame:hover img {
-    filter: grayscale(0%);
+.expo-sponsors-frame:hover img {
+    filter: grayscale(0%) brightness(1) invert(0);
     opacity: 1;
     transform: scale(1.05);
   }
@@ -93,32 +111,32 @@
   .expo-sponsors-group[aria-hidden="true"] { display: none; }
 }
 :root {
-  --background: #f7f8fc;
-  --foreground: #0b123b;
+  --background: #ffffff;
+  --foreground: #3c3c3c;
   --card: #ffffff;
   --card-foreground: #0b123b;
   --popover: #ffffff;
   --popover-foreground: #0b123b;
-  --primary: #6424dc;
+  --primary: #820cd0;
   --primary-foreground: #ffffff;
-  --secondary: #eef0f8;
-  --secondary-foreground: #0b123b;
-  --muted: #eef0f8;
-  --muted-foreground: #646a85;
-  --accent: #e8e8ff;
-  --accent-foreground: #4920ad;
+  --secondary: #f4f1f9;
+  --secondary-foreground: #3c3c3c;
+  --muted: #f4f1f9;
+  --muted-foreground: #676370;
+  --accent: #ece5ff;
+  --accent-foreground: #5f0ba8;
   --destructive: #c83349;
-  --border: #dfe3ef;
-  --input: #dfe3ef;
-  --ring: #7f08d5;
+  --border: #ded8e8;
+  --input: #ded8e8;
+  --ring: #25c0d4;
   --radius: 0.625rem;
-  --expo-ink: #0b123b;
-  --expo-violet: #6424dc;
-  --expo-purple: #7f08d5;
-  --expo-lavender: #ac7ff0;
-  --expo-cyan: #19b9ca;
-  --expo-sun: #f4c64c;
-  --expo-paper: #f7f8fc;
+  --expo-ink: #3c3c3c;
+  --expo-violet: #820cd0;
+  --expo-purple: #774ff0;
+  --expo-lavender: #bb8cff;
+  --expo-cyan: #25c0d4;
+  --expo-sun: #25c0d4;
+  --expo-paper: #ffffff;
   --header-height: 4.75rem;
 }
 
@@ -215,12 +233,22 @@ a {
 
 .hero-shade {
   background:
-    linear-gradient(90deg, rgba(4, 8, 25, 0.82) 0%, rgba(4, 8, 25, 0.54) 43%, rgba(4, 8, 25, 0.12) 75%),
-    linear-gradient(180deg, rgba(4, 8, 25, 0.36) 0%, transparent 28%, rgba(4, 8, 25, 0.38) 100%);
+    linear-gradient(90deg, rgba(9, 4, 37, 0.9) 0%, rgba(9, 4, 37, 0.62) 43%, rgba(9, 4, 37, 0.12) 75%),
+    linear-gradient(180deg, rgba(9, 4, 37, 0.35) 0%, transparent 28%, rgba(9, 4, 37, 0.48) 100%);
 }
 
 .hero-vignette {
-  background: radial-gradient(circle at 72% 46%, transparent 0%, transparent 35%, rgba(5, 8, 24, 0.3) 100%);
+  background: radial-gradient(circle at 72% 46%, transparent 0%, transparent 35%, rgba(9, 4, 37, 0.34) 100%);
+}
+
+.expo-connection-field {
+  opacity: 0.72;
+}
+
+@media (max-width: 640px) {
+  .expo-connection-field {
+    opacity: 0.38;
+  }
 }
 
 .logo-mark {
@@ -495,13 +523,13 @@ a {
 }
 
 .about-step-node[data-active="true"] {
-  color: #6424dc;
+  color: #820cd0;
 }
 
 .about-step-node[data-active="true"]::before {
-  border-color: #6424dc;
-  background: #6424dc;
-  box-shadow: 0 0 0 3px rgba(100, 36, 220, 0.15);
+  border-color: #820cd0;
+  background: #820cd0;
+  box-shadow: 0 0 0 3px rgba(130, 12, 208, 0.15);
 }
 
 .exhibitor-scroll {

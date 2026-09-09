@@ -251,9 +251,9 @@ export function AboutExperience() {
               >
                 Sobre
                 <br />
-                <span className="text-[#6424dc]">ExpoJuy</span>
+                <span className="text-[#820CD0]">ExpoJuy</span>
                 <br />
-                <span className="text-[#6424dc]">2026</span>
+                <span className="text-[#820CD0]">2026</span>
               </h2>
 
               <p
@@ -268,10 +268,10 @@ export function AboutExperience() {
               <a
                 href="#expositores"
                 data-about-reveal
-                className="mt-7 inline-flex items-center gap-3 text-sm font-bold text-[#6424dc] transition-opacity hover:opacity-80"
+                className="mt-7 inline-flex items-center gap-3 text-sm font-bold text-[#820CD0] transition-opacity hover:opacity-80"
               >
-                <span className="grid size-10 place-items-center rounded-full border border-[#6424dc]">
-                  <Play aria-hidden className="ml-0.5 size-3.5 fill-[#6424dc]" />
+                <span className="grid size-10 place-items-center rounded-full border border-[#820CD0]">
+                  <Play aria-hidden className="ml-0.5 size-3.5 fill-[#820CD0]" />
                 </span>
                 Descubrí la edición 2026
               </a>
@@ -341,9 +341,10 @@ export function AboutExperience() {
                   <Image
                     src="/images/sobreexpojuy26/ac0ce3e5-8bdc-4bc7-8d96-3f2c356793a1.png"
                     alt="Jujuy"
-                    fill
-                    priority
-                    className="object-contain"
+                  fill
+                  priority
+                  sizes="(max-width: 1023px) 270px, 320px"
+                  className="object-contain"
                   />
                 </div>
 
@@ -639,9 +640,10 @@ export function AboutExperience() {
                   <Image
                     src="/images/sobreexpojuy26/49a5da07-0f71-4f50-9df2-9811def7dae2.png"
                     alt="Cactus y cerros de Jujuy"
-                    fill
-                    priority
-                    className="object-cover"
+                  fill
+                  priority
+                  sizes="(max-width: 1023px) 210px, 230px"
+                  className="object-cover"
                   />
                 </div>
 

@@ -80,7 +80,7 @@ export function SiteHeader({ onReplayIntro }: SiteHeaderProps) {
               <ExpoJuyLogo className="w-full h-full object-contain transition-transform duration-200 group-hover:scale-105" />
             </div>
             <span className="brand-wordmark text-[1.05rem] font-bold tracking-[-0.04em] leading-none">
-              EXPOJUY
+              EXPO<span className="text-[#BB8CFF]">J</span>UY
               <span className="ml-1.5 align-top text-[0.58em] font-semibold tracking-[0.04em]">
                 2026
               </span>
@@ -109,7 +109,7 @@ export function SiteHeader({ onReplayIntro }: SiteHeaderProps) {
           </a>
           <Button
             asChild
-            className="h-10 rounded-md bg-[#6b20df] px-5 text-white shadow-[0_8px_24px_rgba(80,15,175,.25)] hover:bg-[#5917c2]"
+            className="h-10 rounded-md bg-[#820CD0] px-5 text-white shadow-[0_8px_24px_rgba(130,12,208,.25)] hover:bg-[#6c0aa9]"
           >
             <a href="#expositores">
               Quiero participar
@@ -144,7 +144,7 @@ export function SiteHeader({ onReplayIntro }: SiteHeaderProps) {
           >
             Expositores
           </a>
-          <Button asChild className="mt-1 h-11 rounded-md bg-[#6424dc] text-white">
+          <Button asChild className="mt-1 h-11 rounded-md bg-[#820CD0] text-white">
             <a href="#expositores" onClick={() => setOpen(false)}>
               Quiero participar
               <ArrowUpRight aria-hidden className="size-4" />

@@ -24,35 +24,35 @@ const exhibitors = [
     slug: "industria",
     image: "/images/evento/hall-banner.jpg",
     copy: "Producción, infraestructura y servicios que hacen crecer la región.",
-    accent: "#19b9ca",
+    accent: "#25C0D4",
   },
   {
     sector: "Minería",
     slug: "mineria",
     image: "/images/evento/sector_mineria.png",
     copy: "Proyectos, proveedores y conocimiento para una actividad estratégica.",
-    accent: "#6424dc",
+    accent: "#820CD0",
   },
   {
     sector: "Agroindustria",
     slug: "agroindustria",
     image: "/images/evento/11-Bv-B7Fmn.jpg",
     copy: "Origen, producción y nuevas cadenas de valor de Jujuy.",
-    accent: "#f4c64c",
+    accent: "#BB8CFF",
   },
   {
     sector: "Tecnología",
     slug: "tecnologia",
     image: "/images/evento/evento_conferencia.png",
     copy: "Soluciones y talento que conectan ideas con oportunidades.",
-    accent: "#ac7ff0",
+    accent: "#774FF0",
   },
   {
     sector: "Turismo y cultura",
     slug: "turismo",
     image: "/images/evento/gastronomia.jpg",
     copy: "Experiencias, identidad y propuestas que proyectan el territorio.",
-    accent: "#e66f45",
+    accent: "#25C0D4",
   },
 ];
 
@@ -118,7 +118,7 @@ export function ExhibitorsSection() {
     >
       <div
         aria-hidden="true"
-        className="absolute left-0 top-28 h-1 w-20 bg-[#19b9ca] sm:w-32"
+        className="absolute left-0 top-28 h-1 w-20 bg-[#25C0D4] sm:w-32"
       />
       <div className="mx-auto max-w-[1480px]">
         <div className="grid gap-8 lg:grid-cols-[1fr_460px] lg:items-end">
@@ -127,7 +127,7 @@ export function ExhibitorsSection() {
             <h2 className="mt-5 max-w-[800px] text-[clamp(4rem,7.2vw,7.8rem)] font-semibold leading-[0.82] tracking-[-0.075em]">
               Expositores
               <br />
-              <span className="text-[#6424dc]">destacados</span>
+              <span className="text-[#820CD0]">destacados</span>
             </h2>
             <p className="mt-7 max-w-[620px] text-lg leading-relaxed text-[#4b5275]">
               Conocé empresas, instituciones y proyectos que impulsan la industria,
@@ -215,7 +215,7 @@ export function ExhibitorsSection() {
             <Button
               type="button"
               variant="link"
-              className="mt-2 h-auto p-0 text-[#6424dc]"
+              className="mt-2 h-auto p-0 text-[#820CD0]"
               onClick={resetFilters}
             >
               Restablecer filtros
@@ -231,7 +231,7 @@ export function ExhibitorsSection() {
           <Button
             type="button"
             disabled
-            className="h-12 rounded-md bg-[#6424dc] px-6 text-white"
+            className="h-12 rounded-md bg-[#820CD0] px-6 text-white"
           >
             Inscripciones próximamente
             <ArrowRight aria-hidden className="size-4" />
