@@ -11,6 +11,7 @@ import {
   Calendar,
   MessageCircle,
   Mail,
+  Phone,
   Sparkles
 } from "lucide-react";
 
