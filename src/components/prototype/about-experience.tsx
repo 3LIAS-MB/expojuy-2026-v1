@@ -321,19 +321,24 @@ export function AboutExperience() {
           className="about-panel relative flex h-full flex-col justify-between border-r border-[#e5e7eb] px-6 pt-24 pb-28 sm:px-10 lg:px-16"
         >
           <div className="relative z-10 grid w-full max-w-7xl grid-cols-1 items-start gap-8 md:grid-cols-[1fr_auto]">
-            <div className="about-glass-card max-w-2xl rounded-2xl p-7 sm:p-9">
-              <div data-about-reveal className="chapter-marker">
-                <span>01</span>
-                <i />
-              </div>
+            <div className="about-circle-container relative max-w-2xl p-7 sm:p-10">
+              {/* Halo circular de luz blanca en degradado a transparencia */}
+              <div
+                aria-hidden="true"
+                className="about-circle-halo -top-14 -left-14 size-[32rem] sm:size-[38rem]"
+              />
 
-              <p data-about-reveal className="eyebrow mt-5">
-                LA MUESTRA MULTISECTORIAL DEL NORTE
-              </p>
+              <div data-about-reveal className="flex items-center gap-3.5">
+                <span className="about-number-circle">01</span>
+                <div className="h-px w-10 bg-gradient-to-r from-[#820CD0]/60 to-transparent" />
+                <p className="text-xs font-bold tracking-[0.2em] text-[#475069] uppercase">
+                  LA MUESTRA MULTISECTORIAL DEL NORTE
+                </p>
+              </div>
 
               <h2
                 data-about-reveal
-                className="mt-4 text-[clamp(3.5rem,5vw,5.6rem)] font-bold leading-[0.86] tracking-[-0.065em] text-[#0e122b]"
+                className="mt-5 text-[clamp(3.5rem,5vw,5.6rem)] font-bold leading-[0.86] tracking-[-0.065em] text-[#0e122b]"
               >
                 Sobre
                 <br />
@@ -366,7 +371,7 @@ export function AboutExperience() {
             {/* Right side vertical words */}
             <aside
               data-about-reveal
-              className="about-glass-card mr-6 hidden flex-col items-start gap-1.5 self-center justify-self-end rounded-xl px-4 py-3.5 text-[0.72rem] font-bold tracking-[0.2em] text-[#0e122b] uppercase md:flex"
+              className="about-circle-container mr-6 hidden flex-col items-start gap-1.5 self-center justify-self-end px-5 py-4 text-[0.72rem] font-bold tracking-[0.2em] text-[#0e122b] uppercase md:flex"
             >
               <span>Territorio</span>
               <span>Gente</span>
@@ -376,10 +381,10 @@ export function AboutExperience() {
             </aside>
           </div>
 
-          {/* Bottom stats row in clean pill/card */}
+          {/* Bottom stats row in clean circular/gradient capsule */}
           <div
             data-about-reveal
-            className="about-glass-card relative z-10 w-full max-w-3xl rounded-xl px-6 py-4"
+            className="about-circle-container relative z-10 w-full max-w-3xl px-7 py-4.5"
           >
             <dl className="grid grid-cols-2 gap-4 divide-y divide-gray-200/80 sm:grid-cols-4 sm:divide-y-0 sm:divide-x sm:divide-gray-200/80">
               {eventFacts.map((fact, idx) => (
@@ -404,15 +409,6 @@ export function AboutExperience() {
           className="about-panel relative flex h-full flex-col justify-center border-r border-[#e5e7eb] px-6 pt-20 pb-36 sm:px-10 lg:px-16"
         >
           <div className="relative z-10 mx-auto w-full max-w-7xl pb-12 lg:pb-16">
-            <div data-about-reveal className="chapter-marker">
-              <span>02</span>
-              <i />
-            </div>
-
-            <p data-about-reveal className="eyebrow mt-5">
-              UN TERRITORIO, INFINITAS POSIBILIDADES
-            </p>
-
             <div className="mt-6 grid grid-cols-1 items-center gap-10 md:grid-cols-[auto_1fr] lg:gap-16">
               {/* Graphic: Big J with the color accent blocks */}
               <div className="relative flex items-center justify-center">
@@ -441,8 +437,22 @@ export function AboutExperience() {
                 />
               </div>
 
-              {/* Text column */}
-              <div className="about-glass-card max-w-lg rounded-2xl p-7 sm:p-9">
+              {/* Text column with circular gradient container and circular number */}
+              <div className="about-circle-container relative max-w-xl p-7 sm:p-10">
+                {/* Halo circular de luz blanca en degradado a transparencia */}
+                <div
+                  aria-hidden="true"
+                  className="about-circle-halo -top-14 -left-14 size-[30rem] sm:size-[36rem]"
+                />
+
+                <div data-about-reveal className="flex items-center gap-3.5 mb-5">
+                  <span className="about-number-circle">02</span>
+                  <div className="h-px w-10 bg-gradient-to-r from-[#820CD0]/60 to-transparent" />
+                  <p className="text-xs font-bold tracking-[0.2em] text-[#475069] uppercase">
+                    UN TERRITORIO, INFINITAS POSIBILIDADES
+                  </p>
+                </div>
+
                 <h2
                   data-about-reveal
                   className="text-[clamp(2.3rem,3.2vw,3.8rem)] font-bold leading-[0.96] tracking-[-0.05em] text-[#0e122b]"
@@ -477,15 +487,20 @@ export function AboutExperience() {
           className="about-panel relative flex h-full flex-col justify-center border-r border-[#e5e7eb] px-6 pt-20 pb-32 sm:px-10 lg:px-16"
         >
           <div className="relative z-10 mx-auto w-full max-w-7xl pb-6">
-            <div className="about-glass-card max-w-3xl rounded-2xl p-6 sm:p-7">
-              <div data-about-reveal className="chapter-marker">
-                <span>03</span>
-                <i />
-              </div>
+            <div className="about-circle-container relative max-w-3xl p-6 sm:p-9">
+              {/* Halo circular de luz blanca en degradado a transparencia */}
+              <div
+                aria-hidden="true"
+                className="about-circle-halo -top-12 -left-12 size-[28rem] sm:size-[34rem]"
+              />
 
-              <p data-about-reveal className="eyebrow mt-4">
-                CUATRO MUNDOS, UNA MISMA VISIÓN
-              </p>
+              <div data-about-reveal className="flex items-center gap-3.5 mb-4">
+                <span className="about-number-circle">03</span>
+                <div className="h-px w-10 bg-gradient-to-r from-[#820CD0]/60 to-transparent" />
+                <p className="text-xs font-bold tracking-[0.2em] text-[#475069] uppercase">
+                  CUATRO MUNDOS, UNA MISMA VISIÓN
+                </p>
+              </div>
 
               <h2
                 data-about-reveal
@@ -630,12 +645,7 @@ export function AboutExperience() {
           </div>
 
           <div className="relative z-10 mx-auto w-full max-w-7xl">
-            <div className="flex items-center justify-between">
-              <div data-about-reveal className="chapter-marker">
-                <span>04</span>
-                <i />
-              </div>
-
+            <div className="flex items-center justify-end">
               <p className="hidden text-right text-xs font-bold tracking-wider text-[#2e3650] uppercase leading-tight lg:block">
                 Más que una feria
                 <br />
@@ -643,13 +653,23 @@ export function AboutExperience() {
               </p>
             </div>
 
-            <p data-about-reveal className="eyebrow mt-5">
-              EL ENCUENTRO
-            </p>
-
             <div className="mt-5 grid grid-cols-1 items-center gap-10 md:grid-cols-[1fr_auto] lg:gap-16">
               {/* Left Column: Heading, text, and buttons */}
-              <div className="about-glass-card max-w-2xl rounded-2xl p-7 sm:p-9">
+              <div className="about-circle-container relative max-w-2xl p-7 sm:p-10">
+                {/* Halo circular de luz blanca en degradado a transparencia */}
+                <div
+                  aria-hidden="true"
+                  className="about-circle-halo -top-16 -left-16 size-[32rem] sm:size-[38rem]"
+                />
+
+                <div data-about-reveal className="flex items-center gap-3.5 mb-5">
+                  <span className="about-number-circle">04</span>
+                  <div className="h-px w-10 bg-gradient-to-r from-[#820CD0]/60 to-transparent" />
+                  <p className="text-xs font-bold tracking-[0.2em] text-[#475069] uppercase">
+                    EL ENCUENTRO
+                  </p>
+                </div>
+
                 <h2
                   data-about-reveal
                   className="text-[clamp(3.2rem,4.6vw,5.6rem)] font-bold leading-[0.88] tracking-[-0.07em] text-[#0e122b]"
