@@ -61,9 +61,9 @@ export function ExhibitorsSection() {
   const [sector, setSector] = useState("todos");
   const [query, setQuery] = useState("");
 
-  const matches = useMemo(() => {
+  const visibleExhibitors = useMemo(() => {
     const cleanQuery = query.trim().toLocaleLowerCase("es");
-    return exhibitors.map((item) => {
+    return exhibitors.filter((item) => {
       const bySector = sector === "todos" || item.slug === sector;
       const byQuery =
         cleanQuery.length === 0 ||
@@ -72,41 +72,37 @@ export function ExhibitorsSection() {
     });
   }, [query, sector]);
 
-  const visibleCount = matches.filter(Boolean).length;
+  const visibleCount = visibleExhibitors.length;
 
   useGSAP(
-    () => {
-      const media = gsap.matchMedia();
-      media.add("all", () => {
-        gsap.from("[data-exhibitor-heading]", {
-          y: 30,
-          autoAlpha: 0,
-          duration: 0.75,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: rootRef.current,
-            start: "top 74%",
-            toggleActions: "play none none reverse",
-          },
-        });
-
-        gsap.from("[data-exhibitor-card]", {
-          y: -115,
-          autoAlpha: 0,
-          duration: 0.82,
-          stagger: 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: "[data-exhibitor-list]",
-            start: "top 76%",
-            toggleActions: "play none none reverse",
-          },
+    (_context, contextSafe) => {
+      if (!contextSafe) return;
+      const root = rootRef.current;
+      if (!root) return;
+      const list = root.querySelector<HTMLElement>("[data-exhibitor-list]");
+      if (list) list.scrollLeft = 0;
+      // Observe the actual viewport, including the horizontal mobile carousel.
+      // Do not pre-hide offscreen cards: a missed trigger must never erase content.
+      const enter = contextSafe((entries: IntersectionObserverEntry[]) => {
+        const visible = entries.filter((entry) => entry.isIntersecting);
+        visible.forEach((entry, index) => {
+          const card = entry.target.hasAttribute("data-exhibitor-card");
+          gsap.fromTo(entry.target,
+            { y: card ? -72 : 20, opacity: 0.3 },
+            {
+              y: 0, opacity: 1, duration: card ? 0.7 : 0.5,
+              delay: card ? index * 0.08 : 0,
+              ease: "power3.out",
+              clearProps: "transform,opacity,visibility",
+            });
+          observer.unobserve(entry.target);
         });
       });
-
-      return () => media.revert();
+      const observer = new IntersectionObserver(enter, { threshold: 0.05 });
+      root.querySelectorAll("[data-exhibitor-card]").forEach((card) => observer.observe(card));
+      return () => observer.disconnect();
     },
-    { scope: rootRef },
+    { dependencies: [sector, query], revertOnUpdate: true, scope: rootRef },
   );
 
   const resetFilters = () => {
@@ -181,11 +177,10 @@ export function ExhibitorsSection() {
           data-exhibitor-list
           className="exhibitor-scroll -mx-5 mt-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-7 sm:-mx-8 sm:px-8 lg:mx-0 lg:grid lg:grid-cols-5 lg:overflow-visible lg:px-0"
         >
-          {exhibitors.map((item, index) => (
+          {visibleExhibitors.map((item) => (
             <article
               data-exhibitor-card
               key={item.slug}
-              hidden={!matches[index]}
               className="group relative min-h-[500px] w-[78vw] max-w-[330px] shrink-0 snap-center overflow-hidden rounded-lg border border-[#dde0eb] bg-white lg:min-h-[530px] lg:w-auto"
             >
               <div className="h-1.5 w-full" style={{ backgroundColor: item.accent }} />

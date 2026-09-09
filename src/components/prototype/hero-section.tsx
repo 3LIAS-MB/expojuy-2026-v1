@@ -19,6 +19,11 @@ export function HeroSection() {
       const media = gsap.matchMedia();
 
       media.add("all", () => {
+        if (window.scrollY > 80 || (window.location.hash && window.location.hash !== "#inicio")) {
+          gsap.set(".hero-intro", { display: "none" });
+          return;
+        }
+        gsap.set(".hero-intro", { visibility: "visible" });
         gsap.set(".hero-content", { autoAlpha: 0, y: 34 });
         gsap.set(".hero-image", { scale: 1.09 });
 
@@ -75,7 +80,7 @@ export function HeroSection() {
       <div className="hero-shade absolute inset-0 -z-20" />
       <div className="hero-vignette absolute inset-0 -z-10" />
 
-      <div className="hero-intro fixed inset-0 z-[70] grid place-items-center bg-[#f7f8fc] text-[#0b123b]">
+      <div aria-hidden="true" className="hero-intro invisible pointer-events-none fixed inset-0 z-[70] grid place-items-center bg-[#f7f8fc] text-[#0b123b]">
         <BrandMark intro />
       </div>
 
