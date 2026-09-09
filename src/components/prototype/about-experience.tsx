@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState, useCallback, useEffect } from "react";
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -26,53 +26,6 @@ const eventFacts = [
   { value: "Ciudad Cultural", label: "San Salvador de Jujuy" },
 ];
 
-const sectorsData = [
-  {
-    id: "01",
-    number: "01",
-    title: "Industria y energía",
-    copy: "Producción, minería e infraestructura transformadora.",
-    tag: "SECTOR 01",
-    category: "Minería & Energía",
-    color: "#25C0D4",
-    icon: FaIndustry,
-    image: "/images/evento/hall-banner.jpg",
-  },
-  {
-    id: "02",
-    number: "02",
-    title: "Innovación aplicada",
-    copy: "Talento, tecnología y soluciones que impulsan proyectos.",
-    tag: "SECTOR 02",
-    category: "Tecnología & Startups",
-    color: "#820CD0",
-    icon: FaLightbulb,
-    image: "/images/evento/evento_conferencia.png",
-  },
-  {
-    id: "03",
-    number: "03",
-    title: "Producción e identidad",
-    copy: "Economías regionales, agro y cultura con valor local.",
-    tag: "SECTOR 03",
-    category: "Economías Regionales",
-    color: "#ac7ff0",
-    icon: FaMountainSun,
-    image: "/images/evento/11-Bv-B7Fmn.jpg",
-  },
-  {
-    id: "04",
-    number: "04",
-    title: "Comercio y alianzas",
-    copy: "Rondas de negocios y vinculación internacional.",
-    tag: "SECTOR 04",
-    category: "Corredor Bioceánico",
-    color: "#6424dc",
-    icon: FaHandshake,
-    image: "/images/evento/expo.png",
-  },
-];
-
 export function AboutExperience() {
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -83,78 +36,6 @@ export function AboutExperience() {
   const mountainBackRef = useRef<HTMLImageElement>(null);
   const stepRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const triggerRef = useRef<ScrollTrigger | null>(null);
-
-  // Estados y referencias para el Carrusel Circular de 4 Mundos
-  const [activeSector, setActiveSector] = useState(0);
-  const [carouselPaused, setCarouselPaused] = useState(false);
-  const wheelRef = useRef<HTMLDivElement>(null);
-  const nodesRef = useRef<Array<HTMLButtonElement | null>>([]);
-  const showcaseImgRef = useRef<HTMLDivElement>(null);
-  const showcaseTextRef = useRef<HTMLDivElement>(null);
-  const currentAngleRef = useRef(0);
-
-  const goToSector = useCallback((targetIndex: number) => {
-    const nextIndex = ((targetIndex % 4) + 4) % 4;
-    setActiveSector(nextIndex);
-
-    // Rotación por camino más corto (shortest-path angle)
-    const desiredModAngle = -nextIndex * 90;
-    const currentAngle = currentAngleRef.current;
-    let delta = (desiredModAngle - (currentAngle % 360)) % 360;
-    if (delta > 180) delta -= 360;
-    if (delta < -180) delta += 360;
-    const newTargetAngle = currentAngle + delta;
-    currentAngleRef.current = newTargetAngle;
-
-    // Animar rotación de la rueda orbital con GSAP
-    if (wheelRef.current) {
-      gsap.to(wheelRef.current, {
-        rotation: newTargetAngle,
-        duration: 0.75,
-        ease: "power3.out",
-        overwrite: "auto",
-      });
-    }
-
-    // Contra-rotar cada nodo individualmente para mantener íconos y textos 100% derechos
-    nodesRef.current.forEach((node) => {
-      if (node) {
-        gsap.to(node, {
-          rotation: -newTargetAngle,
-          duration: 0.75,
-          ease: "power3.out",
-          overwrite: "auto",
-        });
-      }
-    });
-
-    // Animar la imagen del sector activo
-    if (showcaseImgRef.current) {
-      gsap.fromTo(
-        showcaseImgRef.current,
-        { opacity: 0.35, scale: 1.07 },
-        { opacity: 1, scale: 1, duration: 0.55, ease: "power2.out" }
-      );
-    }
-
-    // Animar textos con stagger sutil
-    if (showcaseTextRef.current) {
-      gsap.fromTo(
-        showcaseTextRef.current.children,
-        { opacity: 0, y: 10 },
-        { opacity: 1, y: 0, duration: 0.45, stagger: 0.05, ease: "power2.out" }
-      );
-    }
-  }, []);
-
-  // Avance automático cada 5.5s si no está pausado por el usuario
-  useEffect(() => {
-    if (carouselPaused) return;
-    const timer = setInterval(() => {
-      goToSector(activeSector + 1);
-    }, 5500);
-    return () => clearInterval(timer);
-  }, [activeSector, carouselPaused, goToSector]);
 
   useGSAP(
     (_context, contextSafe) => {
@@ -611,16 +492,16 @@ export function AboutExperience() {
         </article>
 
         {/* ===============================================================
-            PANEL 03: CUATRO MUNDOS - CARRUSEL CIRCULAR CON GSAP
+            PANEL 03: CUATRO MUNDOS - ALTERNATING 2x4 GRID
             =============================================================== */}
         <article
           data-about-panel
-          className="about-panel relative flex h-full flex-col justify-center border-r border-[#e5e7eb] px-6 pt-16 pb-28 sm:px-10 lg:px-16"
+          className="about-panel relative flex h-full flex-col justify-center border-r border-[#e5e7eb] px-6 pt-20 pb-32 sm:px-10 lg:px-16"
         >
-          <div className="relative z-10 mx-auto w-full max-w-7xl pb-4">
-            {/* Curatorial Header Plaque */}
-            <div className="about-editorial-plaque relative max-w-3xl p-6 sm:p-8 mb-5">
-              <div data-about-reveal className="flex items-center justify-between border-b border-[#e5e9f4] pb-3 mb-4">
+          <div className="relative z-10 mx-auto w-full max-w-7xl pb-6">
+            <div className="about-editorial-plaque relative max-w-3xl p-8 sm:p-10">
+              {/* Curatorial Header */}
+              <div data-about-reveal className="flex items-center justify-between border-b border-[#e5e9f4] pb-4 mb-6">
                 <div className="flex items-center gap-3">
                   <span className="about-editorial-tag">
                     EXP · 03
@@ -629,264 +510,96 @@ export function AboutExperience() {
                     Cuatro Mundos, Una Misma Visión
                   </span>
                 </div>
-                <div className="hidden sm:flex items-center gap-2">
-                  <span className="size-2 rounded-full bg-[#820CD0] animate-pulse" />
-                  <span className="font-mono text-[10px] font-bold text-[#6a7294] uppercase tracking-wider">
-                    Carrusel Circular
-                  </span>
-                </div>
               </div>
 
               <h2
                 data-about-reveal
-                className="text-[clamp(2rem,2.8vw,3.3rem)] font-extrabold leading-[0.92] tracking-[-0.055em] text-[#0e122b]"
+                className="text-[clamp(2.3rem,3vw,3.5rem)] font-extrabold leading-[0.92] tracking-[-0.05em] text-[#0e122b]"
               >
                 Una feria para producir, intercambiar y proyectar.
               </h2>
 
               <p
                 data-about-reveal
-                className="mt-3 text-sm sm:text-base leading-relaxed text-[#1a2038]"
+                className="mt-4 max-w-2xl text-base leading-relaxed text-[#1a2038]"
               >
                 La programación combina muestra comercial e institucional,
-                conferencias de alto nivel, experiencias culturales y rondas de vinculación duradera.
+                conferencias de alto nivel, experiencias culturales y espacios para construir
+                relaciones de negocio duraderas.
               </p>
             </div>
 
-            {/* Carrusel Circular Interactivo con GSAP */}
-            <div 
-              data-about-reveal 
-              className="grid grid-cols-1 items-center gap-6 lg:grid-cols-[1fr_auto] xl:gap-10"
-              onMouseEnter={() => setCarouselPaused(true)}
-              onMouseLeave={() => setCarouselPaused(false)}
+            {/* Curatorial Showcase leading directly to the 3D Spatial Gallery */}
+            <div
+              data-about-reveal
+              className="mt-8 flex flex-col gap-6"
             >
-              {/* Tarjeta Destacada del Sector Activo */}
-              <div className="about-editorial-plaque relative overflow-hidden p-6 sm:p-7">
-                <div className="grid grid-cols-1 sm:grid-cols-[220px_1fr] md:grid-cols-[250px_1fr] items-center gap-6">
-                  
-                  {/* Foto con zoom/fade GSAP */}
-                  <div className="relative aspect-[4/3] sm:aspect-square w-full rounded-xl overflow-hidden shadow-sm border border-[#dfe3ef] bg-gray-100">
-                    <div ref={showcaseImgRef} className="relative size-full">
-                      <Image
-                        src={sectorsData[activeSector].image}
-                        alt={sectorsData[activeSector].title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 100vw, 250px"
-                        priority
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0e122b]/65 via-transparent to-transparent" />
-                      
-                      <div className="absolute bottom-3 left-3">
-                        <span 
-                          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-mono font-bold tracking-wider uppercase text-white shadow-sm"
-                          style={{ backgroundColor: sectorsData[activeSector].color }}
-                        >
-                          {(() => {
-                            const IconComponent = sectorsData[activeSector].icon;
-                            return <IconComponent className="size-3" />;
-                          })()}
-                          {sectorsData[activeSector].tag}
-                        </span>
-                      </div>
-                    </div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+                <div className="p-4.5 rounded-xl bg-white/95 border border-[#dfe3ef] shadow-xs hover:border-[#820CD0] transition-colors">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="font-mono text-[10px] font-bold text-[#820CD0] uppercase tracking-wider">
+                      01 / LITIO
+                    </span>
+                    <span className="size-1.5 rounded-full bg-[#820CD0]" />
                   </div>
+                  <h4 className="text-sm font-bold text-[#0e122b]">Minería & Transición</h4>
+                  <p className="mt-1 text-[11px] text-[#4b5275] leading-relaxed">
+                    Salar de Olaroz y salinas de altura.
+                  </p>
+                </div>
 
-                  {/* Textos del Sector Activo (Animados con GSAP) */}
-                  <div ref={showcaseTextRef} className="flex flex-col justify-between space-y-3.5">
-                    <div>
-                      <div className="flex items-center justify-between mb-1.5">
-                        <span 
-                          className="font-mono text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase"
-                          style={{ color: sectorsData[activeSector].color }}
-                        >
-                          {sectorsData[activeSector].category}
-                        </span>
-                        <span className="font-mono text-xs font-extrabold text-[#820CD0]/60">
-                          {sectorsData[activeSector].number} / 04
-                        </span>
-                      </div>
-
-                      <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#0e122b] leading-tight">
-                        {sectorsData[activeSector].title}
-                      </h3>
-
-                      <p className="mt-2 text-xs sm:text-sm text-[#374151] leading-relaxed">
-                        {sectorsData[activeSector].copy}
-                      </p>
-                    </div>
-
-                    {/* Controles del Carrusel: Prev, Dots interactivos, Next */}
-                    <div className="pt-3.5 border-t border-[#dfe3ef] flex flex-wrap items-center justify-between gap-3">
-                      <div className="flex items-center gap-2">
-                        <button
-                          type="button"
-                          onClick={() => goToSector(activeSector - 1)}
-                          className="grid size-9 place-items-center rounded-full border border-gray-300 bg-white text-gray-700 hover:border-[#820CD0] hover:text-[#820CD0] shadow-xs transition-colors cursor-pointer"
-                          aria-label="Sector anterior"
-                        >
-                          <FaChevronLeft className="size-3" />
-                        </button>
-
-                        <div className="flex items-center gap-1.5 px-1.5">
-                          {sectorsData.map((item, idx) => (
-                            <button
-                              key={item.id}
-                              type="button"
-                              onClick={() => goToSector(idx)}
-                              aria-label={`Ver ${item.title}`}
-                              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                                idx === activeSector
-                                  ? "w-6 bg-[#820CD0]"
-                                  : "w-2 bg-gray-300 hover:bg-gray-400"
-                              }`}
-                            />
-                          ))}
-                        </div>
-
-                        <button
-                          type="button"
-                          onClick={() => goToSector(activeSector + 1)}
-                          className="grid size-9 place-items-center rounded-full border border-gray-300 bg-white text-gray-700 hover:border-[#820CD0] hover:text-[#820CD0] shadow-xs transition-colors cursor-pointer"
-                          aria-label="Sector siguiente"
-                        >
-                          <FaChevronRight className="size-3" />
-                        </button>
-                      </div>
-
-                      <a
-                        href="#expositores"
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#820CD0] hover:text-[#6709a3] transition-colors group"
-                      >
-                        <span>Ver expositores</span>
-                        <FaArrowRight className="size-2.5 transition-transform group-hover:translate-x-1" />
-                      </a>
-                    </div>
-
+                <div className="p-4.5 rounded-xl bg-white/95 border border-[#dfe3ef] shadow-xs hover:border-[#25C0D4] transition-colors">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="font-mono text-[10px] font-bold text-[#25C0D4] uppercase tracking-wider">
+                      02 / SOLAR
+                    </span>
+                    <span className="size-1.5 rounded-full bg-[#25C0D4]" />
                   </div>
+                  <h4 className="text-sm font-bold text-[#0e122b]">Energía Limpia</h4>
+                  <p className="mt-1 text-[11px] text-[#4b5275] leading-relaxed">
+                    Cauchari: 300 MW en la Puna jujeña.
+                  </p>
+                </div>
 
+                <div className="p-4.5 rounded-xl bg-white/95 border border-[#dfe3ef] shadow-xs hover:border-[#820CD0] transition-colors">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="font-mono text-[10px] font-bold text-[#820CD0] uppercase tracking-wider">
+                      03 / TECH
+                    </span>
+                    <span className="size-1.5 rounded-full bg-[#820CD0]" />
+                  </div>
+                  <h4 className="text-sm font-bold text-[#0e122b]">Innovación & Agro</h4>
+                  <p className="mt-1 text-[11px] text-[#4b5275] leading-relaxed">
+                    Biotecnología y economía del conocimiento.
+                  </p>
+                </div>
+
+                <div className="p-4.5 rounded-xl bg-white/95 border border-[#dfe3ef] shadow-xs hover:border-[#25C0D4] transition-colors">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="font-mono text-[10px] font-bold text-[#25C0D4] uppercase tracking-wider">
+                      04 / BIOCEÁNICO
+                    </span>
+                    <span className="size-1.5 rounded-full bg-[#25C0D4]" />
+                  </div>
+                  <h4 className="text-sm font-bold text-[#0e122b]">Comercio Global</h4>
+                  <p className="mt-1 text-[11px] text-[#4b5275] leading-relaxed">
+                    Integración logística regional.
+                  </p>
                 </div>
               </div>
 
-              {/* Rueda Orbital Circular con GSAP Rotation */}
-              <div className="relative mx-auto flex items-center justify-center py-2">
-                <div className="relative size-[280px] sm:size-[320px] flex items-center justify-center">
-                  
-                  {/* Órbita Blueprint SVG */}
-                  <svg className="absolute inset-0 size-full pointer-events-none -rotate-90">
-                    <circle
-                      cx="50%"
-                      cy="50%"
-                      r="120"
-                      fill="none"
-                      stroke="#dbe0ee"
-                      strokeWidth="1.5"
-                      strokeDasharray="4 6"
-                    />
-                    <circle
-                      cx="50%"
-                      cy="50%"
-                      r="120"
-                      fill="none"
-                      stroke={sectorsData[activeSector].color}
-                      strokeWidth="3"
-                      strokeDasharray="60 700"
-                      strokeDashoffset="30"
-                      className="transition-all duration-700"
-                    />
-                  </svg>
-
-                  {/* Aguja indicadora focal en la parte superior (12 en punto) */}
-                  <div className="absolute top-1 left-1/2 -translate-x-1/2 z-20 pointer-events-none flex flex-col items-center">
-                    <span 
-                      className="size-2 rounded-full shadow-md animate-ping"
-                      style={{ backgroundColor: sectorsData[activeSector].color }}
-                    />
-                  </div>
-
-                  {/* Rueda giratoria animada con GSAP */}
-                  <div 
-                    ref={wheelRef}
-                    className="relative size-full rounded-full"
-                    style={{ willChange: "transform" }}
-                  >
-                    {sectorsData.map((sector, index) => {
-                      const isActive = index === activeSector;
-                      const angleRad = ((index * 90 - 90) * Math.PI) / 180;
-                      const radius = 120;
-                      const posX = Math.cos(angleRad) * radius;
-                      const posY = Math.sin(angleRad) * radius;
-                      const IconComp = sector.icon;
-
-                      return (
-                        <button
-                          key={sector.id}
-                          ref={(el) => {
-                            nodesRef.current[index] = el;
-                          }}
-                          type="button"
-                          onClick={() => goToSector(index)}
-                          aria-label={`Sector ${sector.number}: ${sector.title}`}
-                          aria-current={isActive}
-                          style={{
-                            left: `calc(50% + ${posX}px)`,
-                            top: `calc(50% + ${posY}px)`,
-                            willChange: "transform",
-                          }}
-                          className={`absolute -translate-x-1/2 -translate-y-1/2 group cursor-pointer select-none rounded-full p-1 transition-shadow duration-300 ${
-                            isActive
-                              ? "z-20 scale-110 shadow-[0_8px_20px_rgba(130,12,208,0.25)]"
-                              : "z-10 hover:scale-105 shadow-xs"
-                          }`}
-                        >
-                          <div 
-                            className={`flex size-[52px] sm:size-[60px] flex-col items-center justify-center rounded-full border-2 transition-all duration-300 ${
-                              isActive
-                                ? "bg-white shadow-md"
-                                : "bg-white/95 hover:bg-white border-[#dbe0ee]"
-                            }`}
-                            style={{
-                              borderColor: isActive ? sector.color : undefined,
-                            }}
-                          >
-                            <IconComp 
-                              className="size-4 transition-transform group-hover:scale-110"
-                              style={{ color: sector.color }}
-                            />
-                            <span className="mt-0.5 font-mono text-[9px] sm:text-[10px] font-extrabold tracking-wider text-[#0e122b]">
-                              {sector.number}
-                            </span>
-                          </div>
-
-                          {/* Tooltip con nombre de sector al hover */}
-                          <div className="pointer-events-none absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-[#0e122b] px-2 py-0.5 text-[8px] font-bold text-white opacity-0 shadow-md transition-opacity group-hover:opacity-100">
-                            {sector.title}
-                          </div>
-                        </button>
-                      );
-                    })}
-                  </div>
-
-                  {/* Núcleo central / Hub con monograma */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-20 sm:size-24 rounded-full bg-white/95 backdrop-blur-md shadow-md border border-[#dfe3ef] flex flex-col items-center justify-center text-center p-1.5 pointer-events-none z-10">
-                    <span className="text-[8px] font-mono font-bold tracking-[0.18em] text-[#820CD0] uppercase">
-                      CUATRO
-                    </span>
-                    <span className="font-extrabold text-[11px] sm:text-xs text-[#0e122b] tracking-tight leading-none mt-0.5">
-                      MUNDOS
-                    </span>
-                    <div 
-                      className="mt-1 h-0.5 w-5 rounded-full transition-colors duration-500"
-                      style={{ backgroundColor: sectorsData[activeSector].color }}
-                    />
-                    <span className="mt-0.5 text-[7px] font-mono text-[#6a7294] uppercase tracking-wider">
-                      JUJUY 26
-                    </span>
-                  </div>
-
+              <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
+                <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#6a7294]">
+                  <span>GALERÍA TRIDIMENSIONAL INMERSIVA DISPONIBLE</span>
                 </div>
+                <a
+                  href="#sectores-3d"
+                  className="inline-flex items-center gap-2.5 rounded-lg bg-[#0e122b] px-5 py-3 text-xs font-mono font-bold uppercase tracking-wider text-white shadow-md hover:bg-[#820CD0] transition-all hover:scale-[1.02]"
+                >
+                  <span>Explorar Sectores en 3D</span>
+                  <FaArrowRight className="size-3" />
+                </a>
               </div>
-
             </div>
           </div>
         </article>
