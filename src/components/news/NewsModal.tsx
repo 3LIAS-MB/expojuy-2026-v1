@@ -2,7 +2,15 @@
 
 import { useEffect } from 'react';
 import Image from 'next/image';
-import { Calendar, Clock, X, Tag, Share2, Building2, Quote } from 'lucide-react';
+import { 
+  FaCalendarDays, 
+  FaClock, 
+  FaXmark, 
+  FaTag, 
+  FaShareNodes, 
+  FaBuilding, 
+  FaQuoteLeft 
+} from 'react-icons/fa6';
 import type { NewsArticle } from '@/data/news';
 
 interface NewsModalProps {
@@ -67,7 +75,7 @@ export function NewsModal({ article, onClose }: NewsModalProps) {
             aria-label="Compartir noticia"
             className="p-2 rounded-full bg-white/90 hover:bg-white text-[#0b123b] shadow-md border border-[#dfe3ef] hover:text-[#6424dc] transition-colors"
           >
-            <Share2 className="w-4 h-4" />
+            <FaShareNodes className="w-3.5 h-3.5" />
           </button>
           <button
             type="button"
@@ -75,7 +83,7 @@ export function NewsModal({ article, onClose }: NewsModalProps) {
             aria-label="Cerrar modal"
             className="p-2 rounded-full bg-white/90 hover:bg-white text-[#0b123b] shadow-md border border-[#dfe3ef] hover:text-[#c83349] transition-colors"
           >
-            <X className="w-5 h-5" />
+            <FaXmark className="w-4 h-4" />
           </button>
         </div>
 
@@ -97,7 +105,7 @@ export function NewsModal({ article, onClose }: NewsModalProps) {
                 {article.category}
               </span>
               <span className="px-3 py-1 rounded-full text-xs font-medium bg-black/60 text-white backdrop-blur-sm flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-[#19b9ca]" />
+                <FaClock className="w-3 h-3 text-[#19b9ca]" />
                 {article.readTime}
               </span>
             </div>
@@ -106,13 +114,13 @@ export function NewsModal({ article, onClose }: NewsModalProps) {
           {/* METADATOS Y FECHA */}
           <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-[#646a85] border-b border-[#dfe3ef] pb-4">
             <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-[#6424dc]" />
+              <FaCalendarDays className="w-3.5 h-3.5 text-[#6424dc]" />
               <time dateTime={article.publishedAt} className="font-semibold text-[#0b123b]">
                 {article.date}
               </time>
             </div>
             <div className="flex items-center gap-1.5">
-              <Building2 className="w-4 h-4 text-[#19b9ca]" />
+              <FaBuilding className="w-3.5 h-3.5 text-[#19b9ca]" />
               <span>
                 Fuente: <strong className="text-[#0b123b]">{article.author.name}</strong> ({article.author.role})
               </span>
@@ -135,7 +143,7 @@ export function NewsModal({ article, onClose }: NewsModalProps) {
           {/* CITA DESTACADA (SI EXISTE) */}
           {article.highlightQuote && (
             <div className="p-5 rounded-xl bg-gradient-to-r from-[#6424dc]/10 via-[#ac7ff0]/10 to-transparent border border-[#6424dc]/20 flex gap-4 items-start">
-              <Quote className="w-8 h-8 text-[#6424dc] shrink-0 mt-1" />
+              <FaQuoteLeft className="w-6 h-6 text-[#6424dc] shrink-0 mt-1" />
               <div>
                 <blockquote className="text-base italic font-semibold text-[#0b123b]">
                   &ldquo;{article.highlightQuote.quote}&rdquo;
@@ -157,7 +165,7 @@ export function NewsModal({ article, onClose }: NewsModalProps) {
           {/* ETIQUETAS / TAGS */}
           <div className="pt-4 border-t border-[#dfe3ef]">
             <div className="flex items-center gap-2 flex-wrap">
-              <Tag className="w-4 h-4 text-[#6424dc]" />
+              <FaTag className="w-3.5 h-3.5 text-[#6424dc]" />
               <span className="text-xs font-bold text-[#646a85] uppercase tracking-wider">
                 Temas relacionados:
               </span>
