@@ -19,19 +19,24 @@ export function HeroSection({ introFinished = true }: HeroSectionProps) {
   const rootRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const reduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
   const [videoPaused, setVideoPaused] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Reproducción inteligente del video de fondo sincronizada con la intro
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    if (!introFinished || reduceMotion || videoPaused) {
+    if (!introFinished || (mounted && reduceMotion) || videoPaused) {
       video.pause();
     } else {
       void video.play().catch(() => setVideoPaused(true));
     }
-  }, [introFinished, reduceMotion, videoPaused]);
+  }, [introFinished, reduceMotion, videoPaused, mounted]);
 
   useGSAP(
     () => {
@@ -76,26 +81,24 @@ export function HeroSection({ introFinished = true }: HeroSectionProps) {
           sizes="100vw"
         />
 
-        {!reduceMotion && (
-          <video
-            ref={videoRef}
-            src={introFinished ? "/video/Best%20of%20HANNOVER%20MESSE%202026.mp4" : undefined}
-            poster="/images/hero/hero-banner.png"
-            muted
-            loop
-            playsInline
-            preload="none"
-            aria-hidden="true"
-            className="absolute inset-0 h-full w-full object-cover object-[68%_center]"
-          />
-        )}
+        <video
+          ref={videoRef}
+          src={introFinished ? "/video/Best%20of%20HANNOVER%20MESSE%202026.mp4" : undefined}
+          poster="/images/hero/hero-banner.png"
+          muted
+          loop
+          playsInline
+          preload="none"
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover object-[68%_center]"
+        />
       </div>
 
       <div className="hero-shade absolute inset-0 -z-20 pointer-events-none" />
       <div className="hero-vignette absolute inset-0 -z-10 pointer-events-none" />
 
       {/* BOTÓN DE CONTROL REPRODUCIR / PAUSAR VIDEO DE FONDO */}
-      {!reduceMotion && introFinished && (
+      {mounted && !reduceMotion && introFinished && (
         <button
           type="button"
           onClick={() => setVideoPaused((paused) => !paused)}
