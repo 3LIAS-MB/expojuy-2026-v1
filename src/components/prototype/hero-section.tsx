@@ -1,18 +1,42 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRight, CalendarDays, MapPin } from "lucide-react";
-import { BrandMark } from "@/components/prototype/brand-mark";
+import { ArrowRight, CalendarDays, MapPin, Pause, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-export function HeroSection() {
+interface HeroSectionProps {
+  introFinished?: boolean;
+}
+
+export function HeroSection({ introFinished = true }: HeroSectionProps) {
   const rootRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const reduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+  const [videoPaused, setVideoPaused] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Reproducción inteligente del video de fondo sincronizada con la intro
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (!introFinished || (mounted && reduceMotion) || videoPaused) {
+      video.pause();
+    } else {
+      void video.play().catch(() => setVideoPaused(true));
+    }
+  }, [introFinished, reduceMotion, videoPaused, mounted]);
 
   useGSAP(
     () => {
@@ -67,22 +91,49 @@ export function HeroSection() {
       id="inicio"
       className="relative isolate flex min-h-[100dvh] overflow-hidden bg-[#080d24] text-white"
     >
+      {/* VIDEO / IMAGEN DE FONDO DEL HERO */}
       <div className="hero-image-wrap absolute inset-0 -z-30 origin-center">
         <Image
           className="hero-image absolute inset-0 h-full w-full object-cover object-[68%_center]"
-          src="/images/evento/expo-hero-banner.png"
-          alt="Serranía multicolor del Hornocal en Jujuy"
+          src="/images/hero/hero-banner.png"
+          alt="Cerros multicolores y predio de ExpoJuy"
           fill
           priority
           sizes="100vw"
         />
-      </div>
-      <div className="hero-shade absolute inset-0 -z-20" />
-      <div className="hero-vignette absolute inset-0 -z-10" />
 
-      <div aria-hidden="true" className="hero-intro invisible pointer-events-none fixed inset-0 z-[70] grid place-items-center bg-[#f7f8fc] text-[#0b123b]">
-        <BrandMark intro />
+        <video
+          ref={videoRef}
+          src={introFinished ? "/video/Best%20of%20HANNOVER%20MESSE%202026.mp4" : undefined}
+          poster="/images/hero/hero-banner.png"
+          muted
+          loop
+          playsInline
+          preload="none"
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover object-[68%_center]"
+        />
       </div>
+
+      <div className="hero-shade absolute inset-0 -z-20 pointer-events-none" />
+      <div className="hero-vignette absolute inset-0 -z-10 pointer-events-none" />
+
+      {/* BOTÓN DE CONTROL REPRODUCIR / PAUSAR VIDEO DE FONDO */}
+      {mounted && !reduceMotion && introFinished && (
+        <button
+          type="button"
+          onClick={() => setVideoPaused((paused) => !paused)}
+          aria-label={videoPaused ? "Reproducir video de fondo" : "Pausar video de fondo"}
+          title={videoPaused ? "Reproducir video de fondo" : "Pausar video de fondo"}
+          className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 z-30 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center border border-white/40 bg-black/60 backdrop-blur-md text-white hover:bg-black/80 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white shadow-lg cursor-pointer rounded-xs"
+        >
+          {videoPaused ? (
+            <Play className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+          ) : (
+            <Pause className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+          )}
+        </button>
+      )}
 
       <div className="hero-content mx-auto flex w-full max-w-[1480px] flex-col justify-end px-5 pb-9 pt-32 sm:px-8 sm:pb-12 lg:px-12 lg:pb-14">
         <div className="max-w-[820px]">

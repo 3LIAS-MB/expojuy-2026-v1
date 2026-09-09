@@ -5,12 +5,17 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import { BrandMark } from "@/components/prototype/brand-mark";
+import ExpoJuyLogo from "@/components/ExpoJuyLogo";
 import { Button } from "@/components/ui/button";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-export function SiteHeader() {
+interface SiteHeaderProps {
+  showDockedLogo?: boolean;
+  onReplayIntro?: () => void;
+}
+
+export function SiteHeader({ onReplayIntro }: SiteHeaderProps) {
   const headerRef = useRef<HTMLElement>(null);
   const [open, setOpen] = useState(false);
 
@@ -59,18 +64,47 @@ export function SiteHeader() {
     <header
       ref={headerRef}
       data-theme="dark"
-      className="site-header group fixed inset-x-0 top-0 z-50 h-[var(--header-height)] border-b border-transparent text-white"
+      className="site-header group fixed inset-x-0 top-0 z-50 h-[var(--header-height)] border-b border-transparent text-white transition-colors"
     >
       <div className="mx-auto flex h-full max-w-[1480px] items-center justify-between px-5 sm:px-8 lg:px-12">
-        <a href="#inicio" aria-label="Ir al inicio" onClick={() => setOpen(false)}>
-          <BrandMark inverted />
-        </a>
+        {/* LOGO DE MARCA DOCKED CON ID DE DESTINO PARA LA INTRO */}
+        <div className="flex items-center gap-3">
+          <a
+            href="#inicio"
+            id="navbar-logo-target"
+            aria-label="Ir al inicio"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-2.5 group focus:outline-none"
+          >
+            <div className="relative h-10 w-7 sm:h-11 sm:w-8">
+              <ExpoJuyLogo className="w-full h-full object-contain transition-transform duration-200 group-hover:scale-105" />
+            </div>
+            <span className="brand-wordmark text-[1.05rem] font-bold tracking-[-0.04em] leading-none">
+              EXPOJUY
+              <span className="ml-1.5 align-top text-[0.58em] font-semibold tracking-[0.04em]">
+                2026
+              </span>
+            </span>
+          </a>
+
+          {/* BOTÓN SUTIL PARA REPETIR LA INTRO */}
+          {onReplayIntro && (
+            <button
+              type="button"
+              onClick={onReplayIntro}
+              title="Ver animación de entrada de marca"
+              className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-current/70 hover:text-current border border-current/20 hover:border-current/50 rounded-sm transition-all cursor-pointer"
+            >
+              <span>↺ Intro</span>
+            </button>
+          )}
+        </div>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Navegación principal">
-          <a className="text-sm font-semibold hover:opacity-70" href="#sobre">
+          <a className="text-sm font-semibold hover:opacity-70 transition-opacity" href="#sobre">
             Sobre ExpoJuy
           </a>
-          <a className="text-sm font-semibold hover:opacity-70" href="#expositores">
+          <a className="text-sm font-semibold hover:opacity-70 transition-opacity" href="#expositores">
             Expositores
           </a>
           <Button
@@ -116,6 +150,19 @@ export function SiteHeader() {
               <ArrowUpRight aria-hidden className="size-4" />
             </a>
           </Button>
+
+          {onReplayIntro && (
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                onReplayIntro();
+              }}
+              className="mt-2 text-center text-xs font-mono uppercase tracking-wider text-neutral-500 hover:text-black py-2 border-t border-neutral-200"
+            >
+              ↺ Ver animación de entrada
+            </button>
+          )}
         </nav>
       )}
     </header>

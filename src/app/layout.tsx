@@ -17,12 +17,19 @@ export const metadata: Metadata = {
   title: "ExpoJuy 2026 | El futuro se encuentra en Jujuy",
   description:
     "Prototipo de ExpoJuy 2026, encuentro multisectorial de industria, innovación, cultura y oportunidades en Jujuy.",
+  other: {
+    "darkreader-lock": "true",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" className={ambit.variable}>
-      <body>{children}</body>
+    <html lang="es" className={ambit.variable} suppressHydrationWarning>
+      <head>
+        {/* Bloqueo para Dark Reader y extensiones que inyectan atributos en SVGs e imagenes */}
+        <meta name="darkreader-lock" content="true" />
+      </head>
+      <body suppressHydrationWarning>{children}</body>
     </html>
   );
 }
