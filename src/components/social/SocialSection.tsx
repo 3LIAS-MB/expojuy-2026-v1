@@ -93,6 +93,9 @@ export function SocialSection() {
             </span>
             <span className="w-6 h-[2px] bg-[#6424dc]" />
           </div>
+          <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-[#0b123b]">
+            Seguinos en <span className="text-[#6424dc]">Redes Sociales</span>
+          </h2>
           <p className="text-[#646a85] text-sm sm:text-base leading-relaxed">
             Conectá con la comunidad de ExpoJuy 2026 o escaneá con tu celular.
           </p>

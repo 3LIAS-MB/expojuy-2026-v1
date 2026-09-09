@@ -11,7 +11,7 @@ import { NewsSection } from "@/components/news/NewsSection";
 import { LocationSection } from "@/components/prototype/location-section";
 
 import FaqSection from "@/components/FaqSection";
-import { Expo3DCarousel } from "@/components/Expo3DCarousel";
+import { SocialSection } from "@/components/social/SocialSection";
 import { Footer } from "@/components/layout/Footer";
 
 export default function Home() {
@@ -61,6 +61,7 @@ export default function Home() {
         <NewsSection />
         <LocationSection />
         <FaqSection />
+        <SocialSection />
       </main>
 
       <Footer />

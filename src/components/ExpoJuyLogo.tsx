@@ -8,7 +8,7 @@ interface ExpoJuyLogoProps {
 const U_PATH_D =
   "M 0 595 H 688 V 613 C 688 930, 437 959, 344 959 C 251 959, 0 930, 0 613 V 595 Z M 203 595 H 485 C 485 766, 377 779, 344 779 C 311 779, 203 766, 203 595 Z";
 
-export default function ExpoJuyLogo({ className = 'w-10 h-14', assemble }: ExpoJuyLogoProps) {
+export default function ExpoJuyLogo({ className = 'w-10 h-14' }: ExpoJuyLogoProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16,8 +16,7 @@ export default function ExpoJuyLogo({ className = 'w-10 h-14', assemble }: ExpoJ
       fill="none"
       role="img"
       aria-label="Isologotipo ExpoJuy 2026"
-      className={`${className} ${assemble ? 'overflow-visible' : ''}`}
-      style={assemble ? { overflow: 'visible' } : undefined}
+      className={className}
     >
       {/* Forma superior izquierda: Cian/Turquesa */}
       <rect
